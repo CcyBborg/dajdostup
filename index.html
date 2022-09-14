@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Дай Доступ</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+    <!-- Blender pro font -->
+    <link href="fonts/stylesheet.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+    <style>
+        @keyframes float {
+            0% {
+                transform: translatey(0px);
+            }
+
+            50% {
+                transform: translatey(-10px);
+            }
+
+            100% {
+                transform: translatey(0px);
+            }
+        }
+
+        .modal-content {
+            background: linear-gradient(180deg, #FFFFFF 0%, #E9F7FF 100%);
+            border-radius: 0;
+            color: #4D4D4D;
+            min-height: 100vh;
+        }
+
+        .modal-content p {
+            color: #4D4D4D!important;
+            font-size: 18px;
+        }
+
+        .modal-dialog {
+            margin: 0;
+            max-width: none;
+        }
+
+        .modal-header {
+            border-bottom: none;
+        }
+
+        .modal-header .btn-close {
+            font-size: 30px;
+            width: 50px;
+            height: 50px;
+            border: 1px solid #DEDEDE;
+            border-radius: 50%;
+        }
+
+        dl {
+            font-size: 21px;
+        }
+
+        body {
+            color: #fff;
+            font-family: 'Blender Pro', Helvetica, sans-serif;
+            overflow-x: hidden !important;
+            background: linear-gradient(168.18deg, #614385 -0.85%, #516395 100.85%);
+        }
+
+        h1,
+        h2 {
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 70px;
+            line-height: 68px;
+        }
+
+        h2 {
+            font-size: 80px;
+            line-height: 68px;
+        }
+
+        p {
+            color: #DBDBDB !important;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 24px;
+        }
+
+        .header {
+            width: 100vw;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .header ul {
+            padding: 0;
+            font-weight: 600;
+        }
+
+        .header .bi-chevron-double-down {
+            background-color: transparent;
+            color: rgba(255, 255, 255, 0.21);
+            position: absolute;
+            bottom: 25px;
+            margin: 0 auto;
+            font-size: 70px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            transform: translatey(0px);
+            animation: float 1.5s ease-in-out infinite;
+        }
+
+        .header .btn {
+            margin-top: 30%;
+        }
+
+        .subscription-title {
+            font-size: 24px;
+            white-space: nowrap;
+        }
+
+        .subscription-price {
+            font-size: 22px;
+        }
+
+        .btn {
+            border: 5px solid #F6AB19;
+            border-radius: 21px;
+            padding: 8px 60px;
+        }
+
+        .btn-primary {
+            backdrop-filter: blur(4px);
+            color: #fff;
+            background: rgba(255, 255, 255, 0.21);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #4D4D4D;
+        }
+
+        .btn.btn-primary:hover {
+            background: rgba(255, 255, 255, 0.42);
+            border: 5px solid #F6AB19;
+        }
+
+        .btn-lg {
+            font-weight: 600;
+            font-size: 25px;
+            line-height: 45px;
+            padding: 10px 80px;
+        }
+
+        .features {
+            margin: 10% 0;
+        }
+
+        .features p {
+            max-width: 360px;
+        }
+
+        .features-icon-wrapper {
+            background: rgba(0, 0, 0, 0.27);
+            border-radius: 21.4072px;
+            width: 91.75px;
+            height: 90.52px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        footer {
+            padding: 12px 20px;
+            border-radius: 25px 25px 0px 0px;
+            background: rgba(217, 217, 217, 0.8);
+        }
+
+        footer p,
+        footer a {
+            color: #535353!important;
+            font-size: 10px;
+            line-height: 14px;
+        }
+
+        .logo-wrapper {
+            width: 130px;
+            height: 130px;
+            background: rgba(255, 255, 255, 0.3);
+            border: 1px solid #FFFFFF;
+            border-radius: 30.3529px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .about-title {
+            margin: 5% 0 10%;
+        }
+
+        .about-p {
+            font-size: 20px;
+            line-height: 26px;
+        }
+
+        .title-p {
+            font-size: 21px;
+            line-height: 39px;
+        }
+
+        .tab-pane {
+            background-color: #FFFFFF;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 20px;
+            padding: 16px;
+            z-index: 999;
+            margin-top: 24px;
+            position: relative;
+        }
+
+        .nav.nav-tabs {
+            border-bottom: none;
+        }
+
+        .nav-tabs .nav-link {
+            background: rgba(22, 22, 22, 0.53);
+            border-radius: 20px;
+            width: 90px;
+            height: 90px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-tabs .nav-link.active {
+            background: rgba(211, 211, 211, 0.27);
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            position: relative;
+        }
+
+        .nav-tabs .nav-link.active::after {
+            content: "";
+            background-image: url(./icons/triangle.svg);
+            background-size: contain;
+            position: absolute;
+            bottom: -40px;
+            width: 37px;
+            height: 34px;
+            overflow: visible;
+        }
+
+        input.form-control {
+            background: #D9D9D9;
+            border-radius: 10px;
+        }
+
+        p.choose-service-title {
+            text-align: center;
+            color: #898888!important;
+        }
+
+        p.subscription-form-caption {
+            text-align: center;
+            color: #A5A3A3;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 13px;
+        }
+
+        @media (max-width: 600px) {
+            p {
+                font-size: 16px;
+            }
+
+            .header .bi-chevron-double-down {
+                font-size: 46px;
+                bottom: 4px;
+            }
+
+            .about-p {
+                font-size: 18;
+                line-height: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section class="header">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 pt-5 text-md-center">
+                        <div class="mb-5">
+                            <h1>Дай Доступ!</h1>
+                            <p class="title-p">возвращаем доступ к подпискам</p>
+                        </div>
+
+                        <ul class="d-md-flex justify-content-between">
+                            <li class="d-flex align-items-center mb-4 me-md-4">
+                                <div class="me-3">
+                                    <img src="./img/spotify.png" width="64" height="66" />
+                                </div>
+                                <div class="text-start">
+                                    <div class="subscription-title">Spotify Premium</div>
+                                    <div class="subscription-price">99 ₽ / месяц</div>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center mb-4">
+                                <div class="me-3">
+                                    <img src="./img/youtube.png" width="70" height="48" />
+                                </div>
+                                <div class="text-start">
+                                    <div class="subscription-title">YouTube Premium</div>
+                                    <div class="subscription-price">99 ₽ / месяц</div>
+                                </div>
+                            </li>
+                        </ul>
+
+                            <div class="d-grid gap-2 d-md-block">
+
+                                <button class="btn btn-primary btn-lg" data-bs-toggle="modal"
+                                    data-bs-target="#subscriptionModal">Подключить</button>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+            <i class="bi bi-chevron-double-down"></i>
+        </section>
+
+        <section>
+            <div class="container">
+                <h2 class="about-title text-md-center">О нас</h2>
+                <div class="d-flex align-items-center mx-md-auto" style="max-width: 400px">
+                    <div class="me-3">
+                        <div class="logo-wrapper">
+                            <img src="./icons/dd-logo.svg" width="57" height="70" />
+                        </div>
+                    </div>
+                    <div>
+                        <p class="about-p">Команда <strong>Дай Доступ!</strong> состоит из&nbsp;специалистов
+                            в&nbsp;области работы с&nbsp;информацией</p>
+                    </div>
+                </div>
+                <ul class="row list-unstyled features">
+                    <li class="col-md-6 d-flex align-items-center mb-3 mb-md-4 p-0">
+                        <div class="me-3">
+                            <div class="features-icon-wrapper">
+                                <img src="./icons/features-1.svg" width="66" height="45" />
+                            </div>
+                        </div>
+                        <p>Мы&nbsp;оформляем подписки при помощи наших иностранных карт</p>
+                    </li>
+                    <li class="col-md-6 d-flex align-items-center mb-3 mb-md-4 p-0">
+                        <div class="me-3">
+                            <div class="features-icon-wrapper">
+                                <img src="./icons/features-2.svg" width="56" height="56" />
+                            </div>
+                        </div>
+                        <p>Подключение подписки происходит мгновенно, а&nbsp;продление&nbsp;&mdash; автоматически</p>
+                    </li>
+                    <li class="col-md-6 d-flex align-items-center mb-3 mb-md-4 p-0">
+                        <div class="me-3">
+                            <div class="features-icon-wrapper">
+                                <img src="./icons/features-3.svg" width="44" height="44" />
+                            </div>
+                        </div>
+                        <p>Вы&nbsp;всегда можете отменить подписку по&nbsp;ссылке</p>
+                    </li>
+                    <li class="col-md-6 d-flex align-items-center mb-3 mb-md-4 p-0">
+                        <div class="me-3">
+                            <div class="features-icon-wrapper">
+                                <img src="./icons/features-4.svg" width="31" height="50" />
+                            </div>
+                        </div>
+                        <p>Ответы на&nbsp;другие вопросы доступны в&nbsp;FAQ</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+            <div class="container text-center d-grid gap-2 d-md-block" style="margin-top: 10%; margin-bottom: 10%;">
+                <button class="btn btn-primary btn-lg" data-bs-toggle="modal"
+                    data-bs-target="#subscriptionModal">Подключить</button>
+            </div>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-8">
+                    <p>ИП Яроцкий Даниил Дмитриевич ИНН ОГРНИП</p>
+                    <ul class="list-unstyled inline-list">
+                        <li>
+                            <a href="#">Оферта</a>
+                        </li>
+                        <li>
+                            <a href="#">Политика конфединциальности</a>
+                        </li>
+                        <li>
+                            <a href="#">Согласие на обработку персональных данных</a>
+                        </li>
+                        <li>
+                            <a href="'#">Cогласие на получение рассылки и рекламных материалов</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-4">
+                    <ul class="list-unstyled text-end">
+                        <li>
+                            <a href="#">V</a>
+                        </li>
+                        <li>
+                            <a href="#">F</a>
+                        </li>
+                        <li>
+                            <a href="#">I</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Subscription Modal -->
+    <div class="modal fade" id="subscriptionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title text-capitalize" id="exampleModalLabel">Чекаут</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="choose-service-title">Выберите сервис</p>
+
+                    <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+                        <li class="nav-item me-4" role="presentation">
+                          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">
+                            <img src="./img/youtube.png" width="70" height="48" />
+                          </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">
+                            <img src="./img/spotify.png" width="64" height="66" />
+                          </button>
+                        </li>
+                      </ul>
+                      <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+                            <dl class="row">
+                                <dt class="col-6">Подписка:</dt>
+                                <dd class="col-6">YouTube Premium</dd>
+                                <dt class="col-6">Стоимость:</dt>
+                                <dd class="col-6">99 ₽ / месяц</dd>
+                            </dl>
+                            <p>
+                                Подписка YouTube Premium подключается на&nbsp;аккаунт, который вы&nbsp;укажите ниже. После оплаты вы&nbsp;получите инструкцию для активации подписки.
+                            </p>
+
+                            <form class="mt-5">
+                                <div class="form-floating mb-3">
+                                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                    <label for="floatingInput">Почта от аккаунта YouTube</label>
+                                  </div>
+
+                                  <div class="d-grid gap-2 d-block my-4">
+                                    <button class="btn btn-secondary btn-lg">Подключить</button>
+                                </div>
+                            </form>
+
+                            <p class="subscription-form-caption">оплачивая подписку вы подтверждаете согласие с условиями оферты</p>
+                        </div>
+                        <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                                <dl class="row">
+                                    <dt class="col-6">Подписка:</dt>
+                                    <dd class="col-6">Spotify Premium</dd>
+                                    <dt class="col-6">Стоимость:</dt>
+                                    <dd class="col-6">99 ₽ / месяц</dd>
+                                </dl>
+                                <p>
+                                    Подписка Spotify Premium подключается на&nbsp;аккаунт, который вы&nbsp;укажите ниже. После оплаты вы&nbsp;получите инструкцию для активации подписки.
+                                </p>
+    
+                                <form class="mt-5">
+                                    <div class="form-floating mb-3">
+                                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                        <label for="floatingInput">Почта от аккаунта Spotify</label>
+                                      </div>
+    
+                                      <div class="d-grid gap-2 d-block my-4">
+                                        <button class="btn btn-secondary btn-lg">Подключить</button>
+                                    </div>
+                                </form>
+    
+                                <p class="subscription-form-caption">оплачивая подписку вы подтверждаете согласие с условиями оферты</p>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
