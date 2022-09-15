@@ -12,8 +12,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
     <!-- Blender pro font -->
-    <link href="fonts/stylesheet.css" rel="stylesheet" type="text/css" />
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <link href="fonts/stylesheet.css" rel="stylesheet" type="text/css">
+    <!-- Proxima Nova font -->
+    <link href="http://fonts.cdnfonts.com/css/proxima-nova-2" rel="stylesheet">
+
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
 
     <style>
         @keyframes float {
@@ -30,6 +33,10 @@
             }
         }
 
+        .container {
+            padding: 0 34px;
+        }
+
         .modal-content {
             background: linear-gradient(180deg, #FFFFFF 0%, #E9F7FF 100%);
             border-radius: 0;
@@ -38,7 +45,7 @@
         }
 
         .modal-content p {
-            color: #4D4D4D!important;
+            color: #4D4D4D !important;
             font-size: 18px;
         }
 
@@ -57,6 +64,8 @@
             height: 50px;
             border: 1px solid #DEDEDE;
             border-radius: 50%;
+            align-self: flex-start;
+            margin-top: 30px;
         }
 
         dl {
@@ -65,14 +74,19 @@
 
         body {
             color: #fff;
-            font-family: 'Blender Pro', Helvetica, sans-serif;
-            overflow-x: hidden !important;
+            font-family: 'Proxima Nova', sans-serif;
             background: linear-gradient(168.18deg, #614385 -0.85%, #516395 100.85%);
         }
 
+        body, main, .header {
+            display: flow-root;
+        }
+
         h1,
-        h2 {
+        h2,
+        h3 {
             font-weight: 700;
+            font-family: 'Blender Pro', Helvetica, sans-serif;
         }
 
         h1 {
@@ -93,7 +107,6 @@
         }
 
         .header {
-            width: 100vw;
             min-height: 100vh;
             position: relative;
         }
@@ -107,7 +120,7 @@
             background-color: transparent;
             color: rgba(255, 255, 255, 0.21);
             position: absolute;
-            bottom: 25px;
+            bottom: 0;
             margin: 0 auto;
             font-size: 70px;
             left: 0;
@@ -118,7 +131,7 @@
         }
 
         .header .btn {
-            margin-top: 30%;
+            margin-top: calc(100vh - 800px);
         }
 
         .subscription-title {
@@ -164,7 +177,8 @@
         }
 
         .features p {
-            max-width: 360px;
+            max-width: 260px;
+            margin: 0;
         }
 
         .features-icon-wrapper {
@@ -178,14 +192,15 @@
         }
 
         footer {
-            padding: 12px 20px;
+            padding: 20px 0;
             border-radius: 25px 25px 0px 0px;
-            background: rgba(217, 217, 217, 0.8);
+            background: rgba(217, 217, 217, 0.6);
+            color: #535353:
         }
 
         footer p,
         footer a {
-            color: #535353!important;
+            color: #535353 !important;
             font-size: 10px;
             line-height: 14px;
         }
@@ -263,15 +278,28 @@
 
         p.choose-service-title {
             text-align: center;
-            color: #898888!important;
+            color: #898888 !important;
         }
 
         p.subscription-form-caption {
             text-align: center;
-            color: #A5A3A3;
+            color: #A5A3A3 !important;
             font-weight: 400;
             font-size: 12px;
             line-height: 13px;
+        }
+
+        p.subscription-form-caption a {
+            color: #A5A3A3 !important;
+            font-weight: 600;
+        }
+
+        .header-title {
+            margin: 181px 0 66px;
+        }
+
+        .footer-links li {
+            margin-bottom: -5px;
         }
 
         @media (max-width: 600px) {
@@ -281,12 +309,62 @@
 
             .header .bi-chevron-double-down {
                 font-size: 46px;
-                bottom: 4px;
             }
 
             .about-p {
                 font-size: 18;
                 line-height: 24px;
+            }
+        }
+
+        @media (max-width: 388px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .header-title {
+                margin: 90px 0 40px;
+            }
+
+            .header .btn {
+                margin-top: calc(100vh - 660px);
+            }
+        }
+
+        @media (min-width: 900px) {
+            dl {
+                font-size: 24px;
+            }
+
+            .header-title {
+                margin: 0;
+            }
+
+            .header .btn {
+                margin-top: calc(30vh - 240px);
+            }
+
+            .header-content {
+                margin: 30vh 0 20vh;
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+            }
+
+            .title-p {
+                font-size: 22px !important;
+            }
+
+            .container {
+                max-width: 880px;
+            }
+
+            h1 {
+                font-size: 80px;
+            }
+
+            .tab-pane {
+                padding: 30px;
             }
         }
     </style>
@@ -296,40 +374,37 @@
     <main>
         <section class="header">
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-8 pt-5 text-md-center">
-                        <div class="mb-5">
-                            <h1>Дай Доступ!</h1>
-                            <p class="title-p">возвращаем доступ к подпискам</p>
-                        </div>
-
-                        <ul class="d-md-flex justify-content-between">
-                            <li class="d-flex align-items-center mb-4 me-md-4">
-                                <div class="me-3">
-                                    <img src="./img/spotify.png" width="64" height="66" />
-                                </div>
-                                <div class="text-start">
-                                    <div class="subscription-title">Spotify Premium</div>
-                                    <div class="subscription-price">99 ₽ / месяц</div>
-                                </div>
-                            </li>
-                            <li class="d-flex align-items-center mb-4">
-                                <div class="me-3">
-                                    <img src="./img/youtube.png" width="70" height="48" />
-                                </div>
-                                <div class="text-start">
-                                    <div class="subscription-title">YouTube Premium</div>
-                                    <div class="subscription-price">99 ₽ / месяц</div>
-                                </div>
-                            </li>
-                        </ul>
-
-                            <div class="d-grid gap-2 d-md-block">
-
-                                <button class="btn btn-primary btn-lg" data-bs-toggle="modal"
-                                    data-bs-target="#subscriptionModal">Подключить</button>
-                            </div>
+                <div class="header-content">
+                    <div class="header-title">
+                        <h1>Дай Доступ!</h1>
+                        <p class="title-p m-0">возвращаем доступ к подпискам</p>
                     </div>
+
+                    <ul>
+                        <li class="d-flex align-items-center mb-4 justify-content-md-between">
+                            <div class="me-3">
+                                <img src="./icons/spoty.svg" width="64" height="66" />
+                            </div>
+                            <div class="text-md-end">
+                                <div class="subscription-title">Spotify Premium</div>
+                                <div class="subscription-price">99 ₽ / месяц</div>
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-center mb-4 justify-content-md-between">
+                            <div class="me-3">
+                                <img src="./icons/yt.svg" width="70" height="48" />
+                            </div>
+                            <div class="text-md-end">
+                                <div class="subscription-title">YouTube Premium</div>
+                                <div class="subscription-price">99 ₽ / месяц</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="d-grid gap-2 d-md-block text-center">
+
+                    <button class="btn btn-primary btn-lg" data-bs-toggle="modal"
+                        data-bs-target="#subscriptionModal">Подключить</button>
                 </div>
             </div>
 
@@ -338,15 +413,15 @@
 
         <section>
             <div class="container">
-                <h2 class="about-title text-md-center">О нас</h2>
-                <div class="d-flex align-items-center mx-md-auto" style="max-width: 400px">
+                <h2 class="about-title text-md-center" style="margin-bottom: 56px;">О нас</h2>
+                <div class="d-flex align-items-center" style="max-width: 400px; margin-bottom: 32px;">
                     <div class="me-3">
                         <div class="logo-wrapper">
                             <img src="./icons/dd-logo.svg" width="57" height="70" />
                         </div>
                     </div>
                     <div>
-                        <p class="about-p">Команда <strong>Дай Доступ!</strong> состоит из&nbsp;специалистов
+                        <p class=" m-0">Команда <strong>Дай Доступ!</strong> состоит из&nbsp;специалистов
                             в&nbsp;области работы с&nbsp;информацией</p>
                     </div>
                 </div>
@@ -386,17 +461,17 @@
                 </ul>
             </div>
         </section>
-            <div class="container text-center d-grid gap-2 d-md-block" style="margin-top: 10%; margin-bottom: 10%;">
-                <button class="btn btn-primary btn-lg" data-bs-toggle="modal"
-                    data-bs-target="#subscriptionModal">Подключить</button>
-            </div>
+        <div class="container text-center d-grid gap-2 d-md-block" style="margin-top: 10%; margin-bottom: 10%;">
+            <button class="btn btn-primary btn-lg" data-bs-toggle="modal"
+                data-bs-target="#subscriptionModal">Подключить</button>
+        </div>
     </main>
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col-8">
-                    <p>ИП Яроцкий Даниил Дмитриевич ИНН ОГРНИП</p>
-                    <ul class="list-unstyled inline-list">
+                <div class="col-10">
+                    <p>ИП Яроцкий Даниил Дмитриевич <br/>ИНН<br/>ОГРНИП</p>
+                    <ul class="list-unstyled footer-links m-0">
                         <li>
                             <a href="#">Оферта</a>
                         </li>
@@ -411,7 +486,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-4">
+                <div class="col-2">
                     <ul class="list-unstyled text-end">
                         <li>
                             <a href="#">V</a>
@@ -433,7 +508,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header container">
-                    <h2 class="modal-title text-capitalize" id="exampleModalLabel">Чекаут</h2>
+                    <h2 class="modal-title text-capitalize mt-5" id="exampleModalLabel">Чекаут</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" style="max-width: 600px; margin: 0 auto;">
@@ -441,66 +516,84 @@
 
                     <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
                         <li class="nav-item me-4" role="presentation">
-                          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">
-                            <img src="./img/youtube.png" width="70" height="48" />
-                          </button>
+                            <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
+                                data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane"
+                                aria-selected="true">
+                                <img src="./icons/yt.svg" width="70" height="48" />
+                            </button>
                         </li>
                         <li class="nav-item" role="presentation">
-                          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">
-                            <img src="./img/spotify.png" width="64" height="66" />
-                          </button>
+                            <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
+                                data-bs-target="#profile-tab-pane" type="button" role="tab"
+                                aria-controls="profile-tab-pane" aria-selected="false">
+                                <img src="./icons/spoty.svg" width="64" height="66" />
+                            </button>
                         </li>
-                      </ul>
-                      <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-                            <dl class="row">
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel"
+                            aria-labelledby="home-tab" tabindex="0">
+                            <dl class="row mb-0">
                                 <dt class="col-6">Подписка:</dt>
-                                <dd class="col-6">YouTube Premium</dd>
+                                <dd class="col-6 text-end">YouTube Premium</dd>
                                 <dt class="col-6">Стоимость:</dt>
-                                <dd class="col-6">99 ₽ / месяц</dd>
+                                <dd class="col-6 text-end">99 ₽ / месяц</dd>
                             </dl>
-                            <p>
-                                Подписка YouTube Premium подключается на&nbsp;аккаунт, который вы&nbsp;укажите ниже. После оплаты вы&nbsp;получите инструкцию для активации подписки.
+                            <p style="margin: 10px 0 28px;">
+                                Подписка YouTube Premium подключается на&nbsp;аккаунт, который вы&nbsp;укажите ниже.
+                                После оплаты вы&nbsp;получите инструкцию для активации подписки.
                             </p>
 
-                            <form class="mt-5">
-                                <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                                    <label for="floatingInput">Почта от аккаунта YouTube</label>
-                                  </div>
+                            <form>
+                                <div class="form-floating" style="margin-bottom: 43px;">
+                                    <input type="email" class="form-control" id="ytEmail"
+                                        placeholder="name@example.com" required>
+                                    <label for="ytEmail">Почта от аккаунта YouTube</label>
+                                </div>
 
-                                  <div class="d-grid gap-2 d-block my-4">
+                                <div class="d-grid gap-2 d-block mb-4">
                                     <button class="btn btn-secondary btn-lg">Подключить</button>
                                 </div>
                             </form>
 
-                            <p class="subscription-form-caption">оплачивая подписку вы подтверждаете согласие с условиями оферты</p>
+                            <p class="subscription-form-caption m-0">оплачивая подписку вы подтверждаете согласие с
+                                условиями <a href="#">оферты</a></p>
                         </div>
-                        <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-                                <dl class="row">
-                                    <dt class="col-6">Подписка:</dt>
-                                    <dd class="col-6">Spotify Premium</dd>
-                                    <dt class="col-6">Стоимость:</dt>
-                                    <dd class="col-6">99 ₽ / месяц</dd>
-                                </dl>
-                                <p>
-                                    Подписка Spotify Premium подключается на&nbsp;аккаунт, который вы&nbsp;укажите ниже. После оплаты вы&nbsp;получите инструкцию для активации подписки.
-                                </p>
-    
-                                <form class="mt-5">
-                                    <div class="form-floating mb-3">
-                                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                                        <label for="floatingInput">Почта от аккаунта Spotify</label>
-                                      </div>
-    
-                                      <div class="d-grid gap-2 d-block my-4">
-                                        <button class="btn btn-secondary btn-lg">Подключить</button>
-                                    </div>
-                                </form>
-    
-                                <p class="subscription-form-caption">оплачивая подписку вы подтверждаете согласие с условиями оферты</p>
+                        <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab"
+                            tabindex="0">
+                            <dl class="row mb-0">
+                                <dt class="col-6">Подписка:</dt>
+                                <dd class="col-6 text-end">Spotify Premium</dd>
+                                <dt class="col-6">Стоимость:</dt>
+                                <dd class="col-6 text-end">99 ₽ / месяц</dd>
+                            </dl>
+                            <p style="margin: 10px 0 28px;">
+                                Подписка Spotify Premium подключается на&nbsp;аккаунт, который вы&nbsp;укажите ниже.
+                                После оплаты вы&nbsp;получите инструкцию для активации подписки.
+                            </p>
+
+                            <form>
+                                <div class="form-floating mb-3">
+                                    <input type="email" class="form-control" id="spotyEmail"
+                                        placeholder="name@example.com" required>
+                                    <label for="spotyEmail">Почта от аккаунта Spotify</label>
+                                </div>
+
+                                <div class="form-floating" style="margin-bottom: 43px;">
+                                    <input type="password" class="form-control" id="spotyPassword"
+                                        placeholder="name@example.com" required>
+                                    <label for="spotyPassword">Пароль от аккаунта Spotify</label>
+                                </div>
+
+                                <div class="d-grid gap-2 d-block mb-4">
+                                    <button class="btn btn-secondary btn-lg">Подключить</button>
+                                </div>
+                            </form>
+
+                            <p class="subscription-form-caption">оплачивая подписку вы подтверждаете согласие с
+                                условиями оферты</p>
                         </div>
-                      </div>
+                    </div>
                 </div>
             </div>
         </div>
