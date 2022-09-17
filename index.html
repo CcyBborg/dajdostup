@@ -68,12 +68,12 @@
         }
 
         dl {
-            font-size: 21px;
+            font-size: 20px;
         }
 
         body {
             color: #fff;
-            font-family: 'Proxima Nova', sans-serif;
+            font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
             background: linear-gradient(168.18deg, #614385 -0.85%, #516395 100.85%);
         }
 
@@ -86,17 +86,17 @@
         h1,
         h2,
         h3 {
-            font-weight: 700;
+            font-weight: 600;
             font-family: 'Blender Pro', Helvetica, sans-serif;
         }
 
         h1 {
-            font-size: 70px;
-            line-height: 68px;
+            font-size: 78px;
+            line-height: 70px;
         }
 
         h2 {
-            font-size: 80px;
+            font-size: 66px;
             line-height: 68px;
         }
 
@@ -132,7 +132,7 @@
         }
 
         .header .btn {
-            margin-top: calc(100vh - 700px);
+            margin-top: calc(100vh - 714px);
         }
 
         .subscription-img {
@@ -140,12 +140,17 @@
         }
 
         .subscription-title {
-            font-size: 24px;
+            font-weight: 500;
+            font-size: 22px;
+            line-height: 1.2;
             white-space: nowrap;
+            text-align: right;
+            justify-content: flex-end;
         }
 
         .subscription-price {
-            font-size: 22px;
+            font-weight: 500;
+            font-size: 20px;
         }
 
         .btn {
@@ -317,7 +322,7 @@
             }
 
             .about-p {
-                font-size: 18;
+                font-size: 18px;
                 line-height: 24px;
             }
         }
@@ -346,14 +351,14 @@
             }
 
             .header .btn {
-                margin-top: calc(30vh - 240px);
+                margin-top: calc(30vh - 250px);
             }
 
             .header-content {
                 margin: 30vh 0 20vh;
                 display: flex;
                 justify-content: space-between;
-                align-items: flex-start;
+                align-items: center;
             }
 
             .title-p {
@@ -382,31 +387,31 @@
                 <div class="header-content">
                     <div class="header-title">
                         <h1>Дай Доступ!</h1>
-                        <p class="title-p m-0">возвращаем доступ к подпискам</p>
+                        <p class="title-p m-0">продлеваем подписки</p>
                     </div>
 
-                    <ul>
-                        <li class="d-flex align-items-center mb-4 justify-content-md-between">
+                    <ul style="margin: 20px 0 0">
+                        <li class="d-flex align-items-center mb-4 mt-4 flex-row">
                             <div class="me-3">
-                                <img class="subscription-img" src="./icons/spoty.svg" width="68" height="70" />
+                                <img class="subscription-img" src="./icons/spoty.svg" width="75" />
                             </div>
-                            <div class="text-md-end">
+                            <div class="text-md-end" style="margin-top: 4px">
                                 <div class="subscription-title">Spotify Premium</div>
-                                <div class="subscription-price">99 ₽ / месяц</div>
+                                <div class="subscription-price">99 &#x20bd; / месяц</div>
                             </div>
                         </li>
-                        <li class="d-flex align-items-center mb-4 justify-content-md-between">
+                        <li class="d-flex align-items-center mb-4 mt-4 flex-row">
                             <div class="me-3">
-                                <img class="subscription-img" src="./icons/yt.svg" width="75" height="52" />
+                                <img class="subscription-img" src="./icons/yt.svg" width="78" />
                             </div>
-                            <div class="text-md-end">
+                            <div class="text-md-end" style="margin-top: 4px">
                                 <div class="subscription-title">YouTube Premium</div>
-                                <div class="subscription-price">99 ₽ / месяц</div>
+                                <div class="subscription-price">99 &#x20bd; / месяц</div>
                             </div>
                         </li>
                     </ul>
                 </div>
-                <div class="d-grid gap-2 d-md-block text-center">
+                <div class="d-grid gap-2 d-md-block text-center" >
 
                     <button class="btn btn-primary btn-lg" data-bs-toggle="modal"
                         data-bs-target="#subscriptionModal">Подключить</button>
@@ -418,7 +423,7 @@
 
         <section>
             <div class="container">
-                <h2 class="about-title text-md-center" style="margin-bottom: 56px;">О нас</h2>
+                <h1 class="about-title text-md-center" style="margin-bottom: 56px;">О нас</h1>
                 <div class="d-flex align-items-center" style="max-width: 400px; margin-bottom: 32px;">
                     <div class="me-3">
                         <div class="logo-wrapper">
@@ -519,7 +524,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header container">
-                    <h2 class="modal-title text-capitalize mt-5" id="exampleModalLabel">Чекаут</h2>
+<!--                    <h2 class="modal-title text-capitalize mt-3" id="exampleModalLabel">Чекаут</h2>-->
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" style="max-width: 600px; margin: 0 auto;">
@@ -545,10 +550,10 @@
                         <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel"
                             aria-labelledby="home-tab" tabindex="0">
                             <dl class="row mb-0">
-                                <dt class="col-6">Подписка:</dt>
-                                <dd class="col-6 text-end">YouTube Premium</dd>
-                                <dt class="col-6">Стоимость:</dt>
-                                <dd class="col-6 text-end">99 ₽ / месяц</dd>
+                                <dt class="col-6 mb-1">Подписка:</dt>
+                                <dd class="col-6 text-end mb-1">YouTube Premium</dd>
+                                <dt class="col-6 mb-1">Стоимость:</dt>
+                                <dd class="col-6 text-end mb-1">99 ₽ / месяц</dd>
                             </dl>
                             <p style="margin: 10px 0 28px;">
                                 Подписка YouTube Premium подключается на&nbsp;аккаунт, который вы&nbsp;укажите ниже.
@@ -567,7 +572,7 @@
                                 </div>
                             </form>
 
-                            <p class="subscription-form-caption m-0">оплачивая подписку вы подтверждаете согласие с
+                            <p class="subscription-form-caption m-0" style="font-size: 9px">оплачивая подписку вы подтверждаете согласие с
                                 условиями <a href="#">оферты</a></p>
                         </div>
                         <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab"
