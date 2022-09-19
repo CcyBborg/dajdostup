@@ -184,7 +184,7 @@
         }
 
         .features {
-            margin: 10% 0;
+            margin: 5% 0 10% 0;
         }
 
         .features p {
@@ -353,7 +353,7 @@
             }
 
             .header .btn {
-                margin-top: calc(30vh - 250px);
+                margin-top: calc(30vh - 266px);
             }
 
             .header-content {
@@ -393,22 +393,23 @@
                 </div>
 
                 <ul style="margin: 20px 0 0">
-                    <li class="d-flex align-items-center mb-4 mt-4 flex-row">
-                        <div class="me-3">
-                            <img class="subscription-img" src="./icons/spoty.svg" width="75"/>
-                        </div>
-                        <div class="text-md-end" style="margin-top: 4px">
-                            <div class="subscription-title">Spotify Premium</div>
-                            <div class="subscription-price">99 &#x20bd; / месяц</div>
-                        </div>
-                    </li>
+
                     <li class="d-flex align-items-center mb-4 mt-4 flex-row ">
                         <div class="me-3">
                             <img class="subscription-img" src="./icons/yt.svg" width="78"/>
                         </div>
                         <div class="text-md-end" style="margin-top: 4px">
                             <div class="subscription-title">YouTube Premium</div>
-                            <div class="subscription-price">99 &#x20bd; / месяц</div>
+                            <div class="subscription-price">149 &#x20bd; / месяц</div>
+                        </div>
+                    </li>
+                    <li class="d-flex align-items-center mb-4 mt-4 flex-row">
+                        <div class="me-3">
+                            <img class="subscription-img" src="./icons/spoty.svg" width="75"/>
+                        </div>
+                        <div class="text-md-end" style="margin-top: 4px">
+                            <div class="subscription-title">Spotify Premium</div>
+                            <div class="subscription-price">149 &#x20bd; / месяц</div>
                         </div>
                     </li>
                 </ul>
@@ -427,15 +428,14 @@
     <section>
         <div class="container">
             <h1 class="about-title text-md-center" style="margin-bottom: 56px;">О нас</h1>
-            <div class="d-flex align-items-center" style="max-width: 400px; margin: 32px 0 16px 0;">
+            <div class="d-flex align-items-center" style="max-width: 400px; margin: 32px 0 0px 0;">
                 <div class="me-3">
                     <div class="logo-wrapper">
                         <img src="./icons/dd-logo.svg" width="57" height="70"/>
                     </div>
                 </div>
                 <div>
-                    <p class=" m-0">Команда <strong>Дай Доступ!</strong> состоит из&nbsp;специалистов
-                        в&nbsp;области работы с&nbsp;информацией</p>
+                    <p class="m-0">Команда <strong>Дай Доступ!</strong> предоставляет доступ к иностранным подпискам, даже после санкций</p>
                 </div>
             </div>
             <ul class="row list-unstyled features">
@@ -445,7 +445,7 @@
                             <img src="./icons/features-1.svg" width="66"/>
                         </div>
                     </div>
-                    <p>Мы&nbsp;оформляем подписки при помощи наших иностранных карт</p>
+                    <p>Оплата происходит через оффициальную эквайринг систему — это безопасно</p>
                 </li>
                 <li class="col-md-6 d-flex align-items-center justify-content-md-end mb-3 mb-md-4 p-0">
                     <div class="me-3">
@@ -461,7 +461,7 @@
                             <img src="./icons/features-3.svg" width="44" height="44"/>
                         </div>
                     </div>
-                    <p>Вы&nbsp;всегда можете отменить подписку по&nbsp;ссылке</p>
+                    <p>Вы всегда можете отменить подписку самостоятельно</p>
                 </li>
                 <li class="col-md-6 d-flex align-items-center justify-content-md-end mb-3 mb-md-4 p-0">
                     <div class="me-3">
@@ -469,12 +469,13 @@
                             <img src="./icons/features-4.svg" width="31" height="50"/>
                         </div>
                     </div>
-                    <p>Ответы на&nbsp;другие вопросы доступны в&nbsp;FAQ</p>
+                    <p>Ответы на&nbsp;другие популярные вопросы доступны в&nbsp;<a href="#" style="color: white">FAQ</a>,<br>
+                        а мы доступны в <a href="https://t.me/kingOfSubs" style="color: white">Telegram</a></p>
                 </li>
             </ul>
         </div>
     </section>
-    <div class="container text-center d-grid gap-2 d-md-block" style="margin-top: 10%; margin-bottom: 10%;">
+    <div class="container text-center d-grid gap-2 d-md-block" style="margin-bottom: 10%;">
         <button class="btn btn-primary btn-lg" data-bs-toggle="modal"
                 data-bs-target="#subscriptionModal">Подключить
         </button>
@@ -491,30 +492,30 @@
                 </p>
                 <ul class="list-unstyled footer-links m-0">
                     <li>
-                        <a href="#">Оферта</a>
+                        <a href="./docs/offer.pdf">Оферта</a>
                     </li>
                     <li>
-                        <a href="#">Политика конфединциальности</a>
+                        <a href="./docs/conf.pdf">Политика конфединциальности</a>
                     </li>
                     <li>
-                        <a href="#">Согласие на обработку персональных данных</a>
+                        <a href="./docs/personal.pdf">Согласие на обработку персональных данных</a>
                     </li>
                     <li>
-                        <a href="'#">Cогласие на получение рассылки и рекламных материалов</a>
+                        <a href="./docs/adv.pdf">Cогласие на получение рассылки и рекламных материалов</a>
                     </li>
                 </ul>
             </div>
             <div class="col-2" style="display: flex; justify-content: flex-end; align-items: center; padding: 0">
                 <ul class="list-unstyled text-end" style="margin: 0">
-                    <li class="mb-3">
-                        <a href="https://instagram.com/d.dostup"
-                           title="instagram" target="_blank"
-                           data-saferedirecturl="https://instagram.com/d.dostup">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png"
-                                 alt="instagram" width="32" height="32" style="border:0"
-                                 class="CToWUd" data-bit="iit">
-                        </a>
-                    </li>
+<!--                    <li class="mb-3">-->
+<!--                        <a href="https://instagram.com/d.dostup"-->
+<!--                           title="instagram" target="_blank"-->
+<!--                           data-saferedirecturl="https://instagram.com/d.dostup">-->
+<!--                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png"-->
+<!--                                 alt="instagram" width="32" height="32" style="border:0"-->
+<!--                                 class="CToWUd" data-bit="iit">-->
+<!--                        </a>-->
+<!--                    </li>-->
                     <li class="mb-3">
                         <a href="https://t.me/kingOfSubs"
                            title="telegram" target="_blank"
@@ -524,16 +525,25 @@
                                  class="CToWUd" data-bit="iit">
                         </a>
                     </li>
-                    <li>
-                        <a href="https://plati.market/seller/korol-podpisok/1091269/"
-                           title="plati" target="_blank"
-                           data-saferedirecturl="https://plati.market/seller/korol-podpisok/1091269/">
-                            <img src="https://plati.market/favicon-196x196.png"
-                                 alt="twitter" width="32" height="32"
-                                 style="padding: 5px;border-radius: 6px; background-color: white"
-                                 class="CToWUd" data-bit="iit">
-                        </a>
-                    </li>
+<!--                    <li class="mb-3">-->
+<!--                        <a href="https://t.me/kingOfSubs"-->
+<!--                           title="telegram" target="_blank"-->
+<!--                           data-saferedirecturl="https://t.me/kingOfSubs">-->
+<!--                            <img src="https://img.icons8.com/color/344/group-foreground-selected.png"-->
+<!--                                 alt="telegram" width="32" height="32" style="border:0; background-color: white; border-radius: 6px"-->
+<!--                                 class="CToWUd" data-bit="iit">-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="https://plati.market/seller/korol-podpisok/1091269/"-->
+<!--                           title="plati" target="_blank"-->
+<!--                           data-saferedirecturl="https://plati.market/seller/korol-podpisok/1091269/">-->
+<!--                            <img src="https://plati.market/favicon-196x196.png"-->
+<!--                                 alt="twitter" width="32" height="32"-->
+<!--                                 style="padding: 5px;border-radius: 6px; background-color: white"-->
+<!--                                 class="CToWUd" data-bit="iit">-->
+<!--                        </a>-->
+<!--                    </li>-->
                 </ul>
             </div>
         </div>
@@ -574,16 +584,17 @@
                             <dt class="col-6 mb-1">Подписка:</dt>
                             <dd class="col-6 text-end mb-1">YouTube Premium</dd>
                             <dt class="col-6 mb-1">Стоимость:</dt>
-                            <dd class="col-6 text-end mb-1">99 ₽ / месяц</dd>
+                            <dd class="col-6 text-end mb-1">149 ₽ / месяц</dd>
                         </dl>
                         <p style="margin: 10px 0 28px;">
+                            Просто укажите вашу почту от аккаунта YouTube
                             Подписка YouTube Premium подключается на&nbsp;аккаунт, который вы&nbsp;укажите ниже.
                             После оплаты вы&nbsp;получите инструкцию для активации подписки.
                         </p>
 
                         <form>
                             <div class="form-floating" style="margin-bottom: 43px;">
-                                <input type="email" class="form-control" id="ytEmail" placeholder="name@example.com"
+                                <input type="email" class="form-control" id="ytEmail" placeholder="name@gmail.com"
                                        required>
                                 <label for="ytEmail">Почта от аккаунта YouTube</label>
                             </div>
@@ -603,34 +614,37 @@
                             <dt class="col-6 mb-1">Подписка:</dt>
                             <dd class="col-6 text-end mb-1">Spotify Premium</dd>
                             <dt class="col-6 mb-1">Стоимость:</dt>
-                            <dd class="col-6 text-end mb-1">99 ₽ / месяц</dd>
+                            <dd class="col-6 text-end mb-1">149 ₽ / месяц</dd>
                         </dl>
-                        <p style="margin: 10px 0 28px;">
-                            Подписка Spotify Premium подключается на&nbsp;аккаунт, который вы&nbsp;укажите ниже.
-                            После оплаты вы&nbsp;получите инструкцию для активации подписки.
+                        <p style="margin: 28px 0 28px;">
+                            В разработке...
                         </p>
+<!--                        <p style="margin: 10px 0 28px;">-->
+<!--                            Подписка Spotify Premium подключается на&nbsp;аккаунт, который вы&nbsp;укажите ниже.-->
+<!--                            После оплаты вы&nbsp;получите инструкцию для активации подписки.-->
+<!--                        </p>-->
 
-                        <form>
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="spotyEmail"
-                                       placeholder="name@example.com" required>
-                                <label for="spotyEmail">Почта от аккаунта Spotify</label>
-                            </div>
+<!--                        <form>-->
+<!--                            <div class="form-floating mb-3">-->
+<!--                                <input type="email" class="form-control" id="spotyEmail"-->
+<!--                                       placeholder="name@example.com" required>-->
+<!--                                <label for="spotyEmail">Почта от аккаунта Spotify</label>-->
+<!--                            </div>-->
 
-                            <div class="form-floating" style="margin-bottom: 43px;">
-                                <input type="password" class="form-control" id="spotyPassword"
-                                       placeholder="name@example.com" required>
-                                <label for="spotyPassword">Пароль от аккаунта Spotify</label>
-                            </div>
+<!--                            <div class="form-floating" style="margin-bottom: 43px;">-->
+<!--                                <input type="password" class="form-control" id="spotyPassword"-->
+<!--                                       placeholder="name@example.com" required>-->
+<!--                                <label for="spotyPassword">Пароль от аккаунта Spotify</label>-->
+<!--                            </div>-->
 
-                            <div class="d-grid gap-2 d-block mb-4">
-                                <button class="btn btn-secondary btn-lg">Подключить</button>
-                            </div>
-                        </form>
+<!--                            <div class="d-grid gap-2 d-block mb-4">-->
+<!--                                <button class="btn btn-secondary btn-lg">Подключить</button>-->
+<!--                            </div>-->
+<!--                        </form>-->
 
-                        <p class="subscription-form-caption m-0" style="font-size: 9px">оплачивая подписку вы
-                            подтверждаете согласие с
-                            условиями <a href="#">оферты</a></p>
+<!--                        <p class="subscription-form-caption m-0" style="font-size: 9px">оплачивая подписку вы-->
+<!--                            подтверждаете согласие с-->
+<!--                            условиями <a href="#">оферты</a></p>-->
                     </div>
                 </div>
             </div>
