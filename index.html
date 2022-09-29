@@ -316,6 +316,29 @@
             margin-bottom: -5px;
         }
 
+        .accordion {
+            width: 100%;
+            background-color: transparent;
+        }
+
+        .accordion-item {
+            border: none;
+            margin-bottom: 20px;
+            background-color: transparent;
+        }
+
+        .accordion-button {
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 29px;
+            border-radius: 20px!important;
+            box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+        }
+        .form-check-input:checked {
+            background-color: #F6AB19;
+            border-color: #F6AB19;
+        }
+
         @media (max-width: 600px) {
             p {
                 font-size: 16px;
@@ -419,7 +442,7 @@
             <div class="d-grid gap-2 d-md-block text-center">
 
                 <button class="btn btn-primary btn-lg" data-bs-toggle="modal"
-                        data-bs-target="#subscriptionModal">Подключить
+                        data-bs-target="#checkout">Подключить
                 </button>
             </div>
         </div>
@@ -471,16 +494,16 @@
                             <img src="./icons/features-4.svg" width="31" height="50"/>
                         </div>
                     </div>
-                    <p>Ответы на&nbsp;другие популярные вопросы доступны в&nbsp;<a href="#" style="color: white">FAQ</a>,<br>
+                    <p>Ответы на&nbsp;другие популярные вопросы доступны в&nbsp;<a href="#faq" data-bs-toggle="modal" data-target="#faq" style="color: white">FAQ</a>,<br>
                         а мы доступны в <a href="https://t.me/kingOfSubs" style="color: white">Telegram</a></p>
                 </li>
             </ul>
         </div>
     </section>
     <div class="container text-center d-grid gap-2 d-md-block" style="margin-bottom: 10%;">
-        <button class="btn btn-primary btn-lg" data-bs-toggle="modal"
-                data-bs-target="#subscriptionModal">Подключить
-        </button>
+        <a href="#checkout" class="btn btn-primary btn-lg" data-bs-toggle="modal"
+                data-bs-target="#checkout">Подключить
+    </a>
     </div>
 </main>
 <footer>
@@ -552,8 +575,175 @@
     </div>
 </footer>
 
+<!-- FAQ Modal -->
+<div class="modal fade" id="faq" tabindex="-1" aria-labelledby="faq" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header container">
+                <h2 class="modal-title text-capitalize mt-3" id="exampleModalLabel">FAQ</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="width: 100%; max-width: 600px; margin: 0 auto;">
+                <p class="choose-service-title">Общие вопросы</p>
+                <div class="accordion" id="generalQuestions">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="general_heading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#general1" aria-expanded="true" aria-controls="general1">
+                            Как долго мне будет доступен курс после покупки?
+                        </button>
+                      </h2>
+                      <div id="general1" class="accordion-collapse collapse" aria-labelledby="general_heading1" data-bs-parent="#generalQuestions">
+                        <div class="accordion-body">
+                          <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="general_heading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#general2" aria-expanded="false" aria-controls="general2">
+                            Какие возможности мне будут доступны после покупки?
+                        </button>
+                      </h2>
+                      <div id="general2" class="accordion-collapse collapse" aria-labelledby="general_heading2" data-bs-parent="#generalQuestions">
+                        <div class="accordion-body">
+                          <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="general_heading3">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#general3" aria-expanded="false" aria-controls="general3">
+                            Кому нужен этот курс?
+                        </button>
+                      </h2>
+                      <div id="general3" class="accordion-collapse collapse" aria-labelledby="general_heading3" data-bs-parent="#generalQuestions">
+                        <div class="accordion-body">
+                          <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="general_heading4">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#general4" aria-expanded="false" aria-controls="general4">
+                            Что-то ещё по поводу покупки курса?
+                          </button>
+                        </h2>
+                        <div id="general4" class="accordion-collapse collapse" aria-labelledby="general_heading4" data-bs-parent="#generalQuestions">
+                          <div class="accordion-body">
+                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                <p class="choose-service-title">Подписка YouTube</p>
+                <div class="accordion" id="ytQuestions">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="yt_heading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#yt1" aria-expanded="true" aria-controls="yt1">
+                            Как долго мне будет доступен курс после покупки?
+                        </button>
+                      </h2>
+                      <div id="yt1" class="accordion-collapse collapse" aria-labelledby="yt_heading1" data-bs-parent="#ytQuestions">
+                        <div class="accordion-body">
+                          <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="yt_heading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#yt2" aria-expanded="false" aria-controls="yt2">
+                            Какие возможности мне будут доступны после покупки?
+                        </button>
+                      </h2>
+                      <div id="yt2" class="accordion-collapse collapse" aria-labelledby="yt_heading2" data-bs-parent="#ytQuestions">
+                        <div class="accordion-body">
+                          <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="yt_heading3">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#yt3" aria-expanded="false" aria-controls="yt3">
+                            Кому нужен этот курс?
+                        </button>
+                      </h2>
+                      <div id="yt3" class="accordion-collapse collapse" aria-labelledby="yt_heading3" data-bs-parent="#ytQuestions">
+                        <div class="accordion-body">
+                          <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="yt_heading4">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#yt4" aria-expanded="false" aria-controls="yt4">
+                            Что-то ещё по поводу покупки курса?
+                          </button>
+                        </h2>
+                        <div id="yt4" class="accordion-collapse collapse" aria-labelledby="yt_heading4" data-bs-parent="#ytQuestions">
+                          <div class="accordion-body">
+                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                <p class="choose-service-title">Подписка Spotify</p>
+                <div class="accordion" id="spotyQuestions">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="spoty_heading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#spoty1" aria-expanded="true" aria-controls="spoty1">
+                            Как долго мне будет доступен курс после покупки?
+                        </button>
+                      </h2>
+                      <div id="spoty1" class="accordion-collapse collapse" aria-labelledby="spoty_heading1" data-bs-parent="#spotyQuestions">
+                        <div class="accordion-body">
+                          <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="spoty_heading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#spoty2" aria-expanded="false" aria-controls="spoty2">
+                            Какие возможности мне будут доступны после покупки?
+                        </button>
+                      </h2>
+                      <div id="spoty2" class="accordion-collapse collapse" aria-labelledby="spoty_heading2" data-bs-parent="#spotyQuestions">
+                        <div class="accordion-body">
+                          <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="spoty_heading3">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#spoty3" aria-expanded="false" aria-controls="spoty3">
+                            Кому нужен этот курс?
+                        </button>
+                      </h2>
+                      <div id="spoty3" class="accordion-collapse collapse" aria-labelledby="spoty_heading3" data-bs-parent="#spotyQuestions">
+                        <div class="accordion-body">
+                          <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="spoty_heading4">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#spoty4" aria-expanded="false" aria-controls="spoty4">
+                            Что-то ещё по поводу покупки курса?
+                          </button>
+                        </h2>
+                        <div id="spoty4" class="accordion-collapse collapse" aria-labelledby="spoty_heading4" data-bs-parent="#spotyQuestions">
+                          <div class="accordion-body">
+                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Subscription Modal -->
-<div class="modal fade" id="subscriptionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="checkout" tabindex="-1" aria-labelledby="checkout" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header container">
@@ -593,21 +783,30 @@
                             Сразу после оплаты вы получите инструкции по активации подписки YouTube Premium на почту.
                         </p>
 
-                        <form>
+                        <form method="POST"  action = "https://auth.robokassa.ru/Merchant/Index.aspx">
+                            <input type = "hidden" name="MerchantLogin" value="demo">
+                            <input type = "hidden" name="InvoiceID" value="154">
+                            <input type = "hidden" name="Description" value="Оплата подписки">
+                            <input type = "hidden" name="SignatureValue" value="9ada9c4f842cdc1163e5e97d0461a1de">
+                            <input type = "hidden" name="OutSum" value="100">
+                            <input type = "hidden" name="Recurring" value="true">
                             <div class="form-floating" style="margin-bottom: 43px;">
                                 <input type="email" class="form-control" id="ytEmail" placeholder="name@gmail.com"
                                        required>
                                 <label for="ytEmail">Почта от аккаунта YouTube</label>
                             </div>
 
+                            <div class="form-check mb-5">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Я даю согласие на регулярные списания, на обработку персональных данных и принимаю условия <a href="#">публичной оферты</a>
+                                </label>
+                              </div>
+
                             <div class="d-grid gap-2 d-block mb-4">
                                 <button class="btn btn-secondary btn-lg">Подключить</button>
                             </div>
                         </form>
-
-                        <p class="subscription-form-caption m-0" style="font-size: 9px">оплачивая подписку вы
-                            подтверждаете согласие с
-                            условиями <a href="#">оферты</a></p>
                     </div>
                     <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab"
                          tabindex="0">
@@ -685,6 +884,16 @@
     <div><img src="https://mc.yandex.ru/watch/90332341" style="position:absolute; left:-9999px;" alt=""/></div>
 </noscript>
 <!-- /Yandex.Metrika counter -->
+
+
+<script>
+    //shortcut for $(document).ready
+    (function() {
+        if(window.location.hash) {
+            new bootstrap.Modal(document.querySelector(window.location.hash)).show();
+        }
+    })();
+  </script>
 </body>
 
 </html>
