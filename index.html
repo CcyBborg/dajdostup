@@ -811,14 +811,14 @@
 
                 <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
                     <li class="nav-item me-4" role="presentation">
-                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
+                        <button class="nav-link active" id="ytTab" data-bs-toggle="tab"
                                 data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane"
                                 aria-selected="true">
                             <img src="./icons/yt.svg" width="70" height="48"/>
                         </button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
+                        <button class="nav-link" id="spotyTab" data-bs-toggle="tab"
                                 data-bs-target="#profile-tab-pane" type="button" role="tab"
                                 aria-controls="profile-tab-pane" aria-selected="false">
                             <img src="./icons/spoty.svg" width="64" height="66"/>
@@ -827,7 +827,7 @@
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel"
-                         aria-labelledby="home-tab" tabindex="0">
+                         aria-labelledby="ytTab" tabindex="0">
                         <dl class="row mb-0">
                             <dt class="col-6 mb-1">Подписка:</dt>
                             <dd class="col-6 text-end mb-1">YouTube Premium</dd>
@@ -867,7 +867,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab"
+                    <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="spotyTab"
                          tabindex="0">
                         <dl class="row mb-0">
                             <dt class="col-6 mb-1">Подписка:</dt>
@@ -949,6 +949,21 @@
 <script>
     (function() {
         if(window.location.hash) {
+            document.getElementById('checkout').addEventListener('shown.bs.modal', function (event) {
+                const urlParams = new URLSearchParams(window.location.search);
+
+                console.log(urlParams.get('service'));
+
+                if (urlParams.get('service') === "spoty") {
+                    console.log(document.getElementById('spotyTab'));
+                    document.getElementById('spotyTab').click();
+                }
+
+                if (urlParams.get('email')) {
+                    document.getElementById('ytEmail').value = urlParams.get('email');
+                }
+            });
+
             new bootstrap.Modal(document.querySelector(window.location.hash)).show();
         }
 
