@@ -39,8 +39,8 @@
         }
 
         .modal-content {
-            background: rgba(233, 247, 255, .6);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(4px);
+    background: rgba(255, 255, 255, 0.21);
             border-radius: 0;
             color: #4D4D4D;
             min-height: 100vh;
@@ -60,11 +60,11 @@
             border-bottom: none;
         }
 
-        .modal-header .btn-close {
+        .modal-header .btn-close-white {
             font-size: 30px;
             width: 50px;
             height: 50px;
-            border: 1px solid #DEDEDE;
+            border: 1px solid;
             border-radius: 50%;
             align-self: flex-start;
             margin-top: 30px;
@@ -77,7 +77,22 @@
         body {
             color: #fff;
             font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
-            background: linear-gradient(168.18deg, #614385 -0.85%, #516395 100.85%);
+            /* background: linear-gradient(168.18deg, #614385 -0.85%, #516395 100.85%); */
+            background-color: #19191c;
+        }
+
+        .form-check {
+            padding-left: 2.5em;
+        }
+
+        .form-check .form-check-input {
+            width: 2em;
+            height: 2em;
+            margin-left: -2.5em;
+        }
+
+        main {
+            overflow: hidden;
         }
 
         body,
@@ -104,7 +119,7 @@
         }
 
         p {
-            color: #DBDBDB !important;
+            color: #fff !important;
             font-weight: 400;
             font-size: 18px;
             line-height: 24px;
@@ -113,6 +128,41 @@
         .header {
             min-height: 100vh;
             position: relative;
+            overflow: visible;
+        }
+
+        @-webkit-keyframes example {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg)
+	}
+
+	to {
+		-webkit-transform: rotate(20deg);
+		transform: rotate(20deg)
+	}
+}
+
+        .header::before {
+            position: absolute;
+            z-index: -1;
+    top: -95%;
+    right: -125%;
+    opacity: .4;
+    width: 350%;
+    height: 350%;
+    content: "";
+    border-bottom: 4px solid #19191c;
+    /* color: linear-gradient(168.18deg, #614385 -0.85%, #516395 100.85%); */
+    background: radial-gradient(rgba(25,25,28,0) 50%,#19191c 80%),conic-gradient(#614385 0,#19191c 15.2%,#19191c 18.2%,#516395, 20.5%,#19191c 30.2%,#19191c 50%,#283968 56.5%,#516395 59.4%,#060551 66.2%,#101057 72.9%,#242473 85.1%, #516395 89.1%,#283968 90.6%,#19191c 93.7%,#614385 100%);
+    -webkit-animation-name: example;
+    animation-name: example;
+    -webkit-animation-duration: 10s;
+    animation-duration: 10s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;
         }
 
         .header ul {
@@ -293,7 +343,7 @@
         p.choose-service-title {
             margin: 60px 0 30px 0;
             text-align: center;
-            color: #5c5c5c !important;
+            color: #fff!important;
         }
 
         p.subscription-form-caption {
@@ -335,6 +385,12 @@
             border-radius: 20px!important;
             box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
         }
+
+        .accordion-body {
+            color: #fff;
+        }
+
+
         .form-check-input:checked {
             background-color: #F6AB19;
             border-color: #F6AB19;
@@ -581,8 +637,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header container">
-                <h2 class="modal-title text-capitalize mt-3" id="exampleModalLabel">FAQ</h2>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="width: 100%; max-width: 600px; margin: 0 auto;">
                 <p class="choose-service-title">Общие вопросы</p>
@@ -749,7 +804,7 @@
         <div class="modal-content">
             <div class="modal-header container">
                 <!--                    <h2 class="modal-title text-capitalize mt-3" id="exampleModalLabel">Чекаут</h2>-->
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="max-width: 600px; margin: 0 auto;">
                 <p class="choose-service-title">Выберите сервис</p>
@@ -788,7 +843,7 @@
                             <input type = "hidden" name="MerchantLogin" value="ddostup">
                             <input type = "hidden" name="OutSum" value="149.9">
                             <input type = "hidden" name="Description" value="Ежемесячная подписка на yt.">
-                            <input type = "hidden" name="SignatureValue" value="3124ae16d828646e56fa5a6e5028a81a">
+                            <input type = "hidden" id="ytSignature" name="SignatureValue" value="">
                             <!-- <input type = "hidden" name="Recurring" value="true"> -->
                             <input type = "hidden" name="Culture" value="ru">
                             <input type = "hidden" name="IsTest" value="1">
@@ -889,6 +944,7 @@
 </noscript>
 <!-- /Yandex.Metrika counter -->
 
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script>
     (function() {
@@ -896,8 +952,15 @@
             new bootstrap.Modal(document.querySelector(window.location.hash)).show();
         }
 
-    document.getElementById('ytForm').onsubmit = function(){
-        document.getElementById('hiddenYtEmail').value = document.getElementById('ytEmail').value;   
+    document.getElementById('ytForm').onsubmit = function(e){
+        const email = document.getElementById('ytEmail').value;
+        axios.get(`http://activations.ddostup.ru/get-sign?out_sum=149.9&shp_service_name=yt&shp_user_mail=${email}`).then(response => {
+            document.getElementById('hiddenYtEmail').value = email;
+            document.getElementById('ytSignature').value = response.data.sign;
+
+            e.target.submit();
+        });
+        e.preventDefault();   
     }
     })();
   </script>
