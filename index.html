@@ -58,6 +58,8 @@
 
         .modal-header {
             border-bottom: none;
+            position: sticky;
+            top: 30px;
         }
 
         .modal-header .btn-close-white {
@@ -68,6 +70,7 @@
             border-radius: 50%;
             align-self: flex-start;
             margin-top: 30px;
+            background-color: rgba(0, 0, 0, .2);
         }
 
         dl {
@@ -341,7 +344,7 @@
         }
 
         p.choose-service-title {
-            margin-bottom: 30px;
+            margin: 50px 0 30px;
             text-align: center;
             color: #fff!important;
         }
@@ -408,6 +411,10 @@
             .about-p {
                 font-size: 18px;
                 line-height: 24px;
+            }
+
+            .modal-header {
+                position: relative;
             }
         }
 
@@ -807,7 +814,7 @@
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="max-width: 600px; margin: 0 auto;">
-                <p class="choose-service-title">Выберите сервис</p>
+                <p class="choose-service-title mt-0">Выберите сервис</p>
 
                 <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
                     <li class="nav-item me-4" role="presentation">
