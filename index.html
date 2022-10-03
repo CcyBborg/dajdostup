@@ -15,7 +15,7 @@
     <link href="fonts/stylesheet.css" rel="stylesheet" type="text/css">
     <link href="fonts/proxima-nova.css" rel="stylesheet" type="text/css">
 
-    <meta name="enot" content="8341663622550kLnUkQl-mdunqwAhpskl2eeijDDc74xW" />
+
 
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
 
@@ -39,8 +39,8 @@
         }
 
         .modal-content {
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             background: rgba(255, 255, 255, 0.3);
             border-radius: 0;
             color: #4D4D4D;
@@ -94,8 +94,8 @@
         }
 
         .form-check .form-check-input {
-            width: 2em;
-            height: 2em;
+            width: 1.6em;
+            height: 1.6em;
             margin: 0 1em 0 0;
             flex-shrink: 0;
         }
@@ -224,7 +224,8 @@
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
             color: #fff;
-            background: rgba(255, 255, 255, 0.21);
+            /*background: rgba(255, 255, 255, 0.21);*/
+            background: #323232;
         }
 
         .btn-secondary {
@@ -233,7 +234,8 @@
         }
 
         .btn.btn-primary:hover {
-            background: rgba(255, 255, 255, 0.42);
+            background: rgba(94, 94, 94, 0.77);
+            /*background: */
             border: 5px solid #F6AB19;
         }
 
@@ -255,6 +257,8 @@
 
         .features-icon-wrapper {
             background: rgba(0, 0, 0, 0.27);
+            /*border: 1px solid rgba(255, 255, 255, 0.52);*/
+            box-shadow: 0px 0px 7px 0px #e0cfffdb;
             border-radius: 21.4072px;
             width: 91.75px;
             height: 90.52px;
@@ -266,7 +270,7 @@
         footer {
             padding: 20px 0;
             border-radius: 25px 25px 0px 0px;
-            background: rgba(217, 217, 217, 0.6);
+            background: rgba(242, 242, 242, 0.8);
             color: #535353;
         }
 
@@ -525,7 +529,7 @@
         <section>
             <div class="container">
                 <h1 class="about-title text-md-center" style="margin-bottom: 56px;">О нас</h1>
-                <div class="d-flex align-items-center" style="max-width: 400px; margin: 32px 0 0px 0;">
+                <div class="d-flex align-items-center" style="max-width: 400px; margin: 32px 0 32px 0;">
                     <div class="me-3">
                         <div class="logo-wrapper">
                             <img src="./icons/dd-logo.svg" width="57" height="70" />
@@ -905,7 +909,7 @@
             <div class="modal-content">
                 <div class="modal-header container">
                     <!--                    <h2 class="modal-title text-capitalize mt-3" id="exampleModalLabel">Чекаут</h2>-->
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                    <button type="button" style="z-index: 999999" class="btn-close btn-close-white" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
                 <div class="modal-body" style="max-width: 600px; margin: 0 auto;">
@@ -963,7 +967,7 @@
                                         required>
                                     <label class="form-check-label" for="flexCheckDefault">
                                         Я даю согласие на регулярные списания, на обработку персональных данных и
-                                        принимаю условия <a href="#">публичной оферты</a>
+                                        принимаю условия <a href="./docs/offer.pdf">публичной оферты</a>
                                     </label>
                                 </div>
 
@@ -1074,7 +1078,7 @@
 
             document.getElementById('ytForm').onsubmit = function (e) {
                 const email = document.getElementById('ytEmail').value;
-                axios.get(`http://activations.ddostup.ru/get-sign?out_sum=149.9&shp_service_name=yt&shp_user_mail=${email}`).then(response => {
+                axios.get(`https://activations.ddostup.ru/get-sign?out_sum=149.9&shp_service_name=yt&shp_user_mail=${email}`).then(response => {
                     document.getElementById('hiddenYtEmail').value = email;
                     document.getElementById('ytSignature').value = response.data.sign;
 
