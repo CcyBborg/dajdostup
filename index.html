@@ -40,6 +40,7 @@
 
         .modal-content {
             backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
             background: rgba(255, 255, 255, 0.3);
             border-radius: 0;
             color: #4D4D4D;
@@ -60,6 +61,7 @@
             border-bottom: none;
             position: sticky;
             top: 30px;
+            z-index: 999;
         }
 
         .modal-header .btn-close-white {
@@ -68,9 +70,7 @@
             height: 50px;
             border: 1px solid;
             border-radius: 50%;
-            align-self: flex-start;
-            margin-top: 30px;
-            background-color: rgba(0, 0, 0, .2);
+            background-color: rgba(0, 0, 0, .3);
         }
 
         dl {
@@ -85,13 +85,19 @@
         }
 
         .form-check {
-            padding-left: 2.5em;
+            padding: 0;
+            vertical-align: middle;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
         }
 
         .form-check .form-check-input {
             width: 2em;
             height: 2em;
-            margin-left: -2.5em;
+            margin: 0 1em 0 0;
+            flex-shrink: 0;
         }
 
         main {
@@ -149,7 +155,7 @@
         .header::before {
             position: absolute;
             z-index: -1;
-            top: -90%;
+            top: -92.5%;
             right: -125%;
             opacity: .4;
             width: 350%;
@@ -216,6 +222,7 @@
 
         .btn-primary {
             backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
             color: #fff;
             background: rgba(255, 255, 255, 0.21);
         }
@@ -395,6 +402,10 @@
         .form-check-input:checked {
             background-color: #F6AB19;
             border-color: #F6AB19;
+        }
+
+        .modal-body {
+            padding-top: 0;
         }
 
         @media (max-width: 600px) {
@@ -646,7 +657,7 @@
                         aria-label="Close"></button>
                 </div>
                 <div class="modal-body" style="width: 100%; max-width: 600px; margin: 0 auto;">
-                    <p class="choose-service-title">Общие вопросы</p>
+                    <p class="choose-service-title mt-3 mt-md-0">Общие вопросы</p>
                     <div class="accordion" id="generalQuestions">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="general_heading1">
@@ -941,13 +952,13 @@
                                 <input type="hidden" name="IsTest" value="1">
                                 <input id="hiddenYtEmail" type="hidden" name="shp_user_mail" value="{$user_mail}">
                                 <input type="hidden" name="shp_service_name" value="yt">
-                                <div class="form-floating" style="margin-bottom: 43px;">
+                                <div class="form-floating">
                                     <input type="email" name="Email" class="form-control" id="ytEmail"
                                         placeholder="name@gmail.com" required>
                                     <label for="ytEmail">Почта от аккаунта YouTube</label>
                                 </div>
 
-                                <div class="form-check mb-5">
+                                <div class="form-check my-3">
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
                                         required>
                                     <label class="form-check-label" for="flexCheckDefault">
