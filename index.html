@@ -972,7 +972,7 @@
                                 </div>
 
                                 <div class="d-grid gap-2 d-block mb-4">
-                                    <button class="btn btn-secondary btn-lg">Подключить</button>
+                                    <button class="btn btn-secondary btn-lg" id="submitYt">Подключить</button>
                                 </div>
                             </form>
                         </div>
@@ -1078,6 +1078,13 @@
 
             document.getElementById('ytForm').onsubmit = function (e) {
                 const email = document.getElementById('ytEmail').value;
+                document.getElementById('submitYt').innerHTML =
+                `
+                    <span class="spinner-border spinner-border-lg mt-2" role="status" aria-hidden="true"></span>
+                    <span class="visually-hidden">Loading...</span>
+                `;
+
+                document.getElementById('submitYt').classList.add('disabled');
                 axios.get(`https://activations.ddostup.ru/get-sign?out_sum=149.9&shp_service_name=yt&shp_user_mail=${email}`).then(response => {
                     document.getElementById('hiddenYtEmail').value = email;
                     document.getElementById('ytSignature').value = response.data.sign;
