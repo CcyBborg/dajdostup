@@ -420,6 +420,56 @@
             justify-content: center;
         }
 
+        @keyframes slide {
+            0% {
+                transform: translate3d(0, 0, 0);
+            }
+            100% {
+                transform: translate3d(-40000px, 0, 0);
+            }
+        }
+
+        #reviews {
+            list-style: none;
+            display: flex;
+            animation: slide 550s infinite linear;
+        }
+
+        .review-card {
+            flex-shrink: 0;
+            background-color: rgba(242, 242, 242, 0.2);
+            border-radius: 20px;
+            padding: 15px;
+            display: flex;
+            height: 120px;
+            max-width: 400px;
+            margin-right: 20px;
+        }
+
+        .review-card img {
+            pointer-events: none;
+        }
+
+        .review-card p {
+            line-height: 22px;
+        }
+
+        .review-icons {
+            margin-right: 10px;
+        }
+
+        .review-icon {
+            background-color: #fff;
+            border-radius: 8px;
+            width: 40px;
+            height: 40px;
+            display: inline-block;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
         @media (max-width: 600px) {
             p {
                 font-size: 16px;
@@ -594,6 +644,12 @@
            data-bs-target="#checkout">Подключить
         </a>
     </div>
+    <section style="margin-bottom: 100px;">
+        <h2 class="text-center mb-5">Отзывы</h2>
+        <ul id="reviews">
+
+        </ul>
+    </section>
 </main>
 <footer>
     <div class="container">
@@ -1067,10 +1123,7 @@
             document.getElementById('checkout').addEventListener('shown.bs.modal', function (event) {
                 const urlParams = new URLSearchParams(window.location.search);
 
-                console.log(urlParams.get('service'));
-
                 if (urlParams.get('service') === "spoty") {
-                    console.log(document.getElementById('spotyTab'));
                     document.getElementById('spotyTab').click();
                 }
 
@@ -1099,6 +1152,37 @@
             });
             e.preventDefault();
         }
+
+        axios.get('https://activations.ddostup.ru/get-reviews/').then(response => {
+            const commentsElements = [];
+            for (const comment of JSON.parse(response.data)) {
+                commentsElements.push(
+                    `
+                    <li class="review-card">
+                        <div class="review-icons">
+                            <a href="${comment.link}" class="review-icon" target="_blank"><img src="icons/plati_market_logo.svg" width="28" height="28" /></a>
+                            <a href="?service=${comment.service_name}" class="review-icon" data-service="${comment.service_name}"><img src="icons/${comment.service_name}.svg" width="28" height="28" /></a>
+                        </div>
+                        <p class="m-0 overflow-hidden">${comment.review}</p>
+                    </li>
+                    `
+                );
+            }
+
+            document.getElementById('reviews').innerHTML = commentsElements.join('');
+
+            document.getElementById('reviews').addEventListener('click', event => {
+                event.preventDefault();
+                const service = event.target.getAttribute('data-service');
+                if (service) {
+                    new bootstrap.Modal(document.getElementById('checkout')).show();
+
+                    if (service === 'spoty') {
+                        document.getElementById('spotyTab').click();
+                    }
+                }
+            }, true);
+        });
     })();
 </script>
 </body>
