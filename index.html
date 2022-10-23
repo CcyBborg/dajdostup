@@ -420,6 +420,31 @@
             justify-content: center;
         }
 
+        .switcher {
+            background-color: #1c1f2a;
+            border-radius: 40px;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .switcher-btn {
+            color: #A5A3A3;
+            flex: 0 0 50%;
+            border-radius: 40px;
+            padding: 10px 0;
+            border: none;
+            background-color: transparent;
+            font-size: 18px;
+        }
+
+        .switcher-btn.active {
+            color: #fff;
+            background-color: #14171f;
+            box-shadow: 0px 0px 7px 0px #e0cfff;
+            transition: box-shadow 0.3s ease-in, background-color 0.3s ease-in, color 0.3s ease-in;
+        }
+
         @keyframes slide {
             0% {
                 transform: translate3d(0, 0, 0);
@@ -435,27 +460,32 @@
             animation: slide 550s infinite linear;
         }
 
+        #reviews:hover {
+            animation-play-state: paused;
+        }
+
         .review-card {
             flex-shrink: 0;
             background-color: rgba(242, 242, 242, 0.2);
-            border-radius: 20px;
-            padding: 15px;
+            border-radius: 30px;
+            padding: 20px;
             display: flex;
-            height: 120px;
-            max-width: 400px;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 220px;
+            width: 200px;
             margin-right: 20px;
         }
 
-        .review-card img {
-            pointer-events: none;
-        }
-
         .review-card p {
-            line-height: 22px;
+            line-height: 21px;
+            text-align: center;
         }
 
         .review-icons {
-            margin-right: 10px;
+            display: flex;
+            margin-bottom: 15px;
         }
 
         .review-icon {
@@ -464,10 +494,13 @@
             width: 40px;
             height: 40px;
             display: inline-block;
-            margin-bottom: 8px;
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        .review-icon:first-child {
+            margin-right: 8px;
         }
 
         @media (max-width: 600px) {
@@ -486,6 +519,11 @@
 
             .modal-header {
                 position: relative;
+            }
+
+            .switcher-btn {
+                padding: 5px;
+                font-size: 16px;
             }
         }
 
@@ -996,11 +1034,16 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel"
                          aria-labelledby="ytTab" tabindex="0">
+
+                        <ul class="switcher" data-switcher="yt">
+                            <button class="switcher-btn active" data-switcher-btn="monthly">Ежемесячная подписка</button>
+                            <button class="switcher-btn" data-switcher-btn="single">Одноразовый платёж</button>
+                        </ul>
                         <dl class="row mb-0">
                             <dt class="col-6 mb-1">Подписка:</dt>
                             <dd class="col-6 text-end mb-1">YouTube Premium</dd>
                             <dt class="col-6 mb-1">Стоимость:</dt>
-                            <dd class="col-6 text-end mb-1">149 ₽ / месяц</dd>
+                            <dd class="col-6 text-end mb-1" id="ytPrice">149 ₽ / месяц</dd>
                         </dl>
                         <p style="margin: 10px 0 28px;">
                             Просто укажите вашу почту от аккаунта YouTube и оплатите подписку.
@@ -1013,7 +1056,7 @@
                             <input type="hidden" name="OutSum" value="149.9">
                             <input type="hidden" name="Description" value="Ежемесячная подписка на yt.">
                             <input type="hidden" id="ytSignature" name="SignatureValue" value="">
-                            <input type="hidden" name="Recurring" value="true">
+                            <input type="hidden" name="Recurring" value="true" id="ytRecurring">
                             <input type="hidden" name="Culture" value="ru">
 <!--                            <input type="hidden" name="IsTest" value="1">-->
                             <input id="hiddenYtEmail" type="hidden" name="shp_user_mail" value="{$user_mail}">
@@ -1118,6 +1161,18 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script>
+    function switcherPostProcess(el) {
+        if (el.getAttribute('data-switcher') === 'yt') {
+            if (el.querySelector('.active[data-switcher-btn="monthly"]')) {
+                document.getElementById('ytPrice').innerHTML = "149 ₽ / месяц";
+                document.getElementById('ytRecurring').value = "true"
+            } else {
+                document.getElementById('ytPrice').innerHTML = "149 ₽";
+                document.getElementById('ytRecurring').value = "false"
+            }
+        }
+    }
+
     (function () {
         if (window.location.hash) {
             document.getElementById('checkout').addEventListener('shown.bs.modal', function (event) {
@@ -1153,6 +1208,15 @@
             e.preventDefault();
         }
 
+        document.querySelector('.switcher').addEventListener('click', event => {
+            if (event.target.classList.contains('switcher-btn')) {
+                event.currentTarget.querySelector('.switcher-btn.active').classList.remove('active');
+                event.target.classList.add('active');
+
+                switcherPostProcess(event.currentTarget);
+            }
+        });
+
         axios.get('https://activations.ddostup.ru/get-reviews/').then(response => {
             const commentsElements = [];
             for (const comment of JSON.parse(response.data)) {
@@ -1161,7 +1225,7 @@
                     <li class="review-card">
                         <div class="review-icons">
                             <a href="${comment.link}" class="review-icon" target="_blank"><img src="icons/plati_market_logo.svg" width="28" height="28" /></a>
-                            <a href="?service=${comment.service_name}" class="review-icon" data-service="${comment.service_name}"><img src="icons/${comment.service_name}.svg" width="28" height="28" /></a>
+                            <a href="?service=${comment.service_name}" class="review-icon" data-service="${comment.service_name}" style="pointer-events: none;"><img src="icons/${comment.service_name}.svg" width="28" height="28" /></a>
                         </div>
                         <p class="m-0 overflow-hidden">${comment.review}</p>
                     </li>
@@ -1172,9 +1236,10 @@
             document.getElementById('reviews').innerHTML = commentsElements.join('');
 
             document.getElementById('reviews').addEventListener('click', event => {
-                event.preventDefault();
                 const service = event.target.getAttribute('data-service');
                 if (service) {
+                    event.preventDefault();
+
                     new bootstrap.Modal(document.getElementById('checkout')).show();
 
                     if (service === 'spoty') {
