@@ -462,7 +462,7 @@
         }
 
         #reviews:hover {
-            animation-play-state: paused;
+            animation-duration: 800s;
         }
 
         .review-card {
@@ -1248,6 +1248,12 @@
                     }
                 }
             }, true);
+
+            // document.getElementById('reviews').addEventListener('mouseover', event => {
+            //     setTimeout(() => {
+            //         event.currentTarget.style.animationPlayState = 'paused';
+            //     }, 0.5);
+            // })
         });
     })();
 </script>

@@ -459,10 +459,13 @@
             display: flex;
             animation: slide 550s infinite linear;
             padding: 10px 0;
+            position: relative;
         }
 
         #reviews:hover {
             animation-play-state: paused;
+            transform: translateX(-40px);
+            transition: transform 1s ease-out;
         }
 
         .review-card {
