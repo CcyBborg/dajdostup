@@ -420,6 +420,124 @@
             justify-content: center;
         }
 
+        .switcher {
+            background-color: #1c1f2a;
+            border-radius: 40px;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .switcher-btn {
+            color: #A5A3A3;
+            flex: 0 0 50%;
+            border-radius: 40px;
+            padding: 10px 0;
+            border: none;
+            background-color: transparent;
+            font-size: 18px;
+        }
+
+        .switcher-btn.active {
+            color: #fff;
+            background-color: #14171f;
+            box-shadow: 0px 0px 7px 0px #e0cfff;
+            transition: box-shadow 0.3s ease-in, background-color 0.3s ease-in, color 0.3s ease-in;
+        }
+
+        .switcher-btn.active.month {
+            border: 1px solid #4e29a1;
+        }
+        .switcher-btn.active.annual {
+            border: 1px solid #03a9f48c;
+        }
+
+
+        @keyframes slide {
+            0% {
+                transform: translate3d(0, 0, 0);
+            }
+            100% {
+                transform: translate3d(-40000px, 0, 0);
+            }
+        }
+
+        #reviews {
+            list-style: none;
+            display: flex;
+            animation: slide 1100s infinite linear;
+            padding: 10px 0;
+        }
+
+
+        #reviews-container:hover * {
+            animation-play-state: paused;
+        }
+
+        #reviews-container .additional-info {
+            text-align: left;
+            font-size: 12px;
+            color: #ffffffa3 !important;
+            margin: 0 12px;
+        }
+
+        .review-card {
+            flex-shrink: 0;
+            background-color: rgba(242, 242, 242, 0.2);
+            border-radius: 30px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 220px;
+            width: 220px;
+            margin-right: 20px;
+        }
+
+        .review-card .text-container {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .review-card div p {
+            max-height: 125px;
+            line-height: 21px;
+            text-align: center;
+        }
+
+        .review-icons {
+            display: flex;
+            margin-bottom: 12px;
+        }
+
+        .review-icon {
+            padding: 7px;
+
+            background-color: rgba(0, 0, 0, 0.22);
+            border: 1px solid rgba(255, 255, 255, 0.62);
+            border-radius: 12px;
+            width: 45px;
+            height: 45px;
+            /*display: inline-block;*/
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            transition: all 0.2s ease-out;
+        }
+
+        .review-icon:hover {
+            box-shadow: 0px 0px 7px 0px rgba(254, 254, 255, 0.66);
+
+        }
+
+        .review-icon:first-child {
+            margin-right: 8px;
+        }
+
         @media (max-width: 600px) {
             p {
                 font-size: 16px;
@@ -436,6 +554,11 @@
 
             .modal-header {
                 position: relative;
+            }
+
+            .switcher-btn {
+                padding: 5px;
+                font-size: 16px;
             }
         }
 
@@ -594,6 +717,15 @@
            data-bs-target="#checkout">Подключить
         </a>
     </div>
+    <section style="margin-bottom: 100px;">
+        <h2 class="text-center mb-5">Отзывы</h2>
+        <div id="reviews-container">
+            <p class="additional-info">1000 довольных клиентов</p>
+            <ul id="reviews">
+
+            </ul>
+        </div>
+    </section>
 </main>
 <footer>
     <div class="container">
@@ -874,7 +1006,7 @@
                                 <div style="padding-bottom: 6px;">
                                     <strong>👇🏼 &nbsp;Проверьте наличие логотипа Premium</strong><br/>
                                 </div>
-                                <div>
+                                 <div>
                                     <img src="./static/yt_is_active.jpeg" height="400"
                                          style="border-radius: 20px; margin: 11px 0;
                                          box-shadow: 0px 0px 7px 0px #e0cfff42;"/>
@@ -885,22 +1017,22 @@
                             </div>
                         </div>
                     </div>
-<!--                    <div class="accordion-item">-->
-<!--                        <h2 class="accordion-header" id="yt_heading5">-->
-<!--                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"-->
-<!--                                    data-bs-target="#yt5" aria-expanded="true" aria-controls="yt5">-->
-<!--                                Если подписка перестала работать-->
-<!--                            </button>-->
-<!--                        </h2>-->
-<!--                        <div id="yt5" class="accordion-collapse collapse" aria-labelledby="yt_heading5"-->
-<!--                             data-bs-parent="#ytQuestions">-->
-<!--                            <div class="accordion-body">-->
-<!--                                <div style="padding-bottom: 6px;">-->
-<!--                                    <strong>👇🏼 &nbsp;Проверьте наличие логотипа Premium</strong><br/>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
+                    <!--                    <div class="accordion-item">-->
+                    <!--                        <h2 class="accordion-header" id="yt_heading5">-->
+                    <!--                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"-->
+                    <!--                                    data-bs-target="#yt5" aria-expanded="true" aria-controls="yt5">-->
+                    <!--                                Если подписка перестала работать-->
+                    <!--                            </button>-->
+                    <!--                        </h2>-->
+                    <!--                        <div id="yt5" class="accordion-collapse collapse" aria-labelledby="yt_heading5"-->
+                    <!--                             data-bs-parent="#ytQuestions">-->
+                    <!--                            <div class="accordion-body">-->
+                    <!--                                <div style="padding-bottom: 6px;">-->
+                    <!--                                    <strong>👇🏼 &nbsp;Проверьте наличие логотипа Premium</strong><br/>-->
+                    <!--                                </div>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
 
                 </div>
 
@@ -940,11 +1072,17 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel"
                          aria-labelledby="ytTab" tabindex="0">
+
+                        <ul class="switcher" data-switcher="yt" style="display: none">
+                            <button class="switcher-btn active month" data-switcher-btn="monthly">Подписка
+                            </button>
+                            <button class="switcher-btn annual" data-switcher-btn="single">Один раз</button>
+                        </ul>
                         <dl class="row mb-0">
                             <dt class="col-6 mb-1">Подписка:</dt>
                             <dd class="col-6 text-end mb-1">YouTube Premium</dd>
                             <dt class="col-6 mb-1">Стоимость:</dt>
-                            <dd class="col-6 text-end mb-1">149 ₽ / месяц</dd>
+                            <dd class="col-6 text-end mb-1" id="ytPrice">149 ₽ / месяц</dd>
                         </dl>
                         <p style="margin: 10px 0 28px;">
                             Просто укажите вашу почту от аккаунта YouTube и оплатите подписку.
@@ -957,9 +1095,9 @@
                             <input type="hidden" name="OutSum" value="149.9">
                             <input type="hidden" name="Description" value="Ежемесячная подписка на yt.">
                             <input type="hidden" id="ytSignature" name="SignatureValue" value="">
-                            <input type="hidden" name="Recurring" value="true">
+                            <input type="hidden" name="Recurring" value="true" id="ytRecurring">
                             <input type="hidden" name="Culture" value="ru">
-<!--                            <input type="hidden" name="IsTest" value="1">-->
+                            <!--                            <input type="hidden" name="IsTest" value="1">-->
                             <input id="hiddenYtEmail" type="hidden" name="shp_user_mail" value="{$user_mail}">
                             <input type="hidden" name="shp_service_name" value="yt">
                             <div class="form-floating">
@@ -1062,15 +1200,24 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script>
+    function switcherPostProcess(el) {
+        if (el.getAttribute('data-switcher') === 'yt') {
+            if (el.querySelector('.active[data-switcher-btn="monthly"]')) {
+                document.getElementById('ytPrice').innerHTML = "149 ₽ / месяц";
+                document.getElementById('ytRecurring').value = "true"
+            } else {
+                document.getElementById('ytPrice').innerHTML = "149 ₽";
+                document.getElementById('ytRecurring').value = "false"
+            }
+        }
+    }
+
     (function () {
         if (window.location.hash) {
             document.getElementById('checkout').addEventListener('shown.bs.modal', function (event) {
                 const urlParams = new URLSearchParams(window.location.search);
 
-                console.log(urlParams.get('service'));
-
                 if (urlParams.get('service') === "spoty") {
-                    console.log(document.getElementById('spotyTab'));
                     document.getElementById('spotyTab').click();
                 }
 
@@ -1099,6 +1246,49 @@
             });
             e.preventDefault();
         }
+
+        document.querySelector('.switcher').addEventListener('click', event => {
+            if (event.target.classList.contains('switcher-btn')) {
+                event.currentTarget.querySelector('.switcher-btn.active').classList.remove('active');
+                event.target.classList.add('active');
+
+                switcherPostProcess(event.currentTarget);
+            }
+        });
+
+        axios.get('https://activations.ddostup.ru/get-reviews/').then(response => {
+            const commentsElements = [];
+            for (const comment of JSON.parse(response.data)) {
+                commentsElements.push(
+                    `
+                    <li class="review-card">
+                        <div class="review-icons">
+                            <a href="?service=${comment.service_name}" class="review-icon" data-service="${comment.service_name}"><img src="icons/${comment.service_name}.svg" width="100%" height="100%" style="pointer-events: none;" /></a>
+                            <a href="${comment.link}" class="review-icon" target="_blank"><img src="icons/plati_market_logo.svg" width="100%" height="100%" /></a>
+                        </div>
+                        <div class="text-container">
+                            <p class="m-0 overflow-hidden">${comment.review}</p>
+                        </div>
+                    </li>
+                    `
+                );
+            }
+
+            document.getElementById('reviews').innerHTML = commentsElements.join('');
+
+            document.getElementById('reviews').addEventListener('click', event => {
+                const service = event.target.getAttribute('data-service');
+                if (service) {
+                    event.preventDefault();
+
+                    new bootstrap.Modal(document.getElementById('checkout')).show();
+
+                    if (service === 'spoty') {
+                        document.getElementById('spotyTab').click();
+                    }
+                }
+            }, true);
+        });
     })();
 </script>
 </body>
