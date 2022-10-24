@@ -445,6 +445,14 @@
             transition: box-shadow 0.3s ease-in, background-color 0.3s ease-in, color 0.3s ease-in;
         }
 
+        .switcher-btn.active.month {
+            border: 1px solid #4e29a1;
+        }
+        .switcher-btn.active.annual {
+            border: 1px solid #03a9f48c;
+        }
+
+
         @keyframes slide {
             0% {
                 transform: translate3d(0, 0, 0);
@@ -457,11 +465,12 @@
         #reviews {
             list-style: none;
             display: flex;
-            animation: slide 550s infinite linear;
+            animation: slide 1100s infinite linear;
             padding: 10px 0;
         }
 
-        #reviews:hover {
+
+        #reviews-container:hover * {
             animation-play-state: paused;
         }
 
@@ -475,26 +484,37 @@
             justify-content: flex-start;
             align-items: center;
             height: 220px;
-            width: 200px;
+            width: 220px;
             margin-right: 20px;
         }
 
-        .review-card p {
+        .review-card .text-container {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .review-card div p {
+            max-height: 125px;
             line-height: 21px;
             text-align: center;
         }
 
         .review-icons {
             display: flex;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .review-icon {
-            background-color: #fff;
-            border-radius: 8px;
-            width: 40px;
-            height: 40px;
-            display: inline-block;
+            padding: 7px;
+
+            background-color: rgba(0, 0, 0, 0.22);
+            border: 1px solid rgba(255, 255, 255, 0.62);
+            border-radius: 12px;
+            width: 45px;
+            height: 45px;
+            /*display: inline-block;*/
             display: flex;
             justify-content: center;
             align-items: center;
@@ -685,9 +705,11 @@
     </div>
     <section style="margin-bottom: 100px;">
         <h2 class="text-center mb-5">Отзывы</h2>
-        <ul id="reviews">
+        <div id="reviews-container">
+            <ul id="reviews">
 
-        </ul>
+            </ul>
+        </div>
     </section>
 </main>
 <footer>
@@ -980,22 +1002,22 @@
                             </div>
                         </div>
                     </div>
-<!--                    <div class="accordion-item">-->
-<!--                        <h2 class="accordion-header" id="yt_heading5">-->
-<!--                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"-->
-<!--                                    data-bs-target="#yt5" aria-expanded="true" aria-controls="yt5">-->
-<!--                                Если подписка перестала работать-->
-<!--                            </button>-->
-<!--                        </h2>-->
-<!--                        <div id="yt5" class="accordion-collapse collapse" aria-labelledby="yt_heading5"-->
-<!--                             data-bs-parent="#ytQuestions">-->
-<!--                            <div class="accordion-body">-->
-<!--                                <div style="padding-bottom: 6px;">-->
-<!--                                    <strong>👇🏼 &nbsp;Проверьте наличие логотипа Premium</strong><br/>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
+                    <!--                    <div class="accordion-item">-->
+                    <!--                        <h2 class="accordion-header" id="yt_heading5">-->
+                    <!--                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"-->
+                    <!--                                    data-bs-target="#yt5" aria-expanded="true" aria-controls="yt5">-->
+                    <!--                                Если подписка перестала работать-->
+                    <!--                            </button>-->
+                    <!--                        </h2>-->
+                    <!--                        <div id="yt5" class="accordion-collapse collapse" aria-labelledby="yt_heading5"-->
+                    <!--                             data-bs-parent="#ytQuestions">-->
+                    <!--                            <div class="accordion-body">-->
+                    <!--                                <div style="padding-bottom: 6px;">-->
+                    <!--                                    <strong>👇🏼 &nbsp;Проверьте наличие логотипа Premium</strong><br/>-->
+                    <!--                                </div>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
 
                 </div>
 
@@ -1037,8 +1059,9 @@
                          aria-labelledby="ytTab" tabindex="0">
 
                         <ul class="switcher" data-switcher="yt">
-                            <button class="switcher-btn active" data-switcher-btn="monthly">Ежемесячная подписка</button>
-                            <button class="switcher-btn" data-switcher-btn="single">Одноразовый платёж</button>
+                            <button class="switcher-btn active month" data-switcher-btn="monthly">Автоматически
+                            </button>
+                            <button class="switcher-btn annual" data-switcher-btn="single">Единовременно</button>
                         </ul>
                         <dl class="row mb-0">
                             <dt class="col-6 mb-1">Подписка:</dt>
@@ -1059,7 +1082,7 @@
                             <input type="hidden" id="ytSignature" name="SignatureValue" value="">
                             <input type="hidden" name="Recurring" value="true" id="ytRecurring">
                             <input type="hidden" name="Culture" value="ru">
-<!--                            <input type="hidden" name="IsTest" value="1">-->
+                            <!--                            <input type="hidden" name="IsTest" value="1">-->
                             <input id="hiddenYtEmail" type="hidden" name="shp_user_mail" value="{$user_mail}">
                             <input type="hidden" name="shp_service_name" value="yt">
                             <div class="form-floating">
@@ -1225,10 +1248,12 @@
                     `
                     <li class="review-card">
                         <div class="review-icons">
-                            <a href="${comment.link}" class="review-icon" target="_blank"><img src="icons/plati_market_logo.svg" width="28" height="28" /></a>
-                            <a href="?service=${comment.service_name}" class="review-icon" data-service="${comment.service_name}"><img src="icons/${comment.service_name}.svg" width="28" height="28" style="pointer-events: none;" /></a>
+                            <a href="?service=${comment.service_name}" class="review-icon" data-service="${comment.service_name}"><img src="icons/${comment.service_name}.svg" width="100%" height="100%" style="pointer-events: none;" /></a>
+                            <a href="${comment.link}" class="review-icon" target="_blank"><img src="icons/plati_market_logo.svg" width="100%" height="100%" /></a>
                         </div>
-                        <p class="m-0 overflow-hidden">${comment.review}</p>
+                        <div class="text-container">
+                            <p class="m-0 overflow-hidden">${comment.review}</p>
+                        </div>
                     </li>
                     `
                 );
