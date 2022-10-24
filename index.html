@@ -474,6 +474,13 @@
             animation-play-state: paused;
         }
 
+        #reviews-container .additional-info {
+            text-align: left;
+            font-size: 12px;
+            color: #ffffffa3 !important;
+            margin: 0 12px;
+        }
+
         .review-card {
             flex-shrink: 0;
             background-color: rgba(242, 242, 242, 0.2);
@@ -518,6 +525,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
+
+            transition: all 0.2s ease-out;
+        }
+
+        .review-icon:hover {
+            box-shadow: 0px 0px 7px 0px rgba(254, 254, 255, 0.66);
+
         }
 
         .review-icon:first-child {
@@ -706,6 +720,7 @@
     <section style="margin-bottom: 100px;">
         <h2 class="text-center mb-5">Отзывы</h2>
         <div id="reviews-container">
+            <p class="additional-info">1000 довольных клиентов</p>
             <ul id="reviews">
 
             </ul>
@@ -991,7 +1006,7 @@
                                 <div style="padding-bottom: 6px;">
                                     <strong>👇🏼 &nbsp;Проверьте наличие логотипа Premium</strong><br/>
                                 </div>
-                                <div>
+                                 <div>
                                     <img src="./static/yt_is_active.jpeg" height="400"
                                          style="border-radius: 20px; margin: 11px 0;
                                          box-shadow: 0px 0px 7px 0px #e0cfff42;"/>
@@ -1058,10 +1073,10 @@
                     <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel"
                          aria-labelledby="ytTab" tabindex="0">
 
-                        <ul class="switcher" data-switcher="yt">
-                            <button class="switcher-btn active month" data-switcher-btn="monthly">Автоматически
+                        <ul class="switcher" data-switcher="yt" style="display: none">
+                            <button class="switcher-btn active month" data-switcher-btn="monthly">Подписка
                             </button>
-                            <button class="switcher-btn annual" data-switcher-btn="single">Единовременно</button>
+                            <button class="switcher-btn annual" data-switcher-btn="single">Один раз</button>
                         </ul>
                         <dl class="row mb-0">
                             <dt class="col-6 mb-1">Подписка:</dt>
