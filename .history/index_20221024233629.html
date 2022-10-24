@@ -1,0 +1,1654 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Дай Доступ</title>
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+    />
+
+    <!-- Blender pro font -->
+    <link href="fonts/stylesheet.css" rel="stylesheet" type="text/css" />
+    <link href="fonts/proxima-nova.css" rel="stylesheet" type="text/css" />
+
+    <!-- Swiper JS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+    />
+
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+
+    <style>
+      @keyframes float {
+        0% {
+          transform: translatey(0px);
+        }
+
+        50% {
+          transform: translatey(-10px);
+        }
+
+        100% {
+          transform: translatey(0px);
+        }
+      }
+
+      .container {
+        padding: 0 34px;
+      }
+
+      .modal-content {
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        background: rgba(108, 108, 108, 0.32);
+        border-radius: 0;
+        color: #4d4d4d;
+        min-height: 100vh;
+      }
+
+      .modal-content p {
+        color: #4d4d4d !important;
+        font-size: 18px;
+      }
+
+      .modal-dialog {
+        margin: 0;
+        max-width: none;
+      }
+
+      .modal-header {
+        border-bottom: none;
+        position: sticky;
+        top: 30px;
+        z-index: 999;
+      }
+
+      .modal-header .btn-close-white {
+        font-size: 30px;
+        width: 50px;
+        height: 50px;
+        border: 1px solid;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.3);
+      }
+
+      dl {
+        font-size: 20px;
+      }
+
+      body {
+        color: #fff;
+        font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial,
+          sans-serif;
+        /* background: linear-gradient(168.18deg, #614385 -0.85%, #516395 100.85%); */
+        background-color: #19191c;
+      }
+
+      .form-check {
+        padding: 0;
+        vertical-align: middle;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+      }
+
+      .form-check .form-check-input {
+        width: 1.6em;
+        height: 1.6em;
+        margin: 0 1em 0 0;
+        flex-shrink: 0;
+      }
+
+      main {
+        overflow: hidden;
+      }
+
+      body,
+      main,
+      .header {
+        display: flow-root;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-weight: 600;
+        font-family: "Blender Pro", Helvetica, sans-serif;
+      }
+
+      h1 {
+        font-size: 78px;
+        line-height: 70px;
+      }
+
+      h2 {
+        font-size: 66px;
+        line-height: 68px;
+      }
+
+      p {
+        color: #fff !important;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 24px;
+      }
+
+      .header {
+        min-height: 100vh;
+        position: relative;
+        overflow: visible;
+      }
+
+      @-webkit-keyframes example {
+        0% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+
+        to {
+          -webkit-transform: rotate(20deg);
+          transform: rotate(20deg);
+        }
+      }
+
+      .header::before {
+        position: absolute;
+        z-index: -1;
+        top: -92.5%;
+        right: -125%;
+        opacity: 0.4;
+        width: 350%;
+        height: 350%;
+        content: "";
+        background: radial-gradient(rgba(25, 25, 28, 0) 50%, #19191c 80%),
+          conic-gradient(
+            #614385 0,
+            #19191c 15.2%,
+            #19191c 18.2%,
+            #516395,
+            20.5%,
+            #19191c 30.2%,
+            #19191c 50%,
+            #283968 56.5%,
+            #516395 59.4%,
+            #060551 66.2%,
+            #101057 72.9%,
+            #242473 85.1%,
+            #516395 89.1%,
+            #283968 90.6%,
+            #19191c 93.7%,
+            #614385 100%
+          );
+        -webkit-animation-name: example;
+        animation-name: example;
+        -webkit-animation-duration: 10s;
+        animation-duration: 10s;
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+        -webkit-animation-direction: alternate;
+        animation-direction: alternate;
+      }
+
+      .header ul {
+        padding: 0;
+        font-weight: 600;
+      }
+
+      .header .bi-chevron-double-down {
+        background-color: transparent;
+        color: rgba(255, 255, 255, 0.21);
+        position: absolute;
+        bottom: 0;
+        margin: 0 auto;
+        font-size: 70px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        transform: translatey(0px);
+        animation: float 1.5s ease-in-out infinite;
+      }
+
+      .header .btn {
+        margin-top: calc(100vh - 714px);
+      }
+
+      .subscription-img {
+        filter: drop-shadow(0px 3.13654px 3.13654px rgba(0, 0, 0, 0.25));
+      }
+
+      .subscription-title {
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 1.2;
+        white-space: nowrap;
+        text-align: left;
+        justify-content: flex-start;
+      }
+
+      .subscription-price {
+        font-weight: 500;
+        font-size: 20px;
+        text-align: left;
+      }
+
+      .btn {
+        border: 5px solid #f6ab19;
+        border-radius: 21px;
+        padding: 8px 60px;
+      }
+
+      .btn-primary {
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        color: #fff;
+        /*background: rgba(255, 255, 255, 0.21);*/
+        background: #323232;
+      }
+
+      .btn-secondary {
+        background-color: transparent;
+        color: #4d4d4d;
+      }
+
+      .btn.btn-primary:hover {
+        background: rgba(94, 94, 94, 0.77);
+        /*background: */
+        border: 5px solid #f6ab19;
+      }
+
+      .btn-lg {
+        font-weight: 600;
+        font-size: 25px;
+        line-height: 45px;
+        padding: 10px 80px;
+      }
+
+      .features {
+        margin: 5% 0 10% 0;
+      }
+
+      .features p {
+        max-width: 260px;
+        margin: 0;
+      }
+
+      .features-icon-wrapper {
+        background: rgba(0, 0, 0, 0.27);
+        /*border: 1px solid rgba(255, 255, 255, 0.52);*/
+        box-shadow: 0px 0px 7px 0px #e0cfffdb;
+        border-radius: 21.4072px;
+        width: 91.75px;
+        height: 90.52px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      footer {
+        margin-top: -20px;
+        padding: 20px 0;
+        border-radius: 25px 25px 0px 0px;
+        /*background: rgba(242, 242, 242, 0.8);*/
+        background: #313131;
+        color: #535353;
+      }
+
+      footer p,
+      footer a {
+        color: #a4a4a4 !important;
+        font-size: 10px;
+        line-height: 14px;
+      }
+
+      .logo-wrapper {
+        width: 130px;
+        height: 130px;
+        background: rgba(255, 255, 255, 0.3);
+        border: 1px solid #ffffff;
+        border-radius: 30.3529px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .about-title {
+        margin: 5% 0 10%;
+      }
+
+      .about-p {
+        font-size: 20px;
+        line-height: 26px;
+      }
+
+      .title-p {
+        font-size: 21px;
+        line-height: 39px;
+      }
+
+      .tab-pane {
+        background-color: #ffffff;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 20px;
+        padding: 16px;
+        z-index: 999;
+        margin-top: 24px;
+        position: relative;
+      }
+
+      .nav.nav-tabs {
+        border-bottom: none;
+      }
+
+      .nav-tabs .nav-link {
+        background: rgba(22, 22, 22, 0.53);
+        border-radius: 20px;
+        width: 90px;
+        height: 90px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .nav-tabs .nav-link.active {
+        background: rgba(211, 211, 211, 0.27);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        position: relative;
+      }
+
+      .nav-tabs .nav-link.active::after {
+        content: "";
+        background-image: url(./icons/triangle.svg);
+        background-size: contain;
+        position: absolute;
+        bottom: -40px;
+        width: 37px;
+        height: 34px;
+        overflow: visible;
+      }
+
+      input.form-control {
+        background: #d9d9d9;
+        border-radius: 10px;
+      }
+
+      p.choose-service-title {
+        font-size: 32px;
+        font-family: "Blender Pro", Helvetica, sans-serif;
+        margin: 50px 0 30px;
+        text-align: center;
+        color: #fff !important;
+      }
+
+      p.subscription-form-caption {
+        text-align: center;
+        color: #a5a3a3 !important;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 13px;
+      }
+
+      p.subscription-form-caption a {
+        color: #a5a3a3 !important;
+        font-weight: 600;
+      }
+
+      .header-title {
+        margin: 15vh 0 5vh;
+      }
+
+      .footer-links li {
+        margin-bottom: -5px;
+      }
+
+      .accordion {
+        width: 100%;
+        background-color: transparent;
+      }
+
+      .accordion-item {
+        border: none;
+        margin-bottom: 20px;
+        background-color: transparent;
+      }
+
+      .accordion-button {
+        font-weight: 600;
+        font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial,
+          sans-serif;
+        font-size: 18px;
+        line-height: 29px;
+        border-radius: 20px !important;
+        box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+      }
+
+      .accordion-body {
+        color: #fff;
+      }
+
+      .form-check-input:checked {
+        background-color: #f6ab19;
+        border-color: #f6ab19;
+      }
+
+      .modal-body {
+        padding-top: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .switcher {
+        background-color: #1c1f2a;
+        border-radius: 40px;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .switcher-btn {
+        color: #a5a3a3;
+        flex: 0 0 50%;
+        border-radius: 40px;
+        padding: 10px 0;
+        border: none;
+        background-color: transparent;
+        font-size: 18px;
+      }
+
+      .switcher-btn.active {
+        color: #fff;
+        background-color: #14171f;
+        box-shadow: 0px 0px 7px 0px #e0cfff;
+        transition: box-shadow 0.3s ease-in, background-color 0.3s ease-in,
+          color 0.3s ease-in;
+      }
+
+      .switcher-btn.active.month {
+        border: 1px solid #4e29a1;
+      }
+      .switcher-btn.active.annual {
+        border: 1px solid #03a9f48c;
+      }
+
+      @keyframes slide {
+        0% {
+          transform: translate3d(0, 0, 0);
+        }
+        100% {
+          transform: translate3d(-40000px, 0, 0);
+        }
+      }
+
+      #reviews {
+        list-style: none;
+        /* display: flex;
+        padding: 10px 0; */
+      }
+
+      #reviews-container .additional-info {
+        text-align: left;
+        font-size: 12px;
+        color: #ffffffa3 !important;
+        margin: 0 12px;
+      }
+
+      .review-card {
+        flex-shrink: 0;
+        background-color: rgba(242, 242, 242, 0.2);
+        border-radius: 30px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        height: 220px;
+        width: 220px;
+        margin-right: 20px;
+      }
+
+      .review-card .text-container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .review-card div p {
+        max-height: 125px;
+        line-height: 21px;
+        text-align: center;
+      }
+
+      .review-icons {
+        display: flex;
+        margin-bottom: 12px;
+      }
+
+      .review-icon {
+        padding: 7px;
+
+        background-color: rgba(0, 0, 0, 0.22);
+        border: 1px solid rgba(255, 255, 255, 0.62);
+        border-radius: 12px;
+        width: 45px;
+        height: 45px;
+        /*display: inline-block;*/
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        transition: all 0.2s ease-out;
+      }
+
+      .review-icon:hover {
+        box-shadow: 0px 0px 7px 0px rgba(254, 254, 255, 0.66);
+      }
+
+      .review-icon:first-child {
+        margin-right: 8px;
+      }
+
+      @media (max-width: 600px) {
+        p {
+          font-size: 16px;
+        }
+
+        .header .bi-chevron-double-down {
+          font-size: 46px;
+        }
+
+        .about-p {
+          font-size: 18px;
+          line-height: 24px;
+        }
+
+        .modal-header {
+          position: relative;
+        }
+
+        .switcher-btn {
+          padding: 5px;
+          font-size: 16px;
+        }
+      }
+
+      @media (max-width: 388px) {
+        .container {
+          padding: 0 15px;
+        }
+
+        .header-title {
+          margin: 90px 0 40px;
+        }
+
+        .header .btn {
+          margin-top: calc(100vh - 660px);
+        }
+      }
+
+      @media (min-width: 760px) {
+        dl {
+          font-size: 24px;
+        }
+
+        .header-title {
+          margin: 0;
+        }
+
+        .header .btn {
+          margin-top: calc(30vh - 266px);
+        }
+
+        .header-content {
+          margin: 30vh 0 20vh;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .title-p {
+          font-size: 22px !important;
+        }
+
+        .container {
+          max-width: 880px;
+        }
+
+        h1 {
+          font-size: 80px;
+        }
+
+        .tab-pane {
+          padding: 30px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <section class="header">
+        <div class="container">
+          <div class="header-content">
+            <div class="header-title">
+              <h1>Дай Доступ!</h1>
+              <p class="title-p m-0">продлеваем подписки</p>
+            </div>
+
+            <ul style="margin: 20px 0 0">
+              <li class="d-flex align-items-center mb-4 mt-4 flex-row">
+                <div class="me-3">
+                  <img
+                    class="subscription-img"
+                    src="./icons/yt.svg"
+                    width="78"
+                  />
+                </div>
+                <div class="text-md-end" style="margin-top: 4px">
+                  <div class="subscription-title">YouTube Premium</div>
+                  <div class="subscription-price">149 &#x20bd; / месяц</div>
+                </div>
+              </li>
+              <li class="d-flex align-items-center mb-4 mt-4 flex-row">
+                <div class="me-3">
+                  <img
+                    class="subscription-img"
+                    src="./icons/spoty.svg"
+                    width="75"
+                  />
+                </div>
+                <div class="text-md-end" style="margin-top: 4px">
+                  <div class="subscription-title">Spotify Premium</div>
+                  <div class="subscription-price">149 &#x20bd; / месяц</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="d-grid gap-2 d-md-block text-center">
+            <button
+              class="btn btn-primary btn-lg"
+              data-bs-toggle="modal"
+              data-bs-target="#checkout"
+            >
+              Подключить
+            </button>
+          </div>
+        </div>
+
+        <i class="bi bi-chevron-double-down"></i>
+      </section>
+
+      <section>
+        <div class="container">
+          <h1 class="about-title text-md-center" style="margin-bottom: 56px">
+            О нас
+          </h1>
+          <div
+            class="d-flex align-items-center"
+            style="max-width: 400px; margin: 32px 0 32px 0"
+          >
+            <div class="me-3">
+              <div class="logo-wrapper">
+                <img src="./icons/dd-logo.svg" width="57" height="70" />
+              </div>
+            </div>
+            <div>
+              <p class="m-0">
+                Команда <strong>Дай Доступ!</strong> предоставляет доступ к
+                иностранным подпискам, даже после санкций
+              </p>
+            </div>
+          </div>
+          <ul class="row list-unstyled features">
+            <li class="col-md-6 d-flex align-items-center mb-4 mb-md-4 p-0">
+              <div class="me-3">
+                <div class="features-icon-wrapper">
+                  <img src="./icons/features-1.svg" width="66" />
+                </div>
+              </div>
+              <p>Безопасная оплата через оффициальную эквайринг систему</p>
+            </li>
+            <li
+              class="col-md-6 d-flex align-items-center justify-content-md-end mb-4 mb-md-4 p-0"
+            >
+              <div class="me-3">
+                <div class="features-icon-wrapper">
+                  <img src="./icons/features-2.svg" width="56" height="56" />
+                </div>
+              </div>
+              <p>
+                Подключение подписки происходит мгновенно,
+                а&nbsp;продление&nbsp;&mdash; автоматически
+              </p>
+            </li>
+            <li class="col-md-6 d-flex align-items-center mb-4 mb-md-4 p-0">
+              <div class="me-3">
+                <div class="features-icon-wrapper">
+                  <img src="./icons/features-3.svg" width="44" height="44" />
+                </div>
+              </div>
+              <p>Вы всегда можете отменить подписку самостоятельно</p>
+            </li>
+            <li
+              class="col-md-6 d-flex align-items-center justify-content-md-end mb-4 mb-md-4 p-0"
+            >
+              <div class="me-3">
+                <a
+                  href="#faq"
+                  data-bs-toggle="modal"
+                  data-target="#faq"
+                  style="color: white"
+                >
+                  <div class="features-icon-wrapper">
+                    <img src="./icons/features-4.svg" width="31" height="50" />
+                  </div>
+                </a>
+              </div>
+              <p>
+                Ответы на&nbsp;другие популярные вопросы доступны в
+                <strong
+                  ><a
+                    href="#faq"
+                    data-bs-toggle="modal"
+                    data-target="#faq"
+                    style="color: white"
+                    >FAQ</a
+                  ></strong
+                >
+                <!--                            ,<br/> а мы доступны в <a href="https://t.me/kingOfSubs" style="color: white">Telegram</a></p>-->
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <div
+        class="container text-center d-grid gap-2 d-md-block"
+        style="margin-bottom: 10%"
+      >
+        <a
+          href="#checkout"
+          class="btn btn-primary btn-lg"
+          data-bs-toggle="modal"
+          data-bs-target="#checkout"
+          >Подключить
+        </a>
+      </div>
+      <section style="margin-bottom: 100px">
+        <h2 class="text-center mb-5">Отзывы</h2>
+        <div id="reviews-container" class="swiper">
+          <p class="additional-info">1000 довольных клиентов</p>
+          <ul id="reviews" class="swiper-wrapper"></ul>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="container">
+        <div class="row" style="padding: 0">
+          <div class="col-10" style="padding: 0">
+            <p>
+              ИП Яроцкий Даниил Дмитриевич <br />
+              ИНН 151304470741<br />
+              ОГРНИП 321151300030373
+            </p>
+            <ul class="list-unstyled footer-links m-0">
+              <li>
+                <a href="./docs/offer.pdf">Оферта</a>
+              </li>
+              <li>
+                <a href="./docs/conf.pdf">Политика конфиденциальности</a>
+              </li>
+              <li>
+                <a href="./docs/personal.pdf"
+                  >Согласие на обработку персональных данных</a
+                >
+              </li>
+              <li>
+                <a href="./docs/adv.pdf"
+                  >Cогласие на получение рассылки и рекламных материалов</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div
+            class="col-2"
+            style="
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+              padding: 0;
+            "
+          >
+            <ul class="list-unstyled text-end" style="margin: 0">
+              <!--                    <li class="mb-3">-->
+              <!--                        <a href="https://instagram.com/d.dostup"-->
+              <!--                           title="instagram" target="_blank"-->
+              <!--                           data-saferedirecturl="https://instagram.com/d.dostup">-->
+              <!--                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png"-->
+              <!--                                 alt="instagram" width="32" height="32" style="border:0"-->
+              <!--                                 class="CToWUd" data-bit="iit">-->
+              <!--                        </a>-->
+              <!--                    </li>-->
+              <li class="mb-1">
+                <a
+                  href="https://t.me/+JlzA96yMytYxYmEy"
+                  title="Чат в Телеграм"
+                  target="_blank"
+                  data-saferedirecturl="https://t.me/+JlzA96yMytYxYmEy"
+                >
+                  <img
+                    src="./icons/tg.svg"
+                    alt="telegram"
+                    width="22"
+                    height="22"
+                    style="border: 0"
+                    class="CToWUd"
+                    data-bit="iit"
+                  />
+                </a>
+              </li>
+              <!--                    <li class="mb-3">-->
+              <!--                        <a href="https://t.me/kingOfSubs"-->
+              <!--                           title="telegram" target="_blank"-->
+              <!--                           data-saferedirecturl="https://t.me/kingOfSubs">-->
+              <!--                            <img src="https://img.icons8.com/color/344/group-foreground-selected.png"-->
+              <!--                                 alt="telegram" width="32" height="32" style="border:0; background-color: white; border-radius: 6px"-->
+              <!--                                 class="CToWUd" data-bit="iit">-->
+              <!--                        </a>-->
+              <!--                    </li>-->
+              <!--                    <li>-->
+              <!--                        <a href="https://plati.market/seller/korol-podpisok/1091269/"-->
+              <!--                           title="plati" target="_blank"-->
+              <!--                           data-saferedirecturl="https://plati.market/seller/korol-podpisok/1091269/">-->
+              <!--                            <img src="https://plati.market/favicon-196x196.png"-->
+              <!--                                 alt="twitter" width="32" height="32"-->
+              <!--                                 style="padding: 5px;border-radius: 6px; background-color: white"-->
+              <!--                                 class="CToWUd" data-bit="iit">-->
+              <!--                        </a>-->
+              <!--                    </li>-->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- FAQ Modal -->
+    <div
+      class="modal fade"
+      id="faq"
+      tabindex="-1"
+      aria-labelledby="faq"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header container">
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div
+            class="modal-body"
+            style="width: 100%; max-width: 600px; margin: 50px auto 0"
+          >
+            <p class="choose-service-title mt-3 mt-md-0">Общие вопросы</p>
+            <div class="accordion" id="generalQuestions">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="general_heading1">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#general1"
+                    aria-expanded="true"
+                    aria-controls="general1"
+                  >
+                    Подписки работают в РФ?
+                  </button>
+                </h2>
+                <div
+                  id="general1"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="general_heading1"
+                  data-bs-parent="#generalQuestions"
+                >
+                  <div class="accordion-body">
+                    <div style="padding-bottom: 6px">
+                      <strong>Да, работают.</strong><br />
+                    </div>
+                    Благодаря нам вы можете пользоваться любимыми сервисами из
+                    любой страны мира.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="general_heading2">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#general2"
+                    aria-expanded="true"
+                    aria-controls="general2"
+                  >
+                    Преимущества Дай Доступ!
+                  </button>
+                </h2>
+                <div
+                  id="general2"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="general_heading2"
+                  data-bs-parent="#generalQuestions"
+                >
+                  <div class="accordion-body">
+                    <div style="padding-bottom: 6px">
+                      1. <strong>Идея</strong> — забыть о санкциях и
+                      наслаждаться премиум доступом к любимым сервисам. Всё как
+                      раньше, даже дешевле<br />
+                    </div>
+                    <div style="padding-bottom: 6px">
+                      2. <strong>Скорость и качество</strong> — автоматизация
+                      большинства процессов позволяет гарантировать скорость и
+                      качество предоставления услуг<br />
+                    </div>
+                    3. <strong>Поддержка</strong> — всегда готовы помочь вам по
+                    вопросам подписок. Вступайте
+                    <a
+                      href="https://t.me/+JlzA96yMytYxYmEy"
+                      title="Чат в Телеграм"
+                      target="_blank"
+                      data-saferedirecturl="https://t.me/+JlzA96yMytYxYmEy"
+                      style="color: #c5c5ff"
+                    >
+                      в наш чат в Телеграм</a
+                    >, там здорово :)<br /><br />
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="general_heading3">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#general3"
+                    aria-expanded="false"
+                    aria-controls="general3"
+                  >
+                    Как подключить подписку?
+                  </button>
+                </h2>
+                <div
+                  id="general3"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="general_heading3"
+                  data-bs-parent="#generalQuestions"
+                >
+                  <div class="accordion-body">
+                    <div style="padding-bottom: 6px">
+                      1. Перейти на главную страницу сайта<br />
+                    </div>
+                    <div style="padding-bottom: 6px">
+                      2. Выбрать желаемый сервис<br />
+                    </div>
+                    <div style="padding-bottom: 6px">
+                      3. Приобрести подписку<br />
+                    </div>
+                    4. Наслаждаться любимым контентом!<br />
+
+                    <!--                                <br/><br/>-->
+
+                    <!--                                Перед покупкой рекомендуем ознакомиться с FAQ для желаемого сервиса 👇-->
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="general_heading4">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#general4"
+                    aria-expanded="false"
+                    aria-controls="general4"
+                  >
+                    Как отключить подписку?
+                  </button>
+                </h2>
+                <div
+                  id="general4"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="general_heading4"
+                  data-bs-parent="#generalQuestions"
+                >
+                  <div class="accordion-body">
+                    В любом письме от <strong>info@ddostup.ru</strong> нажмите
+                    на ссылку <strong>«Отменить подписку на сервис»</strong>
+                    <br /><br />
+                    После отключения, доступ к сервису сохранится до конца
+                    оплаченного периода.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="general_heading5">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#general5"
+                    aria-expanded="false"
+                    aria-controls="general5"
+                  >
+                    Как происходит оплата?
+                  </button>
+                </h2>
+                <div
+                  id="general5"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="general_heading5"
+                  data-bs-parent="#generalQuestions"
+                >
+                  <div class="accordion-body">
+                    Оплата безопасна — она проходит через платежную систему
+                    <strong>Robokassa</strong>. Мы принимаем платежи в
+                    соответствии с законодательством РФ, для каждого платежа
+                    формируется электронный чек, который отправляется на вашу
+                    почту.
+                  </div>
+                </div>
+              </div>
+              <!--                    <div class="accordion-item">-->
+              <!--                        <h2 class="accordion-header" id="general_heading6">-->
+              <!--                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"-->
+              <!--                                    data-bs-target="#general6" aria-expanded="false" aria-controls="general6">-->
+              <!--                                Какие подписки у нас есть?-->
+              <!--                            </button>-->
+              <!--                        </h2>-->
+              <!--                        <div id="general6" class="accordion-collapse collapse" aria-labelledby="general_heading6"-->
+              <!--                             data-bs-parent="#generalQuestions">-->
+              <!--                            <div class="accordion-body">-->
+
+              <!--                            </div>-->
+              <!--                        </div>-->
+              <!--                    </div>-->
+            </div>
+            <p class="choose-service-title">Подписка YouTube</p>
+            <div class="accordion" id="ytQuestions">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="yt_heading1">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#yt1"
+                    aria-expanded="true"
+                    aria-controls="yt1"
+                  >
+                    Что это за подписка?
+                  </button>
+                </h2>
+                <div
+                  id="yt1"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="yt_heading1"
+                  data-bs-parent="#ytQuestions"
+                >
+                  <div class="accordion-body">
+                    <div style="padding-bottom: 6px">
+                      <strong>Полноценная подписка на Youtube Premium.</strong
+                      ><br />
+                    </div>
+                    Фоновый режим, скачивание видео и просмотр без рекламы.
+                    Теперь вы сможете смотреть любимый контент без подключения к
+                    Интернету, с заблокированным экраном и режимом «окно в
+                    окне».
+
+                    <div style="padding-top: 6px">
+                      <strong
+                        >🎁&nbsp;&nbsp;YouTube Music идёт в комплекте!</strong
+                      ><br />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="yt_heading2">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#yt2"
+                    aria-expanded="true"
+                    aria-controls="yt2"
+                  >
+                    Как предоставляется доступ?
+                  </button>
+                </h2>
+                <div
+                  id="yt2"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="yt_heading2"
+                  data-bs-parent="#ytQuestions"
+                >
+                  <div class="accordion-body">
+                    Сразу после оплаты вам придет приглашение в семью Google на
+                    почту. В этой семье оплачена подписка на YouTube Premium.
+                    Просто перейдите по ссылке и начните пользоваться
+                    преимуществами подписки.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="yt_heading3">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#yt3"
+                    aria-expanded="true"
+                    aria-controls="yt3"
+                  >
+                    Не пришло письмо-приглашение
+                  </button>
+                </h2>
+                <div
+                  id="yt3"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="yt_heading3"
+                  data-bs-parent="#ytQuestions"
+                >
+                  <div class="accordion-body">
+                    <div style="padding-bottom: 6px">
+                      <strong
+                        >Если на вашу почту не пришло письмо-приглашение от
+                        Google:</strong
+                      ><br />
+                    </div>
+                    1. Проверьте папку <strong>Спам</strong>, письмо может быть
+                    там<br />
+                    2. Напишите
+                    <a
+                      href="https://t.me/kingOfSubs"
+                      title="telegram"
+                      target="_blank"
+                      data-saferedirecturl="https://t.me/kingOfSubs"
+                      style="color: #e3bcff"
+                      >нам</a
+                    >
+                    — мы отправим письмо повторно
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="yt_heading4">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#yt4"
+                    aria-expanded="true"
+                    aria-controls="yt4"
+                  >
+                    Как проверить что подписка работает?
+                  </button>
+                </h2>
+                <div
+                  id="yt4"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="yt_heading4"
+                  data-bs-parent="#ytQuestions"
+                >
+                  <div class="accordion-body">
+                    <div style="padding-bottom: 6px">
+                      <strong
+                        >👇🏼 &nbsp;Проверьте наличие логотипа Premium</strong
+                      ><br />
+                    </div>
+                    <div>
+                      <img
+                        src="./static/yt_is_active.jpeg"
+                        height="400"
+                        style="
+                          border-radius: 20px;
+                          margin: 11px 0;
+                          box-shadow: 0px 0px 7px 0px #e0cfff42;
+                        "
+                      />
+                    </div>
+                    <div style="padding-top: 4px">
+                      Сделать это можно в браузере или в приложении YouTube.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--                    <div class="accordion-item">-->
+              <!--                        <h2 class="accordion-header" id="yt_heading5">-->
+              <!--                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"-->
+              <!--                                    data-bs-target="#yt5" aria-expanded="true" aria-controls="yt5">-->
+              <!--                                Если подписка перестала работать-->
+              <!--                            </button>-->
+              <!--                        </h2>-->
+              <!--                        <div id="yt5" class="accordion-collapse collapse" aria-labelledby="yt_heading5"-->
+              <!--                             data-bs-parent="#ytQuestions">-->
+              <!--                            <div class="accordion-body">-->
+              <!--                                <div style="padding-bottom: 6px;">-->
+              <!--                                    <strong>👇🏼 &nbsp;Проверьте наличие логотипа Premium</strong><br/>-->
+              <!--                                </div>-->
+              <!--                            </div>-->
+              <!--                        </div>-->
+              <!--                    </div>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subscription Modal -->
+    <div
+      class="modal fade"
+      id="checkout"
+      tabindex="-1"
+      aria-labelledby="checkout"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header container">
+            <!--                    <h2 class="modal-title text-capitalize mt-3" id="exampleModalLabel">Чекаут</h2>-->
+            <button
+              type="button"
+              style="z-index: 999999"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" style="max-width: 600px; margin: 0 auto">
+            <p class="choose-service-title mt-0">Выберите сервис</p>
+
+            <ul
+              class="nav nav-tabs justify-content-center"
+              id="myTab"
+              role="tablist"
+            >
+              <li class="nav-item me-4" role="presentation">
+                <button
+                  class="nav-link active"
+                  id="ytTab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#home-tab-pane"
+                  type="button"
+                  role="tab"
+                  aria-controls="home-tab-pane"
+                  aria-selected="true"
+                >
+                  <img src="./icons/yt.svg" width="70" height="48" />
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link"
+                  id="spotyTab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#profile-tab-pane"
+                  type="button"
+                  role="tab"
+                  aria-controls="profile-tab-pane"
+                  aria-selected="false"
+                >
+                  <img src="./icons/spoty.svg" width="64" height="66" />
+                </button>
+              </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+              <div
+                class="tab-pane fade show active"
+                id="home-tab-pane"
+                role="tabpanel"
+                aria-labelledby="ytTab"
+                tabindex="0"
+              >
+                <ul class="switcher" data-switcher="yt" style="display: none">
+                  <button
+                    class="switcher-btn active month"
+                    data-switcher-btn="monthly"
+                  >
+                    Подписка
+                  </button>
+                  <button
+                    class="switcher-btn annual"
+                    data-switcher-btn="single"
+                  >
+                    Один раз
+                  </button>
+                </ul>
+                <dl class="row mb-0">
+                  <dt class="col-6 mb-1">Подписка:</dt>
+                  <dd class="col-6 text-end mb-1">YouTube Premium</dd>
+                  <dt class="col-6 mb-1">Стоимость:</dt>
+                  <dd class="col-6 text-end mb-1" id="ytPrice">
+                    149 ₽ / месяц
+                  </dd>
+                </dl>
+                <p style="margin: 10px 0 28px">
+                  Просто укажите вашу почту от аккаунта YouTube и оплатите
+                  подписку. Сразу после оплаты вы получите инструкции по
+                  активации подписки YouTube Premium на почту.
+                </p>
+
+                <form
+                  id="ytForm"
+                  method="POST"
+                  action="https://auth.robokassa.ru/Merchant/Index.aspx"
+                >
+                  <input type="hidden" name="MerchantLogin" value="ddostup" />
+                  <input type="hidden" name="OutSum" value="149.9" />
+                  <input
+                    type="hidden"
+                    name="Description"
+                    value="Ежемесячная подписка на yt."
+                  />
+                  <input
+                    type="hidden"
+                    id="ytSignature"
+                    name="SignatureValue"
+                    value=""
+                  />
+                  <input
+                    type="hidden"
+                    name="Recurring"
+                    value="true"
+                    id="ytRecurring"
+                  />
+                  <input type="hidden" name="Culture" value="ru" />
+                  <!--                            <input type="hidden" name="IsTest" value="1">-->
+                  <input
+                    id="hiddenYtEmail"
+                    type="hidden"
+                    name="shp_user_mail"
+                    value="{$user_mail}"
+                  />
+                  <input type="hidden" name="shp_service_name" value="yt" />
+                  <div class="form-floating">
+                    <input
+                      type="email"
+                      name="Email"
+                      class="form-control"
+                      id="ytEmail"
+                      placeholder="name@gmail.com"
+                      required
+                    />
+                    <label for="ytEmail">Почта от аккаунта YouTube</label>
+                  </div>
+
+                  <div class="form-check my-3">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="flexCheckDefault"
+                      required
+                    />
+                    <label class="form-check-label" for="flexCheckDefault">
+                      Я даю согласие на регулярные списания, на обработку
+                      персональных данных и принимаю условия
+                      <a href="./docs/offer.pdf">публичной оферты</a>
+                    </label>
+                  </div>
+
+                  <div
+                    class="d-grid gap-2 d-block mb-2"
+                    style="margin-top: 24px"
+                  >
+                    <button class="btn btn-secondary btn-lg" id="submitYt">
+                      Подключить
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div
+                class="tab-pane fade"
+                id="profile-tab-pane"
+                role="tabpanel"
+                aria-labelledby="spotyTab"
+                tabindex="0"
+                style="min-height: 465px"
+              >
+                <dl class="row mb-0">
+                  <dt class="col-6 mb-1">Подписка:</dt>
+                  <dd class="col-6 text-end mb-1">Spotify Premium</dd>
+                  <dt class="col-6 mb-1">Стоимость:</dt>
+                  <dd class="col-6 text-end mb-1">149 ₽ / месяц</dd>
+                </dl>
+                <p style="margin: 28px 0 28px">В разработке...</p>
+                <!--                        <p style="margin: 10px 0 28px;">-->
+                <!--                            Подписка Spotify Premium подключается на&nbsp;аккаунт, который вы&nbsp;укажите ниже.-->
+                <!--                            После оплаты вы&nbsp;получите инструкцию для активации подписки.-->
+                <!--                        </p>-->
+
+                <!--                        <form>-->
+                <!--                            <div class="form-floating mb-3">-->
+                <!--                                <input type="email" class="form-control" id="spotyEmail"-->
+                <!--                                       placeholder="name@example.com" required>-->
+                <!--                                <label for="spotyEmail">Почта от аккаунта Spotify</label>-->
+                <!--                            </div>-->
+
+                <!--                            <div class="form-floating" style="margin-bottom: 43px;">-->
+                <!--                                <input type="password" class="form-control" id="spotyPassword"-->
+                <!--                                       placeholder="name@example.com" required>-->
+                <!--                                <label for="spotyPassword">Пароль от аккаунта Spotify</label>-->
+                <!--                            </div>-->
+
+                <!--                            <div class="d-grid gap-2 d-block mb-4">-->
+                <!--                                <button class="btn btn-secondary btn-lg">Подключить</button>-->
+                <!--                            </div>-->
+                <!--                        </form>-->
+
+                <!--                        <p class="subscription-form-caption m-0" style="font-size: 9px">оплачивая подписку вы-->
+                <!--                            подтверждаете согласие с-->
+                <!--                            условиями <a href="#">оферты</a></p>-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+      (function (m, e, t, r, i, k, a) {
+        m[i] =
+          m[i] ||
+          function () {
+            (m[i].a = m[i].a || []).push(arguments);
+          };
+        m[i].l = 1 * new Date();
+        for (var j = 0; j < document.scripts.length; j++) {
+          if (document.scripts[j].src === r) {
+            return;
+          }
+        }
+        (k = e.createElement(t)),
+          (a = e.getElementsByTagName(t)[0]),
+          (k.async = 1),
+          (k.src = r),
+          a.parentNode.insertBefore(k, a);
+      })(
+        window,
+        document,
+        "script",
+        "https://mc.yandex.ru/metrika/tag.js",
+        "ym"
+      );
+
+      ym(90332341, "init", {
+        clickmap: true,
+        trackLinks: true,
+        accurateTrackBounce: true,
+        webvisor: true,
+      });
+    </script>
+    <noscript>
+      <div>
+        <img
+          src="https://mc.yandex.ru/watch/90332341"
+          style="position: absolute; left: -9999px"
+          alt=""
+        />
+      </div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
+
+    <!-- Axios library -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+    <script>
+      function switcherPostProcess(el) {
+        if (el.getAttribute("data-switcher") === "yt") {
+          if (el.querySelector('.active[data-switcher-btn="monthly"]')) {
+            document.getElementById("ytPrice").innerHTML = "149 ₽ / месяц";
+            document.getElementById("ytRecurring").value = "true";
+          } else {
+            document.getElementById("ytPrice").innerHTML = "149 ₽";
+            document.getElementById("ytRecurring").value = "false";
+          }
+        }
+      }
+
+      (function () {
+        if (window.location.hash) {
+          document
+            .getElementById("checkout")
+            .addEventListener("shown.bs.modal", function (event) {
+              const urlParams = new URLSearchParams(window.location.search);
+
+              if (urlParams.get("service") === "spoty") {
+                document.getElementById("spotyTab").click();
+              }
+
+              if (urlParams.get("email")) {
+                document.getElementById("ytEmail").value =
+                  urlParams.get("email");
+              }
+            });
+
+          new bootstrap.Modal(
+            document.querySelector(window.location.hash)
+          ).show();
+        }
+
+        document.getElementById("ytForm").onsubmit = function (e) {
+          const email = document.getElementById("ytEmail").value;
+          document.getElementById("submitYt").innerHTML = `
+                    <span class="spinner-border spinner-border-lg mt-2" role="status" aria-hidden="true"></span>
+                    <span class="visually-hidden">Loading...</span>
+                `;
+
+          document.getElementById("submitYt").classList.add("disabled");
+          axios
+            .get(
+              `https://activations.ddostup.ru/get-sign?out_sum=149.9&shp_service_name=yt&shp_user_mail=${email}`
+            )
+            .then((response) => {
+              document.getElementById("hiddenYtEmail").value = email;
+              document.getElementById("ytSignature").value = response.data.sign;
+
+              e.target.submit();
+            });
+          e.preventDefault();
+        };
+
+        document
+          .querySelector(".switcher")
+          .addEventListener("click", (event) => {
+            if (event.target.classList.contains("switcher-btn")) {
+              event.currentTarget
+                .querySelector(".switcher-btn.active")
+                .classList.remove("active");
+              event.target.classList.add("active");
+
+              switcherPostProcess(event.currentTarget);
+            }
+          });
+
+        axios
+          .get("https://activations.ddostup.ru/get-reviews/")
+          .then((response) => {
+            const commentsElements = [];
+            for (const comment of JSON.parse(response.data)) {
+              commentsElements.push(
+                `
+                    <li class="review-card swiper-slide">
+                        <div class="review-icons">
+                            <a href="?service=${comment.service_name}" class="review-icon" data-service="${comment.service_name}"><img src="icons/${comment.service_name}-without-borders.svg" width="100%" height="100%" style="pointer-events: none;" /></a>
+                            <a href="${comment.link}" class="review-icon" target="_blank"><img src="icons/plati_market_logo.svg" width="100%" height="100%" /></a>
+                        </div>
+                        <div class="text-container">
+                            <p class="m-0 overflow-hidden">${comment.review}</p>
+                        </div>
+                    </li>
+                    `
+              );
+            }
+
+            document.getElementById("reviews").innerHTML =
+              commentsElements.join("");
+
+            document.getElementById("reviews").addEventListener(
+              "click",
+              (event) => {
+                const service = event.target.getAttribute("data-service");
+                if (service) {
+                  event.preventDefault();
+
+                  new bootstrap.Modal(
+                    document.getElementById("checkout")
+                  ).show();
+
+                  if (service === "spoty") {
+                    document.getElementById("spotyTab").click();
+                  }
+                }
+              },
+              true
+            );
+
+const swiper = new Swiper('.swiper', {
+  slidesPerView: 8,
+  spaceBetween: 30,
+  freeMode: true,
+  autoplay: {
+    pauseOnMouseEnter: true,
+    delay: 600
+  }
+});
+          });
+      })();
+    </script>
+  </body>
+</html>

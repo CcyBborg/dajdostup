@@ -723,7 +723,7 @@
                 data-bs-target="#checkout">Подключить
             </a>
         </div>
-        <section style="margin-bottom: 100px; display: none;" id="reviews-section">
+        <section style="margin-bottom: 100px">
             <h2 class="text-center mb-5">Отзывы</h2>
             <div id="reviews-container" class="swiper">
                 <p class="additional-info">1000 довольных клиентов</p>
@@ -1083,7 +1083,7 @@
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel"
                             aria-labelledby="ytTab" tabindex="0">
-                            <ul class="switcher" data-switcher="yt" style="display: none">
+                            <ul class="switcher" data-switcher="yt">
                                 <button class="switcher-btn active month" data-switcher-btn="monthly">
                                     Подписка
                                 </button>
@@ -1323,8 +1323,6 @@
 
                     document.getElementById("reviews").innerHTML =
                         commentsElements.join("");
-                    
-                    document.getElementById('reviews-section').style.display = 'block';
 
                     document.getElementById("reviews").addEventListener(
                         "click",
@@ -1348,13 +1346,11 @@
                     );
 
                     const swiper = new Swiper(".swiper", {
-                        slidesPerView: 'auto',
-                        loop: true,
+                        slidesPerView: "auto",
                         spaceBetween: 30,
                         freeMode: true,
-                        speed: 2000,
                         autoplay: {
-                            delay: 1,
+                            delay: 800,
                             pauseOnMouseEnter: true,
                             disableOnInteraction: false,
                         },

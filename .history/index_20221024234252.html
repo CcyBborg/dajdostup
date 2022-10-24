@@ -82,6 +82,7 @@
             color: #fff;
             font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial,
                 sans-serif;
+            /* background: linear-gradient(168.18deg, #614385 -0.85%, #516395 100.85%); */
             background-color: #19191c;
         }
 
@@ -241,6 +242,7 @@
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
             color: #fff;
+            /*background: rgba(255, 255, 255, 0.21);*/
             background: #323232;
         }
 
@@ -287,6 +289,7 @@
             margin-top: -20px;
             padding: 20px 0;
             border-radius: 25px 25px 0px 0px;
+            /*background: rgba(242, 242, 242, 0.8);*/
             background: #313131;
             color: #535353;
         }
@@ -467,6 +470,16 @@
 
         .switcher-btn.active.annual {
             border: 1px solid #03a9f48c;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translate3d(0, 0, 0);
+            }
+
+            100% {
+                transform: translate3d(-40000px, 0, 0);
+            }
         }
 
         #reviews {
@@ -723,7 +736,7 @@
                 data-bs-target="#checkout">Подключить
             </a>
         </div>
-        <section style="margin-bottom: 100px; display: none;" id="reviews-section">
+        <section style="margin-bottom: 100px">
             <h2 class="text-center mb-5">Отзывы</h2>
             <div id="reviews-container" class="swiper">
                 <p class="additional-info">1000 довольных клиентов</p>
@@ -1323,8 +1336,6 @@
 
                     document.getElementById("reviews").innerHTML =
                         commentsElements.join("");
-                    
-                    document.getElementById('reviews-section').style.display = 'block';
 
                     document.getElementById("reviews").addEventListener(
                         "click",
@@ -1339,8 +1350,6 @@
 
                                 if (service === "spoty") {
                                     document.getElementById("spotyTab").click();
-                                } else {
-                                    document.getElementById("ytTab").click();
                                 }
                             }
                         },
@@ -1348,13 +1357,11 @@
                     );
 
                     const swiper = new Swiper(".swiper", {
-                        slidesPerView: 'auto',
-                        loop: true,
+                        slidesPerView: "auto",
                         spaceBetween: 30,
                         freeMode: true,
-                        speed: 2000,
                         autoplay: {
-                            delay: 1,
+                            delay: 800,
                             pauseOnMouseEnter: true,
                             disableOnInteraction: false,
                         },
