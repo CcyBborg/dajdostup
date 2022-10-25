@@ -15,9 +15,6 @@
     <link href="fonts/stylesheet.css" rel="stylesheet" type="text/css" />
     <link href="fonts/proxima-nova.css" rel="stylesheet" type="text/css" />
 
-    <!-- Swiper JS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
-
     <link rel="icon" type="image/x-icon" href="./favicon.ico" />
 
     <style>
@@ -251,7 +248,6 @@
 
         .btn.btn-primary:hover {
             background: rgba(94, 94, 94, 0.77);
-            /*background: */
             border: 5px solid #f6ab19;
         }
 
@@ -469,16 +465,37 @@
             border: 1px solid #03a9f48c;
         }
 
+        @keyframes slide {
+            0% {
+                transform: translate3d(0, 0, 0);
+            }
+            100% {
+                transform: translate3d(-40000px, 0, 0);
+            }
+        }
+
         #reviews {
             list-style: none;
             padding: 10px 0;
+            display: flex;
+            animation: slide 1100s infinite linear;
         }
 
-        #reviews-container .additional-info {
+        #reviews-container:hover #reviews {
+            animation-play-state: paused;
+        }
+
+        
+
+        #reviews-section .additional-info {
             text-align: left;
             font-size: 12px;
             color: #ffffffa3 !important;
             margin: 0 12px;
+        }
+
+        #reviews-container {
+            overflow-y: scroll;
         }
 
         .review-card {
@@ -534,9 +551,6 @@
 
         .review-icon:first-child {
             margin-right: 8px;
-        }
-        .swiper-wrapper {
-            transition-timing-function : linear!important;
         }
 
         @media (max-width: 600px) {
@@ -728,8 +742,8 @@
         </div>
         <section style="margin-bottom: 100px; display: none;" id="reviews-section">
             <h2 class="text-center mb-5">Отзывы</h2>
+            <p class="additional-info">1000 довольных клиентов</p>
             <div id="reviews-container" class="swiper">
-                <p class="additional-info">1000 довольных клиентов</p>
                 <ul id="reviews" class="swiper-wrapper"></ul>
             </div>
         </section>
@@ -1349,23 +1363,6 @@
                         },
                         true
                     );
-
-                    const swiper = new Swiper(".swiper", {
-                        slidesPerView: 'auto',
-                        loop: true,
-                        spaceBetween: 30,
-                        freeMode: true,
-                        speed: 2000,
-                        mousewheel: {
-                            releaseOnEdges: true,
-                            forceToAxis: true
-                        },
-                        autoplay: {
-                            delay: 1,
-                            pauseOnMouseEnter: true,
-                            disableOnInteraction: false,
-                        },
-                    });
                 });
         })();
     </script>
