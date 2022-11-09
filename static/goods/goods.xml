@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<yml_catalog date="2022-11-09 20:00">
+    <shop>
+        <name>Дай Доступ!</name>
+        <company>ИП Яроцкий Даниил Дмитриевич</company>
+        <url>https://ddostup.ru</url>
+        <platform>-</platform>
+        <version>1.0</version>
+        <email>support@ddostup.ru</email>
+        <currencies>
+            <currency id="RUR" rate="1"/>
+        </currencies>
+        <categories>
+            <category id="1">Подписки</category>
+        </categories>
+        <delivery-options>
+            <option cost="0" days="0"/>
+        </delivery-options>
+        <offers>
+            <offer id="yt">
+                <name>Подписка на YouTube Premium</name>
+                <vendor>Дай Доступ!</vendor>
+                <url>https://ddostup.ru/?service=yt#checkout</url>
+                <price>149</price>
+                <currencyId>RUR</currencyId>
+                <categoryId>1</categoryId>
+                <picture>https://ddostup.ru/static/goods/yt.jpg</picture>
+                <description>
+                    <![CDATA[
+                        <p>
+                            Подписка работает в РФ без VPN.<br><br>
+                            Фоновый режим, скачивание видео и просмотр без рекламы.
+                            Теперь вы сможете смотреть любимый контент без подключения к
+                            Интернету, с заблокированным экраном и режимом «окно в
+                            окне».
+                        </p>
+                    ]]>
+                </description>
+                <service-life-days>
+                    P30D
+                </service-life-days>
+                <warranty-days>
+                    P30D
+                </warranty-days>
+            </offer>
+            <offer id="spoty">
+                <name>Подписка на Spotify Premium</name>
+                <vendor>Дай Доступ!</vendor>
+                <url>https://ddostup.ru/?service=spoty#checkout</url>
+                <price>1499</price>
+                <currencyId>RUR</currencyId>
+                <categoryId>1</categoryId>
+                <picture>https://ddostup.ru/static/goods/spoty.jpg</picture>
+                <description>
+                    <![CDATA[
+                        <p>
+                            Подписка работает в РФ без VPN.<br><br>
+                            Музыка без рекламы, оффлайн режим, превосходное качество звука,
+                            бесконечное количество пропусков — всё как вы любите!
+                            После подключения страна аккаунта изменится на Турцию.
+                            Анимированные обложки Canvas и все исполнители доступны.
+                        </p>
+                    ]]>
+                </description>
+                <service-life-days>
+                    P1Y
+                </service-life-days>
+                <warranty-days>
+                    P1Y
+                </warranty-days>
+            </offer>
+        </offers>
+    </shop>
+</yml_catalog>
