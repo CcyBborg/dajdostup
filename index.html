@@ -331,7 +331,7 @@
             line-height: 39px;
         }
 
-        .tab-pane {
+        .tab-content {
             background-color: #ffffff;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
             border-radius: 20px;
@@ -339,6 +339,14 @@
             z-index: 999;
             margin-top: 24px;
             position: relative;
+        }
+
+        .tab-pane {
+            border: 0;
+            box-shadow: none;
+            background-color: transparent;
+            padding: 0;
+            margin: 0;
         }
 
         .nav.nav-tabs {
@@ -590,6 +598,23 @@
                 padding: 5px;
                 font-size: 16px;
             }
+
+            .modal-header {
+                top: 0;
+                margin-top: 15px!important;
+                height: 68px;
+            }
+
+            #checkout .choose-service-title {
+                margin-top: 15px;
+            }
+
+            #main-button {
+                position: absolute;
+                bottom: 98px;
+                width: calc(100% - 68px);
+                left: 34px;
+            }
         }
 
         @media (max-width: 388px) {
@@ -597,8 +622,14 @@
                 padding: 0 15px;
             }
 
+            #main-button {
+                bottom: 86px;
+                width: calc(100% - 30px);
+                left: 15px;
+            }
+
             .header-title {
-                margin: 90px 0 40px;
+                margin: 80px 0 40px;
             }
 
             .header .btn {
@@ -676,7 +707,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="d-grid gap-2 d-md-block text-center">
+            <div class="d-grid gap-2 d-md-block text-center" id="main-button">
                 <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#checkout">
                     Подключить
                 </button>
@@ -1118,7 +1149,7 @@
                         data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="max-width: 600px; margin: 0 auto">
-                <p class="choose-service-title mt-0">Выберите сервис</p>
+                <p class="choose-service-title">Выберите сервис</p>
 
                 <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
                     <li class="nav-item me-4" role="presentation">
