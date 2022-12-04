@@ -380,9 +380,14 @@
             overflow: visible;
         }
 
-        input.form-control {
-            background: #d9d9d9;
+        input.form-control, 
+        .form-select {
+            background-color: #d9d9d9;
             border-radius: 10px;
+        }
+
+        .form-floating>.form-select {
+            padding: 1rem 0.75rem;
         }
 
         p.choose-service-title {
@@ -576,9 +581,64 @@
             margin-right: 8px;
         }
 
+        /* Browser emulator */
+        .browser-window {
+            text-align: left;
+            margin: 0 auto;
+            width: 800px;
+            height: 500px;
+            display: inline-block;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .browser-window .top-bar {
+            height: 30px;
+            border-radius: 5px 5px 0 0;
+            border-top: 6px solid #e4e4e4;
+            border-bottom: 6px solid #e4e4e3;
+            background: #e4e4e3;
+            display: flex;
+            align-items: center;
+        }
+        .browser-window .circle {
+            height: 8px;
+            width: 8px;
+            display: inline-block;
+            border-radius: 50%;
+            background-color: #fff;
+        }
+        .browser-window .circles { margin: 5px 11px; }
+
+        .browser-window .circle-red {
+            background-color: #eb5149;
+        }
+
+        .browser-window .circle-green {
+            background-color: #c0ee56;
+        }
+
+        .browser-window .circle-yellow {
+            background-color: #f7cb3c;
+        }
+
+        .browser-window .content {
+            margin: 0;
+            width: 100%;
+            min-height: 50%;
+            display: inline-block;
+            border-radius: 0 0 5px 5px;
+            background-color: #fafafa;
+        }
+
+
         @media (max-width: 600px) {
             p {
                 font-size: 16px;
+            }
+
+            .browser-window {
+                width: 100%;
+                height: auto;
             }
 
             .header .bi-chevron-double-down {
@@ -719,9 +779,9 @@
 
     <section>
         <div class="container">
-            <h1 class="about-title text-md-center" style="margin-bottom: 56px">
+            <h2 class="about-title text-md-center" style="margin-bottom: 56px">
                 О нас
-            </h1>
+            </h2>
             <div class="d-flex align-items-center" style="max-width: 400px; margin: 32px 0 32px 0">
                 <div class="me-3">
                     <div class="logo-wrapper">
@@ -779,6 +839,26 @@
                     </p>
                 </li>
             </ul>
+        </div>
+    </section>
+    <section>
+        <div class="container mb-5">
+            <h2 class="about-title text-md-center" style="margin-bottom: 56px">
+                Активатор
+            </h2>
+            <div class='browser-window'>
+                <div class='top-bar'>
+                  <div class='circles'>
+                     <div class="circle circle-red"></div>
+                     <div class="circle circle-yellow"></div>
+                     <div class="circle circle-green"></div>
+                  </div>
+                </div>
+                <div class='content'>
+                    <video id="demo-video" autoplay muted playsinline style="pointer-events: none; max-width: 100%;">
+                    </video>
+                </div>
+              </div>
         </div>
     </section>
     <div class="container text-center d-grid gap-2 d-md-block" style="margin-bottom: 10%">
@@ -1144,155 +1224,14 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header container">
-                <!--                    <h2 class="modal-title text-capitalize mt-3" id="exampleModalLabel">Чекаут</h2>-->
                 <button type="button" style="z-index: 999999" class="btn-close btn-close-white"
                         data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="max-width: 600px; margin: 0 auto">
                 <p class="choose-service-title">Выберите сервис</p>
-
-                <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
-                    <li class="nav-item me-4" role="presentation">
-                        <button class="nav-link active" id="ytTab" data-bs-toggle="tab"
-                                data-bs-target="#home-tab-pane" type="button" role="tab"
-                                aria-controls="home-tab-pane"
-                                aria-selected="true">
-                            <img src="./icons/yt.svg" width="70" height="48"/>
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="spotyTab" data-bs-toggle="tab"
-                                data-bs-target="#profile-tab-pane" type="button" role="tab"
-                                aria-controls="profile-tab-pane" aria-selected="false">
-                            <img src="./icons/spoty.svg" width="64" height="66"/>
-                        </button>
-                    </li>
+                <ul class="nav nav-tabs justify-content-center" id="servicesTab" role="tablist">
                 </ul>
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel"
-                         aria-labelledby="ytTab" tabindex="0">
-                        <!--                            <ul class="switcher" data-switcher="yt">-->
-                        <!--                                <button class="switcher-btn active month" data-switcher-btn="monthly">-->
-                        <!--                                    Подписка-->
-                        <!--                                </button>-->
-                        <!--                                <button class="switcher-btn annual" data-switcher-btn="single" disabled>-->
-                        <!--                                    Один раз-->
-                        <!--                                </button>-->
-                        <!--                            </ul>-->
-                        <dl class="row mb-0">
-                            <dt class="col-6 mb-1">Подписка:</dt>
-                            <dd class="col-6 text-end mb-1">YouTube Premium</dd>
-                            <dt class="col-6 mb-1">Стоимость:</dt>
-                            <dd class="col-6 text-end mb-1" id="ytPrice">
-                                149 ₽ / месяц
-                            </dd>
-                        </dl>
-                        <p style="margin: 10px 0 28px">
-                            Просто укажите вашу почту от аккаунта YouTube и получите доступ.
-                            Доступ автоматически продлевается каждый месяц.
-
-                            <a href="#faq" data-bs-toggle="modal"
-                               data-target="#faq"
-                               style="color: #4d4d4d">
-                                Узнать больше о подписке на странице FAQ
-                            </a>
-                        </p>
-
-                        <form id="ytForm" method="POST" action="https://auth.robokassa.ru/Merchant/Index.aspx">
-                            <input type="hidden" name="MerchantLogin" value="ddostup"/>
-                            <input type="hidden" name="OutSum" value="149.9"/>
-                            <input type="hidden" name="Description" value="Доступ к YouTube Premium."/>
-                            <input type="hidden" id="ytSignature" name="SignatureValue" value=""/>
-                            <input type="hidden" name="Recurring" value="true" id="ytRecurring"/>
-                            <input type="hidden" name="Culture" value="ru"/>
-                            <!--                            <input type="hidden" name="IsTest" value="1">-->
-                            <input id="hiddenYtEmail" type="hidden" name="shp_user_mail" value="{$user_mail}"/>
-                            <input type="hidden" name="shp_service_name" value="yt"/>
-                            <div class="form-floating">
-                                <input type="email" name="Email" class="form-control" id="ytEmail"
-                                       placeholder="name@gmail.com" required/>
-                                <label for="ytEmail">Почта от аккаунта YouTube</label>
-                            </div>
-
-                            <div class="form-check my-3">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
-                                       required/>
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Я даю согласие на регулярные списания, на обработку
-                                    персональных данных и принимаю условия
-                                    <a href="./docs/offer.pdf">публичной оферты</a>
-                                </label>
-                            </div>
-
-                            <div class="d-grid gap-2 d-block mb-2" style="margin-top: 24px">
-                                <button class="btn btn-secondary btn-lg" id="submitYt">
-                                    Подключить
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="spotyTab"
-                         tabindex="0">
-                        <dl class="row mb-0">
-                            <dt class="col-6 mb-1">Подписка:</dt>
-                            <dd class="col-6 text-end mb-1">Spotify Premium</dd>
-                            <dt class="col-6 mb-1">Стоимость:</dt>
-                            <dd class="col-6 text-end mb-1">1499 ₽ / год</dd>
-                        </dl>
-                        <p style="margin: 10px 0 36px">
-                            Просто укажите почту для входа в Spotify и получите доступ.
-                            Перед активацией на аккаунте должна быть Free подписка.
-                            <a href="https://t.me/kingOfSubs" title="telegram" target="_blank"
-                               data-saferedirecturl="https://t.me/kingOfSubs" style="color: #4d4d4d">
-                                Напишите нам</a>,
-                            если у вас не получается войти в свой аккаунт.
-
-                            <a href="#faq" data-bs-toggle="modal"
-                               data-target="#faq"
-                               style="color: #4d4d4d">
-                                Узнать больше о подписке на странице FAQ
-                            </a>
-                        </p>
-                        <form id="spotyForm" method="POST" action="https://auth.robokassa.ru/Merchant/Index.aspx">
-                            <input type="hidden" name="MerchantLogin" value="ddostup"/>
-                            <input type="hidden" name="OutSum" value="1499.9"/>
-                            <input type="hidden" name="Description" value="Доступ к Spotify Premium."/>
-                            <input type="hidden" id="spotySignature" name="SignatureValue" value=""/>
-                            <input type="hidden" name="Recurring" value="false" id="spotyRecurring"/>
-                            <input type="hidden" name="Culture" value="ru"/>
-                            <!--                            <input type="hidden" name="IsTest" value="1">-->
-                            <input id="hiddenSpotyEmail" type="hidden" name="shp_user_mail" value="{$user_mail}"/>
-                            <input type="hidden" name="shp_service_name" value="spoty"/>
-
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="spotyEmail"
-                                       placeholder="name@example.com" required>
-                                <label for="spotyEmail">Почта от аккаунта Spotify</label>
-                            </div>
-
-                            <!--                            <div class="form-floating" style="margin-bottom: 43px;">-->
-                            <!--                                <input type="password" class="form-control" id="spotyPassword"-->
-                            <!--                                       placeholder="name@example.com" required>-->
-                            <!--                                <label for="spotyPassword">Пароль от аккаунта Spotify</label>-->
-                            <!--                            </div>-->
-
-                            <div class="form-check my-3">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2"
-                                       required/>
-                                <label class="form-check-label" for="flexCheckDefault2">
-                                    Я даю согласие на обработку
-                                    персональных данных и принимаю условия
-                                    <a href="./docs/offer.pdf">публичной оферты</a>
-                                </label>
-                            </div>
-
-                            <div class="d-grid gap-2 d-block">
-                                <button class="btn btn-secondary btn-lg mb-2" id="submitSpoty">Подключить</button>
-                            </div>
-                        </form>
-
-
-                    </div>
+                <div class="tab-content" id="servicesTabContent">
                 </div>
             </div>
         </div>
@@ -1349,19 +1288,14 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script>
-    function switcherPostProcess(el) {
-        if (el.getAttribute("data-switcher") === "yt") {
-            if (el.querySelector('.active[data-switcher-btn="monthly"]')) {
-                document.getElementById("ytPrice").innerHTML = "149 ₽ / месяц";
-                document.getElementById("ytRecurring").value = "true";
-            } else {
-                document.getElementById("ytPrice").innerHTML = "149 ₽";
-                document.getElementById("ytRecurring").value = "false";
-            }
-        }
-    }
-
     (function () {
+        const video = document.getElementById('demo-video');
+        if (screen.width < 760) {
+            video.innerHTML = '<source src="./static/ddemo-mob.mp4" type="video/mp4" />';
+        } else {
+            video.innerHTML = '<source src="./static/ddemo-mac.mp4" type="video/mp4" />';
+        }
+
         if (window.location.hash) {
             document
                 .getElementById("checkout")
@@ -1383,60 +1317,47 @@
             ).show();
         }
 
-        document.getElementById("ytForm").onsubmit = function (e) {
-            const email = document.getElementById("ytEmail").value;
-            document.getElementById("submitYt").innerHTML = `
-                    <span class="spinner-border spinner-border-lg mt-2" role="status" aria-hidden="true"></span>
-                    <span class="visually-hidden">Loading...</span>
-                `;
+        // document.getElementById("ytForm").onsubmit = function (e) {
+        //     const email = document.getElementById("ytEmail").value;
+        //     document.getElementById("submitYt").innerHTML = `
+        //             <span class="spinner-border spinner-border-lg mt-2" role="status" aria-hidden="true"></span>
+        //             <span class="visually-hidden">Loading...</span>
+        //         `;
 
-            document.getElementById("submitYt").classList.add("disabled");
-            axios
-                .get(
-                    `https://activations.ddostup.ru/get-sign?out_sum=149.9&shp_service_name=yt&shp_user_mail=${email}`
-                )
-                .then((response) => {
-                    document.getElementById("hiddenYtEmail").value = email;
-                    document.getElementById("ytSignature").value = response.data.sign;
+        //     document.getElementById("submitYt").classList.add("disabled");
+        //     axios
+        //         .get(
+        //             `https://activations.ddostup.ru/get-sign?out_sum=149.9&shp_service_name=yt&shp_user_mail=${email}`
+        //         )
+        //         .then((response) => {
+        //             document.getElementById("hiddenYtEmail").value = email;
+        //             document.getElementById("ytSignature").value = response.data.sign;
 
-                    e.target.submit();
-                });
-            e.preventDefault();
-        };
+        //             e.target.submit();
+        //         });
+        //     e.preventDefault();
+        // };
 
-        document.getElementById("spotyForm").onsubmit = function (e) {
-            const email = document.getElementById("spotyEmail").value;
-            document.getElementById("submitSpoty").innerHTML = `
-                    <span class="spinner-border spinner-border-lg mt-2" role="status" aria-hidden="true"></span>
-                    <span class="visually-hidden">Loading...</span>
-                `;
+        // document.getElementById("spotyForm").onsubmit = function (e) {
+        //     const email = document.getElementById("spotyEmail").value;
+        //     document.getElementById("submitSpoty").innerHTML = `
+        //             <span class="spinner-border spinner-border-lg mt-2" role="status" aria-hidden="true"></span>
+        //             <span class="visually-hidden">Loading...</span>
+        //         `;
 
-            document.getElementById("submitSpoty").classList.add("disabled");
-            axios
-                .get(
-                    `https://activations.ddostup.ru/get-sign?out_sum=1499.9&shp_service_name=spoty&shp_user_mail=${email}`
-                )
-                .then((response) => {
-                    document.getElementById("hiddenSpotyEmail").value = email;
-                    document.getElementById("spotySignature").value = response.data.sign;
+        //     document.getElementById("submitSpoty").classList.add("disabled");
+        //     axios
+        //         .get(
+        //             `https://activations.ddostup.ru/get-sign?out_sum=1499.9&shp_service_name=spoty&shp_user_mail=${email}`
+        //         )
+        //         .then((response) => {
+        //             document.getElementById("hiddenSpotyEmail").value = email;
+        //             document.getElementById("spotySignature").value = response.data.sign;
 
-                    e.target.submit();
-                });
-            e.preventDefault();
-        };
-
-        // document
-        //     .querySelector(".switcher")
-        //     .addEventListener("click", (event) => {
-        //         if (event.target.classList.contains("switcher-btn")) {
-        //             event.currentTarget
-        //                 .querySelector(".switcher-btn.active")
-        //                 .classList.remove("active");
-        //             event.target.classList.add("active");
-        //
-        //             switcherPostProcess(event.currentTarget);
-        //         }
-        //     });
+        //             e.target.submit();
+        //         });
+        //     e.preventDefault();
+        // };
 
         axios
             .get("https://activations.ddostup.ru/get-reviews/")
@@ -1483,6 +1404,94 @@
                     },
                     true
                 );
+            });
+        
+        axios
+            .get("https://activations.ddostup.ru/get-goods/").then(res => {
+                const tabList = document.getElementById('servicesTab');
+                const tabContent = document.getElementById('servicesTabContent');
+                const tabItems = [];
+                const tabItemsContent = [];
+                for (const item of res.data) {
+                    tabItems.push(`
+                        <li class="nav-item me-4" role="presentation">
+                            <button class="nav-link ${!tabItems.length ? 'active' : ''}" id="${item.shp_service_name}Tab" data-bs-toggle="tab"
+                                    data-bs-target="#${item.shp_service_name}-tab-pane" type="button" role="tab"
+                                    aria-controls="home-tab-pane"
+                                    ${!tabItems.length ? 'aria-selected="true"' : ''}>
+                                <img src="./icons/${item.shp_service_name}.svg"/>
+                            </button>
+                        </li>
+                    `);
+
+                    tabItemsContent.push(`
+                        <div class="tab-pane fade ${!tabItemsContent.length ? 'show active' : ''}" id="${item.shp_service_name}-tab-pane" role="tabpanel"
+                            aria-labelledby="${item.shp_service_name}Tab" tabindex="${tabItemsContent.length}">
+                            ${item.Items.length > 1 ? (`
+                                <div class="form-floating mb-3">
+                                    <select class="form-select" aria-label="Default select example">
+                                        ${item.Items.map((v, i) => (
+                                            `<option value="${i}" ${i === 0 ? 'selected' : ''}>${v.Description}</option>`
+                                        ))}
+                                    </select>
+                                </div>
+                            `) : ''}
+                            <dl class="row mb-0">
+                                <dt class="col-6 mb-1">Подписка:</dt>
+                                <dd class="col-6 text-end mb-1">${item.Items[0].Description}</dd>
+                                <dt class="col-6 mb-1">Стоимость:</dt>
+                                <dd class="col-6 text-end mb-1" id="ytPrice">
+                                    ${item.Items[0].OutSum} ₽
+                                </dd>
+                            </dl>
+                            <p style="margin: 10px 0 28px">
+                                ${item.FullDescription}
+
+                                <a href="#faq" data-bs-toggle="modal"
+                                data-target="#faq"
+                                style="color: #4d4d4d">
+                                    Узнать больше о подписке на странице FAQ
+                                </a>
+                            </p>
+
+                            <form id="${item.shp_service_name}Form" method="POST" action="https://auth.robokassa.ru/Merchant/Index.aspx">
+                                <input type="hidden" name="MerchantLogin" value="ddostup"/>
+                                <input type="hidden" name="OutSum" value="149.9"/>
+                                <input type="hidden" name="Description" value="Доступ к YouTube Premium."/>
+                                <input type="hidden" id="ytSignature" name="SignatureValue" value=""/>
+                                <input type="hidden" name="Recurring" value="true" id="ytRecurring"/>
+                                <input type="hidden" name="Culture" value="ru"/>
+                                <!--                            <input type="hidden" name="IsTest" value="1">-->
+                                <input id="hiddenYtEmail" type="hidden" name="shp_user_mail" value="{$user_mail}"/>
+                                <input type="hidden" name="shp_service_name" value="yt"/>
+                                <div class="form-floating">
+                                    <input type="email" name="Email" class="form-control" id="ytEmail"
+                                        placeholder="name@gmail.com" required/>
+                                    <label for="ytEmail">Почта от аккаунта YouTube</label>
+                                </div>
+
+                                <div class="form-check my-3">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                                        required/>
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Я даю согласие на регулярные списания, на обработку
+                                        персональных данных и принимаю условия
+                                        <a href="./docs/offer.pdf">публичной оферты</a>
+                                    </label>
+                                </div>
+
+                                <div class="d-grid gap-2 d-block mb-2" style="margin-top: 24px">
+                                    <button class="btn btn-secondary btn-lg" id="submitYt">
+                                        Подключить
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    `);
+                }
+
+                tabList.innerHTML = tabItems.join('');
+                tabContent.innerHTML = tabItemsContent.join('');
             });
     })();
 </script>
