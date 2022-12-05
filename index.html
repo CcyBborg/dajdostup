@@ -223,6 +223,14 @@
 
         .subscription-img {
             filter: drop-shadow(0px 3.13654px 3.13654px rgba(0, 0, 0, 0.25));
+            margin: 12px;
+            transition: all 0.09s ease-in-out;
+            cursor: pointer;
+        }
+
+        .subscription-img:hover {
+            transform: scale(1.05);
+            /*box-shadow: 0px 0px 7px 0px rgb(254 254 255 / 66%);*/
         }
 
         .subscription-title {
@@ -821,27 +829,54 @@
                     <h1>Дай Доступ!</h1>
                     <p class="title-p m-0">продлеваем подписки</p>
                 </div>
-
-                <ul style="margin: 0 0 0">
-                    <li class="d-flex align-items-center mb-4 mt-4 flex-row">
-                        <div class="me-3">
-                            <img class="subscription-img" src="./icons/yt.svg" width="75"/>
-                        </div>
-                        <div class="text-md-end" style="margin-top: 4px">
-                            <div class="subscription-title">YouTube Premium</div>
-                            <div class="subscription-price">149 &#x20bd; / месяц</div>
-                        </div>
-                    </li>
-                    <li class="d-flex align-items-center mb-4 mt-4 flex-row">
-                        <div class="me-3">
-                            <img class="subscription-img" src="./icons/spoty.svg" width="75"/>
-                        </div>
-                        <div class="text-md-end" style="margin-top: 4px">
-                            <div class="subscription-title">Spotify Premium</div>
-                            <div class="subscription-price">1499 &#x20bd; / год</div>
-                        </div>
-                    </li>
-                </ul>
+                <div style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start">
+                    <div style="display: flex; flex-direction: row">
+                        <img class="subscription-img" src="./icons/yt.svg" width="74"/>
+                        <img class="subscription-img" src="./icons/discord.svg" width="72"/>
+                    </div>
+                    <div style="display: flex; flex-direction: row">
+                        <img class="subscription-img" src="./icons/fortnite.svg" width="75"/>
+                        <img class="subscription-img" src="./icons/spoty.svg" width="70"/>
+                    </div>
+                </div>
+                <!--                <ul style="margin: 0 0 0">-->
+                <!--                    <li class="d-flex align-items-center mb-4 mt-4 flex-row">-->
+                <!--                        <div class="me-3">-->
+                <!--                            <img class="subscription-img" src="./icons/yt.svg" width="75"/>-->
+                <!--                        </div>-->
+                <!--                        <div class="text-md-end" style="margin-top: 4px">-->
+                <!--                            <div class="subscription-title">YouTube Premium</div>-->
+                <!--                            <div class="subscription-price">149 &#x20bd; / месяц</div>-->
+                <!--                        </div>-->
+                <!--                    </li>-->
+                <!--                    <li class="d-flex align-items-center mb-4 mt-4 flex-row">-->
+                <!--                        <div class="me-3">-->
+                <!--                            <img class="subscription-img" src="./icons/fortnite.svg" width="75"/>-->
+                <!--                        </div>-->
+                <!--                        <div class="text-md-end" style="margin-top: 4px">-->
+                <!--                            <div class="subscription-title">Fortnite</div>-->
+                <!--                            <div class="subscription-price">от 349 &#x20bd;</div>-->
+                <!--                        </div>-->
+                <!--                    </li>-->
+                <!--                    <li class="d-flex align-items-center mb-4 mt-4 flex-row">-->
+                <!--                        <div class="me-3">-->
+                <!--                            <img class="subscription-img" src="./icons/spoty.svg" width="75"/>-->
+                <!--                        </div>-->
+                <!--                        <div class="text-md-end" style="margin-top: 4px">-->
+                <!--                            <div class="subscription-title">Spotify Premium</div>-->
+                <!--                            <div class="subscription-price">1499 &#x20bd; / год</div>-->
+                <!--                        </div>-->
+                <!--                    </li>-->
+                <!--                    <li class="d-flex align-items-center mb-4 mt-4 flex-row">-->
+                <!--                        <div class="me-3">-->
+                <!--                            <img class="subscription-img" src="./icons/discord.svg" width="75"/>-->
+                <!--                        </div>-->
+                <!--                        <div class="text-md-end" style="margin-top: 4px">-->
+                <!--                            <div class="subscription-title">Discord Nitro</div>-->
+                <!--                            <div class="subscription-price">от 999 &#x20bd; / год</div>-->
+                <!--                        </div>-->
+                <!--                    </li>-->
+                <!--                </ul>-->
             </div>
             <div class="d-grid gap-2 d-md-block text-center" id="main-button">
                 <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#checkout">
@@ -1443,7 +1478,7 @@
                         `
                     <li class="review-card swiper-slide">
                         <div class="review-icons">
-                            <a href="?service=${comment.service_name}" class="review-icon" data-service="${comment.service_name}"><img src=".icons/${comment.service_name}-without-borders.svg" width="100%" height="100%" style="pointer-events: none;" /></a>
+                            <a href="?service=${comment.service_name}" class="review-icon" data-service="${comment.service_name}"><img src="icons/${comment.service_name}-without-borders.svg" width="100%" height="100%" style="pointer-events: none;" /></a>
                             <a href="${comment.link}" class="review-icon" target="_blank"><img src="icons/plati_market_logo.svg" width="100%" height="100%" /></a>
                         </div>
                         <div class="text-container">
