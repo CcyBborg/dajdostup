@@ -831,12 +831,12 @@
                 </div>
                 <div style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start">
                     <div style="display: flex; flex-direction: row">
-                        <img class="subscription-img" src="./icons/yt.svg" width="74"/>
-                        <img class="subscription-img" src="./icons/discord.svg" width="72"/>
+                        <img class="subscription-img" src="./icons/yt.svg" width="80"/>
+                        <img class="subscription-img" src="./icons/discord.svg" width="75"/>
                     </div>
                     <div style="display: flex; flex-direction: row">
-                        <img class="subscription-img" src="./icons/fortnite.svg" width="75"/>
-                        <img class="subscription-img" src="./icons/spoty.svg" width="70"/>
+                        <img class="subscription-img" src="./icons/fortnite.svg" width="80"/>
+                        <img class="subscription-img" src="./icons/spoty.svg" width="77"/>
                     </div>
                 </div>
                 <!--                <ul style="margin: 0 0 0">-->
@@ -1561,7 +1561,7 @@
                                 </div>
                             `) : ''}
                             <dl class="row mb-0">
-                                <dt class="col-2 pe-0 mb-1">Товар:</dt>
+                                <dt class="col-2 pe-0 mb-1">Выбрано:</dt>
                                 <dd class="col-10 text-end mb-1 text-nowrap" id="${item.shp_service_name}Description">${item.Items[0].Description}</dd>
                                 <dt class="col-4 mb-1">Стоимость:</dt>
                                 <dd class="col-8 text-end mb-1" id="${item.shp_service_name}OutSum">
@@ -1577,11 +1577,11 @@
                             <p style="margin: 10px 0 28px">
                                 ${item.FullDescription}
 
-                                <a href="#faq" data-bs-toggle="modal"
-                                data-target="#faq"
-                                style="color: #4d4d4d">
-                                    Узнать больше о подписке на странице FAQ
-                                </a>
+<!--                                <a href="#faq" data-bs-toggle="modal"-->
+<!--                                data-target="#faq"-->
+<!--                                style="color: #4d4d4d">-->
+<!--                                    Узнать больше о подписке на странице FAQ-->
+<!--                                </a>-->
                             </p>
 
                             <form id="${item.shp_service_name}Form" method="POST" action="https://auth.robokassa.ru/Merchant/Index.aspx" onsubmit="window['${item.shp_service_name}HandleSubmit'](event)">
