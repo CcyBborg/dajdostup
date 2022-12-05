@@ -384,14 +384,14 @@
             overflow: visible;
         } */
 
-        input.form-control, 
+        input.form-control,
         .form-select {
             background-color: #d9d9d9;
             border-radius: 10px;
             font-weight: bold;
         }
 
-        .form-floating>.form-select {
+        .form-floating > .form-select {
             padding: 1rem 0.75rem;
         }
 
@@ -589,13 +589,14 @@
         /* Browser emulator */
         .browser-window {
             text-align: left;
-            margin: 0 auto;
+            margin: 40px auto 0;
             width: 800px;
             display: inline-block;
             border-radius: 5px;
             background-color: #313131;
             box-shadow: 0px 0px 18px 3px rgb(255 190 130 / 31%);
         }
+
         .browser-window .top-bar {
             height: 30px;
             border-radius: 5px 5px 0 0;
@@ -605,6 +606,7 @@
             display: flex;
             align-items: center;
         }
+
         .browser-window .circle {
             height: 8px;
             width: 8px;
@@ -612,7 +614,10 @@
             border-radius: 50%;
             background-color: #fff;
         }
-        .browser-window .circles { margin: 5px 11px; }
+
+        .browser-window .circles {
+            margin: 5px 11px;
+        }
 
         .browser-window .circle-red {
             background-color: #eb5149;
@@ -665,7 +670,7 @@
 
             .modal-header {
                 top: 0;
-                margin-top: 15px!important;
+                margin-top: 15px !important;
                 height: 68px;
             }
 
@@ -750,59 +755,60 @@
 
 
         .iphone-x {
-  position: relative;
-  margin: 40px auto;
-  width: calc(100% - 15px);
-  background-color: #000;
-  border-radius: 40px;
-  border: 8px solid #313131;
-  box-shadow: none;
-  overflow: hidden;
-}
+            position: relative;
+            margin: 30px auto;
+            width: 312px;
+            background-color: #313131;
+            border-radius: 40px;
+            border: 8px solid #313131;
+            box-shadow: none;
+            overflow: hidden;
+        }
 
 
-.iphone-x:before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  .iphone-x:before {
-    top: -2px;
-    width: 56%;
-    height: 30px;
-    background-color: #313131;
-    border-radius: 0px 0px 40px 40px;
-  }
+        .iphone-x:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
 
-  .iphone-x i,
-  .iphone-x b,
-  .iphone-x s,
-  .iphone-x span {
-    position: absolute;
-    display: block;
-    color: transparent;
-  }
-  .iphone-x .speaker {
-    top: 0px;
-    left: 50%;
-    transform: translate(-50%, 6px);
-    height: 8px;
-    width: 15%;
-    background-color: rgba(242, 242, 242, 0.2);
-    border-radius: 8px;
-  }
-  
-  .iphone-x b {
-    left: 10%;
-    top: 0px;
-    transform: translate(180px, 4px);
-    width: 12px;
-    height: 12px;
-    background-color: rgba(242, 242, 242, 0.2);
-    border-radius: 12px;
-  }
+        .iphone-x:before {
+            top: -2px;
+            width: 56%;
+            height: 30px;
+            background-color: #313131;
+            border-radius: 0px 0px 40px 40px;
+        }
+
+        .iphone-x i,
+        .iphone-x b,
+        .iphone-x s,
+        .iphone-x span {
+            position: absolute;
+            display: block;
+            color: transparent;
+        }
+
+        .iphone-x .speaker {
+            top: 0px;
+            left: 50%;
+            transform: translate(-50%, 6px);
+            height: 8px;
+            width: 15%;
+            background-color: rgba(242, 242, 242, 0.2);
+            border-radius: 8px;
+        }
+
+        .iphone-x b {
+            /*left: 10%;*/
+            top: 0px;
+            transform: translate(180px, 4px);
+            width: 12px;
+            height: 12px;
+            background-color: rgba(242, 242, 242, 0.2);
+            border-radius: 12px;
+        }
     </style>
 </head>
 
@@ -913,34 +919,34 @@
     </section>
     <section>
         <div class="container mb-5">
-            <h2 class="about-title text-md-center" style="margin-bottom: 56px">
-                Активатор
-            </h2>
-            <p class="text-center mb-5">Это система автоматических активаций.<br/>
-                Тут и происходит вся магия, смотрите сами…</p>
+            <h2 class="text-center mb-3">Активатор</h2>
+
+            <p class="text-center mb-2">Наша система автоматических активаций.<br/>
+                Тут и происходит вся магия, смотрите:</p>
             <div class='browser-window' style="display:none;">
                 <div class='top-bar'>
-                  <div class='circles'>
-                     <div class="circle circle-red"></div>
-                     <div class="circle circle-yellow"></div>
-                     <div class="circle circle-green"></div>
-                  </div>
+                    <div class='circles'>
+                        <div class="circle circle-red"></div>
+                        <div class="circle circle-yellow"></div>
+                        <div class="circle circle-green"></div>
+                    </div>
                 </div>
                 <div class='content'>
-                    <video id="demo-video" autoplay loop muted playsinline style="pointer-events: none; max-width: 100%;">
-                        <source src="./static/ddemo-mac.mp4" type="video/mp4" />
+                    <video id="demo-video" autoplay loop muted playsinline
+                           style="pointer-events: none; max-width: 100%;">
+                        <source src="./static/ddemo-mac.mp4" type="video/mp4"/>
                     </video>
                 </div>
-              </div>
+            </div>
 
-              <div class="iphone-x" style="display: none;">
+            <div class="iphone-x" style="display: none;">
                 <i class="speaker">Speaker</i>
                 <b>Camera</b>
 
                 <video autoplay loop muted playsinline style="max-width: 100%;">
-                    <source src="./static/ddemo-mob.mp4" type="video/mp4" />
+                    <source src="./static/ddemo-mob.mp4" type="video/mp4"/>
                 </video>
-              </div>
+            </div>
         </div>
     </section>
     <div class="container text-center d-grid gap-2 d-md-block" style="margin-bottom: 10%">
@@ -1311,7 +1317,8 @@
             </div>
             <div class="modal-body" style="max-width: 600px; margin: 0 auto">
                 <p class="choose-service-title">Выберите сервис</p>
-                <ul class="nav nav-tabs justify-content-md-center justify-content-between flex-nowrap" id="servicesTab" role="tablist">
+                <ul class="nav nav-tabs justify-content-md-center justify-content-between flex-nowrap" id="servicesTab"
+                    role="tablist">
                 </ul>
                 <div class="tab-content" id="servicesTabContent">
                 </div>
@@ -1473,18 +1480,18 @@
                     true
                 );
             });
-        
+
         axios
             .get("https://activations.ddostup.ru/get-goods/").then(res => {
-                const tabList = document.getElementById('servicesTab');
-                const tabContent = document.getElementById('servicesTabContent');
-                const tabItems = [];
-                const tabItemsContent = [];
+            const tabList = document.getElementById('servicesTab');
+            const tabContent = document.getElementById('servicesTabContent');
+            const tabItems = [];
+            const tabItemsContent = [];
 
-                for (const item of res.data) {
-                     
-                    tabItems.push(`
-                        <li class="nav-item ${tabItems.length === res.data.length - 1 ? '': 'me-0 me-md-4'}" role="presentation">
+            for (const item of res.data) {
+
+                tabItems.push(`
+                        <li class="nav-item ${tabItems.length === res.data.length - 1 ? '' : 'me-0 me-md-4'}" role="presentation">
                             <button class="nav-link ${!tabItems.length ? 'active' : ''}" id="${item.shp_service_name}Tab" data-bs-toggle="tab"
                                     data-bs-target="#${item.shp_service_name}-tab-pane" type="button" role="tab"
                                     aria-controls="home-tab-pane"
@@ -1494,27 +1501,27 @@
                         </li>
                     `);
 
-                    window[`${item.shp_service_name}HandleSubmit`] = onServiceSubmit(item);
-                    window[`${item.shp_service_name}HandleSelect`] = () => {
-                        const selected = item.Items[document.getElementById(`${item.shp_service_name}Select`).value];
+                window[`${item.shp_service_name}HandleSubmit`] = onServiceSubmit(item);
+                window[`${item.shp_service_name}HandleSelect`] = () => {
+                    const selected = item.Items[document.getElementById(`${item.shp_service_name}Select`).value];
 
-                        document.getElementById(`${item.shp_service_name}Description`).innerHTML = selected.Description;
-                        document.getElementById(`${item.shp_service_name}OutSum`).innerHTML = selected.OutSum;
+                    document.getElementById(`${item.shp_service_name}Description`).innerHTML = selected.Description;
+                    document.getElementById(`${item.shp_service_name}OutSum`).innerHTML = selected.OutSum;
 
-                        if (selected.Logo) {
-                            document.querySelector('servicesTab .nav-link.active img').src = selected.Logo;
-                        }
-                    };
+                    if (selected.Logo) {
+                        document.querySelector('servicesTab .nav-link.active img').src = selected.Logo;
+                    }
+                };
 
-                    tabItemsContent.push(`
+                tabItemsContent.push(`
                         <div class="tab-pane fade ${!tabItemsContent.length ? 'show active' : ''}" id="${item.shp_service_name}-tab-pane" role="tabpanel"
                             aria-labelledby="${item.shp_service_name}Tab" tabindex="${tabItemsContent.length}">
                             ${item.Items.length > 1 ? (`
                                 <div class="form-floating mb-3">
                                     <select class="form-select" aria-label="Выберите продукт" id="${item.shp_service_name}Select" onchange="window['${item.shp_service_name}HandleSelect']()">
                                         ${item.Items.map((v, i) => (
-                                            `<option value="${i}" ${i === 0 ? 'selected' : ''}>${v.Description}</option>`
-                                        ))}
+                    `<option value="${i}" ${i === 0 ? 'selected' : ''}>${v.Description}</option>`
+                ))}
                                     </select>
                                 </div>
                             `) : ''}
@@ -1575,11 +1582,11 @@
                             </form>
                         </div>
                     `);
-                }
+            }
 
-                tabList.innerHTML = tabItems.join('');
-                tabContent.innerHTML = tabItemsContent.join('');
-            });
+            tabList.innerHTML = tabItems.join('');
+            tabContent.innerHTML = tabItemsContent.join('');
+        });
     })();
 </script>
 </body>
