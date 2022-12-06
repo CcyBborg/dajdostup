@@ -829,14 +829,14 @@
                     <h1>Дай Доступ!</h1>
                     <p class="title-p m-0">продлеваем подписки</p>
                 </div>
-                <div style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start">
+                <div style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start" id="home-services">
                     <div style="display: flex; flex-direction: row">
-                        <img class="subscription-img" src="./icons/yt.svg" width="80"/>
-                        <img class="subscription-img" src="./icons/discord.svg" width="75"/>
+                        <img class="subscription-img" src="./icons/yt.svg" width="80" data-service="yt" />
+                        <img class="subscription-img" src="./icons/discord.svg" width="75" data-service="discord"/>
                     </div>
                     <div style="display: flex; flex-direction: row">
-                        <img class="subscription-img" src="./icons/fortnite.svg" width="80"/>
-                        <img class="subscription-img" src="./icons/spoty.svg" width="77"/>
+                        <img class="subscription-img" src="./icons/fortnite.svg" width="80" data-service="fortnite" />
+                        <img class="subscription-img" src="./icons/spoty.svg" width="77" data-service="spoty" />
                     </div>
                 </div>
                 <!--                <ul style="margin: 0 0 0">-->
@@ -1469,6 +1469,19 @@
                 });
         }
 
+        const handleServiceOpen = (event) => {
+            const service = event.target.getAttribute("data-service");
+            if (service) {
+                event.preventDefault();
+
+                new bootstrap.Modal(
+                    document.getElementById("checkout")
+                ).show();
+                            
+                document.getElementById(`${service}Tab`).click();
+            }
+        };
+
         axios
             .get("https://activations.ddostup.ru/get-reviews/")
             .then((response) => {
@@ -1496,25 +1509,12 @@
 
                 document.getElementById("reviews").addEventListener(
                     "click",
-                    (event) => {
-                        const service = event.target.getAttribute("data-service");
-                        if (service) {
-                            event.preventDefault();
-
-                            new bootstrap.Modal(
-                                document.getElementById("checkout")
-                            ).show();
-
-                            if (service === "spoty") {
-                                document.getElementById("spotyTab").click();
-                            } else {
-                                document.getElementById("ytTab").click();
-                            }
-                        }
-                    },
+                    handleServiceOpen,
                     true
                 );
             });
+        
+        document.getElementById("home-services").addEventListener("click", handleServiceOpen, true);
 
         axios
             .get("https://activations.ddostup.ru/get-goods/").then(res => {
@@ -1564,16 +1564,14 @@
                             aria-labelledby="${item.shp_service_name}Tab" tabindex="${tabItemsContent.length}">
                             <dl class="row mb-0">
                                 ${item.Items.length > 1 ? (`
-                                    <dt class="col-12 pe-0 mb-1">Выбрано:</dt>
-                                        <dd class="col-12 mb-1">
-                                            <div class="form-floating">
-                                                <select class="form-select" aria-label="Выберите продукт" id="${item.shp_service_name}Select" onchange="window['${item.shp_service_name}HandleSelect']()">
-                                                    ${item.Items.map((v, i) => (
-                                                        `<option value="${i}" ${i === 0 ? 'selected' : ''}>${v.Period ? `${v.Period} ${v.Description}` : v.Description}</option>`
-                                                    ))}
-                                                </select>
-                                            </div>
-                                        </dd>
+                                    <dt class="col-4 pe-0 mb-1">Выбрано:</dt>
+                                    <dd class="col-8 mb-1">
+                                        <select class="form-select" aria-label="Выберите продукт" id="${item.shp_service_name}Select" onchange="window['${item.shp_service_name}HandleSelect']()">
+                                            ${item.Items.map((v, i) => (
+                                                `<option value="${i}" ${i === 0 ? 'selected' : ''}>${v.Period ? `${v.Period} ${v.Description}` : v.Description}</option>`
+                                            ))}
+                                        </select>
+                                    </dd>
                                     `) : ''}
                                 ${item.Items.length === 1 ? `
                                     <dt class="col-2 pe-0 mb-1">Выбрано:</dt>
