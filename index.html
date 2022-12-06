@@ -396,7 +396,6 @@
         .form-select {
             background-color: #d9d9d9;
             border-radius: 10px;
-            font-weight: bold;
         }
 
         .form-floating > .form-select {
@@ -766,6 +765,7 @@
             position: relative;
             margin: 30px auto;
             width: 312px;
+            height: 646px;
             background-color: #313131;
             border-radius: 40px;
             border: 8px solid #313131;
@@ -1540,39 +1540,53 @@
                 window[`${item.shp_service_name}HandleSelect`] = () => {
                     const selected = item.Items[document.getElementById(`${item.shp_service_name}Select`).value];
 
-                    document.getElementById(`${item.shp_service_name}Description`).innerHTML = selected.Description;
+                    if (item.Items.length === 1) {
+                        document.getElementById(`${item.shp_service_name}Description`).innerHTML = selected.Description;
+                    }
                     document.getElementById(`${item.shp_service_name}OutSum`).innerHTML = selected.OutSum;
 
                     if (selected.Logo) {
                         document.querySelector('servicesTab .nav-link.active img').src = selected.Logo;
+                    }
+
+                    if (selected.Period) {
+                        document.getElementById(`${item.shp_service_name}PeriodValue`).style.display = 'inline-block';
+                        document.getElementById(`${item.shp_service_name}PeriodTerm`).style.display = 'inline-block'
+                        document.getElementById(`${item.shp_service_name}PeriodValue`).innerHTML = selected.Period;
+                    } else {
+                        document.getElementById(`${item.shp_service_name}PeriodValue`).style.display = 'none';
+                        document.getElementById(`${item.shp_service_name}PeriodTerm`).style.display = 'none;'
                     }
                 };
 
                 tabItemsContent.push(`
                         <div class="tab-pane fade ${!tabItemsContent.length ? 'show active' : ''}" id="${item.shp_service_name}-tab-pane" role="tabpanel"
                             aria-labelledby="${item.shp_service_name}Tab" tabindex="${tabItemsContent.length}">
-                            ${item.Items.length > 1 ? (`
-                                <div class="form-floating mb-3">
-                                    <select class="form-select" aria-label="Выберите продукт" id="${item.shp_service_name}Select" onchange="window['${item.shp_service_name}HandleSelect']()">
-                                        ${item.Items.map((v, i) => (
-                    `<option value="${i}" ${i === 0 ? 'selected' : ''}>${v.Description}</option>`
-                ))}
-                                    </select>
-                                </div>
-                            `) : ''}
                             <dl class="row mb-0">
-                                <dt class="col-2 pe-0 mb-1">Выбрано:</dt>
-                                <dd class="col-10 text-end mb-1 text-nowrap" id="${item.shp_service_name}Description">${item.Items[0].Description}</dd>
-                                <dt class="col-4 mb-1">Стоимость:</dt>
-                                <dd class="col-8 text-end mb-1" id="${item.shp_service_name}OutSum">
-                                    ${item.Items[0].OutSum} ₽
-                                </dd>
-                                ${item.Items[0].Period ? `
-                                    <dt class="col-4 mb-1">Период действия:</dt>
-                                    <dd class="col-8 text-end mb-1">
-                                        ${item.Items[0].Period}
-                                    </dd>
+                                ${item.Items.length > 1 ? (`
+                                    <dt class="col-12 pe-0 mb-1">Выбрано:</dt>
+                                        <dd class="col-12 mb-1">
+                                            <div class="form-floating">
+                                                <select class="form-select" aria-label="Выберите продукт" id="${item.shp_service_name}Select" onchange="window['${item.shp_service_name}HandleSelect']()">
+                                                    ${item.Items.map((v, i) => (
+                                                        `<option value="${i}" ${i === 0 ? 'selected' : ''}>${v.Period ? `${v.Period} ${v.Description}` : v.Description}</option>`
+                                                    ))}
+                                                </select>
+                                            </div>
+                                        </dd>
+                                    `) : ''}
+                                ${item.Items.length === 1 ? `
+                                    <dt class="col-2 pe-0 mb-1">Выбрано:</dt>
+                                    <dd class="col-10 text-end mb-1 text-nowrap" id="${item.shp_service_name}Description">${item.Items[0].Description}</dd>
                                 ` : ''}
+                                <dt class="col-4 mb-1">Стоимость:</dt>
+                                <dd class="col-8 text-end mb-1">
+                                    <span id="${item.shp_service_name}OutSum">${item.Items[0].OutSum}</span> ₽
+                                </dd>
+                                <dt class="col-6 mb-1 text-nowrap" id="${item.shp_service_name}PeriodTerm" style="display: ${item.Items[0].Period ? 'inline-block': 'none'};">Период действия:</dt>
+                                <dd class="col-6 text-end mb-1" id="${item.shp_service_name}PeriodValue" style="display: ${item.Items[0].Period ? 'inline-block': 'none'};">
+                                    ${item.Items[0].Period}
+                                </dd>
                             </dl>
                             <p style="margin: 10px 0 28px">
                                 ${item.FullDescription}
@@ -1587,7 +1601,7 @@
                             <form id="${item.shp_service_name}Form" method="POST" action="https://auth.robokassa.ru/Merchant/Index.aspx" onsubmit="window['${item.shp_service_name}HandleSubmit'](event)">
                                 <input type="hidden" name="MerchantLogin" value="${item.MerchantLogin}"/>
                                 <input type="hidden" name="OutSum" value="149.9"/>
-                                <input type="hidden" name="Description" value="Доступ к YouTube Premium."/>
+                                <input type="hidden" name="shp_codename" value="${item.shp_codename}"/>
                                 <input type="hidden" id="${item.shp_service_name}Signature" name="SignatureValue" value=""/>
                                 <input type="hidden" name="Recurring" value="${item.Recurring}"/>
                                 <input type="hidden" name="Culture" value="${item.Culture}"/>
