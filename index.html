@@ -614,6 +614,17 @@
             align-items: center;
         }
 
+        .goods-header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 13px;
+            margin-bottom: 13px;
+            /*border-bottom: #00000036 3px solid;*/
+            border-bottom: #00000036 5px dotted;
+        }
+
         .browser-window .circle {
             height: 8px;
             width: 8px;
@@ -829,14 +840,15 @@
                     <h1>Дай Доступ!</h1>
                     <p class="title-p m-0">продлеваем подписки</p>
                 </div>
-                <div style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start" id="home-services">
+                <div style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start"
+                     id="home-services">
                     <div style="display: flex; flex-direction: row">
-                        <img class="subscription-img" src="./icons/yt.svg" width="80" data-service="yt" />
+                        <img class="subscription-img" src="./icons/yt.svg" width="80" data-service="yt"/>
                         <img class="subscription-img" src="./icons/discord.svg" width="75" data-service="discord"/>
                     </div>
                     <div style="display: flex; flex-direction: row">
-                        <img class="subscription-img" src="./icons/fortnite.svg" width="80" data-service="fortnite" />
-                        <img class="subscription-img" src="./icons/spoty.svg" width="77" data-service="spoty" />
+                        <img class="subscription-img" src="./icons/fortnite.svg" width="80" data-service="fortnite"/>
+                        <img class="subscription-img" src="./icons/spoty.svg" width="77" data-service="spoty"/>
                     </div>
                 </div>
                 <!--                <ul style="margin: 0 0 0">-->
@@ -1477,7 +1489,7 @@
                 new bootstrap.Modal(
                     document.getElementById("checkout")
                 ).show();
-                            
+
                 document.getElementById(`${service}Tab`).click();
             }
         };
@@ -1513,7 +1525,7 @@
                     true
                 );
             });
-        
+
         document.getElementById("home-services").addEventListener("click", handleServiceOpen, true);
 
         axios
@@ -1564,14 +1576,17 @@
                             aria-labelledby="${item.shp_service_name}Tab" tabindex="${tabItemsContent.length}">
                             <dl class="row mb-0">
                                 ${item.Items.length > 1 ? (`
-                                    <dt class="col-4 pe-0 mb-1">Выбрано:</dt>
-                                    <dd class="col-8 mb-1">
-                                        <select class="form-select" aria-label="Выберите продукт" id="${item.shp_service_name}Select" onchange="window['${item.shp_service_name}HandleSelect']()">
-                                            ${item.Items.map((v, i) => (
-                                                `<option value="${i}" ${i === 0 ? 'selected' : ''}>${v.Period ? `${v.Period} ${v.Description}` : v.Description}</option>`
-                                            ))}
-                                        </select>
-                                    </dd>
+                                    <div class="goods-header">
+
+                                        <dt class="col-4 pe-0 mb-1">Товар:</dt>
+                                        <dd class="col-8 mb-1">
+                                            <select class="form-select" aria-label="Выберите продукт" id="${item.shp_service_name}Select" onchange="window['${item.shp_service_name}HandleSelect']()">
+                                                ${item.Items.map((v, i) => (
+                    `<option value="${i}" ${i === 0 ? 'selected' : ''}>${v.Period ? `${v.Period} ${v.Description}` : v.Description}</option>`
+                ))}
+                                            </select>
+                                        </dd>
+                                    </div>
                                     `) : ''}
                                 ${item.Items.length === 1 ? `
                                     <dt class="col-2 pe-0 mb-1">Выбрано:</dt>
@@ -1581,8 +1596,8 @@
                                 <dd class="col-8 text-end mb-1">
                                     <span id="${item.shp_service_name}OutSum">${item.Items[0].OutSum}</span> ₽
                                 </dd>
-                                <dt class="col-6 mb-1 text-nowrap" id="${item.shp_service_name}PeriodTerm" style="display: ${item.Items[0].Period ? 'inline-block': 'none'};">Период действия:</dt>
-                                <dd class="col-6 text-end mb-1" id="${item.shp_service_name}PeriodValue" style="display: ${item.Items[0].Period ? 'inline-block': 'none'};">
+                                <dt class="col-6 mb-1 text-nowrap" id="${item.shp_service_name}PeriodTerm" style="display: ${item.Items[0].Period ? 'inline-block' : 'none'};">Период действия:</dt>
+                                <dd class="col-6 text-end mb-1" id="${item.shp_service_name}PeriodValue" style="display: ${item.Items[0].Period ? 'inline-block' : 'none'};">
                                     ${item.Items[0].Period}
                                 </dd>
                             </dl>
