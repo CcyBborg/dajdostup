@@ -619,7 +619,7 @@
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
-            padding-bottom: 13px;
+            padding-bottom: 10px;
             margin-bottom: 13px;
             /*border-bottom: #00000036 3px solid;*/
             border-bottom: #00000036 5px dotted;
@@ -780,8 +780,9 @@
             background-color: #313131;
             border-radius: 40px;
             border: 8px solid #313131;
-            box-shadow: none;
+            /*box-shadow: none;*/
             overflow: hidden;
+            box-shadow: 0px 0px 13px 3px rgb(236 156 82 / 58%);
         }
 
 
@@ -1003,7 +1004,7 @@
     </div>
     <section style="margin-bottom: 100px; display: none;" id="reviews-section">
         <h2 class="text-center mb-5">Отзывы</h2>
-        <p class="additional-info">1000 довольных клиентов</p>
+        <p id="reviews-number" class="additional-info"></p>
         <div id="reviews-container" class="swiper">
             <ul id="reviews" class="swiper-wrapper"></ul>
         </div>
@@ -1457,9 +1458,14 @@
             e.preventDefault();
             console.log(e);
             const serviceName = item.shp_service_name;
+            const serviceCode = document.getElementById(`${item.shp_service_name}ServiceCode`).value;
+
             let sum = item.Items[0].OutSum;
+            let description = item.Items[0].Description;
+
             if (item.Items.length > 1) {
                 sum = item.Items[document.getElementById(`${serviceName}Select`).value].OutSum;
+                description = item.Items[document.getElementById(`${serviceName}Select`).value].Description;
             }
 
             const email = document.getElementById(`${serviceName}Email`).value;
@@ -1469,16 +1475,35 @@
                 `;
 
             document.getElementById(`${serviceName}Submit`).classList.add("disabled");
+
+
             axios
                 .get(
-                    `https://activations.ddostup.ru/get-sign?out_sum=${sum}&shp_service_name=${serviceName}&shp_user_mail=${email}`
+                    `https://activations.ddostup.ru/get-receipt?description=${description}&out_sum=${sum}`
                 )
                 .then((response) => {
-                    document.getElementById(`${serviceName}EmailHidden`).value = email;
-                    document.getElementById(`${serviceName}Signature`).value = response.data.sign;
+                    let receipt = response.data.receipt;
+                    document.getElementById(`${serviceName}Receipt`).value = receipt;
+                    axios
+                        .post(
+                            `https://activations.ddostup.ru/get-sign`, {
+                                "out_sum": `${sum}`,
+                                "receipt": `${receipt}`,
+                                "shp_service_code": `${serviceCode}`,
+                                "shp_service_name": `${serviceName}`,
+                                "shp_user_mail": `${email}`
+                            }
+                        )
+                        .then((response) => {
+                            document.getElementById(`${serviceName}EmailHidden`).value = email;
+                            document.getElementById(`${serviceName}Signature`).value = response.data.sign;
 
-                    e.target.submit();
+                            e.target.submit();
+                        });
+
                 });
+
+
         }
 
         const handleServiceOpen = (event) => {
@@ -1498,7 +1523,7 @@
             .get("https://activations.ddostup.ru/get-reviews/")
             .then((response) => {
                 const commentsElements = [];
-                for (const comment of JSON.parse(response.data)) {
+                for (const comment of response.data.reviews) {
                     commentsElements.push(
                         `
                     <li class="review-card swiper-slide">
@@ -1516,6 +1541,9 @@
 
                 document.getElementById("reviews").innerHTML =
                     commentsElements.join("");
+
+                document.getElementById("reviews-number").innerHTML =
+                    `${response.data.number} довольных клиентов`;
 
                 document.getElementById('reviews-section').style.display = 'block';
 
@@ -1553,9 +1581,12 @@
                     const selected = item.Items[document.getElementById(`${item.shp_service_name}Select`).value];
 
                     if (item.Items.length === 1) {
-                        document.getElementById(`${item.shp_service_name}Description`).innerHTML = selected.Description;
+                        document.getElementById(`${item.shp_service_name}DescriptionView`).innerHTML = selected.Description;
                     }
-                    document.getElementById(`${item.shp_service_name}OutSum`).innerHTML = selected.OutSum;
+                    document.getElementById(`${item.shp_service_name}OutSumView`).innerHTML = selected.OutSum;
+
+                    document.getElementById(`${item.shp_service_name}OutSum`).value = selected.OutSum;
+                    document.getElementById(`${item.shp_service_name}ServiceCode`).value = selected.shp_service_code;
 
                     if (selected.Logo) {
                         document.querySelector('servicesTab .nav-link.active img').src = selected.Logo;
@@ -1569,6 +1600,18 @@
                         document.getElementById(`${item.shp_service_name}PeriodValue`).style.display = 'none';
                         document.getElementById(`${item.shp_service_name}PeriodTerm`).style.display = 'none;'
                     }
+
+                    if (selected.Reccuring) {
+                        document.getElementById(`${item.shp_service_name}Recurring`).style.display = 'inline-block';
+                        document.getElementById(`${item.shp_service_name}RecurringValue`).style.display = 'inline-block'
+                    } else {
+                        document.getElementById(`${item.shp_service_name}Recurring`).style.display = 'none';
+                        document.getElementById(`${item.shp_service_name}RecurringValue`).style.display = 'none;'
+                    }
+                    if (item.Disabled === true) {
+                        document.getElementById(`${item.shp_service_name}Submit`).classList.add("disabled");
+                    }
+
                 };
 
                 tabItemsContent.push(`
@@ -1578,7 +1621,7 @@
                                 ${item.Items.length > 1 ? (`
                                     <div class="goods-header">
 
-                                        <dt class="col-4 pe-0 mb-1">Товар:</dt>
+                                        <dt class="col-4 pe-0 mb-1">Название:</dt>
                                         <dd class="col-8 mb-1">
                                             <select class="form-select" aria-label="Выберите продукт" id="${item.shp_service_name}Select" onchange="window['${item.shp_service_name}HandleSelect']()">
                                                 ${item.Items.map((v, i) => (
@@ -1589,19 +1632,23 @@
                                     </div>
                                     `) : ''}
                                 ${item.Items.length === 1 ? `
-                                    <dt class="col-2 pe-0 mb-1">Выбрано:</dt>
-                                    <dd class="col-10 text-end mb-1 text-nowrap" id="${item.shp_service_name}Description">${item.Items[0].Description}</dd>
+                                    <dt class="col-2 pe-0 mb-1">Название:</dt>
+                                    <dd class="col-10 text-end mb-1 text-nowrap" id="${item.shp_service_name}DescriptionView">${item.Items[0].Description}</dd>
                                 ` : ''}
                                 <dt class="col-4 mb-1">Стоимость:</dt>
                                 <dd class="col-8 text-end mb-1">
-                                    <span id="${item.shp_service_name}OutSum">${item.Items[0].OutSum}</span> ₽
+                                    <span id="${item.shp_service_name}OutSumView">${item.Items[0].OutSum}</span> ₽
                                 </dd>
                                 <dt class="col-6 mb-1 text-nowrap" id="${item.shp_service_name}PeriodTerm" style="display: ${item.Items[0].Period ? 'inline-block' : 'none'};">Период действия:</dt>
                                 <dd class="col-6 text-end mb-1" id="${item.shp_service_name}PeriodValue" style="display: ${item.Items[0].Period ? 'inline-block' : 'none'};">
                                     ${item.Items[0].Period}
                                 </dd>
+                                <dt class="col-6 mb-1 text-nowrap" id="${item.shp_service_name}Recurring" style="display: ${item.Items[0].Recurring ? 'inline-block' : 'none'};">Автопродление:</dt>
+                                <dd class="col-6 text-end mb-1" id="${item.shp_service_name}RecurringValue" style="display: ${item.Items[0].Recurring ? 'inline-block' : 'none'};">
+                                    <i class="bi bi-circle-fill" style="color: #2cc32c; font-size: 16px;"></i>
+                                </dd>
                             </dl>
-                            <p style="margin: 10px 0 28px">
+                            <p style="margin: 10px 0 18px">
                                 ${item.FullDescription}
 
 <!--                                <a href="#faq" data-bs-toggle="modal"-->
@@ -1613,32 +1660,32 @@
 
                             <form id="${item.shp_service_name}Form" method="POST" action="https://auth.robokassa.ru/Merchant/Index.aspx" onsubmit="window['${item.shp_service_name}HandleSubmit'](event)">
                                 <input type="hidden" name="MerchantLogin" value="${item.MerchantLogin}"/>
-                                <input type="hidden" name="OutSum" value="149.9"/>
-                                <input type="hidden" name="shp_codename" value="${item.shp_codename}"/>
+                                <input type="hidden" id="${item.shp_service_name}OutSum" name="OutSum" value="${item.Items[0].OutSum}"/>
+                                <input type="hidden" id="${item.shp_service_name}Receipt" name="Receipt" value=""/>
                                 <input type="hidden" id="${item.shp_service_name}Signature" name="SignatureValue" value=""/>
                                 <input type="hidden" name="Recurring" value="${item.Recurring}"/>
                                 <input type="hidden" name="Culture" value="${item.Culture}"/>
-                                <input id="${item.shp_service_name}EmailHidden" type="hidden" name="shp_user_mail" value="{$user_mail}"/>
-                                <input type="hidden" name="shp_service_name" value="${item.shp_service_name}"/>
+                                <input type="hidden" name="Encoding" value="utf-8"/>
                                 <div class="form-floating">
                                     <input type="email" name="Email" class="form-control" id="${item.shp_service_name}Email"
                                         placeholder="name@gmail.com" required/>
                                     <label for="ytEmail">${item.InputLabel}</label>
                                 </div>
+                                <input type="hidden" id="${item.shp_service_name}ServiceCode" name="shp_service_code" value="${item.Items[0].shp_service_code}"/>
+                                <input type="hidden" name="shp_service_name" value="${item.shp_service_name}"/>
+                                <input id="${item.shp_service_name}EmailHidden" type="hidden" name="shp_user_mail" value=""/>
 
                                 <div class="form-check my-3">
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
                                         required/>
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Я даю согласие на регулярные списания, на обработку
-                                        персональных данных и принимаю условия
-                                        <a href="./docs/offer.pdf">публичной оферты</a>
+                                    <label class="form-check-label" for="flexCheckDefault" style="text-align: left; width: 100%;">
+                                        ${item.OfferText}
                                     </label>
                                 </div>
 
                                 <div class="d-grid gap-2 d-block mb-2" style="margin-top: 24px">
-                                    <button class="btn btn-secondary btn-lg" id="${item.shp_service_name}Submit">
-                                        Подключить
+                                    <button class="btn btn-secondary btn-lg ${item.Disabled ? 'disabled' : 'none'}" id="${item.shp_service_name}Submit">
+                                        ${item.SubmitText}
                                     </button>
                                 </div>
                             </form>
