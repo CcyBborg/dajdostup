@@ -839,7 +839,7 @@
             <div class="header-content">
                 <div class="header-title">
                     <h1>Дай Доступ!</h1>
-                    <p class="title-p m-0">продлеваем подписки</p>
+                    <p class="title-p m-0">магазин цифровой радости</p>
                 </div>
                 <div style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start"
                      id="home-services">
@@ -915,7 +915,7 @@
                 <div>
                     <p class="m-0">
                         Команда <strong>Дай Доступ!</strong> предоставляет доступ к
-                        иностранным подпискам, даже после санкций
+                        иностранным сервисам, <br>даже после санкций
                     </p>
                 </div>
             </div>
@@ -997,13 +997,13 @@
             </div>
         </div>
     </section>
-    <div class="container text-center d-grid gap-2 d-md-block" style="margin-bottom: 10%">
+    <div class="container text-center d-grid gap-2 d-md-block" style="margin-bottom: 74px;">
         <a href="#checkout" class="btn btn-primary btn-lg" data-bs-toggle="modal"
            data-bs-target="#checkout">Подключить
         </a>
     </div>
     <section style="margin-bottom: 100px; display: none;" id="reviews-section">
-        <h2 class="text-center mb-5">Отзывы</h2>
+        <h2 class="text-center mb-4">Отзывы</h2>
         <p id="reviews-number" class="additional-info"></p>
         <div id="reviews-container" class="swiper">
             <ul id="reviews" class="swiper-wrapper"></ul>
@@ -1583,8 +1583,10 @@
                     if (item.Items.length === 1) {
                         document.getElementById(`${item.shp_service_name}DescriptionView`).innerHTML = selected.Description;
                     }
+
                     document.getElementById(`${item.shp_service_name}OutSumView`).innerHTML = selected.OutSum;
 
+                    document.getElementById(`${item.shp_service_name}Description`).value = selected.Description;
                     document.getElementById(`${item.shp_service_name}OutSum`).value = selected.OutSum;
                     document.getElementById(`${item.shp_service_name}ServiceCode`).value = selected.shp_service_code;
 
@@ -1660,14 +1662,16 @@
 
                             <form id="${item.shp_service_name}Form" method="POST" action="https://auth.robokassa.ru/Merchant/Index.aspx" onsubmit="window['${item.shp_service_name}HandleSubmit'](event)">
                                 <input type="hidden" name="MerchantLogin" value="${item.MerchantLogin}"/>
+                                <input type="hidden" id="${item.shp_service_name}Description" name="Description" value="${item.Items[0].Description}"/>
                                 <input type="hidden" id="${item.shp_service_name}OutSum" name="OutSum" value="${item.Items[0].OutSum}"/>
                                 <input type="hidden" id="${item.shp_service_name}Receipt" name="Receipt" value=""/>
                                 <input type="hidden" id="${item.shp_service_name}Signature" name="SignatureValue" value=""/>
+                                <input type="hidden" name="IsTest" value="1"/>
                                 <input type="hidden" name="Recurring" value="${item.Recurring}"/>
                                 <input type="hidden" name="Culture" value="${item.Culture}"/>
                                 <input type="hidden" name="Encoding" value="utf-8"/>
                                 <div class="form-floating">
-                                    <input type="email" name="Email" class="form-control" id="${item.shp_service_name}Email"
+                                    <input type="email" name="EMail" class="form-control" id="${item.shp_service_name}Email"
                                         placeholder="name@gmail.com" required/>
                                     <label for="ytEmail">${item.InputLabel}</label>
                                 </div>
