@@ -1461,11 +1461,11 @@
             const serviceCode = document.getElementById(`${item.shp_service_name}ServiceCode`).value;
 
             let sum = item.Items[0].OutSum;
-            let description = item.Items[0].Description;
+            let description = item.Items[0].Name;
 
             if (item.Items.length > 1) {
                 sum = item.Items[document.getElementById(`${serviceName}Select`).value].OutSum;
-                description = item.Items[document.getElementById(`${serviceName}Select`).value].Description;
+                description = item.Items[document.getElementById(`${serviceName}Select`).value].Name;
             }
 
             const email = document.getElementById(`${serviceName}Email`).value;
@@ -1581,12 +1581,12 @@
                     const selected = item.Items[document.getElementById(`${item.shp_service_name}Select`).value];
 
                     if (item.Items.length === 1) {
-                        document.getElementById(`${item.shp_service_name}DescriptionView`).innerHTML = selected.Description;
+                        document.getElementById(`${item.shp_service_name}NameView`).innerHTML = selected.Name;
                     }
 
                     document.getElementById(`${item.shp_service_name}OutSumView`).innerHTML = selected.OutSum;
 
-                    document.getElementById(`${item.shp_service_name}Description`).value = selected.Description;
+                    document.getElementById(`${item.shp_service_name}Name`).value = selected.Name;
                     document.getElementById(`${item.shp_service_name}OutSum`).value = selected.OutSum;
                     document.getElementById(`${item.shp_service_name}ServiceCode`).value = selected.shp_service_code;
 
@@ -1627,7 +1627,7 @@
                                         <dd class="col-8 mb-1">
                                             <select class="form-select" aria-label="Выберите продукт" id="${item.shp_service_name}Select" onchange="window['${item.shp_service_name}HandleSelect']()">
                                                 ${item.Items.map((v, i) => (
-                    `<option value="${i}" ${i === 0 ? 'selected' : ''}>${v.Period ? `${v.Period} ${v.Description}` : v.Description}</option>`
+                    `<option value="${i}" ${i === 0 ? 'selected' : ''}>${v.Period ? `${v.Period} ${v.Name}` : v.Name}</option>`
                 ))}
                                             </select>
                                         </dd>
@@ -1635,7 +1635,7 @@
                                     `) : ''}
                                 ${item.Items.length === 1 ? `
                                     <dt class="col-2 pe-0 mb-1">Название:</dt>
-                                    <dd class="col-10 text-end mb-1 text-nowrap" id="${item.shp_service_name}DescriptionView">${item.Items[0].Description}</dd>
+                                    <dd class="col-10 text-end mb-1 text-nowrap" id="${item.shp_service_name}NameView">${item.Items[0].Name}</dd>
                                 ` : ''}
                                 <dt class="col-4 mb-1">Стоимость:</dt>
                                 <dd class="col-8 text-end mb-1">
@@ -1662,7 +1662,7 @@
 
                             <form id="${item.shp_service_name}Form" method="POST" action="https://auth.robokassa.ru/Merchant/Index.aspx" onsubmit="window['${item.shp_service_name}HandleSubmit'](event)">
                                 <input type="hidden" name="MerchantLogin" value="${item.MerchantLogin}"/>
-                                <input type="hidden" id="${item.shp_service_name}Description" name="Description" value="${item.Items[0].Description}"/>
+                                <input type="hidden" id="${item.shp_service_name}Name" name="Description" value="${item.Items[0].Name}"/>
                                 <input type="hidden" id="${item.shp_service_name}OutSum" name="OutSum" value="${item.Items[0].OutSum}"/>
                                 <input type="hidden" id="${item.shp_service_name}Receipt" name="Receipt" value=""/>
                                 <input type="hidden" id="${item.shp_service_name}Signature" name="SignatureValue" value=""/>
