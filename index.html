@@ -49,7 +49,7 @@
         }
 
         .modal-content {
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(8px);
             background: rgba(108, 108, 108, 0.32);
             border-radius: 0;
@@ -165,11 +165,11 @@
         .header::before {
             position: absolute;
             z-index: -1;
-            top: -92.5%;
+            top: -142%;
             right: -125%;
             opacity: 0.4;
             width: 350%;
-            height: 350%;
+            height: 450%;
             content: "";
             background: radial-gradient(rgba(25, 25, 28, 0) 50%, #19191c 80%),
             conic-gradient(#614385 0,
@@ -223,6 +223,14 @@
 
         .subscription-img {
             filter: drop-shadow(0px 3.13654px 3.13654px rgba(0, 0, 0, 0.25));
+            margin: 12px;
+            transition: all 0.09s ease-in-out;
+            cursor: pointer;
+        }
+
+        .subscription-img:hover {
+            transform: scale(1.05);
+            /*box-shadow: 0px 0px 7px 0px rgb(254 254 255 / 66%);*/
         }
 
         .subscription-title {
@@ -369,7 +377,11 @@
             position: relative;
         }
 
-        .nav-tabs .nav-link.active::after {
+        .nav-tabs .nav-link img {
+            position: absolute;
+        }
+
+        /* .nav-tabs .nav-link.active::after {
             content: "";
             background-image: url(./icons/triangle.svg);
             background-size: contain;
@@ -378,11 +390,16 @@
             width: 37px;
             height: 34px;
             overflow: visible;
+        } */
+
+        input.form-control,
+        .form-select {
+            background-color: #d9d9d9;
+            border-radius: 10px;
         }
 
-        input.form-control {
-            background: #d9d9d9;
-            border-radius: 10px;
+        .form-floating > .form-select {
+            padding: 1rem 0.75rem;
         }
 
         p.choose-service-title {
@@ -576,9 +593,119 @@
             margin-right: 8px;
         }
 
+        /* Browser emulator */
+        .browser-window {
+            text-align: left;
+            margin: 40px auto 0;
+            width: 800px;
+            display: inline-block;
+            border-radius: 5px;
+            background-color: #313131;
+            box-shadow: 0px 0px 18px 3px rgb(255 190 130 / 31%);
+        }
+
+        .browser-window .top-bar {
+            height: 30px;
+            border-radius: 5px 5px 0 0;
+            border-top: 6px solid #313131;
+            border-bottom: 6px solid #313131;
+            background: #313131;
+            display: flex;
+            align-items: center;
+        }
+
+        .goods-header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 10px;
+            margin-bottom: 13px;
+            /*border-bottom: #00000036 3px solid;*/
+            border-bottom: #00000036 5px dotted;
+        }
+
+        .mini-table {
+            /*border-collapse: collapse;*/
+            border-spacing: 0;
+
+            border-collapse: separate;
+            border: solid #ffffff 3px;
+            border-radius: 12px;
+
+            width: 100%;
+        }
+
+        .mini-table td {
+            border-color: rgba(198, 198, 199, 0.69);
+            border-style: solid;
+            border-width: 1px;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+
+            text-align: center;
+        }
+
+        .mini-table th {
+            border-color: rgba(255, 255, 255, 0.5);
+            border-style: solid;
+            border-width: 1px;
+            font-weight: normal;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+
+
+            text-align: center;
+        }
+
+        .mini-table .tg-0lax {
+            text-align: center;
+            vertical-align: top
+        }
+
+        .browser-window .circle {
+            height: 8px;
+            width: 8px;
+            display: inline-block;
+            border-radius: 50%;
+            background-color: #fff;
+        }
+
+        .browser-window .circles {
+            margin: 5px 11px;
+        }
+
+        .browser-window .circle-red {
+            background-color: #eb5149;
+        }
+
+        .browser-window .circle-green {
+            background-color: #c0ee56;
+        }
+
+        .browser-window .circle-yellow {
+            background-color: #f7cb3c;
+        }
+
+        .browser-window .content {
+            margin: 0;
+            width: 100%;
+            min-height: 50%;
+            display: inline-block;
+            border-radius: 0 0 5px 5px;
+            background-color: #313131;
+        }
+
         @media (max-width: 600px) {
             p {
                 font-size: 16px;
+            }
+
+            .browser-window {
+                width: 100%;
+                height: auto;
             }
 
             .header .bi-chevron-double-down {
@@ -601,7 +728,7 @@
 
             .modal-header {
                 top: 0;
-                margin-top: 15px!important;
+                margin-top: 15px !important;
                 height: 68px;
             }
 
@@ -614,6 +741,16 @@
                 bottom: 98px;
                 width: calc(100% - 68px);
                 left: 34px;
+            }
+
+            #servicesTab .nav-link {
+                width: 76px;
+                height: 76px;
+                position: relative;
+            }
+
+            #servicesTab .nav-link img {
+                width: 74%;
             }
         }
 
@@ -673,6 +810,65 @@
                 padding: 30px;
             }
         }
+
+
+        .iphone-x {
+            position: relative;
+            margin: 30px auto;
+            width: 312px;
+            height: 656px;
+            background-color: #1f1d1d;
+            border-radius: 40px;
+            border: 8px solid #1f1d1d;
+            /*box-shadow: none;*/
+            overflow: hidden;
+            box-shadow: 0px 0px 13px 3px rgb(236 156 82 / 24%);
+        }
+
+
+        .iphone-x:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .iphone-x:before {
+            top: -2px;
+            width: 56%;
+            height: 30px;
+            background-color: #1f1d1d;
+            border-radius: 0px 0px 40px 40px;
+        }
+
+        .iphone-x i,
+        .iphone-x b,
+        .iphone-x s,
+        .iphone-x span {
+            position: absolute;
+            display: block;
+            color: transparent;
+        }
+
+        .iphone-x .speaker {
+            top: 0px;
+            left: 50%;
+            transform: translate(-50%, 6px);
+            height: 8px;
+            width: 15%;
+            background-color: rgba(242, 242, 242, 0.2);
+            border-radius: 8px;
+        }
+
+        .iphone-x b {
+            /*left: 10%;*/
+            top: 0px;
+            transform: translate(180px, 4px);
+            width: 12px;
+            height: 12px;
+            background-color: rgba(242, 242, 242, 0.2);
+            border-radius: 12px;
+        }
     </style>
 </head>
 
@@ -683,29 +879,57 @@
             <div class="header-content">
                 <div class="header-title">
                     <h1>Дай Доступ!</h1>
-                    <p class="title-p m-0">продлеваем подписки</p>
+                    <p class="title-p m-0">магазин цифровых радостей</p>
                 </div>
-
-                <ul style="margin: 0 0 0">
-                    <li class="d-flex align-items-center mb-4 mt-4 flex-row">
-                        <div class="me-3">
-                            <img class="subscription-img" src="./icons/yt.svg" width="75"/>
-                        </div>
-                        <div class="text-md-end" style="margin-top: 4px">
-                            <div class="subscription-title">YouTube Premium</div>
-                            <div class="subscription-price">149 &#x20bd; / месяц</div>
-                        </div>
-                    </li>
-                    <li class="d-flex align-items-center mb-4 mt-4 flex-row">
-                        <div class="me-3">
-                            <img class="subscription-img" src="./icons/spoty.svg" width="75"/>
-                        </div>
-                        <div class="text-md-end" style="margin-top: 4px">
-                            <div class="subscription-title">Spotify Premium</div>
-                            <div class="subscription-price">1499 &#x20bd; / год</div>
-                        </div>
-                    </li>
-                </ul>
+                <div style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start"
+                     id="home-services">
+                    <div style="display: flex; flex-direction: row">
+                        <img class="subscription-img" src="./icons/yt.svg" width="80" data-service="yt"/>
+                        <img class="subscription-img" src="./icons/discord.svg" width="75" data-service="discord"/>
+                    </div>
+                    <div style="display: flex; flex-direction: row">
+                        <img class="subscription-img" src="./icons/fortnite.svg" width="80" data-service="fortnite"/>
+                        <img class="subscription-img" src="./icons/spoty.svg" width="77" data-service="spoty"/>
+                    </div>
+                </div>
+                <!--                <ul style="margin: 0 0 0">-->
+                <!--                    <li class="d-flex align-items-center mb-4 mt-4 flex-row">-->
+                <!--                        <div class="me-3">-->
+                <!--                            <img class="subscription-img" src="./icons/yt.svg" width="75"/>-->
+                <!--                        </div>-->
+                <!--                        <div class="text-md-end" style="margin-top: 4px">-->
+                <!--                            <div class="subscription-title">YouTube Premium</div>-->
+                <!--                            <div class="subscription-price">149 &#x20bd; / месяц</div>-->
+                <!--                        </div>-->
+                <!--                    </li>-->
+                <!--                    <li class="d-flex align-items-center mb-4 mt-4 flex-row">-->
+                <!--                        <div class="me-3">-->
+                <!--                            <img class="subscription-img" src="./icons/fortnite.svg" width="75"/>-->
+                <!--                        </div>-->
+                <!--                        <div class="text-md-end" style="margin-top: 4px">-->
+                <!--                            <div class="subscription-title">Fortnite</div>-->
+                <!--                            <div class="subscription-price">от 349 &#x20bd;</div>-->
+                <!--                        </div>-->
+                <!--                    </li>-->
+                <!--                    <li class="d-flex align-items-center mb-4 mt-4 flex-row">-->
+                <!--                        <div class="me-3">-->
+                <!--                            <img class="subscription-img" src="./icons/spoty.svg" width="75"/>-->
+                <!--                        </div>-->
+                <!--                        <div class="text-md-end" style="margin-top: 4px">-->
+                <!--                            <div class="subscription-title">Spotify Premium</div>-->
+                <!--                            <div class="subscription-price">1499 &#x20bd; / год</div>-->
+                <!--                        </div>-->
+                <!--                    </li>-->
+                <!--                    <li class="d-flex align-items-center mb-4 mt-4 flex-row">-->
+                <!--                        <div class="me-3">-->
+                <!--                            <img class="subscription-img" src="./icons/discord.svg" width="75"/>-->
+                <!--                        </div>-->
+                <!--                        <div class="text-md-end" style="margin-top: 4px">-->
+                <!--                            <div class="subscription-title">Discord Nitro</div>-->
+                <!--                            <div class="subscription-price">от 999 &#x20bd; / год</div>-->
+                <!--                        </div>-->
+                <!--                    </li>-->
+                <!--                </ul>-->
             </div>
             <div class="d-grid gap-2 d-md-block text-center" id="main-button">
                 <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#checkout">
@@ -719,9 +943,9 @@
 
     <section>
         <div class="container">
-            <h1 class="about-title text-md-center" style="margin-bottom: 56px">
+            <h2 class="about-title text-md-center" style="margin-bottom: 56px">
                 О нас
-            </h1>
+            </h2>
             <div class="d-flex align-items-center" style="max-width: 400px; margin: 32px 0 32px 0">
                 <div class="me-3">
                     <div class="logo-wrapper">
@@ -731,7 +955,7 @@
                 <div>
                     <p class="m-0">
                         Команда <strong>Дай Доступ!</strong> предоставляет доступ к
-                        иностранным подпискам, даже после санкций
+                        иностранным сервисам, <br>даже после санкций
                     </p>
                 </div>
             </div>
@@ -742,7 +966,7 @@
                             <img src="./icons/features-1.svg" width="66"/>
                         </div>
                     </div>
-                    <p>Безопасная оплата через оффициальную эквайринг систему</p>
+                    <p>Безопасная оплата через систему Robokassa</p>
                 </li>
                 <li class="col-md-6 d-flex align-items-center justify-content-md-end mb-4 mb-md-4 p-0">
                     <div class="me-3">
@@ -751,17 +975,18 @@
                         </div>
                     </div>
                     <p>
-                        Подключение подписки происходит мгновенно,
-                        а&nbsp;продление&nbsp;&mdash; автоматически
+                        Активация происходит сразу после оплаты, без очередей
                     </p>
                 </li>
                 <li class="col-md-6 d-flex align-items-center mb-4 mb-md-4 p-0">
                     <div class="me-3">
                         <div class="features-icon-wrapper">
-                            <img src="./icons/features-3.svg" width="44" height="44"/>
+                            <img src="./icons/features-3.svg" width="54"/>
                         </div>
                     </div>
-                    <p>Вы всегда можете отменить подписку самостоятельно</p>
+                    <p>Заботливая <a href="https://t.me/kingOfSubs" title="Король Подписок" target="_blank"
+                          data-saferedirecturl="https://t.me/kingOfSubs" style="color: white">поддержка</a><br/>
+                        с 10 утра и до 23 вечера</p>
                 </li>
                 <li class="col-md-6 d-flex align-items-center justify-content-md-end mb-4 mb-md-4 p-0">
                     <div class="me-3">
@@ -781,14 +1006,46 @@
             </ul>
         </div>
     </section>
-    <div class="container text-center d-grid gap-2 d-md-block" style="margin-bottom: 10%">
+    <section>
+        <div class="container mb-5">
+            <h2 class="text-center mb-3">Активатор</h2>
+
+            <p class="text-center mb-2">Наша система автоматических активаций.<br/>
+                Тут и происходит вся магия, смотрите:</p>
+            <div class='browser-window' style="display:none;">
+                <div class='top-bar'>
+                    <div class='circles'>
+                        <div class="circle circle-red"></div>
+                        <div class="circle circle-yellow"></div>
+                        <div class="circle circle-green"></div>
+                    </div>
+                </div>
+                <div class='content'>
+                    <video id="demo-video" autoplay loop muted playsinline
+                           style="pointer-events: none; max-width: 100%;">
+                        <source src="./static/ddemo-mac.mp4" type="video/mp4"/>
+                    </video>
+                </div>
+            </div>
+
+            <div class="iphone-x" style="display: none;">
+                <i class="speaker">Speaker</i>
+                <b>Camera</b>
+
+                <video autoplay loop muted playsinline style="max-width: 100%;">
+                    <source src="./static/ddemo-mob.mp4" type="video/mp4"/>
+                </video>
+            </div>
+        </div>
+    </section>
+    <div class="container text-center d-grid gap-2 d-md-block" style="margin-bottom: 74px;">
         <a href="#checkout" class="btn btn-primary btn-lg" data-bs-toggle="modal"
            data-bs-target="#checkout">Подключить
         </a>
     </div>
     <section style="margin-bottom: 100px; display: none;" id="reviews-section">
-        <h2 class="text-center mb-5">Отзывы</h2>
-        <p class="additional-info">1000 довольных клиентов</p>
+        <h2 class="text-center mb-4">Отзывы</h2>
+        <p id="reviews-number" class="additional-info"></p>
         <div id="reviews-container" class="swiper">
             <ul id="reviews" class="swiper-wrapper"></ul>
         </div>
@@ -837,7 +1094,7 @@
                     <li class="mb-1">
                         <a href="https://t.me/+JlzA96yMytYxYmEy" title="Чат в Телеграм" target="_blank"
                            data-saferedirecturl="https://t.me/+JlzA96yMytYxYmEy">
-                            <img src="./icons/tg.svg" alt="telegram" width="22" height="22" style="border: 0"
+                            <img src="./icons/tg.svg" alt="Чат в Телеграм" width="22" height="22" style="border: 0"
                                  class="CToWUd" data-bit="iit"/>
                         </a>
                     </li>
@@ -927,22 +1184,22 @@
                         <h2 class="accordion-header" id="general_heading3">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#general3" aria-expanded="false" aria-controls="general3">
-                                Как подключить подписку?
+                                Как получить товар?
                             </button>
                         </h2>
                         <div id="general3" class="accordion-collapse collapse" aria-labelledby="general_heading3"
                              data-bs-parent="#generalQuestions">
                             <div class="accordion-body">
                                 <div style="padding-bottom: 6px">
-                                    1. Перейти на главную страницу сайта<br/>
+                                    1. Перейдите на главную страницу сайта<br/>
                                 </div>
                                 <div style="padding-bottom: 6px">
-                                    2. Выбрать желаемый сервис<br/>
+                                    2. Выберите желаемый сервис и заполните почту<br/>
                                 </div>
                                 <div style="padding-bottom: 6px">
-                                    3. Приобрести подписку<br/>
+                                    3. Оплатите и дождитесь окончания активации<br/>
                                 </div>
-                                4. Наслаждаться любимым контентом!<br/>
+                                4. Наслаждайтесь любимым сервисом!<br/>
 
                                 <!--                                <br/><br/>-->
 
@@ -950,24 +1207,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="general_heading4">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#general4" aria-expanded="false" aria-controls="general4">
-                                Как отключить подписку?
-                            </button>
-                        </h2>
-                        <div id="general4" class="accordion-collapse collapse" aria-labelledby="general_heading4"
-                             data-bs-parent="#generalQuestions">
-                            <div class="accordion-body">
-                                В любом письме от <strong>info@ddostup.ru</strong> нажмите
-                                на ссылку <strong>«Отменить подписку на сервис»</strong>
-                                <br/><br/>
-                                После отключения, доступ к сервису сохранится до конца
-                                оплаченного периода.
-                            </div>
-                        </div>
-                    </div>
+
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="general_heading5">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -1001,7 +1241,7 @@
                     <!--                        </div>-->
                     <!--                    </div>-->
                 </div>
-                <p class="choose-service-title">Подписка YouTube</p>
+                <p class="choose-service-title">YouTube Premium</p>
                 <div class="accordion" id="ytQuestions">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="yt_heading1">
@@ -1061,7 +1301,7 @@
                                 1. Проверьте папку <strong>Спам</strong>, письмо может быть
                                 там<br/>
                                 2. Напишите
-                                <a href="https://t.me/kingOfSubs" title="telegram" target="_blank"
+                                <a href="https://t.me/kingOfSubs" title="Король Подписок" target="_blank"
                                    data-saferedirecturl="https://t.me/kingOfSubs" style="color: #e3bcff">нам</a>
                                 — мы отправим письмо повторно
                             </div>
@@ -1093,14 +1333,123 @@
                             </div>
                         </div>
                     </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="yt_heading5">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#yt5" aria-expanded="false" aria-controls="yt5">
+                                Как отключить подписку?
+                            </button>
+                        </h2>
+                        <div id="yt5" class="accordion-collapse collapse" aria-labelledby="yt_heading5"
+                             data-bs-parent="#ytQuestions">
+                            <div class="accordion-body">
+                                Мы напоминаем о продлении за 3 дня до автоматического списания.
+                                В письме с напоминанием от <strong>info@ddostup.ru</strong> нажмите
+                                на ссылку <strong>«Отменить подписку на сервис»</strong> чтобы отключить подписку.
+                                <br/><br/>
+                                После отключения, доступ к сервису сохранится до конца оплаченного периода.
+                                Вы всегда можете восстановить подписку, просто оплатив ее еще раз на сайте.
+                                <br/><br/>
+                                Если вы хотите отключить подписку раньше — просто напишите
+                                <a href="https://t.me/kingOfSubs" title="Король Подписок" target="_blank"
+                                   data-saferedirecturl="https://t.me/kingOfSubs" style="color: #e3bcff">нам</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <p class="choose-service-title">Подписка Spotify</p>
+                <p class="choose-service-title">Товары Fortnite</p>
+                <div class="accordion" id="fortniteQuestions">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="fortnite_heading1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#fortnite1" aria-expanded="true" aria-controls="fortnite1">
+                                Что такое товары Fortnite?
+                            </button>
+                        </h2>
+                        <div id="fortnite1" class="accordion-collapse collapse" aria-labelledby="fortnite_heading1"
+                             data-bs-parent="#fortniteQuestions">
+                            <div class="accordion-body">
+                                <div style="padding-bottom: 6px">
+                                    <strong>Внутриигровая валюта игры Fortnite.</strong><br/>
+                                </div>
+                                Все что делает игру Fortnie
+                                еще интереснее стало снова доступно к покупке за 5 минут. <br/><br/>
+
+                                <div style="padding-bottom: 6px">
+                                    <strong>Напомним, что</strong><br/>
+                                </div>
+
+                                • В-Баксы — это основная валюта игры<br/>
+                                • Наборы — это уникальные предметы в ограниченном количестве<br/>
+                                • Подписка CREW — это доступ к ежемесячным бонусам<br/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="fortnite_heading2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#fortnite2" aria-expanded="true" aria-controls="fortnite2">
+                                Как подготовиться к активации?
+                            </button>
+                        </h2>
+                        <div id="fortnite2" class="accordion-collapse collapse" aria-labelledby="fortnite_heading2"
+                             data-bs-parent="#fortniteQuestions">
+                            <div class="accordion-body">
+                                <div style="padding-bottom: 10px">
+                                    <strong>Просто привяжите аккаунт Xbox к Epic:</strong><br/>
+                                </div>
+                                <iframe width="100%" height="315" src="https://www.youtube.com/embed/_kxyM4Dj-fQ"
+                                        title="YouTube video player" frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                                <br/><br/>
+                                <div style="padding-bottom: 6px">
+                                    <strong>Если у вас еще нет аккаунта Xbox:</strong><br/>
+                                </div>
+                                Вы можете легко создать аккаунт Xbox самостоятельно и привязать его к своему аккаунту
+                                Epic Games.
+                                Если у вас возникнут вопросы или проблемы — смело пишите <a
+                                    href="https://t.me/kingOfSubs" title="Король Подписок" target="_blank"
+                                    data-saferedirecturl="https://t.me/kingOfSubs" style="color: #e3bcff">нам</a>. Мы
+                                обязательно постараемся помочь.<br/><br/>
+
+                                <div style="padding-bottom: 6px">
+                                    <strong>Для чего нужен аккаунт Xbox:</strong><br/>
+                                </div>
+                                Мы приобретаем товары в оффициальном магазине Fortnite через Xbox — это самый безопасный
+                                вариант.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="fortnite_heading3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#fortnite3" aria-expanded="true" aria-controls="fortnite3">
+                                Поддерживаемые платформы
+                            </button>
+                        </h2>
+                        <div id="fortnite3" class="accordion-collapse collapse" aria-labelledby="fortnite_heading3"
+                             data-bs-parent="#fortniteQuestions">
+                            <div class="accordion-body">
+                                <div style="padding-bottom: 6px">
+                                    <strong>Поддерживаются PC, PlayStation, Xbox и Android</strong><br/>
+                                    подробнее об <a
+                                        href="https://www.epicgames.com/fortnite/ru/news/v-bucks-purchased-on-playstation-join-fortnite-shared-wallet?sessionInvalidated=true"
+                                        title="Король Подписок" target="_blank"
+                                        data-saferedirecturl="https://www.epicgames.com/fortnite/ru/news/v-bucks-purchased-on-playstation-join-fortnite-shared-wallet?sessionInvalidated=true"
+                                        style="color: #e3bcff">общем кошельке</a><br/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="choose-service-title">Spotify Premium</p>
                 <div class="accordion" id="spotyQuestions">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="spoty_heading1">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#spoty1" aria-expanded="true" aria-controls="spoty1">
-                                Что это за подписка?
+                                Что такое Spotify Premium?
                             </button>
                         </h2>
                         <div id="spoty1" class="accordion-collapse collapse" aria-labelledby="spoty_heading1"
@@ -1120,16 +1469,130 @@
                         <h2 class="accordion-header" id="spoty_heading2">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#spoty2" aria-expanded="true" aria-controls="spoty2">
-                                Как предоставляется доступ?
+                                Как подготовиться к активации?
                             </button>
                         </h2>
                         <div id="spoty2" class="accordion-collapse collapse" aria-labelledby="spoty_heading2"
                              data-bs-parent="#spotyQuestions">
                             <div class="accordion-body">
-                                Сразу после оплаты вы попадете на страницу активации подписки.
-                                Просто выполните вход в свой аккаунт, нажмите кнопку «Готово» и ожидайте окончания
-                                активации.
-                                Мы сохраняем конфиденциальность ваших данных в соответствии с законодательством РФ.
+                                <div style="padding-bottom: 6px">
+                                    <strong>Выполните три простых шага:</strong><br/>
+                                </div>
+                                1. Загрузите приложение Spotify на свой телефон или компьютер<br/>
+                                2. Войдите в аккаунт<br/>
+                                3. Проверьте что на аккаунте стоит Бесплатная подписка<br/>
+                                <br/>
+                                Если появился вопрос — пожалуйста напишите <a
+                                    href="https://t.me/kingOfSubs" title="Король Подписок" target="_blank"
+                                    data-saferedirecturl="https://t.me/kingOfSubs" style="color: #e3bcff">нам</a>, мы
+                                обязательно поможем его решить
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="choose-service-title">Discord Nitro</p>
+                <div class="accordion" id="discordQuestions">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="discord_heading1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#discord1" aria-expanded="true" aria-controls="discord1">
+                                Что такое Discord Nitro?
+                            </button>
+                        </h2>
+                        <div id="discord1" class="accordion-collapse collapse" aria-labelledby="discord_heading1"
+                             data-bs-parent="#discordQuestions">
+                            <div class="accordion-body">
+                                <div style="padding-bottom: 6px">
+                                    <strong>Полноценная премиум-подписка от сервиса Discord.</strong><br/>
+                                </div>
+                                Анимированные эмодзи, больший объем файлов для загрузки, HD стриминг, более длинные
+                                сообщения
+                                — что еще нужно для счастья?
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="discord_heading2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#discord2" aria-expanded="true" aria-controls="discord2">
+                                Как подготовиться к активации?
+                            </button>
+                        </h2>
+                        <div id="discord2" class="accordion-collapse collapse" aria-labelledby="discord_heading2"
+                             data-bs-parent="#discordQuestions">
+                            <div class="accordion-body">
+                                <div style="padding-bottom: 6px">
+                                    <strong>Убедитесь что у вас нет активной подписки Nitro.</strong><br/>
+                                </div>
+                                Если появился вопрос — пожалуйста напишите <a
+                                    href="https://t.me/kingOfSubs" title="Король Подписок" target="_blank"
+                                    data-saferedirecturl="https://t.me/kingOfSubs" style="color: #e3bcff">нам</a>, мы
+                                обязательно поможем его решить
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="discord_heading3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#discord3" aria-expanded="true" aria-controls="discord3">
+                                Nitro Classic или Nitro Full?
+                            </button>
+                        </h2>
+                        <div id="discord3" class="accordion-collapse collapse" aria-labelledby="discord_heading3"
+                             data-bs-parent="#discordQuestions">
+                            <div class="accordion-body">
+                                <div style="padding-bottom: 16px">
+                                    <strong>Расписали разницу в табличке:</strong><br/>
+                                </div>
+                                <table class="mini-table">
+                                    <thead>
+                                    <tr>
+                                        <th class="tg-0lax"></th>
+                                        <th class="tg-0lax"><strong>Classic</strong></th>
+                                        <th class="tg-0lax"><strong>Full</strong></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="tg-0lax"><strong>Анимированные эмоджи</strong></td>
+                                        <td class="tg-0lax">✓</td>
+                                        <td class="tg-0lax">✓</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tg-0lax"><strong>Объем загрзуки</strong></td>
+                                        <td class="tg-0lax">50MB</td>
+                                        <td class="tg-0lax">100MB</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tg-0lax"><strong>HD стриминг</strong></td>
+                                        <td class="tg-0lax">1080p, 60fps</td>
+                                        <td class="tg-0lax">4K, 60fps</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tg-0lax"><strong>Доступ к Активностям</strong></td>
+                                        <td class="tg-0lax">⨉</td>
+                                        <td class="tg-0lax">✓</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tg-0lax"><strong>2 Буста</strong></td>
+                                        <td class="tg-0lax">⨉</td>
+                                        <td class="tg-0lax">✓</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tg-0lax"><strong>Длинные сообщения</strong></td>
+                                        <td class="tg-0lax">⨉</td>
+                                        <td class="tg-0lax">✓</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tg-0lax"><strong>Значок Nitro</strong></td>
+                                        <td class="tg-0lax">✓</td>
+                                        <td class="tg-0lax">✓</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -1144,155 +1607,15 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header container">
-                <!--                    <h2 class="modal-title text-capitalize mt-3" id="exampleModalLabel">Чекаут</h2>-->
                 <button type="button" style="z-index: 999999" class="btn-close btn-close-white"
                         data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="max-width: 600px; margin: 0 auto">
                 <p class="choose-service-title">Выберите сервис</p>
-
-                <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
-                    <li class="nav-item me-4" role="presentation">
-                        <button class="nav-link active" id="ytTab" data-bs-toggle="tab"
-                                data-bs-target="#home-tab-pane" type="button" role="tab"
-                                aria-controls="home-tab-pane"
-                                aria-selected="true">
-                            <img src="./icons/yt.svg" width="70" height="48"/>
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="spotyTab" data-bs-toggle="tab"
-                                data-bs-target="#profile-tab-pane" type="button" role="tab"
-                                aria-controls="profile-tab-pane" aria-selected="false">
-                            <img src="./icons/spoty.svg" width="64" height="66"/>
-                        </button>
-                    </li>
+                <ul class="nav nav-tabs justify-content-md-center justify-content-between flex-nowrap" id="servicesTab"
+                    role="tablist">
                 </ul>
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel"
-                         aria-labelledby="ytTab" tabindex="0">
-                        <!--                            <ul class="switcher" data-switcher="yt">-->
-                        <!--                                <button class="switcher-btn active month" data-switcher-btn="monthly">-->
-                        <!--                                    Подписка-->
-                        <!--                                </button>-->
-                        <!--                                <button class="switcher-btn annual" data-switcher-btn="single" disabled>-->
-                        <!--                                    Один раз-->
-                        <!--                                </button>-->
-                        <!--                            </ul>-->
-                        <dl class="row mb-0">
-                            <dt class="col-6 mb-1">Подписка:</dt>
-                            <dd class="col-6 text-end mb-1">YouTube Premium</dd>
-                            <dt class="col-6 mb-1">Стоимость:</dt>
-                            <dd class="col-6 text-end mb-1" id="ytPrice">
-                                149 ₽ / месяц
-                            </dd>
-                        </dl>
-                        <p style="margin: 10px 0 28px">
-                            Просто укажите вашу почту от аккаунта YouTube и получите доступ.
-                            Доступ автоматически продлевается каждый месяц.
-
-                            <a href="#faq" data-bs-toggle="modal"
-                               data-target="#faq"
-                               style="color: #4d4d4d">
-                                Узнать больше о подписке на странице FAQ
-                            </a>
-                        </p>
-
-                        <form id="ytForm" method="POST" action="https://auth.robokassa.ru/Merchant/Index.aspx">
-                            <input type="hidden" name="MerchantLogin" value="ddostup"/>
-                            <input type="hidden" name="OutSum" value="149.9"/>
-                            <input type="hidden" name="Description" value="Доступ к YouTube Premium."/>
-                            <input type="hidden" id="ytSignature" name="SignatureValue" value=""/>
-                            <input type="hidden" name="Recurring" value="true" id="ytRecurring"/>
-                            <input type="hidden" name="Culture" value="ru"/>
-                            <!--                            <input type="hidden" name="IsTest" value="1">-->
-                            <input id="hiddenYtEmail" type="hidden" name="shp_user_mail" value="{$user_mail}"/>
-                            <input type="hidden" name="shp_service_name" value="yt"/>
-                            <div class="form-floating">
-                                <input type="email" name="Email" class="form-control" id="ytEmail"
-                                       placeholder="name@gmail.com" required/>
-                                <label for="ytEmail">Почта от аккаунта YouTube</label>
-                            </div>
-
-                            <div class="form-check my-3">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
-                                       required/>
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Я даю согласие на регулярные списания, на обработку
-                                    персональных данных и принимаю условия
-                                    <a href="./docs/offer.pdf">публичной оферты</a>
-                                </label>
-                            </div>
-
-                            <div class="d-grid gap-2 d-block mb-2" style="margin-top: 24px">
-                                <button class="btn btn-secondary btn-lg" id="submitYt">
-                                    Подключить
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="spotyTab"
-                         tabindex="0">
-                        <dl class="row mb-0">
-                            <dt class="col-6 mb-1">Подписка:</dt>
-                            <dd class="col-6 text-end mb-1">Spotify Premium</dd>
-                            <dt class="col-6 mb-1">Стоимость:</dt>
-                            <dd class="col-6 text-end mb-1">1499 ₽ / год</dd>
-                        </dl>
-                        <p style="margin: 10px 0 36px">
-                            Просто укажите почту для входа в Spotify и получите доступ.
-                            Перед активацией на аккаунте должна быть Free подписка.
-                            <a href="https://t.me/kingOfSubs" title="telegram" target="_blank"
-                               data-saferedirecturl="https://t.me/kingOfSubs" style="color: #4d4d4d">
-                                Напишите нам</a>,
-                            если у вас не получается войти в свой аккаунт.
-
-                            <a href="#faq" data-bs-toggle="modal"
-                               data-target="#faq"
-                               style="color: #4d4d4d">
-                                Узнать больше о подписке на странице FAQ
-                            </a>
-                        </p>
-                        <form id="spotyForm" method="POST" action="https://auth.robokassa.ru/Merchant/Index.aspx">
-                            <input type="hidden" name="MerchantLogin" value="ddostup"/>
-                            <input type="hidden" name="OutSum" value="1499.9"/>
-                            <input type="hidden" name="Description" value="Доступ к Spotify Premium."/>
-                            <input type="hidden" id="spotySignature" name="SignatureValue" value=""/>
-                            <input type="hidden" name="Recurring" value="false" id="spotyRecurring"/>
-                            <input type="hidden" name="Culture" value="ru"/>
-                            <!--                            <input type="hidden" name="IsTest" value="1">-->
-                            <input id="hiddenSpotyEmail" type="hidden" name="shp_user_mail" value="{$user_mail}"/>
-                            <input type="hidden" name="shp_service_name" value="spoty"/>
-
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="spotyEmail"
-                                       placeholder="name@example.com" required>
-                                <label for="spotyEmail">Почта от аккаунта Spotify</label>
-                            </div>
-
-                            <!--                            <div class="form-floating" style="margin-bottom: 43px;">-->
-                            <!--                                <input type="password" class="form-control" id="spotyPassword"-->
-                            <!--                                       placeholder="name@example.com" required>-->
-                            <!--                                <label for="spotyPassword">Пароль от аккаунта Spotify</label>-->
-                            <!--                            </div>-->
-
-                            <div class="form-check my-3">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2"
-                                       required/>
-                                <label class="form-check-label" for="flexCheckDefault2">
-                                    Я даю согласие на обработку
-                                    персональных данных и принимаю условия
-                                    <a href="./docs/offer.pdf">публичной оферты</a>
-                                </label>
-                            </div>
-
-                            <div class="d-grid gap-2 d-block">
-                                <button class="btn btn-secondary btn-lg mb-2" id="submitSpoty">Подключить</button>
-                            </div>
-                        </form>
-
-
-                    </div>
+                <div class="tab-content" id="servicesTabContent">
                 </div>
             </div>
         </div>
@@ -1349,19 +1672,14 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script>
-    function switcherPostProcess(el) {
-        if (el.getAttribute("data-switcher") === "yt") {
-            if (el.querySelector('.active[data-switcher-btn="monthly"]')) {
-                document.getElementById("ytPrice").innerHTML = "149 ₽ / месяц";
-                document.getElementById("ytRecurring").value = "true";
-            } else {
-                document.getElementById("ytPrice").innerHTML = "149 ₽";
-                document.getElementById("ytRecurring").value = "false";
-            }
-        }
-    }
-
     (function () {
+        const video = document.getElementById('demo-video');
+        if (screen.width < 760) {
+            document.querySelector('.iphone-x').style.display = 'block';
+        } else {
+            document.querySelector('.browser-window').style.display = 'block';
+        }
+
         if (window.location.hash) {
             document
                 .getElementById("checkout")
@@ -1383,66 +1701,76 @@
             ).show();
         }
 
-        document.getElementById("ytForm").onsubmit = function (e) {
-            const email = document.getElementById("ytEmail").value;
-            document.getElementById("submitYt").innerHTML = `
+        const onServiceSubmit = item => e => {
+            e.preventDefault();
+            console.log(e);
+            const serviceName = item.shp_service_name;
+            const serviceCode = document.getElementById(`${item.shp_service_name}ServiceCode`).value;
+
+            let sum = item.Items[0].OutSum;
+            let description = item.Items[0].Name;
+
+            if (item.Items.length > 1) {
+                sum = item.Items[document.getElementById(`${serviceName}Select`).value].OutSum;
+                description = item.Items[document.getElementById(`${serviceName}Select`).value].Name;
+            }
+
+            const email = document.getElementById(`${serviceName}Email`).value;
+            document.getElementById(`${serviceName}Submit`).innerHTML = `
                     <span class="spinner-border spinner-border-lg mt-2" role="status" aria-hidden="true"></span>
                     <span class="visually-hidden">Loading...</span>
                 `;
 
-            document.getElementById("submitYt").classList.add("disabled");
+            document.getElementById(`${serviceName}Submit`).classList.add("disabled");
+
+
             axios
                 .get(
-                    `https://activations.ddostup.ru/get-sign?out_sum=149.9&shp_service_name=yt&shp_user_mail=${email}`
+                    `https://activations.ddostup.ru/get-receipt?description=${description}&out_sum=${sum}`
                 )
                 .then((response) => {
-                    document.getElementById("hiddenYtEmail").value = email;
-                    document.getElementById("ytSignature").value = response.data.sign;
+                    let receipt = response.data.receipt;
+                    document.getElementById(`${serviceName}Receipt`).value = receipt;
+                    axios
+                        .post(
+                            `https://activations.ddostup.ru/get-sign`, {
+                                "out_sum": `${sum}`,
+                                "receipt": `${receipt}`,
+                                "shp_service_code": `${serviceCode}`,
+                                "shp_service_name": `${serviceName}`,
+                                "shp_user_mail": `${email}`
+                            }
+                        )
+                        .then((response) => {
+                            document.getElementById(`${serviceName}EmailHidden`).value = email;
+                            document.getElementById(`${serviceName}Signature`).value = response.data.sign;
 
-                    e.target.submit();
+                            e.target.submit();
+                        });
+
                 });
-            e.preventDefault();
+
+
+        }
+
+        const handleServiceOpen = (event) => {
+            const service = event.target.getAttribute("data-service");
+            if (service) {
+                event.preventDefault();
+
+                new bootstrap.Modal(
+                    document.getElementById("checkout")
+                ).show();
+
+                document.getElementById(`${service}Tab`).click();
+            }
         };
-
-        document.getElementById("spotyForm").onsubmit = function (e) {
-            const email = document.getElementById("spotyEmail").value;
-            document.getElementById("submitSpoty").innerHTML = `
-                    <span class="spinner-border spinner-border-lg mt-2" role="status" aria-hidden="true"></span>
-                    <span class="visually-hidden">Loading...</span>
-                `;
-
-            document.getElementById("submitSpoty").classList.add("disabled");
-            axios
-                .get(
-                    `https://activations.ddostup.ru/get-sign?out_sum=1499.9&shp_service_name=spoty&shp_user_mail=${email}`
-                )
-                .then((response) => {
-                    document.getElementById("hiddenSpotyEmail").value = email;
-                    document.getElementById("spotySignature").value = response.data.sign;
-
-                    e.target.submit();
-                });
-            e.preventDefault();
-        };
-
-        // document
-        //     .querySelector(".switcher")
-        //     .addEventListener("click", (event) => {
-        //         if (event.target.classList.contains("switcher-btn")) {
-        //             event.currentTarget
-        //                 .querySelector(".switcher-btn.active")
-        //                 .classList.remove("active");
-        //             event.target.classList.add("active");
-        //
-        //             switcherPostProcess(event.currentTarget);
-        //         }
-        //     });
 
         axios
             .get("https://activations.ddostup.ru/get-reviews/")
             .then((response) => {
                 const commentsElements = [];
-                for (const comment of JSON.parse(response.data)) {
+                for (const comment of response.data.reviews) {
                     commentsElements.push(
                         `
                     <li class="review-card swiper-slide">
@@ -1461,29 +1789,164 @@
                 document.getElementById("reviews").innerHTML =
                     commentsElements.join("");
 
+                document.getElementById("reviews-number").innerHTML =
+                    `${response.data.number} довольных клиентов`;
+
                 document.getElementById('reviews-section').style.display = 'block';
 
                 document.getElementById("reviews").addEventListener(
                     "click",
-                    (event) => {
-                        const service = event.target.getAttribute("data-service");
-                        if (service) {
-                            event.preventDefault();
-
-                            new bootstrap.Modal(
-                                document.getElementById("checkout")
-                            ).show();
-
-                            if (service === "spoty") {
-                                document.getElementById("spotyTab").click();
-                            } else {
-                                document.getElementById("ytTab").click();
-                            }
-                        }
-                    },
+                    handleServiceOpen,
                     true
                 );
             });
+
+        document.getElementById("home-services").addEventListener("click", handleServiceOpen, true);
+
+        axios
+            .get("https://activations.ddostup.ru/get-goods/").then(res => {
+            const tabList = document.getElementById('servicesTab');
+            const tabContent = document.getElementById('servicesTabContent');
+            const tabItems = [];
+            const tabItemsContent = [];
+
+            for (const item of res.data) {
+
+                tabItems.push(`
+                        <li class="nav-item ${tabItems.length === res.data.length - 1 ? '' : 'me-0 me-md-4'}" role="presentation">
+                            <button class="nav-link ${!tabItems.length ? 'active' : ''}" id="${item.shp_service_name}Tab" data-bs-toggle="tab"
+                                    data-bs-target="#${item.shp_service_name}-tab-pane" type="button" role="tab"
+                                    aria-controls="home-tab-pane"
+                                    ${tabItems.length === 0 ? 'aria-selected="true"' : ''}>
+                                <img src="${item.Logo.src}" width="${item.Logo.width}" />
+                            </button>
+                        </li>
+                    `);
+
+                window[`${item.shp_service_name}HandleSubmit`] = onServiceSubmit(item);
+                window[`${item.shp_service_name}HandleSelect`] = () => {
+                    const selected = item.Items[document.getElementById(`${item.shp_service_name}Select`).value];
+
+                    if (item.Items.length === 1) {
+                        document.getElementById(`${item.shp_service_name}NameView`).innerHTML = selected.Name;
+                    }
+
+                    document.getElementById(`${item.shp_service_name}OutSumView`).innerHTML = selected.OutSum;
+
+                    document.getElementById(`${item.shp_service_name}Name`).value = selected.Name;
+                    document.getElementById(`${item.shp_service_name}OutSum`).value = selected.OutSum;
+                    document.getElementById(`${item.shp_service_name}ServiceCode`).value = selected.shp_service_code;
+
+                    if (selected.Logo) {
+                        document.querySelector('servicesTab .nav-link.active img').src = selected.Logo;
+                    }
+
+                    if (selected.Period) {
+                        document.getElementById(`${item.shp_service_name}PeriodValue`).style.display = 'inline-block';
+                        document.getElementById(`${item.shp_service_name}PeriodTerm`).style.display = 'inline-block'
+                        document.getElementById(`${item.shp_service_name}PeriodValue`).innerHTML = selected.Period;
+                    } else {
+                        document.getElementById(`${item.shp_service_name}PeriodValue`).style.display = 'none';
+                        document.getElementById(`${item.shp_service_name}PeriodTerm`).style.display = 'none;'
+                    }
+
+                    if (selected.Reccuring) {
+                        document.getElementById(`${item.shp_service_name}Recurring`).style.display = 'inline-block';
+                        document.getElementById(`${item.shp_service_name}RecurringValue`).style.display = 'inline-block'
+                    } else {
+                        document.getElementById(`${item.shp_service_name}Recurring`).style.display = 'none';
+                        document.getElementById(`${item.shp_service_name}RecurringValue`).style.display = 'none;'
+                    }
+                    if (item.Disabled === true) {
+                        document.getElementById(`${item.shp_service_name}Submit`).classList.add("disabled");
+                    }
+
+                };
+
+                tabItemsContent.push(`
+                        <div class="tab-pane fade ${!tabItemsContent.length ? 'show active' : ''}" id="${item.shp_service_name}-tab-pane" role="tabpanel"
+                            aria-labelledby="${item.shp_service_name}Tab" tabindex="${tabItemsContent.length}">
+                            <dl class="row mb-0">
+                                ${item.Items.length > 1 ? (`
+                                    <div class="goods-header">
+
+                                        <dt class="col-4 pe-0 mb-1">Название:</dt>
+                                        <dd class="col-8 mb-1">
+                                            <select class="form-select" aria-label="Выберите продукт" id="${item.shp_service_name}Select" onchange="window['${item.shp_service_name}HandleSelect']()">
+                                                ${item.Items.map((v, i) => (
+                    `<option value="${i}" ${i === 0 ? 'selected' : ''}>${v.Period ? `${v.Period} ${v.Name}` : v.Name}</option>`
+                ))}
+                                            </select>
+                                        </dd>
+                                    </div>
+                                    `) : ''}
+                                ${item.Items.length === 1 ? `
+                                    <dt class="col-2 pe-0 mb-1">Название:</dt>
+                                    <dd class="col-10 text-end mb-1 text-nowrap" id="${item.shp_service_name}NameView">${item.Items[0].Name}</dd>
+                                ` : ''}
+                                <dt class="col-4 mb-1">Стоимость:</dt>
+                                <dd class="col-8 text-end mb-1">
+                                    <span id="${item.shp_service_name}OutSumView">${item.Items[0].OutSum}</span> ₽
+                                </dd>
+                                <dt class="col-6 mb-1 text-nowrap" id="${item.shp_service_name}PeriodTerm" style="display: ${item.Items[0].Period ? 'inline-block' : 'none'};">Период действия:</dt>
+                                <dd class="col-6 text-end mb-1" id="${item.shp_service_name}PeriodValue" style="display: ${item.Items[0].Period ? 'inline-block' : 'none'};">
+                                    ${item.Items[0].Period}
+                                </dd>
+                                <dt class="col-6 mb-1 text-nowrap" id="${item.shp_service_name}Recurring" style="display: ${item.Items[0].Recurring ? 'inline-block' : 'none'};">Автопродление:</dt>
+                                <dd class="col-6 text-end mb-1" id="${item.shp_service_name}RecurringValue" style="display: ${item.Items[0].Recurring ? 'inline-block' : 'none'};">
+                                    <i class="bi bi-circle-fill" style="color: #2cc32c; font-size: 16px;"></i>
+                                </dd>
+                            </dl>
+                            <p style="margin: 10px 0 18px">
+                                ${item.FullDescription}
+
+<!--                                <a href="#faq" data-bs-toggle="modal"-->
+<!--                                data-target="#faq"-->
+<!--                                style="color: #4d4d4d">-->
+<!--                                    Узнать больше о подписке на странице FAQ-->
+<!--                                </a>-->
+                            </p>
+
+                            <form id="${item.shp_service_name}Form" method="POST" action="https://auth.robokassa.ru/Merchant/Index.aspx" onsubmit="window['${item.shp_service_name}HandleSubmit'](event)">
+                                <input type="hidden" name="MerchantLogin" value="${item.MerchantLogin}"/>
+                                <input type="hidden" id="${item.shp_service_name}Name" name="Description" value="${item.Items[0].Name}"/>
+                                <input type="hidden" id="${item.shp_service_name}OutSum" name="OutSum" value="${item.Items[0].OutSum}"/>
+                                <input type="hidden" id="${item.shp_service_name}Receipt" name="Receipt" value=""/>
+                                <input type="hidden" id="${item.shp_service_name}Signature" name="SignatureValue" value=""/>
+                                <input type="hidden" name="IsTest" value="0"/>
+                                <input type="hidden" name="Recurring" value="${item.Recurring}"/>
+                                <input type="hidden" name="Culture" value="${item.Culture}"/>
+                                <input type="hidden" name="Encoding" value="utf-8"/>
+                                <div class="form-floating">
+                                    <input type="email" name="EMail" class="form-control" id="${item.shp_service_name}Email"
+                                        placeholder="name@gmail.com" required/>
+                                    <label for="ytEmail">${item.InputLabel}</label>
+                                </div>
+                                <input type="hidden" id="${item.shp_service_name}ServiceCode" name="shp_service_code" value="${item.Items[0].shp_service_code}"/>
+                                <input type="hidden" name="shp_service_name" value="${item.shp_service_name}"/>
+                                <input id="${item.shp_service_name}EmailHidden" type="hidden" name="shp_user_mail" value=""/>
+
+                                <div class="form-check my-3">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                                        required/>
+                                    <label class="form-check-label" for="flexCheckDefault" style="text-align: left; width: 100%;">
+                                        ${item.OfferText}
+                                    </label>
+                                </div>
+
+                                <div class="d-grid gap-2 d-block mb-2" style="margin-top: 24px">
+                                    <button class="btn btn-secondary btn-lg ${item.Disabled ? 'disabled' : 'none'}" id="${item.shp_service_name}Submit">
+                                        ${item.SubmitText}
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    `);
+            }
+
+            tabList.innerHTML = tabItems.join('');
+            tabContent.innerHTML = tabItemsContent.join('');
+        });
     })();
 </script>
 </body>

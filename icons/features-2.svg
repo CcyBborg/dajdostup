@@ -1,12 +1,1 @@
-<svg width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_22_56)">
-<path d="M55.4403 28.4465C55.4403 43.1654 43.5084 55.0973 28.7895 55.0973C-6.56224 53.6936 -6.55211 3.19435 28.7895 1.79578C43.5078 1.79578 55.4397 13.7276 55.4397 28.4465H55.4403Z" stroke="white" stroke-width="2.84906" stroke-miterlimit="10" stroke-linecap="round" stroke-dasharray="9.3 9.3"/>
-<path d="M28.7896 28.4467V11.8955" stroke="white" stroke-width="2.84906" stroke-miterlimit="10" stroke-linecap="round"/>
-<path d="M28.7896 28.4465L42.3593 34.472" stroke="white" stroke-width="2.84906" stroke-miterlimit="10" stroke-linecap="round"/>
-</g>
-<defs>
-<clipPath id="clip0_22_56">
-<rect width="56.01" height="56.1506" fill="white" transform="translate(0.854816 0.371277)"/>
-</clipPath>
-</defs>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 899.66 901.88"><defs><style>.cls-1,.cls-2{fill:none;stroke:#fff;stroke-linecap:round;stroke-miterlimit:10;stroke-width:60px;}.cls-1{stroke-dasharray:146.94 146.94;}</style></defs><g id="Layer_2" data-name="Layer 2"><g id="Layer_3" data-name="Layer 3"><path class="cls-1" d="M869.66,450.94c0,232.48-188.46,420.94-420.94,420.94-558.37-22.17-558.21-819.79,0-841.88C681.2,30,869.66,218.46,869.66,450.94Z"/><line class="cls-2" x1="448.72" y1="450.94" x2="448.72" y2="189.52"/><line class="cls-2" x1="448.72" y1="450.94" x2="663.05" y2="546.11"/></g></g></svg>
