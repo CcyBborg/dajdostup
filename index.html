@@ -49,7 +49,7 @@
         }
 
         .modal-content {
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(8px);
             background: rgba(108, 108, 108, 0.32);
             border-radius: 0;
@@ -625,6 +625,46 @@
             border-bottom: #00000036 5px dotted;
         }
 
+        .mini-table {
+            /*border-collapse: collapse;*/
+            border-spacing: 0;
+
+            border-collapse: separate;
+            border: solid #ffffff 3px;
+            border-radius: 12px;
+
+            width: 100%;
+        }
+
+        .mini-table td {
+            border-color: rgba(198, 198, 199, 0.69);
+            border-style: solid;
+            border-width: 1px;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+
+            text-align: center;
+        }
+
+        .mini-table th {
+            border-color: rgba(255, 255, 255, 0.5);
+            border-style: solid;
+            border-width: 1px;
+            font-weight: normal;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+
+
+            text-align: center;
+        }
+
+        .mini-table .tg-0lax {
+            text-align: center;
+            vertical-align: top
+        }
+
         .browser-window .circle {
             height: 8px;
             width: 8px;
@@ -926,7 +966,7 @@
                             <img src="./icons/features-1.svg" width="66"/>
                         </div>
                     </div>
-                    <p>Безопасная оплата через оффициальную эквайринг систему</p>
+                    <p>Безопасная оплата через систему Robokassa</p>
                 </li>
                 <li class="col-md-6 d-flex align-items-center justify-content-md-end mb-4 mb-md-4 p-0">
                     <div class="me-3">
@@ -935,17 +975,18 @@
                         </div>
                     </div>
                     <p>
-                        Подключение подписки происходит мгновенно,
-                        а&nbsp;продление&nbsp;&mdash; автоматически
+                        Активация происходит сразу после оплаты, без очередей
                     </p>
                 </li>
                 <li class="col-md-6 d-flex align-items-center mb-4 mb-md-4 p-0">
                     <div class="me-3">
                         <div class="features-icon-wrapper">
-                            <img src="./icons/features-3.svg" width="44" height="44"/>
+                            <img src="./icons/features-3.svg" width="54"/>
                         </div>
                     </div>
-                    <p>Вы всегда можете отменить подписку самостоятельно</p>
+                    <p>Заботливая <a href="https://t.me/kingOfSubs" title="Король Подписок" target="_blank"
+                          data-saferedirecturl="https://t.me/kingOfSubs" style="color: white">поддержка</a><br/>
+                        с 10 утра и до 23 вечера</p>
                 </li>
                 <li class="col-md-6 d-flex align-items-center justify-content-md-end mb-4 mb-md-4 p-0">
                     <div class="me-3">
@@ -1053,7 +1094,7 @@
                     <li class="mb-1">
                         <a href="https://t.me/+JlzA96yMytYxYmEy" title="Чат в Телеграм" target="_blank"
                            data-saferedirecturl="https://t.me/+JlzA96yMytYxYmEy">
-                            <img src="./icons/tg.svg" alt="telegram" width="22" height="22" style="border: 0"
+                            <img src="./icons/tg.svg" alt="Чат в Телеграм" width="22" height="22" style="border: 0"
                                  class="CToWUd" data-bit="iit"/>
                         </a>
                     </li>
@@ -1143,22 +1184,22 @@
                         <h2 class="accordion-header" id="general_heading3">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#general3" aria-expanded="false" aria-controls="general3">
-                                Как подключить подписку?
+                                Как получить товар?
                             </button>
                         </h2>
                         <div id="general3" class="accordion-collapse collapse" aria-labelledby="general_heading3"
                              data-bs-parent="#generalQuestions">
                             <div class="accordion-body">
                                 <div style="padding-bottom: 6px">
-                                    1. Перейти на главную страницу сайта<br/>
+                                    1. Перейдите на главную страницу сайта<br/>
                                 </div>
                                 <div style="padding-bottom: 6px">
-                                    2. Выбрать желаемый сервис<br/>
+                                    2. Выберите желаемый сервис и заполните почту<br/>
                                 </div>
                                 <div style="padding-bottom: 6px">
-                                    3. Приобрести подписку<br/>
+                                    3. Оплатите и дождитесь окончания активации<br/>
                                 </div>
-                                4. Наслаждаться любимым контентом!<br/>
+                                4. Наслаждайтесь любимым сервисом!<br/>
 
                                 <!--                                <br/><br/>-->
 
@@ -1166,24 +1207,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="general_heading4">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#general4" aria-expanded="false" aria-controls="general4">
-                                Как отключить подписку?
-                            </button>
-                        </h2>
-                        <div id="general4" class="accordion-collapse collapse" aria-labelledby="general_heading4"
-                             data-bs-parent="#generalQuestions">
-                            <div class="accordion-body">
-                                В любом письме от <strong>info@ddostup.ru</strong> нажмите
-                                на ссылку <strong>«Отменить подписку на сервис»</strong>
-                                <br/><br/>
-                                После отключения, доступ к сервису сохранится до конца
-                                оплаченного периода.
-                            </div>
-                        </div>
-                    </div>
+
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="general_heading5">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -1217,7 +1241,7 @@
                     <!--                        </div>-->
                     <!--                    </div>-->
                 </div>
-                <p class="choose-service-title">Подписка YouTube</p>
+                <p class="choose-service-title">YouTube Premium</p>
                 <div class="accordion" id="ytQuestions">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="yt_heading1">
@@ -1277,7 +1301,7 @@
                                 1. Проверьте папку <strong>Спам</strong>, письмо может быть
                                 там<br/>
                                 2. Напишите
-                                <a href="https://t.me/kingOfSubs" title="telegram" target="_blank"
+                                <a href="https://t.me/kingOfSubs" title="Король Подписок" target="_blank"
                                    data-saferedirecturl="https://t.me/kingOfSubs" style="color: #e3bcff">нам</a>
                                 — мы отправим письмо повторно
                             </div>
@@ -1309,14 +1333,123 @@
                             </div>
                         </div>
                     </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="yt_heading5">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#yt5" aria-expanded="false" aria-controls="yt5">
+                                Как отключить подписку?
+                            </button>
+                        </h2>
+                        <div id="yt5" class="accordion-collapse collapse" aria-labelledby="yt_heading5"
+                             data-bs-parent="#ytQuestions">
+                            <div class="accordion-body">
+                                Мы напоминаем о продлении за 3 дня до автоматического списания.
+                                В письме с напоминанием от <strong>info@ddostup.ru</strong> нажмите
+                                на ссылку <strong>«Отменить подписку на сервис»</strong> чтобы отключить подписку.
+                                <br/><br/>
+                                После отключения, доступ к сервису сохранится до конца оплаченного периода.
+                                Вы всегда можете восстановить подписку, просто оплатив ее еще раз на сайте.
+                                <br/><br/>
+                                Если вы хотите отключить подписку раньше — просто напишите
+                                <a href="https://t.me/kingOfSubs" title="Король Подписок" target="_blank"
+                                   data-saferedirecturl="https://t.me/kingOfSubs" style="color: #e3bcff">нам</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <p class="choose-service-title">Подписка Spotify</p>
+                <p class="choose-service-title">Товары Fortnite</p>
+                <div class="accordion" id="fortniteQuestions">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="fortnite_heading1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#fortnite1" aria-expanded="true" aria-controls="fortnite1">
+                                Что такое товары Fortnite?
+                            </button>
+                        </h2>
+                        <div id="fortnite1" class="accordion-collapse collapse" aria-labelledby="fortnite_heading1"
+                             data-bs-parent="#fortniteQuestions">
+                            <div class="accordion-body">
+                                <div style="padding-bottom: 6px">
+                                    <strong>Внутриигровая валюта игры Fortnite.</strong><br/>
+                                </div>
+                                Все что делает игру Fortnie
+                                еще интереснее стало снова доступно к покупке за 5 минут. <br/><br/>
+
+                                <div style="padding-bottom: 6px">
+                                    <strong>Напомним, что</strong><br/>
+                                </div>
+
+                                • В-Баксы — это основная валюта игры<br/>
+                                • Наборы — это уникальные предметы в ограниченном количестве<br/>
+                                • Подписка CREW — это доступ к ежемесячным бонусам<br/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="fortnite_heading2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#fortnite2" aria-expanded="true" aria-controls="fortnite2">
+                                Как подготовиться к активации?
+                            </button>
+                        </h2>
+                        <div id="fortnite2" class="accordion-collapse collapse" aria-labelledby="fortnite_heading2"
+                             data-bs-parent="#fortniteQuestions">
+                            <div class="accordion-body">
+                                <div style="padding-bottom: 10px">
+                                    <strong>Просто привяжите аккаунт Xbox к Epic:</strong><br/>
+                                </div>
+                                <iframe width="100%" height="315" src="https://www.youtube.com/embed/_kxyM4Dj-fQ"
+                                        title="YouTube video player" frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                                <br/><br/>
+                                <div style="padding-bottom: 6px">
+                                    <strong>Если у вас еще нет аккаунта Xbox:</strong><br/>
+                                </div>
+                                Вы можете легко создать аккаунт Xbox самостоятельно и привязать его к своему аккаунту
+                                Epic Games.
+                                Если у вас возникнут вопросы или проблемы — смело пишите <a
+                                    href="https://t.me/kingOfSubs" title="Король Подписок" target="_blank"
+                                    data-saferedirecturl="https://t.me/kingOfSubs" style="color: #e3bcff">нам</a>. Мы
+                                обязательно постараемся помочь.<br/><br/>
+
+                                <div style="padding-bottom: 6px">
+                                    <strong>Для чего нужен аккаунт Xbox:</strong><br/>
+                                </div>
+                                Мы приобретаем товары в оффициальном магазине Fortnite через Xbox — это самый безопасный
+                                вариант.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="fortnite_heading3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#fortnite3" aria-expanded="true" aria-controls="fortnite3">
+                                Поддерживаемые платформы
+                            </button>
+                        </h2>
+                        <div id="fortnite3" class="accordion-collapse collapse" aria-labelledby="fortnite_heading3"
+                             data-bs-parent="#fortniteQuestions">
+                            <div class="accordion-body">
+                                <div style="padding-bottom: 6px">
+                                    <strong>Поддерживаются PC, PlayStation, Xbox и Android</strong><br/>
+                                    подробнее об <a
+                                        href="https://www.epicgames.com/fortnite/ru/news/v-bucks-purchased-on-playstation-join-fortnite-shared-wallet?sessionInvalidated=true"
+                                        title="Король Подписок" target="_blank"
+                                        data-saferedirecturl="https://www.epicgames.com/fortnite/ru/news/v-bucks-purchased-on-playstation-join-fortnite-shared-wallet?sessionInvalidated=true"
+                                        style="color: #e3bcff">общем кошельке</a><br/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="choose-service-title">Spotify Premium</p>
                 <div class="accordion" id="spotyQuestions">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="spoty_heading1">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#spoty1" aria-expanded="true" aria-controls="spoty1">
-                                Что это за подписка?
+                                Что такое Spotify Premium?
                             </button>
                         </h2>
                         <div id="spoty1" class="accordion-collapse collapse" aria-labelledby="spoty_heading1"
@@ -1336,16 +1469,130 @@
                         <h2 class="accordion-header" id="spoty_heading2">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#spoty2" aria-expanded="true" aria-controls="spoty2">
-                                Как предоставляется доступ?
+                                Как подготовиться к активации?
                             </button>
                         </h2>
                         <div id="spoty2" class="accordion-collapse collapse" aria-labelledby="spoty_heading2"
                              data-bs-parent="#spotyQuestions">
                             <div class="accordion-body">
-                                Сразу после оплаты вы попадете на страницу активации подписки.
-                                Просто выполните вход в свой аккаунт, нажмите кнопку «Готово» и ожидайте окончания
-                                активации.
-                                Мы сохраняем конфиденциальность ваших данных в соответствии с законодательством РФ.
+                                <div style="padding-bottom: 6px">
+                                    <strong>Выполните три простых шага:</strong><br/>
+                                </div>
+                                1. Загрузите приложение Spotify на свой телефон или компьютер<br/>
+                                2. Войдите в аккаунт<br/>
+                                3. Проверьте что на аккаунте стоит Бесплатная подписка<br/>
+                                <br/>
+                                Если появился вопрос — пожалуйста напишите <a
+                                    href="https://t.me/kingOfSubs" title="Король Подписок" target="_blank"
+                                    data-saferedirecturl="https://t.me/kingOfSubs" style="color: #e3bcff">нам</a>, мы
+                                обязательно поможем его решить
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="choose-service-title">Discord Nitro</p>
+                <div class="accordion" id="discordQuestions">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="discord_heading1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#discord1" aria-expanded="true" aria-controls="discord1">
+                                Что такое Discord Nitro?
+                            </button>
+                        </h2>
+                        <div id="discord1" class="accordion-collapse collapse" aria-labelledby="discord_heading1"
+                             data-bs-parent="#discordQuestions">
+                            <div class="accordion-body">
+                                <div style="padding-bottom: 6px">
+                                    <strong>Полноценная премиум-подписка от сервиса Discord.</strong><br/>
+                                </div>
+                                Анимированные эмодзи, больший объем файлов для загрузки, HD стриминг, более длинные
+                                сообщения
+                                — что еще нужно для счастья?
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="discord_heading2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#discord2" aria-expanded="true" aria-controls="discord2">
+                                Как подготовиться к активации?
+                            </button>
+                        </h2>
+                        <div id="discord2" class="accordion-collapse collapse" aria-labelledby="discord_heading2"
+                             data-bs-parent="#discordQuestions">
+                            <div class="accordion-body">
+                                <div style="padding-bottom: 6px">
+                                    <strong>Убедитесь что у вас нет активной подписки Nitro.</strong><br/>
+                                </div>
+                                Если появился вопрос — пожалуйста напишите <a
+                                    href="https://t.me/kingOfSubs" title="Король Подписок" target="_blank"
+                                    data-saferedirecturl="https://t.me/kingOfSubs" style="color: #e3bcff">нам</a>, мы
+                                обязательно поможем его решить
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="discord_heading3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#discord3" aria-expanded="true" aria-controls="discord3">
+                                Nitro Classic или Nitro Full?
+                            </button>
+                        </h2>
+                        <div id="discord3" class="accordion-collapse collapse" aria-labelledby="discord_heading3"
+                             data-bs-parent="#discordQuestions">
+                            <div class="accordion-body">
+                                <div style="padding-bottom: 16px">
+                                    <strong>Расписали разницу в табличке:</strong><br/>
+                                </div>
+                                <table class="mini-table">
+                                    <thead>
+                                    <tr>
+                                        <th class="tg-0lax"></th>
+                                        <th class="tg-0lax"><strong>Classic</strong></th>
+                                        <th class="tg-0lax"><strong>Full</strong></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="tg-0lax"><strong>Анимированные эмоджи</strong></td>
+                                        <td class="tg-0lax">✓</td>
+                                        <td class="tg-0lax">✓</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tg-0lax"><strong>Объем загрзуки</strong></td>
+                                        <td class="tg-0lax">50MB</td>
+                                        <td class="tg-0lax">100MB</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tg-0lax"><strong>HD стриминг</strong></td>
+                                        <td class="tg-0lax">1080p, 60fps</td>
+                                        <td class="tg-0lax">4K, 60fps</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tg-0lax"><strong>Доступ к Активностям</strong></td>
+                                        <td class="tg-0lax">⨉</td>
+                                        <td class="tg-0lax">✓</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tg-0lax"><strong>2 Буста</strong></td>
+                                        <td class="tg-0lax">⨉</td>
+                                        <td class="tg-0lax">✓</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tg-0lax"><strong>Длинные сообщения</strong></td>
+                                        <td class="tg-0lax">⨉</td>
+                                        <td class="tg-0lax">✓</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tg-0lax"><strong>Значок Nitro</strong></td>
+                                        <td class="tg-0lax">✓</td>
+                                        <td class="tg-0lax">✓</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -1666,7 +1913,7 @@
                                 <input type="hidden" id="${item.shp_service_name}OutSum" name="OutSum" value="${item.Items[0].OutSum}"/>
                                 <input type="hidden" id="${item.shp_service_name}Receipt" name="Receipt" value=""/>
                                 <input type="hidden" id="${item.shp_service_name}Signature" name="SignatureValue" value=""/>
-                                <input type="hidden" name="IsTest" value="1"/>
+                                <input type="hidden" name="IsTest" value="0"/>
                                 <input type="hidden" name="Recurring" value="${item.Recurring}"/>
                                 <input type="hidden" name="Culture" value="${item.Culture}"/>
                                 <input type="hidden" name="Encoding" value="utf-8"/>
