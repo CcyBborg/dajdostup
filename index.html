@@ -20,7 +20,7 @@
 
     <link rel="icon" type="image/x-icon" href="./favicon.ico"/>
 
-    <meta name="enot" content="1381670590621EmzrMfnDKdTa-xLrkTC-OJUOKwMLU2Uz" />
+    <meta name="enot" content="1381670590621EmzrMfnDKdTa-xLrkTC-OJUOKwMLU2Uz"/>
 
     <script type="text/javascript">!function () {
         var t = document.createElement("script");
@@ -871,6 +871,14 @@
             background-color: rgba(242, 242, 242, 0.2);
             border-radius: 12px;
         }
+
+        .easeload {
+            opacity: 0;
+            -webkit-transition: opacity 1s ease;
+            -moz-transition: opacity 1s ease;
+            -ms-transition: opacity 1s ease;
+            -o-transition: opacity 1s ease;
+        }
     </style>
 </head>
 
@@ -886,12 +894,12 @@
                 <div style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start"
                      id="home-services">
                     <div style="display: flex; flex-direction: row">
-                        <img class="subscription-img" src="./icons/yt.svg" width="80" data-service="yt"/>
-                        <img class="subscription-img" src="./icons/discord.svg" width="75" data-service="discord"/>
+                        <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/yt.svg" width="80" data-service="yt"/>
+                        <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/discord.svg" width="75" data-service="discord"/>
                     </div>
                     <div style="display: flex; flex-direction: row">
-                        <img class="subscription-img" src="./icons/fortnite.svg" width="80" data-service="fortnite"/>
-                        <img class="subscription-img" src="./icons/spoty.svg" width="77" data-service="spoty"/>
+                        <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/fortnite.svg" width="80" data-service="fortnite"/>
+                        <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/spoty.svg" width="77" data-service="spoty"/>
                     </div>
                 </div>
                 <!--                <ul style="margin: 0 0 0">-->
@@ -987,7 +995,8 @@
                         </div>
                     </div>
                     <p>Заботливая <a href="https://t.me/kingOfSubs" title="Король Подписок" target="_blank"
-                          data-saferedirecturl="https://t.me/kingOfSubs" style="color: white">поддержка</a><br/>
+                                     data-saferedirecturl="https://t.me/kingOfSubs"
+                                     style="color: white">поддержка</a><br/>
                         с 10 утра и до 23 вечера</p>
                 </li>
                 <li class="col-md-6 d-flex align-items-center justify-content-md-end mb-4 mb-md-4 p-0">
