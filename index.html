@@ -18,7 +18,8 @@
     <link href="fonts/stylesheet.css" rel="stylesheet" type="text/css"/>
     <link href="fonts/proxima-nova.css" rel="stylesheet" type="text/css"/>
 
-    <link rel="icon" type="image/x-icon" href="./favicon.ico"/>
+    <!--    <link rel="icon" type="image/x-icon" href="./favicon.ico"/>-->
+    <link rel="icon" type="image/svg+xml" href="./icons/favicon.svg"/>
 
     <meta name="enot" content="1381670590621EmzrMfnDKdTa-xLrkTC-OJUOKwMLU2Uz"/>
 
@@ -32,6 +33,10 @@
     </noscript>
 
     <style>
+
+
+
+
         @keyframes float {
             0% {
                 transform: translatey(0px);
@@ -407,7 +412,7 @@
         p.choose-service-title {
             font-size: 32px;
             font-family: "Blender Pro", Helvetica, sans-serif;
-            margin: 50px 0 30px;
+            margin: 50px 10px 30px;
             text-align: center;
             color: #fff !important;
         }
@@ -468,6 +473,19 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+        }
+
+        #faq-services .faq-item-header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #faq-services .faq-item-header img {
+            width: 40px;
+            margin: 50px 10px 30px;
+            cursor: pointer;
         }
 
         .switcher {
@@ -894,12 +912,16 @@
                 <div style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start"
                      id="home-services">
                     <div style="display: flex; flex-direction: row">
-                        <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/yt.svg" width="80" data-service="yt"/>
-                        <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/discord.svg" width="75" data-service="discord"/>
+                        <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/yt.svg"
+                             width="80" data-service="yt"/>
+                        <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/discord.svg"
+                             width="75" data-service="discord"/>
                     </div>
                     <div style="display: flex; flex-direction: row">
-                        <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/fortnite.svg" width="80" data-service="fortnite"/>
-                        <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/spoty.svg" width="77" data-service="spoty"/>
+                        <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/fortnite.svg"
+                             width="80" data-service="fortnite"/>
+                        <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/spoty.svg"
+                             width="77" data-service="spoty"/>
                     </div>
                 </div>
                 <!--                <ul style="margin: 0 0 0">-->
@@ -1137,7 +1159,7 @@
 <!-- FAQ Modal -->
 <div class="modal fade" id="faq" tabindex="-1" aria-labelledby="faq" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" id="faq-services">
             <div class="modal-header container">
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                         aria-label="Close"></button>
@@ -1252,7 +1274,11 @@
                     <!--                        </div>-->
                     <!--                    </div>-->
                 </div>
-                <p class="choose-service-title">YouTube Premium</p>
+                <div class="faq-item-header">
+                    <p class="choose-service-title">YouTube Premium</p>
+                    <img data-service="yt" class="subscription-img" src="./icons/yt-without-borders.svg"
+                         alt="YouTube Premium">
+                </div>
                 <div class="accordion" id="ytQuestions">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="yt_heading1">
@@ -1368,7 +1394,11 @@
                         </div>
                     </div>
                 </div>
-                <p class="choose-service-title">Товары Fortnite</p>
+                <div class="faq-item-header">
+                    <p class="choose-service-title">Товары Fortnite</p>
+                    <img data-service="fortnite" class="subscription-img" src="./icons/fortnite-without-borders.svg"
+                         alt="Товары Fortnite">
+                </div>
                 <div class="accordion" id="fortniteQuestions">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="fortnite_heading1">
@@ -1454,7 +1484,11 @@
                         </div>
                     </div>
                 </div>
-                <p class="choose-service-title">Spotify Premium</p>
+                <div class="faq-item-header">
+                    <p class="choose-service-title">Spotify Premium</p>
+                    <img data-service="spoty" class="subscription-img" src="./icons/spoty-without-borders.svg"
+                         alt="Spotify Premium">
+                </div>
                 <div class="accordion" id="spotyQuestions">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="spoty_heading1">
@@ -1502,7 +1536,11 @@
                         </div>
                     </div>
                 </div>
-                <p class="choose-service-title">Discord Nitro</p>
+                <div class="faq-item-header">
+                    <p class="choose-service-title">Discord Nitro</p>
+                    <img data-service="discord" class="subscription-img" src="./icons/discord-without-borders.svg"
+                         alt="Discord">
+                </div>
                 <div class="accordion" id="discordQuestions">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="discord_heading1">
@@ -1813,6 +1851,7 @@
             });
 
         document.getElementById("home-services").addEventListener("click", handleServiceOpen, true);
+        document.getElementById("faq-services").addEventListener("click", handleServiceOpen, true);
 
         axios
             .get("https://activations.ddostup.ru/get-goods/").then(res => {
