@@ -648,13 +648,20 @@
 
         .goods-header {
             display: flex;
-            flex-direction: row;
-            justify-content: space-between;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
             padding-bottom: 10px;
             margin-bottom: 13px;
             /*border-bottom: #00000036 3px solid;*/
             border-bottom: #00000036 5px dotted;
+        }
+        .goods-header .flex-row {
+            display: flex;
+            width: 100%;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .mini-table {
@@ -1940,20 +1947,46 @@
                             <dl class="row mb-0">
                                 ${item.Items.length > 1 ? (`
                                     <div class="goods-header">
+                                        <div class="flex-row">
+                                            <dt class="col-4 pe-0 mb-1">Название:</dt>
+                                            <dd class="col-8 mb-1">
+                                                <select class="form-select" aria-label="Выберите продукт" id="${item.shp_service_name}Select" onchange="window['${item.shp_service_name}HandleSelect']()">
+                                                    ${item.Items.map((v, i) => (
+                        `<option value="${i}" ${i === 0 ? 'selected' : ''}>${v.Period ? `${v.Period} ${v.Name}` : v.Name}</option>`
+                    ))}
+                                                </select>
+                                            </dd>
+                                        </div>
 
-                                        <dt class="col-4 pe-0 mb-1">Название:</dt>
-                                        <dd class="col-8 mb-1">
-                                            <select class="form-select" aria-label="Выберите продукт" id="${item.shp_service_name}Select" onchange="window['${item.shp_service_name}HandleSelect']()">
-                                                ${item.Items.map((v, i) => (
-                    `<option value="${i}" ${i === 0 ? 'selected' : ''}>${v.Period ? `${v.Period} ${v.Name}` : v.Name}</option>`
-                ))}
-                                            </select>
-                                        </dd>
+
+                                        <!-- if item.AsGift exists then -->
+                                        <div class="flex-row">
+                                            <dt class="col-4 pe-0 mb-1">Кому:</dt>
+                                            <dd class="col-8 text-end mb-1 text-nowrap" id="123">
+                                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                                    <label class="active">
+                                                    <input type="radio" name="options" id="option1" autocomplete="off" checked> Себе
+                                                    </label>
+                                                    <label class="">
+                                                    <input type="radio" name="options" id="option2" autocomplete="off"> Подарок <i class="bi bi-gift"></i>
+                                                    </label>
+                                                </div>
+                                            </dd>
+                                        </div>
+                                        <!-- endif-->
+
                                     </div>
                                     `) : ''}
                                 ${item.Items.length === 1 ? `
-                                    <dt class="col-2 pe-0 mb-1">Название:</dt>
-                                    <dd class="col-10 text-end mb-1 text-nowrap" id="${item.shp_service_name}NameView">${item.Items[0].Name}</dd>
+                                <div class="goods-header">
+                                    <div class="flex-row">
+                                        <dt class="col-2 pe-0 mb-1">Название:</dt>
+                                        <dd class="col-10 text-end mb-1 text-nowrap" id="${item.shp_service_name}NameView">${item.Items[0].Name}</dd>
+                                    </div>
+                                    <!-- if item.AsGift exists then -->
+                                    ...
+                                    <!-- endif-->
+                                </div>
                                 ` : ''}
                                 <dt class="col-4 mb-1">Стоимость:</dt>
                                 <dd class="col-8 text-end mb-1">
