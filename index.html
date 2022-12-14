@@ -227,6 +227,13 @@
             margin-top: calc(100vh - 714px);
         }
 
+        .hat-img {
+            position: absolute;
+            width: 50px;
+            margin-top: -7px;
+            margin-left: 7px;
+        }
+
         .subscription-img {
             filter: drop-shadow(0px 3.13654px 3.13654px rgba(0, 0, 0, 0.25));
             margin: 12px;
@@ -919,6 +926,7 @@
             -ms-transition: all 0.09s ease;
             -o-transition: all 0.09s ease;
         }
+
     </style>
 </head>
 
@@ -928,6 +936,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="header-title">
+                    <img class="hat-img easeload" onload="this.style.opacity=1" src="./static/hat.svg"/>
                     <h1>Дай Доступ!</h1>
                     <p class="title-p m-0">магазин цифровых радостей</p>
                 </div>
@@ -990,7 +999,7 @@
                     Активировать
                 </button>
                 <button class="btn btn-primary btn-lg btn-gift" data-bs-toggle="modal" data-bs-target="#checkout">
-                     <i class="bi bi-gift"></i>
+                    <i class="bi bi-gift"></i>
                 </button>
             </div>
         </div>
@@ -1006,7 +1015,7 @@
             <div class="d-flex align-items-center" style="max-width: 400px; margin: 32px 0 32px 0">
                 <div class="me-3">
                     <div class="logo-wrapper">
-                        <img src="./icons/dd-logo.svg" width="57" height="70"/>
+                        <img src="./icons/dd-logo.svg" width="58" />
                     </div>
                 </div>
                 <div>
