@@ -764,12 +764,43 @@
             background-color: #313131;
         }
 
+        #main-button, .cta-block {
+                display: flex;
+                justify-content: center;
+                flex-wrap: nowrap;
+            }
+        #main-button,
+        .cta-block {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+            #main-button .btn:first-child,
+            .cta-block .btn:first-child {
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+                margin-right: 0;
+                flex-grow: 1;
+            }
+
+            #main-button .btn:last-child, 
+            .cta-block .btn:last-child {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+                margin-left: 0;
+            }
+
         @media (max-width: 600px) {
             #home-services {
                 min-height: 250px;
                 height: calc(85vh - 350px);
                 margin-top: -4px;
             }
+
+            #main-button,
+        .cta-block {
+            max-width: none;
+        }
 
             p {
                 font-size: 16px;
@@ -823,27 +854,6 @@
 
             #servicesTab .nav-link img {
                 width: 74%;
-            }
-
-            #main-button, .cta-block {
-                display: flex;
-                justify-content: center;
-                flex-wrap: nowrap;
-            }
-
-            #main-button .btn:first-child,
-            .cta-block .btn:first-child {
-                border-top-right-radius: 0;
-                border-bottom-right-radius: 0;
-                margin-right: 0;
-                flex-grow: 1;
-            }
-
-            #main-button .btn:last-child, 
-            .cta-block .btn:last-child {
-                border-top-left-radius: 0;
-                border-bottom-left-radius: 0;
-                margin-left: 0;
             }
         }
 
@@ -997,7 +1007,7 @@
                     </div>
                 </div>
             </div>
-            <div class="d-md-block text-center" id="main-button">
+            <div class="text-center" id="main-button">
                 <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#checkout">
                     Активировать
                 </button>
@@ -1106,7 +1116,7 @@
                 </video>
             </div>
 
-            <div class="d-md-block text-center mt-5 cta-block" style="margin-bottom: 74px;">
+            <div class="text-center mt-5 cta-block" style="margin-bottom: 74px;">
                 <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#checkout">
                     Запустить
                 </button>
