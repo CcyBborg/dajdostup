@@ -127,7 +127,7 @@
             border-radius: 8px;
         }
 
-        .btn-check:checked+.btn.btn-checkbox {
+        .btn-check:checked + .btn.btn-checkbox {
             background-color: #fff;
             color: #000;
             box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
@@ -239,6 +239,30 @@
             animation-direction: alternate;
         }
 
+        @media (max-width: 600px) {
+
+            .header::before {
+                top: -240%;
+                right: -450%;
+                opacity: 0.4;
+                width: 1000%;
+                height: 1000%;
+            }
+
+            @-webkit-keyframes example {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+
+            to {
+                -webkit-transform: rotate(40deg);
+                transform: rotate(40deg);
+            }
+        }
+
+        }
+
         .header ul {
             padding: 0;
             font-weight: 600;
@@ -301,8 +325,8 @@
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
             color: #fff;
-            background: #3b2802;
-            border: none!important;
+            background: #d08b0e;
+            border: none !important;
         }
 
         .btn-secondary {
@@ -324,7 +348,7 @@
         }
 
         .btn-gift {
-            background-color: #3b0c0c;
+            background-color: #571212;
             padding: 10px 21px
         }
 
@@ -765,30 +789,31 @@
         }
 
         #main-button, .cta-block {
-                display: flex;
-                justify-content: center;
-                flex-wrap: nowrap;
-            }
+            display: flex;
+            justify-content: center;
+            flex-wrap: nowrap;
+        }
+
         #main-button,
         .cta-block {
             max-width: 400px;
             margin: 0 auto;
         }
 
-            #main-button .btn:first-child,
-            .cta-block .btn:first-child {
-                border-top-right-radius: 0;
-                border-bottom-right-radius: 0;
-                margin-right: 0;
-                flex-grow: 1;
-            }
+        #main-button .btn:first-child,
+        .cta-block .btn:first-child {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            margin-right: 0;
+            flex-grow: 1;
+        }
 
-            #main-button .btn:last-child, 
-            .cta-block .btn:last-child {
-                border-top-left-radius: 0;
-                border-bottom-left-radius: 0;
-                margin-left: 0;
-            }
+        #main-button .btn:last-child,
+        .cta-block .btn:last-child {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            margin-left: 0;
+        }
 
         @media (max-width: 600px) {
             #home-services {
@@ -798,9 +823,9 @@
             }
 
             #main-button,
-        .cta-block {
-            max-width: none;
-        }
+            .cta-block {
+                max-width: none;
+            }
 
             p {
                 font-size: 16px;
@@ -992,7 +1017,7 @@
                     <p class="title-p m-0">магазин цифровых радостей</p>
                 </div>
                 <div
-                     id="home-services">
+                        id="home-services">
                     <div style="display: flex; flex-direction: row">
                         <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/yt.svg"
                              width="80" data-service="yt"/>
@@ -1011,7 +1036,8 @@
                 <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#checkout">
                     Активировать
                 </button>
-                <button class="btn btn-primary btn-lg btn-gift" data-bs-toggle="tooltip" data-bs-placement="top" title="Подарочный сертификат">
+                <button class="btn btn-primary btn-lg btn-gift" disabled style="background-color: gray" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="Подарочный сертификат">
                     <i class="bi bi-gift"></i>
                 </button>
             </div>
@@ -1028,7 +1054,7 @@
             <div class="d-flex align-items-center" style="max-width: 400px; margin: 32px 0 32px 0">
                 <div class="me-3">
                     <div class="logo-wrapper">
-                        <img src="./icons/dd-logo.svg" width="58" />
+                        <img src="./icons/dd-logo.svg" width="58"/>
                     </div>
                 </div>
                 <div>
@@ -1120,7 +1146,9 @@
                 <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#checkout">
                     Запустить
                 </button>
-                <button class="btn btn-primary btn-lg btn-gift" data-bs-toggle="tooltip" data-bs-placement="top" title="Подарочный сертификат">
+                <button class="btn btn-primary btn-lg btn-gift" disabled style="background-color: gray" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="Подарочный сертификат">
+
                     <i class="bi bi-gift"></i>
                 </button>
             </div>
