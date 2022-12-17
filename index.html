@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <meta name="yandex-verification" content="9e0d3c2f885b6d15"/>
     <title>Дай Доступ!</title>
-    <meta name="description" content="Магазин цифровых радостей. Уникальная система активации товара без очередей и ожидания. Заходите и попробуйте сами!"/>
+    <meta name="description"
+          content="Магазин цифровых радостей. Уникальная система активации товара без очередей и ожидания. Заходите и попробуйте сами!"/>
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"/>
@@ -34,8 +35,6 @@
     <style>
 
 
-
-
         @keyframes float {
             0% {
                 transform: translatey(0px);
@@ -52,6 +51,10 @@
 
         .container {
             padding: 0 34px;
+        }
+
+        .modal {
+            z-index: 99999;
         }
 
         .modal-content {
@@ -109,6 +112,27 @@
             font-size: 14px;
         }
 
+        .btn-checkbox-switcher {
+            background-color: #d9d9d9;
+            border-radius: 10px;
+            padding: 4px;
+            width: 100%;
+            margin: 0;
+        }
+
+        .btn.btn-checkbox {
+            padding: 0.25rem;
+            border: none;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .btn-check:checked + .btn.btn-checkbox {
+            background-color: #fff;
+            color: #000;
+            box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+        }
+
         .form-check .form-check-input {
             width: 1.6em;
             height: 1.6em;
@@ -131,6 +155,7 @@
         h3 {
             font-weight: 600;
             font-family: "Blender Pro", Helvetica, sans-serif;
+            cursor: default;
         }
 
         h1 {
@@ -148,12 +173,21 @@
             font-weight: 400;
             font-size: 18px;
             line-height: 24px;
+            cursor: default;
         }
 
         .header {
             min-height: 100vh;
             position: relative;
             overflow: visible;
+        }
+
+        #home-services {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            margin-bottom: 6px;
         }
 
         @-webkit-keyframes example {
@@ -163,25 +197,26 @@
             }
 
             to {
-                -webkit-transform: rotate(20deg);
-                transform: rotate(20deg);
+                -webkit-transform: rotate(80deg);
+                transform: rotate(80deg);
             }
         }
 
         .header::before {
             position: absolute;
             z-index: -1;
-            top: -142%;
-            right: -125%;
+            top: -90%;
+            right: -224%;
             opacity: 0.4;
-            width: 350%;
-            height: 450%;
+            width: 550%;
+            height: 650%;
             content: "";
             background: radial-gradient(rgba(25, 25, 28, 0) 50%, #19191c 80%),
-            conic-gradient(#614385 0,
+            conic-gradient(
+                    #614385 0,
                     #19191c 15.2%,
                     #19191c 18.2%,
-                    #516395,
+                    #2d3752,
                     20.5%,
                     #19191c 30.2%,
                     #19191c 50%,
@@ -196,12 +231,36 @@
                     #614385 100%);
             -webkit-animation-name: example;
             animation-name: example;
-            -webkit-animation-duration: 10s;
-            animation-duration: 10s;
+            -webkit-animation-duration: 40s;
+            animation-duration: 40s;
             -webkit-animation-iteration-count: infinite;
             animation-iteration-count: infinite;
             -webkit-animation-direction: alternate;
             animation-direction: alternate;
+        }
+
+        @media (max-width: 600px) {
+
+            .header::before {
+                top: -240%;
+                right: -450%;
+                opacity: 0.4;
+                width: 1000%;
+                height: 1000%;
+            }
+
+            @-webkit-keyframes example {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+
+            to {
+                -webkit-transform: rotate(40deg);
+                transform: rotate(40deg);
+            }
+        }
+
         }
 
         .header ul {
@@ -223,8 +282,11 @@
             animation: float 1.5s ease-in-out infinite;
         }
 
-        .header .btn {
-            margin-top: calc(100vh - 714px);
+        .hat-img {
+            position: absolute;
+            width: 50px;
+            margin-top: -7px;
+            margin-left: 7px;
         }
 
         .subscription-img {
@@ -236,7 +298,6 @@
 
         .subscription-img:hover {
             transform: scale(1.05);
-            /*box-shadow: 0px 0px 7px 0px rgb(254 254 255 / 66%);*/
         }
 
         .subscription-title {
@@ -264,7 +325,8 @@
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
             color: #fff;
-            background: #323232;
+            background: #d08b0e;
+            border: none !important;
         }
 
         .btn-secondary {
@@ -272,8 +334,8 @@
             color: #4d4d4d;
         }
 
-        .btn.btn-primary:hover {
-            background: rgba(94, 94, 94, 0.77);
+        .btn.btn-primary.btn-lg:hover {
+            background: #f6ab19;
             border: 5px solid #f6ab19;
         }
 
@@ -281,8 +343,22 @@
             font-weight: 600;
             font-size: 25px;
             line-height: 45px;
-            padding: 10px 80px;
+            padding: 10px 40px;
+            margin: 0 5px;
         }
+
+        .btn-gift {
+            background-color: #571212;
+            padding: 10px 21px
+        }
+
+        .btn.btn-primary.btn.btn-gift:hover {
+            /*border: 5px solid rgb(255, 255, 255);*/
+            border: 5px solid #ba2626;
+            background-color: #ba2626;
+            /*color: #841b1b;*/
+        }
+
 
         .features {
             margin: 5% 0 10% 0;
@@ -295,7 +371,6 @@
 
         .features-icon-wrapper {
             background: rgba(0, 0, 0, 0.27);
-            /*border: 1px solid rgba(255, 255, 255, 0.52);*/
             box-shadow: 0px 0px 7px 0px #e0cfffdb;
             border-radius: 21.4072px;
             width: 91.75px;
@@ -387,17 +462,6 @@
             position: absolute;
         }
 
-        /* .nav-tabs .nav-link.active::after {
-            content: "";
-            background-image: url(./icons/triangle.svg);
-            background-size: contain;
-            position: absolute;
-            bottom: -40px;
-            width: 37px;
-            height: 34px;
-            overflow: visible;
-        } */
-
         input.form-control,
         .form-select {
             background-color: #d9d9d9;
@@ -430,7 +494,7 @@
         }
 
         .header-title {
-            margin: 15vh 0 5vh;
+            margin: 15vh 0 0;
         }
 
         .footer-links li {
@@ -635,13 +699,20 @@
 
         .goods-header {
             display: flex;
-            flex-direction: row;
-            justify-content: space-between;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
             padding-bottom: 10px;
             margin-bottom: 13px;
-            /*border-bottom: #00000036 3px solid;*/
             border-bottom: #00000036 5px dotted;
+        }
+
+        .goods-header .flex-row {
+            display: flex;
+            width: 100%;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .mini-table {
@@ -717,7 +788,45 @@
             background-color: #313131;
         }
 
+        #main-button, .cta-block {
+            display: flex;
+            justify-content: center;
+            flex-wrap: nowrap;
+        }
+
+        #main-button,
+        .cta-block {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        #main-button .btn:first-child,
+        .cta-block .btn:first-child {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            margin-right: 0;
+            flex-grow: 1;
+        }
+
+        #main-button .btn:last-child,
+        .cta-block .btn:last-child {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            margin-left: 0;
+        }
+
         @media (max-width: 600px) {
+            #home-services {
+                min-height: 250px;
+                height: calc(85vh - 350px);
+                margin-top: -4px;
+            }
+
+            #main-button,
+            .cta-block {
+                max-width: none;
+            }
+
             p {
                 font-size: 16px;
             }
@@ -785,25 +894,23 @@
             }
 
             .header-title {
-                margin: 80px 0 40px;
+                margin: 80px 0 0;
             }
 
-            .header .btn {
-                margin-top: calc(100vh - 660px);
+            #home-services {
+                min-height: 250px;
+                height: calc(100vh - 426px);
+                margin-top: -4px;
             }
         }
 
-        @media (min-width: 760px) {
+        @media (min-width: 600px) {
             dl {
                 font-size: 24px;
             }
 
             .header-title {
                 margin: 0;
-            }
-
-            .header .btn {
-                margin-top: calc(33vh - 259px);
             }
 
             .header-content {
@@ -839,7 +946,6 @@
             background-color: #1f1d1d;
             border-radius: 40px;
             border: 8px solid #1f1d1d;
-            /*box-shadow: none;*/
             overflow: hidden;
             box-shadow: 0px 0px 13px 3px rgb(236 156 82 / 24%);
         }
@@ -896,6 +1002,7 @@
             -ms-transition: all 0.09s ease;
             -o-transition: all 0.09s ease;
         }
+
     </style>
 </head>
 
@@ -905,11 +1012,12 @@
         <div class="container">
             <div class="header-content">
                 <div class="header-title">
+                    <img class="hat-img easeload" onload="this.style.opacity=1" src="./static/hat.svg"/>
                     <h1>Дай Доступ!</h1>
                     <p class="title-p m-0">магазин цифровых радостей</p>
                 </div>
-                <div style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start"
-                     id="home-services">
+                <div
+                        id="home-services">
                     <div style="display: flex; flex-direction: row">
                         <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/yt.svg"
                              width="80" data-service="yt"/>
@@ -923,48 +1031,14 @@
                              width="77" data-service="spoty"/>
                     </div>
                 </div>
-                <!--                <ul style="margin: 0 0 0">-->
-                <!--                    <li class="d-flex align-items-center mb-4 mt-4 flex-row">-->
-                <!--                        <div class="me-3">-->
-                <!--                            <img class="subscription-img" src="./icons/yt.svg" width="75"/>-->
-                <!--                        </div>-->
-                <!--                        <div class="text-md-end" style="margin-top: 4px">-->
-                <!--                            <div class="subscription-title">YouTube Premium</div>-->
-                <!--                            <div class="subscription-price">149 &#x20bd; / месяц</div>-->
-                <!--                        </div>-->
-                <!--                    </li>-->
-                <!--                    <li class="d-flex align-items-center mb-4 mt-4 flex-row">-->
-                <!--                        <div class="me-3">-->
-                <!--                            <img class="subscription-img" src="./icons/fortnite.svg" width="75"/>-->
-                <!--                        </div>-->
-                <!--                        <div class="text-md-end" style="margin-top: 4px">-->
-                <!--                            <div class="subscription-title">Fortnite</div>-->
-                <!--                            <div class="subscription-price">от 349 &#x20bd;</div>-->
-                <!--                        </div>-->
-                <!--                    </li>-->
-                <!--                    <li class="d-flex align-items-center mb-4 mt-4 flex-row">-->
-                <!--                        <div class="me-3">-->
-                <!--                            <img class="subscription-img" src="./icons/spoty.svg" width="75"/>-->
-                <!--                        </div>-->
-                <!--                        <div class="text-md-end" style="margin-top: 4px">-->
-                <!--                            <div class="subscription-title">Spotify Premium</div>-->
-                <!--                            <div class="subscription-price">1499 &#x20bd; / год</div>-->
-                <!--                        </div>-->
-                <!--                    </li>-->
-                <!--                    <li class="d-flex align-items-center mb-4 mt-4 flex-row">-->
-                <!--                        <div class="me-3">-->
-                <!--                            <img class="subscription-img" src="./icons/discord.svg" width="75"/>-->
-                <!--                        </div>-->
-                <!--                        <div class="text-md-end" style="margin-top: 4px">-->
-                <!--                            <div class="subscription-title">Discord Nitro</div>-->
-                <!--                            <div class="subscription-price">от 999 &#x20bd; / год</div>-->
-                <!--                        </div>-->
-                <!--                    </li>-->
-                <!--                </ul>-->
             </div>
-            <div class="d-grid gap-2 d-md-block text-center" id="main-button">
+            <div class="text-center" id="main-button">
                 <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#checkout">
                     Активировать
+                </button>
+                <button class="btn btn-primary btn-lg btn-gift" disabled style="background-color: gray" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="Подарочный сертификат">
+                    <i class="bi bi-gift"></i>
                 </button>
             </div>
         </div>
@@ -980,7 +1054,7 @@
             <div class="d-flex align-items-center" style="max-width: 400px; margin: 32px 0 32px 0">
                 <div class="me-3">
                     <div class="logo-wrapper">
-                        <img src="./icons/dd-logo.svg" width="57" height="70"/>
+                        <img src="./icons/dd-logo.svg" width="58"/>
                     </div>
                 </div>
                 <div>
@@ -1032,7 +1106,6 @@
                         Ответы на&nbsp;другие популярные вопросы доступны в
                         <strong><a href="#faq" data-bs-toggle="modal" data-target="#faq"
                                    style="color: white">FAQ</a></strong>
-                        <!--                            ,<br/> а мы доступны в <a href="https://t.me/kingOfSubs" style="color: white">Telegram</a></p>-->
                     </p>
                 </li>
             </ul>
@@ -1068,13 +1141,19 @@
                     <source src="./static/ddemo-mob.mp4" type="video/mp4"/>
                 </video>
             </div>
+
+            <div class="text-center mt-5 cta-block" style="margin-bottom: 74px;">
+                <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#checkout">
+                    Запустить
+                </button>
+                <button class="btn btn-primary btn-lg btn-gift" disabled style="background-color: gray" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="Подарочный сертификат">
+
+                    <i class="bi bi-gift"></i>
+                </button>
+            </div>
         </div>
     </section>
-    <div class="container text-center d-grid gap-2 d-md-block" style="margin-bottom: 74px;">
-        <a href="#checkout" class="btn btn-primary btn-lg" data-bs-toggle="modal"
-           data-bs-target="#checkout">Запустить
-        </a>
-    </div>
     <section style="margin-bottom: 100px; display: none;" id="reviews-section">
         <h2 class="text-center mb-4">Отзывы</h2>
         <p id="reviews-number" class="additional-info"></p>
@@ -1114,15 +1193,6 @@
               padding: 0;
             ">
                 <ul class="list-unstyled text-end" style="margin: 0">
-                    <!--                    <li class="mb-3">-->
-                    <!--                        <a href="https://instagram.com/d.dostup"-->
-                    <!--                           title="instagram" target="_blank"-->
-                    <!--                           data-saferedirecturl="https://instagram.com/d.dostup">-->
-                    <!--                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png"-->
-                    <!--                                 alt="instagram" width="32" height="32" style="border:0"-->
-                    <!--                                 class="CToWUd" data-bit="iit">-->
-                    <!--                        </a>-->
-                    <!--                    </li>-->
                     <li class="mb-1">
                         <a href="https://t.me/+JlzA96yMytYxYmEy" title="Чат в Телеграм" target="_blank"
                            data-saferedirecturl="https://t.me/+JlzA96yMytYxYmEy">
@@ -1130,25 +1200,6 @@
                                  class="CToWUd" data-bit="iit"/>
                         </a>
                     </li>
-                    <!--                    <li class="mb-3">-->
-                    <!--                        <a href="https://t.me/kingOfSubs"-->
-                    <!--                           title="telegram" target="_blank"-->
-                    <!--                           data-saferedirecturl="https://t.me/kingOfSubs">-->
-                    <!--                            <img src="https://img.icons8.com/color/344/group-foreground-selected.png"-->
-                    <!--                                 alt="telegram" width="32" height="32" style="border:0; background-color: white; border-radius: 6px"-->
-                    <!--                                 class="CToWUd" data-bit="iit">-->
-                    <!--                        </a>-->
-                    <!--                    </li>-->
-                    <!--                    <li>-->
-                    <!--                        <a href="https://plati.market/seller/korol-podpisok/1091269/"-->
-                    <!--                           title="plati" target="_blank"-->
-                    <!--                           data-saferedirecturl="https://plati.market/seller/korol-podpisok/1091269/">-->
-                    <!--                            <img src="https://plati.market/favicon-196x196.png"-->
-                    <!--                                 alt="twitter" width="32" height="32"-->
-                    <!--                                 style="padding: 5px;border-radius: 6px; background-color: white"-->
-                    <!--                                 class="CToWUd" data-bit="iit">-->
-                    <!--                        </a>-->
-                    <!--                    </li>-->
                 </ul>
             </div>
         </div>
@@ -1232,10 +1283,6 @@
                                     3. Оплатите и дождитесь окончания активации<br/>
                                 </div>
                                 4. Наслаждайтесь любимым сервисом!<br/>
-
-                                <!--                                <br/><br/>-->
-
-                                <!--                                Перед покупкой рекомендуем ознакомиться с FAQ для желаемого сервиса 👇-->
                             </div>
                         </div>
                     </div>
@@ -1258,20 +1305,6 @@
                             </div>
                         </div>
                     </div>
-                    <!--                    <div class="accordion-item">-->
-                    <!--                        <h2 class="accordion-header" id="general_heading6">-->
-                    <!--                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"-->
-                    <!--                                    data-bs-target="#general6" aria-expanded="false" aria-controls="general6">-->
-                    <!--                                Какие подписки у нас есть?-->
-                    <!--                            </button>-->
-                    <!--                        </h2>-->
-                    <!--                        <div id="general6" class="accordion-collapse collapse" aria-labelledby="general_heading6"-->
-                    <!--                             data-bs-parent="#generalQuestions">-->
-                    <!--                            <div class="accordion-body">-->
-
-                    <!--                            </div>-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
                 </div>
                 <div class="faq-item-header">
                     <p class="choose-service-title">YouTube Premium</p>
@@ -1723,7 +1756,54 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script>
+    function renderGiftSelector(item) {
+        const handleGiftChange = event => {
+            if (event.target.checked) {
+                document.getElementById(`${item.shp_service_name}AsGift`).value = '1';
+
+                document.getElementById(`${item.shp_service_name}Description`).innerHTML = item.AsGift.Description;
+                document.getElementById(`${item.shp_service_name}Offer`).innerHTML = item.AsGift.OfferText;
+                document.getElementById(`${item.shp_service_name}Submit`).innerHTML = item.AsGift.SubmitText;
+
+                document.getElementById(`${item.shp_service_name}InputLabel`).innerHTML = item.AsGift.InputLabel;
+            }
+        };
+
+        const handleSelfChange = event => {
+            if (event.target.checked) {
+                document.getElementById(`${item.shp_service_name}AsGift`).value = '0';
+
+                document.getElementById(`${item.shp_service_name}Description`).innerHTML = item.FullDescription;
+                document.getElementById(`${item.shp_service_name}Offer`).innerHTML = item.OfferText;
+                document.getElementById(`${item.shp_service_name}Submit`).innerHTML = item.SubmitText;
+
+                document.getElementById(`${item.shp_service_name}InputLabel`).innerHTML = item.InputLabel;
+            }
+        };
+
+        window[`${item.shp_service_name}handleGiftSelect`] = handleGiftChange;
+        window[`${item.shp_service_name}handleSelfSelect`] = handleSelfChange;
+        return `
+            <div class="flex-row">
+                <dt class="col-4 pe-0 mb-1">Кому:</dt>
+                <dd class="col-8 text-end mb-1 text-nowrap position-relative">
+                    <div class="row btn-checkbox-switcher">
+                        <input type="radio" class="btn-check" name="${item.shp_service_name}options" id="${item.shp_service_name}option1" autocomplete="off" checked onchange="window['${item.shp_service_name}handleSelfSelect'](event)" />
+                        <label class="btn btn-checkbox col-6" for="${item.shp_service_name}option1"><i class="bi bi-person"></i> Себе</label>
+                        <input type="radio" class="btn-check" name="${item.shp_service_name}options" id="${item.shp_service_name}option2" autocomplete="off" onchange="window['${item.shp_service_name}handleGiftSelect'](event)" data-check-gift="true" />
+                        <label class="btn btn-checkbox col-6" for="${item.shp_service_name}option2"><i class="bi bi-gift"></i> Подарок</label>
+                    </div>
+                </dd>
+            </div>
+        `;
+    }
+
     (function () {
+
+        // Enable tooltips
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
         const video = document.getElementById('demo-video');
         if (screen.width < 760) {
             document.querySelector('.iphone-x').style.display = 'block';
@@ -1921,20 +2001,32 @@
                             <dl class="row mb-0">
                                 ${item.Items.length > 1 ? (`
                                     <div class="goods-header">
-
-                                        <dt class="col-4 pe-0 mb-1">Название:</dt>
-                                        <dd class="col-8 mb-1">
-                                            <select class="form-select" aria-label="Выберите продукт" id="${item.shp_service_name}Select" onchange="window['${item.shp_service_name}HandleSelect']()">
-                                                ${item.Items.map((v, i) => (
+                                        <div class="flex-row">
+                                            <dt class="col-4 pe-0 mb-1">Название:</dt>
+                                            <dd class="col-8 mb-1">
+                                                <select class="form-select" aria-label="Выберите продукт" id="${item.shp_service_name}Select" onchange="window['${item.shp_service_name}HandleSelect']()">
+                                                    ${item.Items.map((v, i) => (
                     `<option value="${i}" ${i === 0 ? 'selected' : ''}>${v.Period ? `${v.Period} ${v.Name}` : v.Name}</option>`
                 ))}
-                                            </select>
-                                        </dd>
+                                                </select>
+                                            </dd>
+                                        </div>
+
+                                        ${item.AsGift ? renderGiftSelector(item) : ''}
+
                                     </div>
                                     `) : ''}
                                 ${item.Items.length === 1 ? `
-                                    <dt class="col-2 pe-0 mb-1">Название:</dt>
-                                    <dd class="col-10 text-end mb-1 text-nowrap" id="${item.shp_service_name}NameView">${item.Items[0].Name}</dd>
+                                <div class="goods-header">
+                                    <div class="flex-row">
+                                        <dt class="col-2 pe-0 mb-1">Название:</dt>
+                                        <dd class="col-10 text-end mb-1 text-nowrap" id="${item.shp_service_name}NameView">${item.Items[0].Name}</dd>
+                                    </div>
+
+                                    
+                                    ${item.AsGift ? renderGiftSelector(item) : ''}
+
+                                </div>
                                 ` : ''}
                                 <dt class="col-4 mb-1">Стоимость:</dt>
                                 <dd class="col-8 text-end mb-1">
@@ -1949,14 +2041,8 @@
                                     <i class="bi bi-circle-fill" style="color: #2cc32c; font-size: 16px;"></i>
                                 </dd>
                             </dl>
-                            <p style="margin: 10px 0 18px">
+                            <p style="margin: 10px 0 18px" id="${item.shp_service_name}Description">
                                 ${item.FullDescription}
-
-<!--                                <a href="#faq" data-bs-toggle="modal"-->
-<!--                                data-target="#faq"-->
-<!--                                style="color: #4d4d4d">-->
-<!--                                    Узнать больше о подписке на странице FAQ-->
-<!--                                </a>-->
                             </p>
 
                             <form id="${item.shp_service_name}Form" method="POST" action="https://auth.robokassa.ru/Merchant/Index.aspx" onsubmit="window['${item.shp_service_name}HandleSubmit'](event)">
@@ -1972,8 +2058,9 @@
                                 <div class="form-floating">
                                     <input type="email" name="EMail" class="form-control" id="${item.shp_service_name}Email"
                                         placeholder="name@gmail.com" required/>
-                                    <label for="ytEmail">${item.InputLabel}</label>
+                                    <label for="${item.shp_service_name}Email" id="${item.shp_service_name}InputLabel">${item.InputLabel}</label>
                                 </div>
+                                <input type="hidden" id="${item.shp_service_name}AsGift" name="shp_as_gift" value="0" />
                                 <input type="hidden" id="${item.shp_service_name}ServiceCode" name="shp_service_code" value="${item.Items[0].shp_service_code}"/>
                                 <input type="hidden" name="shp_service_name" value="${item.shp_service_name}"/>
                                 <input id="${item.shp_service_name}EmailHidden" type="hidden" name="shp_user_mail" value=""/>
@@ -1981,7 +2068,7 @@
                                 <div class="form-check my-3">
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
                                         required/>
-                                    <label class="form-check-label" for="flexCheckDefault" style="text-align: left; width: 100%;">
+                                    <label class="form-check-label" for="flexCheckDefault" id="${item.shp_service_name}Offer" style="text-align: left; width: 100%;">
                                         ${item.OfferText}
                                     </label>
                                 </div>
@@ -1998,6 +2085,14 @@
 
             tabList.innerHTML = tabItems.join('');
             tabContent.innerHTML = tabItemsContent.join('');
+
+            document.querySelectorAll('.btn-gift').forEach(e => e.addEventListener('click', () => {
+                new bootstrap.Modal(
+                    document.querySelector('#checkout')
+                ).show();
+
+                document.querySelectorAll('[data-check-gift="true"]').forEach(el => el.click());
+            }));
         });
     })();
 </script>
