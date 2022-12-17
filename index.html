@@ -108,6 +108,27 @@
             font-size: 14px;
         }
 
+        .btn-checkbox-switcher {
+            background-color: #d9d9d9;
+            border-radius: 10px;
+            padding: 4px;
+            width: 100%;
+            margin: 0;
+        }
+
+        .btn.btn-checkbox {
+            padding: 0.25rem;
+            border: none;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .btn-check:checked+.btn.btn-checkbox {
+            background-color: #fff;
+            color: #000;
+            box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+        }
+
         .form-check .form-check-input {
             width: 1.6em;
             height: 1.6em;
@@ -155,6 +176,13 @@
             min-height: 100vh;
             position: relative;
             overflow: visible;
+        }
+
+        #home-services {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start
         }
 
         @-webkit-keyframes example {
@@ -225,10 +253,6 @@
             animation: float 1.5s ease-in-out infinite;
         }
 
-        .header .btn {
-            margin-top: calc(100vh - 714px);
-        }
-
         .hat-img {
             position: absolute;
             width: 50px;
@@ -245,7 +269,6 @@
 
         .subscription-img:hover {
             transform: scale(1.05);
-            /*box-shadow: 0px 0px 7px 0px rgb(254 254 255 / 66%);*/
         }
 
         .subscription-title {
@@ -274,6 +297,7 @@
             -webkit-backdrop-filter: blur(4px);
             color: #fff;
             background: #3b2802;
+            border: none!important;
         }
 
         .btn-secondary {
@@ -295,7 +319,6 @@
         }
 
         .btn-gift {
-            border: 5px solid #ba2626;
             background-color: #3b0c0c;
             padding: 10px 21px
         }
@@ -319,7 +342,6 @@
 
         .features-icon-wrapper {
             background: rgba(0, 0, 0, 0.27);
-            /*border: 1px solid rgba(255, 255, 255, 0.52);*/
             box-shadow: 0px 0px 7px 0px #e0cfffdb;
             border-radius: 21.4072px;
             width: 91.75px;
@@ -410,17 +432,6 @@
         .nav-tabs .nav-link img {
             position: absolute;
         }
-
-        /* .nav-tabs .nav-link.active::after {
-            content: "";
-            background-image: url(./icons/triangle.svg);
-            background-size: contain;
-            position: absolute;
-            bottom: -40px;
-            width: 37px;
-            height: 34px;
-            overflow: visible;
-        } */
 
         input.form-control,
         .form-select {
@@ -664,7 +675,6 @@
             align-items: center;
             padding-bottom: 10px;
             margin-bottom: 13px;
-            /*border-bottom: #00000036 3px solid;*/
             border-bottom: #00000036 5px dotted;
         }
 
@@ -750,6 +760,11 @@
         }
 
         @media (max-width: 600px) {
+            #home-services {
+                min-height: 250px;
+                height: calc(100vh - 560px);
+            }
+
             p {
                 font-size: 16px;
             }
@@ -803,6 +818,25 @@
             #servicesTab .nav-link img {
                 width: 74%;
             }
+
+            #main-button {
+                display: flex;
+                justify-content: center;
+                flex-wrap: nowrap;
+            }
+
+            #main-button .btn:first-child {
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+                margin-right: 0;
+                flex-grow: 1;
+            }
+
+            #main-button .btn:last-child {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+                margin-left: 0;
+            }
         }
 
         @media (max-width: 388px) {
@@ -817,25 +851,17 @@
             }
 
             .header-title {
-                margin: 80px 0 40px;
-            }
-
-            .header .btn {
-                margin-top: calc(100vh - 660px);
+                margin: 80px 0 0;
             }
         }
 
-        @media (min-width: 760px) {
+        @media (min-width: 600px) {
             dl {
                 font-size: 24px;
             }
 
             .header-title {
                 margin: 0;
-            }
-
-            .header .btn {
-                margin-top: calc(33vh - 259px);
             }
 
             .header-content {
@@ -871,7 +897,6 @@
             background-color: #1f1d1d;
             border-radius: 40px;
             border: 8px solid #1f1d1d;
-            /*box-shadow: none;*/
             overflow: hidden;
             box-shadow: 0px 0px 13px 3px rgb(236 156 82 / 24%);
         }
@@ -942,7 +967,7 @@
                     <h1>Дай Доступ!</h1>
                     <p class="title-p m-0">магазин цифровых радостей</p>
                 </div>
-                <div style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start"
+                <div
                      id="home-services">
                     <div style="display: flex; flex-direction: row">
                         <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/yt.svg"
@@ -957,50 +982,12 @@
                              width="77" data-service="spoty"/>
                     </div>
                 </div>
-                <!--                <ul style="margin: 0 0 0">-->
-                <!--                    <li class="d-flex align-items-center mb-4 mt-4 flex-row">-->
-                <!--                        <div class="me-3">-->
-                <!--                            <img class="subscription-img" src="./icons/yt.svg" width="75"/>-->
-                <!--                        </div>-->
-                <!--                        <div class="text-md-end" style="margin-top: 4px">-->
-                <!--                            <div class="subscription-title">YouTube Premium</div>-->
-                <!--                            <div class="subscription-price">149 &#x20bd; / месяц</div>-->
-                <!--                        </div>-->
-                <!--                    </li>-->
-                <!--                    <li class="d-flex align-items-center mb-4 mt-4 flex-row">-->
-                <!--                        <div class="me-3">-->
-                <!--                            <img class="subscription-img" src="./icons/fortnite.svg" width="75"/>-->
-                <!--                        </div>-->
-                <!--                        <div class="text-md-end" style="margin-top: 4px">-->
-                <!--                            <div class="subscription-title">Fortnite</div>-->
-                <!--                            <div class="subscription-price">от 349 &#x20bd;</div>-->
-                <!--                        </div>-->
-                <!--                    </li>-->
-                <!--                    <li class="d-flex align-items-center mb-4 mt-4 flex-row">-->
-                <!--                        <div class="me-3">-->
-                <!--                            <img class="subscription-img" src="./icons/spoty.svg" width="75"/>-->
-                <!--                        </div>-->
-                <!--                        <div class="text-md-end" style="margin-top: 4px">-->
-                <!--                            <div class="subscription-title">Spotify Premium</div>-->
-                <!--                            <div class="subscription-price">1499 &#x20bd; / год</div>-->
-                <!--                        </div>-->
-                <!--                    </li>-->
-                <!--                    <li class="d-flex align-items-center mb-4 mt-4 flex-row">-->
-                <!--                        <div class="me-3">-->
-                <!--                            <img class="subscription-img" src="./icons/discord.svg" width="75"/>-->
-                <!--                        </div>-->
-                <!--                        <div class="text-md-end" style="margin-top: 4px">-->
-                <!--                            <div class="subscription-title">Discord Nitro</div>-->
-                <!--                            <div class="subscription-price">от 999 &#x20bd; / год</div>-->
-                <!--                        </div>-->
-                <!--                    </li>-->
-                <!--                </ul>-->
             </div>
-            <div class="d-grid gap-2 d-md-block text-center" id="main-button">
+            <div class="d-md-block text-center" id="main-button">
                 <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#checkout">
                     Активировать
                 </button>
-                <button class="btn btn-primary btn-lg btn-gift" data-bs-toggle="modal" data-bs-target="#checkout">
+                <button class="btn btn-primary btn-lg btn-gift" data-bs-toggle="tooltip" data-bs-placement="top" title="Подарочный сертификат">
                     <i class="bi bi-gift"></i>
                 </button>
             </div>
@@ -1069,7 +1056,6 @@
                         Ответы на&nbsp;другие популярные вопросы доступны в
                         <strong><a href="#faq" data-bs-toggle="modal" data-target="#faq"
                                    style="color: white">FAQ</a></strong>
-                        <!--                            ,<br/> а мы доступны в <a href="https://t.me/kingOfSubs" style="color: white">Telegram</a></p>-->
                     </p>
                 </li>
             </ul>
@@ -1111,7 +1097,7 @@
         <a href="#checkout" class="btn btn-primary btn-lg" data-bs-toggle="modal"
            data-bs-target="#checkout">Запустить
         </a>
-        <button class="btn btn-primary btn-lg btn-gift" data-bs-toggle="modal" data-bs-target="#checkout">
+        <button class="btn btn-primary btn-lg btn-gift" data-bs-toggle="tooltip" data-bs-placement="top" title="Подарочный сертификат">
             <i class="bi bi-gift"></i>
         </button>
     </div>
@@ -1154,15 +1140,6 @@
               padding: 0;
             ">
                 <ul class="list-unstyled text-end" style="margin: 0">
-                    <!--                    <li class="mb-3">-->
-                    <!--                        <a href="https://instagram.com/d.dostup"-->
-                    <!--                           title="instagram" target="_blank"-->
-                    <!--                           data-saferedirecturl="https://instagram.com/d.dostup">-->
-                    <!--                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png"-->
-                    <!--                                 alt="instagram" width="32" height="32" style="border:0"-->
-                    <!--                                 class="CToWUd" data-bit="iit">-->
-                    <!--                        </a>-->
-                    <!--                    </li>-->
                     <li class="mb-1">
                         <a href="https://t.me/+JlzA96yMytYxYmEy" title="Чат в Телеграм" target="_blank"
                            data-saferedirecturl="https://t.me/+JlzA96yMytYxYmEy">
@@ -1170,25 +1147,6 @@
                                  class="CToWUd" data-bit="iit"/>
                         </a>
                     </li>
-                    <!--                    <li class="mb-3">-->
-                    <!--                        <a href="https://t.me/kingOfSubs"-->
-                    <!--                           title="telegram" target="_blank"-->
-                    <!--                           data-saferedirecturl="https://t.me/kingOfSubs">-->
-                    <!--                            <img src="https://img.icons8.com/color/344/group-foreground-selected.png"-->
-                    <!--                                 alt="telegram" width="32" height="32" style="border:0; background-color: white; border-radius: 6px"-->
-                    <!--                                 class="CToWUd" data-bit="iit">-->
-                    <!--                        </a>-->
-                    <!--                    </li>-->
-                    <!--                    <li>-->
-                    <!--                        <a href="https://plati.market/seller/korol-podpisok/1091269/"-->
-                    <!--                           title="plati" target="_blank"-->
-                    <!--                           data-saferedirecturl="https://plati.market/seller/korol-podpisok/1091269/">-->
-                    <!--                            <img src="https://plati.market/favicon-196x196.png"-->
-                    <!--                                 alt="twitter" width="32" height="32"-->
-                    <!--                                 style="padding: 5px;border-radius: 6px; background-color: white"-->
-                    <!--                                 class="CToWUd" data-bit="iit">-->
-                    <!--                        </a>-->
-                    <!--                    </li>-->
                 </ul>
             </div>
         </div>
@@ -1272,10 +1230,6 @@
                                     3. Оплатите и дождитесь окончания активации<br/>
                                 </div>
                                 4. Наслаждайтесь любимым сервисом!<br/>
-
-                                <!--                                <br/><br/>-->
-
-                                <!--                                Перед покупкой рекомендуем ознакомиться с FAQ для желаемого сервиса 👇-->
                             </div>
                         </div>
                     </div>
@@ -1298,20 +1252,6 @@
                             </div>
                         </div>
                     </div>
-                    <!--                    <div class="accordion-item">-->
-                    <!--                        <h2 class="accordion-header" id="general_heading6">-->
-                    <!--                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"-->
-                    <!--                                    data-bs-target="#general6" aria-expanded="false" aria-controls="general6">-->
-                    <!--                                Какие подписки у нас есть?-->
-                    <!--                            </button>-->
-                    <!--                        </h2>-->
-                    <!--                        <div id="general6" class="accordion-collapse collapse" aria-labelledby="general_heading6"-->
-                    <!--                             data-bs-parent="#generalQuestions">-->
-                    <!--                            <div class="accordion-body">-->
-
-                    <!--                            </div>-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
                 </div>
                 <div class="faq-item-header">
                     <p class="choose-service-title">YouTube Premium</p>
@@ -1763,7 +1703,54 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script>
+    function renderGiftSelector(item) {
+        const handleGiftChange = event => {
+            if (event.target.checked) {
+                document.getElementById(`${item.shp_service_name}AsGift`).value = '1';
+
+                document.getElementById(`${item.shp_service_name}Description`).innerHTML = item.AsGift.Description;
+                document.getElementById(`${item.shp_service_name}Offer`).innerHTML = item.AsGift.OfferText;
+                document.getElementById(`${item.shp_service_name}Submit`).innerHTML = item.AsGift.SubmitText;
+
+                document.getElementById(`${item.shp_service_name}InputLabel`).innerHTML = item.AsGift.InputLabel;
+            }
+        };
+
+        const handleSelfChange = event => {
+            if (event.target.checked) {
+                document.getElementById(`${item.shp_service_name}AsGift`).value = '0';
+
+                document.getElementById(`${item.shp_service_name}Description`).innerHTML = item.FullDescription;
+                document.getElementById(`${item.shp_service_name}Offer`).innerHTML = item.OfferText;
+                document.getElementById(`${item.shp_service_name}Submit`).innerHTML = item.SubmitText;
+
+                document.getElementById(`${item.shp_service_name}InputLabel`).innerHTML = item.InputLabel;
+            }
+        };
+
+        window[`${item.shp_service_name}handleGiftSelect`] = handleGiftChange;
+        window[`${item.shp_service_name}handleSelfSelect`] = handleSelfChange;
+        return `
+            <div class="flex-row">
+                <dt class="col-4 pe-0 mb-1">Кому:</dt>
+                <dd class="col-8 text-end mb-1 text-nowrap position-relative">
+                    <div class="row btn-checkbox-switcher">
+                        <input type="radio" class="btn-check" name="${item.shp_service_name}options" id="${item.shp_service_name}option1" autocomplete="off" checked onchange="window['${item.shp_service_name}handleSelfSelect'](event)" />
+                        <label class="btn btn-checkbox col-6" for="${item.shp_service_name}option1"><i class="bi bi-person"></i> Себе</label>
+                        <input type="radio" class="btn-check" name="${item.shp_service_name}options" id="${item.shp_service_name}option2" autocomplete="off" onchange="window['${item.shp_service_name}handleGiftSelect'](event)" data-check-gift="true" />
+                        <label class="btn btn-checkbox col-6" for="${item.shp_service_name}option2"><i class="bi bi-gift"></i> Подарок</label>
+                    </div>
+                </dd>
+            </div>
+        `;
+    }
+
     (function () {
+
+        // Enable tooltips
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
         const video = document.getElementById('demo-video');
         if (screen.width < 760) {
             document.querySelector('.iphone-x').style.display = 'block';
@@ -1972,25 +1959,7 @@
                                             </dd>
                                         </div>
 
-
-
-                                        ${item.AsGift ? `
-                                        <div class="flex-row">
-                                                    <dt class="col-4 pe-0 mb-1">Кому:</dt>
-                                                    <dd class="col-8 text-end mb-1 text-nowrap" id="123">
-                                                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                                            <label class="active">
-                                                            <input type="radio" name="options" id="option1" autocomplete="off" checked> Себе
-                                                            </label>
-                                                            <label class="">
-                                                            <input type="radio" name="options" id="option2" autocomplete="off"> Подарок <i class="bi bi-gift"></i>
-                                                            </label>
-                                                        </div>
-                                                    </dd>
-                                        </div>
-                                        ` : ''}
-
-
+                                        ${item.AsGift ? renderGiftSelector(item) : ''}
 
                                     </div>
                                     `) : ''}
@@ -2001,21 +1970,8 @@
                                         <dd class="col-10 text-end mb-1 text-nowrap" id="${item.shp_service_name}NameView">${item.Items[0].Name}</dd>
                                     </div>
 
-                                    ${item.AsGift ? `
-                                        <div class="flex-row">
-                                                    <dt class="col-4 pe-0 mb-1">Кому:</dt>
-                                                    <dd class="col-8 text-end mb-1 text-nowrap" id="123">
-                                                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                                            <label class="active">
-                                                            <input type="radio" name="options" id="option1" autocomplete="off" checked> Себе
-                                                            </label>
-                                                            <label class="">
-                                                            <input type="radio" name="options" id="option2" autocomplete="off"> Подарок <i class="bi bi-gift"></i>
-                                                            </label>
-                                                        </div>
-                                                    </dd>
-                                        </div>
-                                        ` : ''}
+                                    
+                                    ${item.AsGift ? renderGiftSelector(item) : ''}
 
                                 </div>
                                 ` : ''}
@@ -2032,14 +1988,8 @@
                                     <i class="bi bi-circle-fill" style="color: #2cc32c; font-size: 16px;"></i>
                                 </dd>
                             </dl>
-                            <p style="margin: 10px 0 18px">
+                            <p style="margin: 10px 0 18px" id="${item.shp_service_name}Description">
                                 ${item.FullDescription}
-
-<!--                                <a href="#faq" data-bs-toggle="modal"-->
-<!--                                data-target="#faq"-->
-<!--                                style="color: #4d4d4d">-->
-<!--                                    Узнать больше о подписке на странице FAQ-->
-<!--                                </a>-->
                             </p>
 
                             <form id="${item.shp_service_name}Form" method="POST" action="https://auth.robokassa.ru/Merchant/Index.aspx" onsubmit="window['${item.shp_service_name}HandleSubmit'](event)">
@@ -2055,8 +2005,9 @@
                                 <div class="form-floating">
                                     <input type="email" name="EMail" class="form-control" id="${item.shp_service_name}Email"
                                         placeholder="name@gmail.com" required/>
-                                    <label for="ytEmail">${item.InputLabel}</label>
+                                    <label for="${item.shp_service_name}Email" id="${item.shp_service_name}InputLabel">${item.InputLabel}</label>
                                 </div>
+                                <input type="hidden" id="${item.shp_service_name}AsGift" name="shp_as_gift" value="0" />
                                 <input type="hidden" id="${item.shp_service_name}ServiceCode" name="shp_service_code" value="${item.Items[0].shp_service_code}"/>
                                 <input type="hidden" name="shp_service_name" value="${item.shp_service_name}"/>
                                 <input id="${item.shp_service_name}EmailHidden" type="hidden" name="shp_user_mail" value=""/>
@@ -2064,7 +2015,7 @@
                                 <div class="form-check my-3">
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
                                         required/>
-                                    <label class="form-check-label" for="flexCheckDefault" style="text-align: left; width: 100%;">
+                                    <label class="form-check-label" for="flexCheckDefault" id="${item.shp_service_name}Offer" style="text-align: left; width: 100%;">
                                         ${item.OfferText}
                                     </label>
                                 </div>
@@ -2081,6 +2032,14 @@
 
             tabList.innerHTML = tabItems.join('');
             tabContent.innerHTML = tabItemsContent.join('');
+
+            document.querySelectorAll('.btn-gift').forEach(e => e.addEventListener('click', () => {
+                new bootstrap.Modal(
+                    document.querySelector('#checkout')
+                ).show();
+
+                document.querySelectorAll('[data-check-gift="true"]').forEach(el => el.click());
+            }));
         });
     })();
 </script>
