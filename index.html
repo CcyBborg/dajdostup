@@ -53,6 +53,10 @@
             padding: 0 34px;
         }
 
+        .modal {
+            z-index: 99999;
+        }
+
         .modal-content {
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(8px);
@@ -182,7 +186,8 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: flex-start
+            align-items: flex-start;
+            margin-bottom: 6px;
         }
 
         @-webkit-keyframes example {
@@ -465,7 +470,7 @@
         }
 
         .header-title {
-            margin: 15vh 0 5vh;
+            margin: 15vh 0 0;
         }
 
         .footer-links li {
@@ -762,7 +767,8 @@
         @media (max-width: 600px) {
             #home-services {
                 min-height: 250px;
-                height: calc(100vh - 560px);
+                height: calc(85vh - 350px);
+                margin-top: -4px;
             }
 
             p {
@@ -819,20 +825,22 @@
                 width: 74%;
             }
 
-            #main-button {
+            #main-button, .cta-block {
                 display: flex;
                 justify-content: center;
                 flex-wrap: nowrap;
             }
 
-            #main-button .btn:first-child {
+            #main-button .btn:first-child,
+            .cta-block .btn:first-child {
                 border-top-right-radius: 0;
                 border-bottom-right-radius: 0;
                 margin-right: 0;
                 flex-grow: 1;
             }
 
-            #main-button .btn:last-child {
+            #main-button .btn:last-child, 
+            .cta-block .btn:last-child {
                 border-top-left-radius: 0;
                 border-bottom-left-radius: 0;
                 margin-left: 0;
@@ -852,6 +860,12 @@
 
             .header-title {
                 margin: 80px 0 0;
+            }
+
+            #home-services {
+                min-height: 250px;
+                height: calc(100vh - 426px);
+                margin-top: -4px;
             }
         }
 
@@ -1091,16 +1105,17 @@
                     <source src="./static/ddemo-mob.mp4" type="video/mp4"/>
                 </video>
             </div>
+
+            <div class="d-md-block text-center mt-5 cta-block" style="margin-bottom: 74px;">
+                <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#checkout">
+                    Запустить
+                </button>
+                <button class="btn btn-primary btn-lg btn-gift" data-bs-toggle="tooltip" data-bs-placement="top" title="Подарочный сертификат">
+                    <i class="bi bi-gift"></i>
+                </button>
+            </div>
         </div>
     </section>
-    <div class="container text-center d-grid gap-2 d-md-block" style="margin-bottom: 74px;">
-        <a href="#checkout" class="btn btn-primary btn-lg" data-bs-toggle="modal"
-           data-bs-target="#checkout">Запустить
-        </a>
-        <button class="btn btn-primary btn-lg btn-gift" data-bs-toggle="tooltip" data-bs-placement="top" title="Подарочный сертификат">
-            <i class="bi bi-gift"></i>
-        </button>
-    </div>
     <section style="margin-bottom: 100px; display: none;" id="reviews-section">
         <h2 class="text-center mb-4">Отзывы</h2>
         <p id="reviews-number" class="additional-info"></p>
