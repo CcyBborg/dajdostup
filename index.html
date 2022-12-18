@@ -18,6 +18,10 @@
     <link href="fonts/stylesheet.css" rel="stylesheet" type="text/css"/>
     <link href="fonts/proxima-nova.css" rel="stylesheet" type="text/css"/>
 
+    <!-- SwiperJS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+
+
     <!--    <link rel="icon" type="image/x-icon" href="./favicon.ico"/>-->
     <link rel="icon" type="image/svg+xml" href="./icons/favicon.svg"/>
 
@@ -188,6 +192,26 @@
             justify-content: center;
             align-items: flex-start;
             margin-bottom: 6px;
+        }
+
+        .swiper-button-disabled {
+            display: none;
+        }
+
+        .swiper-button-next {
+            position: absolute;
+            right: -20px;
+            overflow: visible;
+        }
+
+        .swiper-button-prev {
+            position: absolute;
+            left: -20px;
+        }
+
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            font-size: 28px;
         }
 
         @-webkit-keyframes example {
@@ -815,6 +839,16 @@
             margin-left: 0;
         }
 
+        .swiper {
+            width: 100%;
+            position: relative;
+            padding: 10px 16px;
+        }
+        
+        #servicesTab {
+            flex-wrap: nowrap;
+        }
+
         @media (max-width: 600px) {
             #home-services {
                 min-height: 250px;
@@ -1157,8 +1191,8 @@
     <section style="margin-bottom: 100px; display: none;" id="reviews-section">
         <h2 class="text-center mb-4">Отзывы</h2>
         <p id="reviews-number" class="additional-info"></p>
-        <div id="reviews-container" class="swiper">
-            <ul id="reviews" class="swiper-wrapper"></ul>
+        <div id="reviews-container">
+            <ul id="reviews"></ul>
         </div>
     </section>
 </main>
@@ -1693,9 +1727,15 @@
             </div>
             <div class="modal-body" style="max-width: 600px; margin: 0 auto">
                 <p class="choose-service-title">Выберите сервис</p>
-                <ul class="nav nav-tabs justify-content-md-center justify-content-between flex-nowrap" id="servicesTab"
-                    role="tablist">
-                </ul>
+                <div class="position-relative">
+                    <div class="swiper">
+                        <ul class="nav nav-tabs swiper-wrapper" id="servicesTab"
+                        role="tablist">
+                        </ul>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
                 <div class="tab-content" id="servicesTabContent">
                     <div class="text-center my-4">
                         <span class="spinner-border spinner-border-lg" role="status" aria-hidden="true"></span>
@@ -1754,6 +1794,9 @@
 
 <!-- Axios library -->
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<!-- SwiperJS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
 <script>
     function renderGiftSelector(item) {
@@ -1904,7 +1947,7 @@
                 for (const comment of response.data.reviews) {
                     commentsElements.push(
                         `
-                    <li class="review-card swiper-slide">
+                    <li class="review-card">
                         <div class="review-icons">
                             <a href="?service=${comment.service_name}" class="review-icon" data-service="${comment.service_name}"><img src="icons/${comment.service_name}-without-borders.svg" width="100%" height="100%" style="pointer-events: none;" /></a>
                             <a href="${comment.link}" class="review-icon" target="_blank"><img src="icons/plati_market_logo.svg" width="100%" height="100%" /></a>
@@ -1945,7 +1988,17 @@
             for (const item of res.data) {
 
                 tabItems.push(`
-                        <li class="nav-item ${tabItems.length === res.data.length - 1 ? '' : 'me-0 me-md-4'}" role="presentation">
+                        <li class="nav-item swiper-slide" role="presentation">
+                            <button class="nav-link ${!tabItems.length ? 'active' : ''}" id="${item.shp_service_name}Tab" data-bs-toggle="tab"
+                                    data-bs-target="#${item.shp_service_name}-tab-pane" type="button" role="tab"
+                                    aria-controls="home-tab-pane"
+                                    ${tabItems.length === 0 ? 'aria-selected="true"' : ''}>
+                                <img src="${item.Logo.src}" width="${item.Logo.width}" />
+                            </button>
+                        </li>
+                    `);
+                    tabItems.push(`
+                        <li class="nav-item swiper-slide" role="presentation">
                             <button class="nav-link ${!tabItems.length ? 'active' : ''}" id="${item.shp_service_name}Tab" data-bs-toggle="tab"
                                     data-bs-target="#${item.shp_service_name}-tab-pane" type="button" role="tab"
                                     aria-controls="home-tab-pane"
@@ -2093,6 +2146,17 @@
 
                 document.querySelectorAll('[data-check-gift="true"]').forEach(el => el.click());
             }));
+
+
+            // SwiperJS
+            var swiper = new Swiper(".swiper", {
+                slidesPerView: 4,
+                spaceBetween: 20,
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
         });
     })();
 </script>
