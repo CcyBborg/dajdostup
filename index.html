@@ -38,6 +38,15 @@
 
     <style>
 
+        img {
+            -drag: none;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-drag: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+         }
+
 
         @keyframes float {
             0% {
@@ -200,10 +209,16 @@
 
         .swiper-button-next,
         .swiper-button-prev {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+            width: 68px;
+            height: 68px;
+            border-radius: 250%;
             background-color: rgba(0, 0, 0, 0.3);
+            filter: invert(1) grayscale(100%) brightness(200%);
+            box-shadow: 0px 0px 18px 3px rgb(255 190 130 / 31%);
+            overflow: visible;
+            top: 0;
+  bottom: 0;
+  margin: auto 0;
             border: 1px solid #96969b;
             opacity: .5;
         }
@@ -216,13 +231,13 @@
 
         .swiper-button-next {
             position: absolute;
-            right: -26px;
+            right: -90px;
             overflow: visible;
         }
 
         .swiper-button-prev {
             position: absolute;
-            left: -26px;
+            left: -90px;
         }
 
         .swiper-button-next::after,
@@ -859,7 +874,10 @@
         .swiper {
             width: 100%;
             position: relative;
-            padding: 10px 24px;
+            padding: 10px;
+            box-shadow: inset 0px 0px 18px 3px rgba(108, 108, 108, 0.32);
+            z-index: 999;
+            border-radius: 20px;
         }
         
         #servicesTab {
@@ -2167,12 +2185,16 @@
 
             // SwiperJS
             var swiper = new Swiper(".swiper", {
-                slidesPerView: 4,
-                spaceBetween: 20,
+                slidesPerView: 4.5,
+                spaceBetween: 16,
                 navigation: {
                     nextEl: ".swiper-button-next",
                     prevEl: ".swiper-button-prev",
                 },
+                freeMode: true,
+                mousewheel: {
+    releaseOnEdges: true,
+  },
             });
         });
     })();
