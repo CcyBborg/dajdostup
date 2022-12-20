@@ -886,7 +886,6 @@
             width: 100%;
             position: relative;
             padding: 10px;
-            box-shadow: inset 0px 0px 18px 3px rgba(108, 108, 108, 0.32);
             z-index: 999;
             border-radius: 20px;
 
@@ -1809,8 +1808,6 @@
         mutations.forEach(function (mutationRecord) {
             console.log(mutationRecord.target);
             if (mutationRecord.target.className.includes("swiper-button-disabled")) {
-                console.log("Class added....");
-                console.log(mutationRecord.target.id);
 
                 if (mutationRecord.target.id === 'left-arrow') {
                     document.getElementById('swiper-content').classList.add('container-fade-out-right');
