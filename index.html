@@ -324,6 +324,15 @@
                 height: 1000%;
             }
 
+            .swiper {
+                padding: 10px!important;
+            }
+            
+            .swiper-button-next,
+            .swiper-button-prev {
+                display: none;
+            }
+
             @-webkit-keyframes example {
                 0% {
                     -webkit-transform: rotate(0deg);
@@ -2253,8 +2262,6 @@
 
             // SwiperJS
             var swiper = new Swiper(".swiper", {
-                slidesPerView: 4.5,
-                spaceBetween: 16,
                 navigation: {
                     nextEl: ".swiper-button-next",
                     prevEl: ".swiper-button-prev",
@@ -2262,7 +2269,24 @@
                 freeMode: true,
                 mousewheel: {
                     releaseOnEdges: true,
+                    forceToAxis: true
                 },
+                slidesPerView: 3.5,
+                spaceBetween: 10,
+                breakpoints: {
+                    400: {
+                        slidesPerView: 3.7,
+                        spaceBetween: 10,    
+                    },
+                    440: {
+                        slidesPerView: 4.5,
+                        spaceBetween: 10,
+                    },
+                    640: {
+                        slidesPerView: 4.5,
+                        spaceBetween: 16,
+                    }
+                }
             });
         });
     })();
