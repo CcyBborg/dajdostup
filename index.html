@@ -19,7 +19,7 @@
     <link href="fonts/proxima-nova.css" rel="stylesheet" type="text/css"/>
 
     <!-- SwiperJS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
 
 
     <!--    <link rel="icon" type="image/x-icon" href="./favicon.ico"/>-->
@@ -45,7 +45,7 @@
             -webkit-user-drag: none;
             -webkit-user-select: none;
             -ms-user-select: none;
-         }
+        }
 
 
         @keyframes float {
@@ -207,6 +207,17 @@
             display: none;
         }
 
+
+        .container-fade-out-right {
+            -webkit-mask-image: linear-gradient(90deg, black 80%, #ff000000) !important;
+
+        }
+
+        .container-fade-out-left {
+            -webkit-mask-image: linear-gradient(270deg, black 80%, #ff000000) !important;
+
+        }
+
         .swiper-button-next,
         .swiper-button-prev {
             width: 68px;
@@ -217,8 +228,8 @@
             box-shadow: 0px 0px 18px 3px rgb(255 190 130 / 31%);
             overflow: visible;
             top: 0;
-  bottom: 0;
-  margin: auto 0;
+            bottom: 0;
+            margin: auto 0;
             border: 1px solid #96969b;
             opacity: .5;
         }
@@ -306,16 +317,16 @@
             }
 
             @-webkit-keyframes example {
-            0% {
-                -webkit-transform: rotate(0deg);
-                transform: rotate(0deg);
-            }
+                0% {
+                    -webkit-transform: rotate(0deg);
+                    transform: rotate(0deg);
+                }
 
-            to {
-                -webkit-transform: rotate(40deg);
-                transform: rotate(40deg);
+                to {
+                    -webkit-transform: rotate(40deg);
+                    transform: rotate(40deg);
+                }
             }
-        }
 
         }
 
@@ -878,8 +889,17 @@
             box-shadow: inset 0px 0px 18px 3px rgba(108, 108, 108, 0.32);
             z-index: 999;
             border-radius: 20px;
+
+            -webkit-mask-image: linear-gradient(90deg, black, black);
         }
-        
+
+        #swiper-content {
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+        }
+
         #servicesTab {
             flex-wrap: nowrap;
         }
@@ -1105,7 +1125,8 @@
                 <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#checkout">
                     Активировать
                 </button>
-                <button class="btn btn-primary btn-lg btn-gift" disabled style="background-color: gray" data-bs-toggle="tooltip" data-bs-placement="top"
+                <button class="btn btn-primary btn-lg btn-gift" disabled style="background-color: gray"
+                        data-bs-toggle="tooltip" data-bs-placement="top"
                         title="Подарочный сертификат">
                     <i class="bi bi-gift"></i>
                 </button>
@@ -1215,7 +1236,8 @@
                 <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#checkout">
                     Запустить
                 </button>
-                <button class="btn btn-primary btn-lg btn-gift" disabled style="background-color: gray" data-bs-toggle="tooltip" data-bs-placement="top"
+                <button class="btn btn-primary btn-lg btn-gift" disabled style="background-color: gray"
+                        data-bs-toggle="tooltip" data-bs-placement="top"
                         title="Подарочный сертификат">
 
                     <i class="bi bi-gift"></i>
@@ -1763,13 +1785,13 @@
             <div class="modal-body" style="max-width: 600px; margin: 0 auto">
                 <p class="choose-service-title">Выберите сервис</p>
                 <div class="position-relative">
-                    <div class="swiper">
+                    <div id="swiper-content" class="swiper">
                         <ul class="nav nav-tabs swiper-wrapper" id="servicesTab"
-                        role="tablist">
+                            role="tablist">
                         </ul>
                     </div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
+                    <div id="left-arrow" class="swiper-button-prev "></div>
+                    <div id="right-arrow" class="swiper-button-next"></div>
                 </div>
                 <div class="tab-content" id="servicesTabContent">
                     <div class="text-center my-4">
@@ -1780,6 +1802,48 @@
         </div>
     </div>
 </div>
+
+
+<script type="text/javascript">
+    let observer = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutationRecord) {
+            console.log(mutationRecord.target);
+            if (mutationRecord.target.className.includes("swiper-button-disabled")) {
+                console.log("Class added....");
+                console.log(mutationRecord.target.id);
+
+                if (mutationRecord.target.id === 'left-arrow') {
+                    document.getElementById('swiper-content').classList.add('container-fade-out-right');
+                } else {
+                    document.getElementById('swiper-content').classList.add('container-fade-out-left');
+                }
+
+            } else {
+                if (mutationRecord.target.id === 'left-arrow') {
+                    document.getElementById('swiper-content').classList.remove('container-fade-out-right');
+                } else {
+                    document.getElementById('swiper-content').classList.remove('container-fade-out-left');
+                }
+            }
+            ;
+        })
+    });
+
+    let left_target = document.getElementById('left-arrow');
+    let right_target = document.getElementById('right-arrow');
+
+    // MDN documentation
+    // https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver/observe#attributefilter
+    observer.observe(left_target, {
+        attributes: true,
+        attributeFilter: ['class']
+    });
+
+    observer.observe(right_target, {
+        attributes: true,
+        attributeFilter: ['class']
+    });
+</script>
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
@@ -2032,7 +2096,7 @@
                             </button>
                         </li>
                     `);
-                    tabItems.push(`
+                tabItems.push(`
                         <li class="nav-item swiper-slide" role="presentation">
                             <button class="nav-link ${!tabItems.length ? 'active' : ''}" id="${item.shp_service_name}Tab" data-bs-toggle="tab"
                                     data-bs-target="#${item.shp_service_name}-tab-pane" type="button" role="tab"
@@ -2193,8 +2257,8 @@
                 },
                 freeMode: true,
                 mousewheel: {
-    releaseOnEdges: true,
-  },
+                    releaseOnEdges: true,
+                },
             });
         });
     })();
