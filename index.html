@@ -220,8 +220,8 @@
 
         .swiper-button-next,
         .swiper-button-prev {
-            width: 68px;
-            height: 68px;
+            width: 44px;
+            height: 44px;
             border-radius: 250%;
             background-color: rgba(0, 0, 0, 0.3);
             filter: invert(1) grayscale(100%) brightness(200%);
@@ -255,6 +255,14 @@
         .swiper-button-prev::after {
             font-size: 24px;
             color: #96969b;
+        }
+
+        .swiper-button-next::after {
+            margin-left: 2px;
+        }
+
+        .swiper-button-prev::after {
+            margin-right: 2px;
         }
 
         @-webkit-keyframes example {
@@ -602,7 +610,8 @@
             padding-top: 0;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
+            width: 100%;
         }
 
         #faq-services .faq-item-header {
@@ -885,7 +894,7 @@
         .swiper {
             width: 100%;
             position: relative;
-            padding: 10px;
+            padding: 10px 0;
             z-index: 999;
             border-radius: 20px;
 
@@ -1789,7 +1798,7 @@
                             role="tablist">
                         </ul>
                     </div>
-                    <div id="left-arrow" class="swiper-button-prev "></div>
+                    <div id="left-arrow" class="swiper-button-prev"></div>
                     <div id="right-arrow" class="swiper-button-next"></div>
                 </div>
                 <div class="tab-content" id="servicesTabContent">
@@ -1821,7 +1830,6 @@
                     document.getElementById('swiper-content').classList.remove('container-fade-out-left');
                 }
             }
-            ;
         })
     });
 
