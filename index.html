@@ -334,9 +334,9 @@
             }
 
             .swiper {
-                padding: 10px!important;
+                padding: 10px !important;
             }
-            
+
             .swiper-button-next,
             .swiper-button-prev {
                 display: none;
@@ -441,7 +441,7 @@
         }
 
         .btn-gift {
-            background-color: #571212;
+            background-color: #791313;
             padding: 10px 21px
         }
 
@@ -1136,24 +1136,31 @@
                 <div
                         id="home-services">
                     <div style="display: flex; flex-direction: row">
+
                         <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/yt.svg"
                              width="80" data-service="yt"/>
-                        <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/discord.svg"
-                             width="75" data-service="discord"/>
+                        <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/ps.svg"
+                             width="80" data-service="ps"/>
+<!--                        <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/discord.svg"-->
+<!--                             width="75" data-service="discord"/>-->
                     </div>
+
                     <div style="display: flex; flex-direction: row">
                         <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/fortnite.svg"
                              width="80" data-service="fortnite"/>
                         <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/spoty.svg"
                              width="77" data-service="spoty"/>
+
                     </div>
+
                 </div>
             </div>
             <div class="text-center" id="main-button">
                 <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#checkout">
                     Активировать
                 </button>
-                <button class="btn btn-primary btn-lg btn-gift" disabled style="background-color: gray"
+<!--                        disabled style="background-color: gray"-->
+                <button class="btn btn-primary btn-lg btn-gift"
                         data-bs-toggle="tooltip" data-bs-placement="top"
                         title="Подарочный сертификат">
                     <i class="bi bi-gift"></i>
@@ -1264,7 +1271,8 @@
                 <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#checkout">
                     Запустить
                 </button>
-                <button class="btn btn-primary btn-lg btn-gift" disabled style="background-color: gray"
+<!--                        disabled style="background-color: gray"-->
+                <button class="btn btn-primary btn-lg btn-gift"
                         data-bs-toggle="tooltip" data-bs-placement="top"
                         title="Подарочный сертификат">
 
@@ -1949,7 +1957,7 @@
         window[`${item.shp_service_name}handleGiftSelect`] = handleGiftChange;
         window[`${item.shp_service_name}handleSelfSelect`] = handleSelfChange;
         return `
-            <div class="flex-row">
+            <div class="flex-row" style="margin-top: 6px">
                 <dt class="col-4 pe-0 mb-1">Кому:</dt>
                 <dd class="col-8 text-end mb-1 text-nowrap position-relative">
                     <div class="row btn-checkbox-switcher">
@@ -2002,6 +2010,7 @@
             console.log(e);
             const serviceName = item.shp_service_name;
             const serviceCode = document.getElementById(`${item.shp_service_name}ServiceCode`).value;
+            const AsGift = document.getElementById(`${item.shp_service_name}AsGift`).value;
 
             let sum = item.Items[0].OutSum;
             let description = item.Items[0].Name;
@@ -2032,6 +2041,7 @@
                             `https://activations.ddostup.ru/get-sign`, {
                                 "out_sum": `${sum}`,
                                 "receipt": `${receipt}`,
+                                "shp_as_gift": `${AsGift}`,
                                 "shp_service_code": `${serviceCode}`,
                                 "shp_service_name": `${serviceName}`,
                                 "shp_user_mail": `${email}`
@@ -2108,19 +2118,7 @@
                         </li>
                     `);
                 idx++
-                // REMOVE
-                tabItems.push(`
-                        <li class="nav-item swiper-slide" role="presentation">
-                            <button class="nav-link ${!tabItems.length ? 'active' : ''}" id="${item.shp_service_name}Tab1" data-swiper-idx="${idx}" data-bs-toggle="tab"
-                                    data-bs-target="#${item.shp_service_name}-tab-pane" type="button" role="tab"
-                                    aria-controls="home-tab-pane"
-                                    ${tabItems.length === 0 ? 'aria-selected="true"' : ''}>
-                                <img src="${item.Logo.src}" width="${item.Logo.width}" />
-                            </button>
-                        </li>
-                    `);
-                idx++;
-                // END REMOVE
+
 
                 window[`${item.shp_service_name}HandleSubmit`] = onServiceSubmit(item);
                 window[`${item.shp_service_name}HandleSelect`] = () => {
@@ -2278,7 +2276,7 @@
                 breakpoints: {
                     400: {
                         slidesPerView: 3.7,
-                        spaceBetween: 10,    
+                        spaceBetween: 10,
                     },
                     440: {
                         slidesPerView: 4.5,
@@ -2295,7 +2293,7 @@
             window.swiper = swiper;
         });
 
-        function handleServiceOpen (event) {
+        function handleServiceOpen(event) {
             const service = event.target.getAttribute("data-service");
             if (service) {
                 event.preventDefault();
