@@ -18,6 +18,10 @@
     <link href="fonts/stylesheet.css" rel="stylesheet" type="text/css"/>
     <link href="fonts/proxima-nova.css" rel="stylesheet" type="text/css"/>
 
+    <!-- SwiperJS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+
+
     <!--    <link rel="icon" type="image/x-icon" href="./favicon.ico"/>-->
     <link rel="icon" type="image/svg+xml" href="./icons/favicon.svg"/>
 
@@ -33,6 +37,15 @@
     </noscript>
 
     <style>
+
+        img {
+            -drag: none;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-drag: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
 
 
         @keyframes float {
@@ -190,6 +203,77 @@
             margin-bottom: 6px;
         }
 
+        .swiper-button-disabled {
+            display: none;
+        }
+
+
+        .container-fade-out-right {
+            mask: linear-gradient(90deg, black 80%, #ff000000) !important;
+            -webkit-mask: linear-gradient(90deg, black 80%, #ff000000) !important;
+
+        }
+
+        .container-fade-out-left {
+            mask: linear-gradient(270deg, black 80%, #ff000000) !important;
+            -webkit-mask: linear-gradient(270deg, black 80%, #ff000000) !important;
+
+        }
+
+        .container-fade-out-left.container-fade-out-right {
+            mask: linear-gradient(90deg, black 80%, #ff000000) left, linear-gradient(270deg, black 80%, #ff000000) right !important;
+            -webkit-mask: linear-gradient(90deg, black 80%, #ff000000) left, linear-gradient(270deg, black 80%, #ff000000) right !important;
+            mask-composite: destination-in;
+            -webkit-mask-composite: destination-in;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            width: 44px;
+            height: 44px;
+            border-radius: 250%;
+            background-color: rgba(0, 0, 0, 0.3);
+            filter: invert(1) grayscale(100%) brightness(200%);
+            box-shadow: 0px 0px 18px 3px rgb(255 190 130 / 31%);
+            overflow: visible;
+            top: 0;
+            bottom: 0;
+            margin: auto 0;
+            border: 1px solid #96969b;
+            opacity: .5;
+        }
+
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+            cursor: pointer;
+            opacity: .75;
+        }
+
+        .swiper-button-next {
+            position: absolute;
+            right: -90px;
+            overflow: visible;
+        }
+
+        .swiper-button-prev {
+            position: absolute;
+            left: -90px;
+        }
+
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            font-size: 24px;
+            color: #96969b;
+        }
+
+        .swiper-button-next::after {
+            margin-left: 2px;
+        }
+
+        .swiper-button-prev::after {
+            margin-right: 2px;
+        }
+
         @-webkit-keyframes example {
             0% {
                 -webkit-transform: rotate(0deg);
@@ -249,17 +333,26 @@
                 height: 1000%;
             }
 
-            @-webkit-keyframes example {
-            0% {
-                -webkit-transform: rotate(0deg);
-                transform: rotate(0deg);
+            .swiper {
+                padding: 10px !important;
             }
 
-            to {
-                -webkit-transform: rotate(40deg);
-                transform: rotate(40deg);
+            .swiper-button-next,
+            .swiper-button-prev {
+                display: none;
             }
-        }
+
+            @-webkit-keyframes example {
+                0% {
+                    -webkit-transform: rotate(0deg);
+                    transform: rotate(0deg);
+                }
+
+                to {
+                    -webkit-transform: rotate(40deg);
+                    transform: rotate(40deg);
+                }
+            }
 
         }
 
@@ -348,7 +441,7 @@
         }
 
         .btn-gift {
-            background-color: #571212;
+            background-color: #791313;
             padding: 10px 21px
         }
 
@@ -495,6 +588,7 @@
 
         .header-title {
             margin: 15vh 0 0;
+            margin-top: calc(var(--vh, 1vh) * 15);
         }
 
         .footer-links li {
@@ -535,7 +629,8 @@
             padding-top: 0;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
+            width: 100%;
         }
 
         #faq-services .faq-item-header {
@@ -815,10 +910,32 @@
             margin-left: 0;
         }
 
+        .swiper {
+            width: 100%;
+            position: relative;
+            padding: 10px 0;
+            z-index: 999;
+            border-radius: 20px;
+
+            -webkit-mask-image: linear-gradient(90deg, black, black);
+        }
+
+        #swiper-content {
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+        }
+
+        #servicesTab {
+            flex-wrap: nowrap;
+        }
+
         @media (max-width: 600px) {
             #home-services {
                 min-height: 250px;
                 height: calc(85vh - 350px);
+                height: calc(var(--vh, 1vh) * 85 - 350px);
                 margin-top: -4px;
             }
 
@@ -899,7 +1016,7 @@
 
             #home-services {
                 min-height: 250px;
-                height: calc(100vh - 426px);
+                height: calc(var(--vh, 1vh) * 100 - 426px);
                 margin-top: -4px;
             }
         }
@@ -1019,24 +1136,32 @@
                 <div
                         id="home-services">
                     <div style="display: flex; flex-direction: row">
+
                         <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/yt.svg"
                              width="80" data-service="yt"/>
-                        <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/discord.svg"
-                             width="75" data-service="discord"/>
+                        <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/ps.svg"
+                             width="80" data-service="ps"/>
+<!--                        <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/discord.svg"-->
+<!--                             width="75" data-service="discord"/>-->
                     </div>
+
                     <div style="display: flex; flex-direction: row">
                         <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/fortnite.svg"
                              width="80" data-service="fortnite"/>
                         <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/spoty.svg"
                              width="77" data-service="spoty"/>
+
                     </div>
+
                 </div>
             </div>
             <div class="text-center" id="main-button">
                 <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#checkout">
                     Активировать
                 </button>
-                <button class="btn btn-primary btn-lg btn-gift" disabled style="background-color: gray" data-bs-toggle="tooltip" data-bs-placement="top"
+<!--                        disabled style="background-color: gray"-->
+                <button class="btn btn-primary btn-lg btn-gift"
+                        data-bs-toggle="tooltip" data-bs-placement="top"
                         title="Подарочный сертификат">
                     <i class="bi bi-gift"></i>
                 </button>
@@ -1146,7 +1271,9 @@
                 <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#checkout">
                     Запустить
                 </button>
-                <button class="btn btn-primary btn-lg btn-gift" disabled style="background-color: gray" data-bs-toggle="tooltip" data-bs-placement="top"
+<!--                        disabled style="background-color: gray"-->
+                <button class="btn btn-primary btn-lg btn-gift"
+                        data-bs-toggle="tooltip" data-bs-placement="top"
                         title="Подарочный сертификат">
 
                     <i class="bi bi-gift"></i>
@@ -1157,8 +1284,8 @@
     <section style="margin-bottom: 100px; display: none;" id="reviews-section">
         <h2 class="text-center mb-4">Отзывы</h2>
         <p id="reviews-number" class="additional-info"></p>
-        <div id="reviews-container" class="swiper">
-            <ul id="reviews" class="swiper-wrapper"></ul>
+        <div id="reviews-container">
+            <ul id="reviews"></ul>
         </div>
     </section>
 </main>
@@ -1693,9 +1820,15 @@
             </div>
             <div class="modal-body" style="max-width: 600px; margin: 0 auto">
                 <p class="choose-service-title">Выберите сервис</p>
-                <ul class="nav nav-tabs justify-content-md-center justify-content-between flex-nowrap" id="servicesTab"
-                    role="tablist">
-                </ul>
+                <div class="position-relative">
+                    <div id="swiper-content" class="swiper">
+                        <ul class="nav nav-tabs swiper-wrapper" id="servicesTab"
+                            role="tablist">
+                        </ul>
+                    </div>
+                    <div id="left-arrow" class="swiper-button-prev"></div>
+                    <div id="right-arrow" class="swiper-button-next"></div>
+                </div>
                 <div class="tab-content" id="servicesTabContent">
                     <div class="text-center my-4">
                         <span class="spinner-border spinner-border-lg" role="status" aria-hidden="true"></span>
@@ -1705,6 +1838,43 @@
         </div>
     </div>
 </div>
+
+
+<script type="text/javascript">
+    let observer = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutationRecord) {
+            if (mutationRecord.target.className.includes("swiper-button-disabled")) {
+                if (mutationRecord.target.id === 'left-arrow') {
+                    document.getElementById('swiper-content').classList.remove('container-fade-out-left');
+                } else {
+                    console.log('WHYYY');
+                    document.getElementById('swiper-content').classList.remove('container-fade-out-right');
+                }
+            } else {
+                if (mutationRecord.target.id === 'left-arrow') {
+                    document.getElementById('swiper-content').classList.add('container-fade-out-left');
+                } else {
+                    document.getElementById('swiper-content').classList.add('container-fade-out-right');
+                }
+            }
+        })
+    });
+
+    let left_target = document.getElementById('left-arrow');
+    let right_target = document.getElementById('right-arrow');
+
+    // MDN documentation
+    // https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver/observe#attributefilter
+    observer.observe(left_target, {
+        attributes: true,
+        attributeFilter: ['class']
+    });
+
+    observer.observe(right_target, {
+        attributes: true,
+        attributeFilter: ['class']
+    });
+</script>
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
@@ -1755,6 +1925,9 @@
 <!-- Axios library -->
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+<!-- SwiperJS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
 <script>
     function renderGiftSelector(item) {
         const handleGiftChange = event => {
@@ -1784,7 +1957,7 @@
         window[`${item.shp_service_name}handleGiftSelect`] = handleGiftChange;
         window[`${item.shp_service_name}handleSelfSelect`] = handleSelfChange;
         return `
-            <div class="flex-row">
+            <div class="flex-row" style="margin-top: 6px">
                 <dt class="col-4 pe-0 mb-1">Кому:</dt>
                 <dd class="col-8 text-end mb-1 text-nowrap position-relative">
                     <div class="row btn-checkbox-switcher">
@@ -1837,6 +2010,7 @@
             console.log(e);
             const serviceName = item.shp_service_name;
             const serviceCode = document.getElementById(`${item.shp_service_name}ServiceCode`).value;
+            const AsGift = document.getElementById(`${item.shp_service_name}AsGift`).value;
 
             let sum = item.Items[0].OutSum;
             let description = item.Items[0].Name;
@@ -1867,6 +2041,7 @@
                             `https://activations.ddostup.ru/get-sign`, {
                                 "out_sum": `${sum}`,
                                 "receipt": `${receipt}`,
+                                "shp_as_gift": `${AsGift}`,
                                 "shp_service_code": `${serviceCode}`,
                                 "shp_service_name": `${serviceName}`,
                                 "shp_user_mail": `${email}`
@@ -1884,19 +2059,6 @@
 
         }
 
-        const handleServiceOpen = (event) => {
-            const service = event.target.getAttribute("data-service");
-            if (service) {
-                event.preventDefault();
-
-                new bootstrap.Modal(
-                    document.getElementById("checkout")
-                ).show();
-
-                document.getElementById(`${service}Tab`).click();
-            }
-        };
-
         axios
             .get("https://activations.ddostup.ru/get-reviews/")
             .then((response) => {
@@ -1904,7 +2066,7 @@
                 for (const comment of response.data.reviews) {
                     commentsElements.push(
                         `
-                    <li class="review-card swiper-slide">
+                    <li class="review-card">
                         <div class="review-icons">
                             <a href="?service=${comment.service_name}" class="review-icon" data-service="${comment.service_name}"><img src="icons/${comment.service_name}-without-borders.svg" width="100%" height="100%" style="pointer-events: none;" /></a>
                             <a href="${comment.link}" class="review-icon" target="_blank"><img src="icons/plati_market_logo.svg" width="100%" height="100%" /></a>
@@ -1942,11 +2104,12 @@
             const tabItems = [];
             const tabItemsContent = [];
 
+            let idx = 0;
             for (const item of res.data) {
 
                 tabItems.push(`
-                        <li class="nav-item ${tabItems.length === res.data.length - 1 ? '' : 'me-0 me-md-4'}" role="presentation">
-                            <button class="nav-link ${!tabItems.length ? 'active' : ''}" id="${item.shp_service_name}Tab" data-bs-toggle="tab"
+                        <li class="nav-item swiper-slide" role="presentation">
+                            <button class="nav-link ${!tabItems.length ? 'active' : ''}" id="${item.shp_service_name}Tab" data-swiper-idx="${idx}" data-bs-toggle="tab"
                                     data-bs-target="#${item.shp_service_name}-tab-pane" type="button" role="tab"
                                     aria-controls="home-tab-pane"
                                     ${tabItems.length === 0 ? 'aria-selected="true"' : ''}>
@@ -1954,6 +2117,8 @@
                             </button>
                         </li>
                     `);
+                idx++
+
 
                 window[`${item.shp_service_name}HandleSubmit`] = onServiceSubmit(item);
                 window[`${item.shp_service_name}HandleSelect`] = () => {
@@ -2093,7 +2258,58 @@
 
                 document.querySelectorAll('[data-check-gift="true"]').forEach(el => el.click());
             }));
+
+
+            // SwiperJS
+            const swiper = new Swiper(".swiper", {
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+                freeMode: true,
+                mousewheel: {
+                    releaseOnEdges: true,
+                    forceToAxis: true
+                },
+                slidesPerView: 3.5,
+                spaceBetween: 10,
+                breakpoints: {
+                    400: {
+                        slidesPerView: 3.7,
+                        spaceBetween: 10,
+                    },
+                    440: {
+                        slidesPerView: 4.5,
+                        spaceBetween: 10,
+                    },
+                    640: {
+                        slidesPerView: 4.5,
+                        spaceBetween: 16,
+                        slidesPerGroup: 2
+                    }
+                }
+            });
+
+            window.swiper = swiper;
         });
+
+        function handleServiceOpen(event) {
+            const service = event.target.getAttribute("data-service");
+            if (service) {
+                event.preventDefault();
+
+                new bootstrap.Modal(
+                    document.getElementById("checkout")
+                ).show();
+
+                const serviceTab = document.getElementById(`${service}Tab`);
+
+                serviceTab.click();
+
+                const activeSlide = Number(serviceTab.getAttribute("data-swiper-idx"));
+                window.swiper.slideTo(activeSlide);
+            }
+        };
     })();
 </script>
 </body>
