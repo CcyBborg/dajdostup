@@ -209,13 +209,22 @@
 
 
         .container-fade-out-right {
-            -webkit-mask-image: linear-gradient(90deg, black 80%, #ff000000) !important;
+            mask: linear-gradient(90deg, black 80%, #ff000000) !important;
+            -webkit-mask: linear-gradient(90deg, black 80%, #ff000000) !important;
 
         }
 
         .container-fade-out-left {
-            -webkit-mask-image: linear-gradient(270deg, black 80%, #ff000000) !important;
+            mask: linear-gradient(270deg, black 80%, #ff000000) !important;
+            -webkit-mask: linear-gradient(270deg, black 80%, #ff000000) !important;
 
+        }
+
+        .container-fade-out-left.container-fade-out-right {
+            mask: linear-gradient(90deg, black 80%, #ff000000) left, linear-gradient(270deg, black 80%, #ff000000) right !important;
+            -webkit-mask: linear-gradient(90deg, black 80%, #ff000000) left, linear-gradient(270deg, black 80%, #ff000000) right !important;
+            mask-composite: destination-in;
+            -webkit-mask-composite: destination-in;
         }
 
         .swiper-button-next,
@@ -579,6 +588,7 @@
 
         .header-title {
             margin: 15vh 0 0;
+            margin-top: calc(var(--vh, 1vh) * 15);
         }
 
         .footer-links li {
@@ -925,6 +935,7 @@
             #home-services {
                 min-height: 250px;
                 height: calc(85vh - 350px);
+                height: calc(var(--vh, 1vh) * 85 - 350px);
                 margin-top: -4px;
             }
 
@@ -1005,7 +1016,7 @@
 
             #home-services {
                 min-height: 250px;
-                height: calc(100vh - 426px);
+                height: calc(var(--vh, 1vh) * 100 - 426px);
                 margin-top: -4px;
             }
         }
@@ -1825,18 +1836,17 @@
     let observer = new MutationObserver(function (mutations) {
         mutations.forEach(function (mutationRecord) {
             if (mutationRecord.target.className.includes("swiper-button-disabled")) {
-
                 if (mutationRecord.target.id === 'left-arrow') {
-                    document.getElementById('swiper-content').classList.add('container-fade-out-right');
+                    document.getElementById('swiper-content').classList.remove('container-fade-out-left');
                 } else {
-                    document.getElementById('swiper-content').classList.add('container-fade-out-left');
+                    console.log('WHYYY');
+                    document.getElementById('swiper-content').classList.remove('container-fade-out-right');
                 }
-
             } else {
                 if (mutationRecord.target.id === 'left-arrow') {
-                    document.getElementById('swiper-content').classList.remove('container-fade-out-right');
+                    document.getElementById('swiper-content').classList.add('container-fade-out-left');
                 } else {
-                    document.getElementById('swiper-content').classList.remove('container-fade-out-left');
+                    document.getElementById('swiper-content').classList.add('container-fade-out-right');
                 }
             }
         })
@@ -2039,19 +2049,6 @@
 
         }
 
-        const handleServiceOpen = (event) => {
-            const service = event.target.getAttribute("data-service");
-            if (service) {
-                event.preventDefault();
-
-                new bootstrap.Modal(
-                    document.getElementById("checkout")
-                ).show();
-
-                document.getElementById(`${service}Tab`).click();
-            }
-        };
-
         axios
             .get("https://activations.ddostup.ru/get-reviews/")
             .then((response) => {
@@ -2097,11 +2094,12 @@
             const tabItems = [];
             const tabItemsContent = [];
 
+            let idx = 0;
             for (const item of res.data) {
 
                 tabItems.push(`
                         <li class="nav-item swiper-slide" role="presentation">
-                            <button class="nav-link ${!tabItems.length ? 'active' : ''}" id="${item.shp_service_name}Tab" data-bs-toggle="tab"
+                            <button class="nav-link ${!tabItems.length ? 'active' : ''}" id="${item.shp_service_name}Tab" data-swiper-idx="${idx}" data-bs-toggle="tab"
                                     data-bs-target="#${item.shp_service_name}-tab-pane" type="button" role="tab"
                                     aria-controls="home-tab-pane"
                                     ${tabItems.length === 0 ? 'aria-selected="true"' : ''}>
@@ -2109,9 +2107,11 @@
                             </button>
                         </li>
                     `);
+                idx++
+                // REMOVE
                 tabItems.push(`
                         <li class="nav-item swiper-slide" role="presentation">
-                            <button class="nav-link ${!tabItems.length ? 'active' : ''}" id="${item.shp_service_name}Tab" data-bs-toggle="tab"
+                            <button class="nav-link ${!tabItems.length ? 'active' : ''}" id="${item.shp_service_name}Tab1" data-swiper-idx="${idx}" data-bs-toggle="tab"
                                     data-bs-target="#${item.shp_service_name}-tab-pane" type="button" role="tab"
                                     aria-controls="home-tab-pane"
                                     ${tabItems.length === 0 ? 'aria-selected="true"' : ''}>
@@ -2119,6 +2119,8 @@
                             </button>
                         </li>
                     `);
+                idx++;
+                // END REMOVE
 
                 window[`${item.shp_service_name}HandleSubmit`] = onServiceSubmit(item);
                 window[`${item.shp_service_name}HandleSelect`] = () => {
@@ -2261,7 +2263,7 @@
 
 
             // SwiperJS
-            var swiper = new Swiper(".swiper", {
+            const swiper = new Swiper(".swiper", {
                 navigation: {
                     nextEl: ".swiper-button-next",
                     prevEl: ".swiper-button-prev",
@@ -2289,7 +2291,27 @@
                     }
                 }
             });
+
+            window.swiper = swiper;
         });
+
+        function handleServiceOpen (event) {
+            const service = event.target.getAttribute("data-service");
+            if (service) {
+                event.preventDefault();
+
+                new bootstrap.Modal(
+                    document.getElementById("checkout")
+                ).show();
+
+                const serviceTab = document.getElementById(`${service}Tab`);
+
+                serviceTab.click();
+
+                const activeSlide = Number(serviceTab.getAttribute("data-swiper-idx"));
+                window.swiper.slideTo(activeSlide);
+            }
+        };
     })();
 </script>
 </body>
