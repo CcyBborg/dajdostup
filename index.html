@@ -1165,7 +1165,6 @@
                 <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#checkout">
                     Активировать
                 </button>
-<!--                        disabled style="background-color: gray"-->
                 <button class="btn btn-primary btn-lg btn-gift"
                         data-bs-toggle="tooltip" data-bs-placement="top"
                         title="Подарочный сертификат">
@@ -1996,8 +1995,13 @@
                 .addEventListener("shown.bs.modal", function (event) {
                     const urlParams = new URLSearchParams(window.location.search);
 
-                    if (urlParams.get("service") === "spoty") {
-                        document.getElementById("spotyTab").click();
+                    const service = urlParams.get("service");
+                    if (service) {
+                        document.getElementById(`${service}Tab`).click();
+                    }
+
+                    if (urlParams.get("as_gift") === "1") {
+                        document.querySelectorAll('[data-check-gift="true"]').forEach(el => el.click());
                     }
 
                     if (urlParams.get("email")) {
