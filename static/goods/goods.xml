@@ -20,7 +20,7 @@
             <offer id="spoty">
                 <name>Сертификат на Spotify Premium</name>
                 <vendor>Дай Доступ!</vendor>
-                <url>https://ddostup.ru/?service=spoty&as_gift=1#checkout</url>
+                <url>https://ddostup.ru/?service=spoty#checkout</url>
                 <price>549</price>
                 <currencyId>RUR</currencyId>
                 <categoryId>1</categoryId>
@@ -46,7 +46,7 @@
             <offer id="ps">
                 <name>Сертификат на PS Plus</name>
                 <vendor>Дай Доступ!</vendor>
-                <url>https://ddostup.ru/?service=ps&as_gift=1#checkout</url>
+                <url>https://ddostup.ru/?service=ps#checkout</url>
                 <price>349</price>
                 <currencyId>RUR</currencyId>
                 <categoryId>1</categoryId>
@@ -71,7 +71,7 @@
             <offer id="fortnite">
                 <name>Сертификат на В-Баксы Fortnite</name>
                 <vendor>Дай Доступ!</vendor>
-                <url>https://ddostup.ru/?service=fortnite&as_gift=1#checkout</url>
+                <url>https://ddostup.ru/?service=fortnite#checkout</url>
                 <price>349</price>
                 <currencyId>RUR</currencyId>
                 <categoryId>1</categoryId>
@@ -87,7 +87,7 @@
             <offer id="discord">
                 <name>Сертификат на Discord Nitro</name>
                 <vendor>Дай Доступ!</vendor>
-                <url>https://ddostup.ru/?service=discord&as_gift=1#checkout</url>
+                <url>https://ddostup.ru/?service=discord#checkout</url>
                 <price>999</price>
                 <currencyId>RUR</currencyId>
                 <categoryId>1</categoryId>
