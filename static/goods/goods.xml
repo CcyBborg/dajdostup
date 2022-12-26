@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2022-11-09 20:00">
+<yml_catalog date="2022-12-26 20:00">
     <shop>
         <name>Дай Доступ!</name>
         <company>ИП Яроцкий Даниил Дмитриевич</company>
@@ -11,54 +11,93 @@
             <currency id="RUR" rate="1"/>
         </currencies>
         <categories>
-            <category id="1">Подписки</category>
+            <category id="1">Подарочный сертификат</category>
         </categories>
         <delivery-options>
             <option cost="0" days="0"/>
         </delivery-options>
         <offers>
-            <offer id="yt">
-                <name>Подписка на YouTube Premium</name>
-                <vendor>Дай Доступ!</vendor>
-                <url>https://ddostup.ru/?service=yt#checkout</url>
-                <price>149</price>
-                <currencyId>RUR</currencyId>
-                <categoryId>1</categoryId>
-                <picture>https://ddostup.ru/static/goods/yt.jpg</picture>
-                <description>
-                    <![CDATA[
-                        <p>
-                            Подписка работает в РФ без VPN.<br><br>
-                            Фоновый режим, скачивание видео и просмотр без рекламы.
-                            Теперь вы сможете смотреть любимый контент без подключения к
-                            Интернету, с заблокированным экраном и режимом «окно в
-                            окне».
-                        </p>
-                    ]]>
-                </description>
-                <service-life-days>
-                    P30D
-                </service-life-days>
-                <warranty-days>
-                    P30D
-                </warranty-days>
-            </offer>
             <offer id="spoty">
-                <name>Подписка на Spotify Premium</name>
+                <name>Сертификат на Spotify Premium</name>
                 <vendor>Дай Доступ!</vendor>
-                <url>https://ddostup.ru/?service=spoty#checkout</url>
-                <price>1499</price>
+                <url>https://ddostup.ru/?service=spoty&as_gift=1#checkout</url>
+                <price>549</price>
                 <currencyId>RUR</currencyId>
                 <categoryId>1</categoryId>
-                <picture>https://ddostup.ru/static/goods/spoty.jpg</picture>
+                <picture>https://ddostup.ru/static/goods/spoty.png</picture>
                 <description>
                     <![CDATA[
                         <p>
-                            Подписка работает в РФ без VPN.<br><br>
+                            Подарочный сертификат на активацию Spotify Premium.<br/><br/>
                             Музыка без рекламы, оффлайн режим, превосходное качество звука,
                             бесконечное количество пропусков — всё как вы любите!
                             После подключения страна аккаунта изменится на Турцию.
                             Анимированные обложки Canvas и все исполнители доступны.
+                        </p>
+                    ]]>
+                </description>
+                <service-life-days>
+                    P3M
+                </service-life-days>
+                <warranty-days>
+                    P3M
+                </warranty-days>
+            </offer>
+            <offer id="ps">
+                <name>Сертификат на PS Plus</name>
+                <vendor>Дай Доступ!</vendor>
+                <url>https://ddostup.ru/?service=ps&as_gift=1#checkout</url>
+                <price>349</price>
+                <currencyId>RUR</currencyId>
+                <categoryId>1</categoryId>
+                <picture>https://ddostup.ru/static/goods/ps.png</picture>
+                <description>
+                    <![CDATA[
+                        <p>
+                            Подарочный сертификат на активацию подписки PS Plus.<br/><br/>
+                            Официальная подписка PS Plus для вашего аккаунта.
+                            Оформление происходит на Турецкий аккаунт.
+                            Все преимущества подписки распространяются на всю приставку.
+                        </p>
+                    ]]>
+                </description>
+                <service-life-days>
+                    P1M
+                </service-life-days>
+                <warranty-days>
+                    P1M
+                </warranty-days>
+            </offer>
+            <offer id="fortnite">
+                <name>Сертификат на В-Баксы Fortnite</name>
+                <vendor>Дай Доступ!</vendor>
+                <url>https://ddostup.ru/?service=fortnite&as_gift=1#checkout</url>
+                <price>349</price>
+                <currencyId>RUR</currencyId>
+                <categoryId>1</categoryId>
+                <picture>https://ddostup.ru/static/goods/fortnite.png</picture>
+                <description>
+                    <![CDATA[
+                        <p>
+                            Подарочный сертификат на активацию внутреигровой валюты Fortntie.
+                        </p>
+                    ]]>
+                </description>
+            </offer>
+            <offer id="discord">
+                <name>Сертификат на Discord Nitro</name>
+                <vendor>Дай Доступ!</vendor>
+                <url>https://ddostup.ru/?service=discord&as_gift=1#checkout</url>
+                <price>999</price>
+                <currencyId>RUR</currencyId>
+                <categoryId>1</categoryId>
+                <picture>https://ddostup.ru/static/goods/discord.png</picture>
+                <description>
+                    <![CDATA[
+                        <p>
+                            Подарочный сертификат на активацию подписки Discord Nitro.<br/><br/>
+                            Анимированные эмодзи, больший объем файлов для загрузки, HD стриминг,
+                            более длинные сообщения — что еще нужно для счастья?
                         </p>
                     ]]>
                 </description>
