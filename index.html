@@ -418,7 +418,7 @@
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
             color: #fff;
-            background: #d08b0e;
+            background: #e69d0a;
             border: none !important;
         }
 
@@ -1144,18 +1144,22 @@
                     <div style="display: flex; flex-direction: row">
 
                         <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/yt.svg"
-                             width="80" data-service="yt"/>
+                             width="70" data-service="yt"/>
                         <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/ps.svg"
-                             width="80" data-service="ps"/>
-<!--                        <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/discord.svg"-->
-<!--                             width="75" data-service="discord"/>-->
+                             width="70" data-service="ps"/>
+                        <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/discord.svg"
+                             width="65" data-service="discord"/>
+
                     </div>
 
                     <div style="display: flex; flex-direction: row">
                         <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/fortnite.svg"
-                             width="80" data-service="fortnite"/>
+                             width="70" data-service="fortnite"/>
                         <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/spoty.svg"
-                             width="77" data-service="spoty"/>
+                             width="66" data-service="spoty"/>
+                        <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/adobe.svg"
+                             width="68" data-service="adobe"/>
+
 
                     </div>
 
@@ -1276,7 +1280,7 @@
                 <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#checkout">
                     Запустить
                 </button>
-<!--                        disabled style="background-color: gray"-->
+                <!--                        disabled style="background-color: gray"-->
                 <button class="btn btn-primary btn-lg btn-gift"
                         data-bs-toggle="tooltip" data-bs-placement="top"
                         title="Подарочный сертификат">
@@ -1353,7 +1357,7 @@
                         <h2 class="accordion-header" id="general_heading1">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#general1" aria-expanded="true" aria-controls="general1">
-                                Подписки работают в РФ?
+                                Сервисы работают в РФ?
                             </button>
                         </h2>
                         <div id="general1" class="accordion-collapse collapse" aria-labelledby="general_heading1"
@@ -1364,6 +1368,9 @@
                                 </div>
                                 Благодаря нам вы можете пользоваться любимыми сервисами из
                                 любой страны мира.
+                                <div style="padding-top: 6px; font-size: 12px; color: #acacac">
+                                    * крымский регион в большинстве случаев работает только с VPN<br/>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1448,7 +1455,7 @@
                         <h2 class="accordion-header" id="yt_heading1">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#yt1" aria-expanded="true" aria-controls="yt1">
-                                Что это за подписка?
+                                Что такое YouTube Premium?
                             </button>
                         </h2>
                         <div id="yt1" class="accordion-collapse collapse" aria-labelledby="yt_heading1"
@@ -1637,7 +1644,8 @@
                              data-bs-parent="#fortniteQuestions">
                             <div class="accordion-body">
                                 <div style="padding-bottom: 6px">
-                                    <strong>Поддерживаются PC, PlayStation, Xbox и Android</strong><br/>
+                                    <strong>Все приобретенные товары будут доступны на<br/>PC, PlayStation, Xbox и
+                                        Android</strong><br/><br/>
                                     подробнее об <a
                                         href="https://www.epicgames.com/fortnite/ru/news/v-bucks-purchased-on-playstation-join-fortnite-shared-wallet?sessionInvalidated=true"
                                         title="Король Подписок" target="_blank"
@@ -1648,6 +1656,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="faq-item-header">
                     <p class="choose-service-title">Spotify Premium</p>
                     <img data-service="spoty" class="subscription-img" src="./icons/spoty-without-borders.svg"
@@ -1700,6 +1709,56 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="faq-item-header">
+                    <p class="choose-service-title">PS Plus</p>
+                    <img data-service="ps" class="subscription-img" src="./icons/ps-without-borders.svg"
+                         alt="PS Plus">
+                </div>
+                <div class="accordion" id="psQuestions">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="ps_heading1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#ps1" aria-expanded="true" aria-controls="ps1">
+                                Что такое PS Plus?
+                            </button>
+                        </h2>
+                        <div id="ps1" class="accordion-collapse collapse" aria-labelledby="ps_heading1"
+                             data-bs-parent="#psQuestions">
+                            <div class="accordion-body">
+                                <div style="padding-bottom: 6px">
+                                    <strong>Это платная подписка для PlayStation</strong><br/>
+                                </div>
+                                Получите доступ к библиотеке платных игр, возможность играть по сети и многое другое.
+                                Активация подписки происходит на Турецкую учетную запись.
+                                Преимущества подписки будут доступны для всей приставки, а большинство игр имеют русский
+                                язык.
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="ps_heading2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#ps2" aria-expanded="true" aria-controls="ps2">
+                                Как подготовиться к активации?
+                            </button>
+                        </h2>
+                        <div id="ps2" class="accordion-collapse collapse" aria-labelledby="ps_heading2"
+                             data-bs-parent="#psQuestions">
+                            <div class="accordion-body">
+                                <div style="padding-bottom: 6px">
+                                    <strong>Просто создайте Турецкую учетную запись:</strong><br/>
+                                </div>
+                                • Создайте новый аккаунт через PlayStation<br/>
+                                • Во время создания выберите страну Турция<br/>
+                                • Используйте почту GMail<br/>
+                                • Используйте любой турецкий адрес из Google Maps
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="faq-item-header">
                     <p class="choose-service-title">Discord Nitro</p>
                     <img data-service="discord" class="subscription-img" src="./icons/discord-without-borders.svg"
@@ -1806,6 +1865,55 @@
                                     </tr>
                                     </tbody>
                                 </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item-header">
+                    <p class="choose-service-title">Adobe Cloud</p>
+                    <img data-service="adobe" class="subscription-img" src="./icons/adobe-without-borders.svg"
+                         alt="Adobe Cloud">
+                </div>
+                <div class="accordion" id="adobeQuestions">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="adobe_heading1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#adobe1" aria-expanded="true" aria-controls="adobe1">
+                                Что такое Adobe Cloud?
+                            </button>
+                        </h2>
+                        <div id="adobe1" class="accordion-collapse collapse" aria-labelledby="adobe_heading1"
+                             data-bs-parent="#adobeQuestions">
+                            <div class="accordion-body">
+                                <div style="padding-bottom: 6px">
+                                    <strong>Это платная подписка от Adobe</strong><br/>
+                                </div>
+                                Получите доступ приложениям для работы с фотографиями, обработкой видео, разработки
+                                дизайна, проектирования интерфейсов, создания веб-контента и материалов для
+                                соцсетей.<br/><br/>
+                                <div>
+                                     <a href="https://ru.wikipedia.org/wiki/Adobe_Creative_Cloud"
+                                                 title="Adobe Creative Cloud" target="_blank"
+                                                 data-saferedirecturl="https://ru.wikipedia.org/wiki/Adobe_Creative_Cloud"
+                                                 style="color: #e3bcff">узнать подробнее</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="adobe_heading2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#adobe2" aria-expanded="true" aria-controls="adobe2">
+                                Как подготовиться к активации?
+                            </button>
+                        </h2>
+                        <div id="adobe2" class="accordion-collapse collapse" aria-labelledby="adobe_heading2"
+                             data-bs-parent="#adobeQuestions">
+                            <div class="accordion-body">
+                                <div style="padding-bottom: 6px">
+                                    <strong>Дополнительной подготовки не требуется.</strong><br/>
+                                </div>
                             </div>
                         </div>
                     </div>
