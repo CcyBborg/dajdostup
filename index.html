@@ -200,7 +200,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
-            margin-bottom: 6px;
+            margin-left: -9px;
         }
 
         .swiper-button-disabled {
@@ -384,7 +384,7 @@
 
         .subscription-img {
             filter: drop-shadow(0px 3.13654px 3.13654px rgba(0, 0, 0, 0.25));
-            margin: 12px;
+            /*margin: 12px;*/
             transition: all 0.09s ease-in-out;
             cursor: pointer;
         }
@@ -1120,6 +1120,14 @@
             -o-transition: all 0.09s ease;
         }
 
+        .goods-logo-container {
+            width: 98px;
+            height: 96px;
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 
@@ -1139,26 +1147,44 @@
                     <h1>Дай Доступ!</h1>
                     <p class="title-p m-0">магазин цифровых радостей</p>
                 </div>
-                <div
-                        id="home-services">
+                <div id="home-services">
                     <div style="display: flex; flex-direction: row">
+                        <div class="goods-logo-container">
+                            <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/ps.svg"
+                                 width="72" data-service="ps"/>
+                        </div>
+                        <div class="goods-logo-container">
+                            <img class="subscription-img easeload"
+                                 onload="this.style.opacity=1" src="./icons/yt.svg"
+                                 width="72" data-service="yt"/>
+                        </div>
+                        <div class="goods-logo-container">
+                            <img class="subscription-img easeload" onload="this.style.opacity=1"
+                                 src="./icons/discord.svg"
+                                 width="70" data-service="discord"/>
+                        </div>
 
-                        <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/yt.svg"
-                             width="70" data-service="yt"/>
-                        <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/ps.svg"
-                             width="70" data-service="ps"/>
-                        <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/discord.svg"
-                             width="65" data-service="discord"/>
 
                     </div>
 
                     <div style="display: flex; flex-direction: row">
-                        <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/fortnite.svg"
-                             width="70" data-service="fortnite"/>
-                        <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/spoty.svg"
-                             width="66" data-service="spoty"/>
-                        <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/adobe.svg"
-                             width="68" data-service="adobe"/>
+                        <div class="goods-logo-container">
+                            <img style="margin-top: 1px" class="subscription-img easeload" onload="this.style.opacity=1"
+                                 src="./icons/xbox.svg"
+                                 width="67" data-service="xbox"/>
+                        </div>
+                        <div class="goods-logo-container">
+                            <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/spoty.svg"
+                                 width="70" data-service="spoty"/>
+                        </div>
+                        <div class="goods-logo-container">
+                            <img class="subscription-img easeload" onload="this.style.opacity=1"
+                                 src="./icons/fortnite.svg"
+                                 width="72" data-service="fortnite"/>
+                        </div>
+
+                        <!--                        <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/adobe.svg"-->
+                        <!--                             width="68" data-service="adobe"/>-->
 
 
                     </div>
@@ -1445,6 +1471,100 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="faq-item-header">
+                    <p class="choose-service-title">PS Plus</p>
+                    <img data-service="ps" class="subscription-img" src="./icons/ps-without-borders.svg"
+                         alt="PS Plus">
+                </div>
+                <div class="accordion" id="psQuestions">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="ps_heading1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#ps1" aria-expanded="true" aria-controls="ps1">
+                                Что такое PS Plus?
+                            </button>
+                        </h2>
+                        <div id="ps1" class="accordion-collapse collapse" aria-labelledby="ps_heading1"
+                             data-bs-parent="#psQuestions">
+                            <div class="accordion-body">
+                                <div style="padding-bottom: 6px">
+                                    <strong>Это платная подписка для PlayStation</strong><br/>
+                                </div>
+                                Получите доступ к библиотеке платных игр, возможность играть по сети и многое другое.
+                                Активация подписки происходит на Турецкую учетную запись.
+                                Преимущества подписки будут доступны для всей приставки, а большинство игр имеют русский
+                                язык.
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="ps_heading2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#ps2" aria-expanded="true" aria-controls="ps2">
+                                Как подготовиться к активации?
+                            </button>
+                        </h2>
+                        <div id="ps2" class="accordion-collapse collapse" aria-labelledby="ps_heading2"
+                             data-bs-parent="#psQuestions">
+                            <div class="accordion-body">
+                                <div style="padding-bottom: 6px">
+                                    <strong>Просто создайте Турецкую учетную запись:</strong><br/>
+                                </div>
+                                • Создайте новый аккаунт через PlayStation<br/>
+                                • Во время создания выберите страну Турция<br/>
+                                • Используйте почту GMail<br/>
+                                • Используйте любой турецкий адрес из Google Maps
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item-header">
+                    <p class="choose-service-title">Xbox Ultimate Pass</p>
+                    <img data-service="xbox" class="subscription-img" src="./icons/xbox-without-borders.svg"
+                         alt="Xbox Game Pass Ultimate">
+                </div>
+                <div class="accordion" id="xboxQuestions">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="xbox_heading1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#xbox1" aria-expanded="true" aria-controls="xbox1">
+                                Что такое Xbox Ultimate Pass?
+                            </button>
+                        </h2>
+                        <div id="xbox1" class="accordion-collapse collapse" aria-labelledby="xbox_heading1"
+                             data-bs-parent="#xboxQuestions">
+                            <div class="accordion-body">
+                                <div style="padding-bottom: 6px">
+                                    <strong>Это платная подписка от Microsoft</strong><br/>
+                                </div>
+                                Получите доступ к мультиплееру, ежемесячные бесплатные игры и скидки на хиты.
+                                Подписка действует на Xbox One и Xbox Series X|S, РС и включает абонемент Xbox Live
+                                Gold.
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="xbox_heading2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#xbox2" aria-expanded="true" aria-controls="xbox2">
+                                Как подготовиться к активации?
+                            </button>
+                        </h2>
+                        <div id="xbox2" class="accordion-collapse collapse" aria-labelledby="xbox_heading2"
+                             data-bs-parent="#xboxQuestions">
+                            <div class="accordion-body">
+                                <div style="padding-bottom: 6px">
+                                    <strong>Дополнительной подготовки не требуется.</strong><br/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="faq-item-header">
                     <p class="choose-service-title">YouTube Premium</p>
                     <img data-service="yt" class="subscription-img" src="./icons/yt-without-borders.svg"
@@ -1565,6 +1685,60 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="faq-item-header">
+                    <p class="choose-service-title">Spotify Premium</p>
+                    <img data-service="spoty" class="subscription-img" src="./icons/spoty-without-borders.svg"
+                         alt="Spotify Premium">
+                </div>
+                <div class="accordion" id="spotyQuestions">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="spoty_heading1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#spoty1" aria-expanded="true" aria-controls="spoty1">
+                                Что такое Spotify Premium?
+                            </button>
+                        </h2>
+                        <div id="spoty1" class="accordion-collapse collapse" aria-labelledby="spoty_heading1"
+                             data-bs-parent="#spotyQuestions">
+                            <div class="accordion-body">
+                                <div style="padding-bottom: 6px">
+                                    <strong>Полноценная индивидуальная подписка на Spotify Premium.</strong><br/>
+                                </div>
+                                Музыка без рекламы, оффлайн режим, превосходное качество звука, бесконечное количество
+                                пропусков — всё как вы любите! После подключения страна аккаунта изменится на Турцию.
+                                Анимированные обложки Canvas и все исполнители доступны.
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="spoty_heading2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#spoty2" aria-expanded="true" aria-controls="spoty2">
+                                Как подготовиться к активации?
+                            </button>
+                        </h2>
+                        <div id="spoty2" class="accordion-collapse collapse" aria-labelledby="spoty_heading2"
+                             data-bs-parent="#spotyQuestions">
+                            <div class="accordion-body">
+                                <div style="padding-bottom: 6px">
+                                    <strong>Выполните три простых шага:</strong><br/>
+                                </div>
+                                1. Загрузите приложение Spotify на свой телефон или компьютер<br/>
+                                2. Войдите в аккаунт<br/>
+                                3. Проверьте что на аккаунте стоит Бесплатная подписка<br/>
+                                <br/>
+                                Если появился вопрос — пожалуйста напишите <a
+                                    href="https://t.me/kingOfSubs" title="Король Подписок" target="_blank"
+                                    data-saferedirecturl="https://t.me/kingOfSubs" style="color: #e3bcff">нам</a>, мы
+                                обязательно поможем его решить
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="faq-item-header">
                     <p class="choose-service-title">Товары Fortnite</p>
                     <img data-service="fortnite" class="subscription-img" src="./icons/fortnite-without-borders.svg"
@@ -1652,108 +1826,6 @@
                                         data-saferedirecturl="https://www.epicgames.com/fortnite/ru/news/v-bucks-purchased-on-playstation-join-fortnite-shared-wallet?sessionInvalidated=true"
                                         style="color: #e3bcff">общем кошельке</a><br/>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item-header">
-                    <p class="choose-service-title">Spotify Premium</p>
-                    <img data-service="spoty" class="subscription-img" src="./icons/spoty-without-borders.svg"
-                         alt="Spotify Premium">
-                </div>
-                <div class="accordion" id="spotyQuestions">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="spoty_heading1">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#spoty1" aria-expanded="true" aria-controls="spoty1">
-                                Что такое Spotify Premium?
-                            </button>
-                        </h2>
-                        <div id="spoty1" class="accordion-collapse collapse" aria-labelledby="spoty_heading1"
-                             data-bs-parent="#spotyQuestions">
-                            <div class="accordion-body">
-                                <div style="padding-bottom: 6px">
-                                    <strong>Полноценная индивидуальная подписка на Spotify Premium.</strong><br/>
-                                </div>
-                                Музыка без рекламы, оффлайн режим, превосходное качество звука, бесконечное количество
-                                пропусков — всё как вы любите! После подключения страна аккаунта изменится на Турцию.
-                                Анимированные обложки Canvas и все исполнители доступны.
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="spoty_heading2">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#spoty2" aria-expanded="true" aria-controls="spoty2">
-                                Как подготовиться к активации?
-                            </button>
-                        </h2>
-                        <div id="spoty2" class="accordion-collapse collapse" aria-labelledby="spoty_heading2"
-                             data-bs-parent="#spotyQuestions">
-                            <div class="accordion-body">
-                                <div style="padding-bottom: 6px">
-                                    <strong>Выполните три простых шага:</strong><br/>
-                                </div>
-                                1. Загрузите приложение Spotify на свой телефон или компьютер<br/>
-                                2. Войдите в аккаунт<br/>
-                                3. Проверьте что на аккаунте стоит Бесплатная подписка<br/>
-                                <br/>
-                                Если появился вопрос — пожалуйста напишите <a
-                                    href="https://t.me/kingOfSubs" title="Король Подписок" target="_blank"
-                                    data-saferedirecturl="https://t.me/kingOfSubs" style="color: #e3bcff">нам</a>, мы
-                                обязательно поможем его решить
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item-header">
-                    <p class="choose-service-title">PS Plus</p>
-                    <img data-service="ps" class="subscription-img" src="./icons/ps-without-borders.svg"
-                         alt="PS Plus">
-                </div>
-                <div class="accordion" id="psQuestions">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="ps_heading1">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#ps1" aria-expanded="true" aria-controls="ps1">
-                                Что такое PS Plus?
-                            </button>
-                        </h2>
-                        <div id="ps1" class="accordion-collapse collapse" aria-labelledby="ps_heading1"
-                             data-bs-parent="#psQuestions">
-                            <div class="accordion-body">
-                                <div style="padding-bottom: 6px">
-                                    <strong>Это платная подписка для PlayStation</strong><br/>
-                                </div>
-                                Получите доступ к библиотеке платных игр, возможность играть по сети и многое другое.
-                                Активация подписки происходит на Турецкую учетную запись.
-                                Преимущества подписки будут доступны для всей приставки, а большинство игр имеют русский
-                                язык.
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="ps_heading2">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#ps2" aria-expanded="true" aria-controls="ps2">
-                                Как подготовиться к активации?
-                            </button>
-                        </h2>
-                        <div id="ps2" class="accordion-collapse collapse" aria-labelledby="ps_heading2"
-                             data-bs-parent="#psQuestions">
-                            <div class="accordion-body">
-                                <div style="padding-bottom: 6px">
-                                    <strong>Просто создайте Турецкую учетную запись:</strong><br/>
-                                </div>
-                                • Создайте новый аккаунт через PlayStation<br/>
-                                • Во время создания выберите страну Турция<br/>
-                                • Используйте почту GMail<br/>
-                                • Используйте любой турецкий адрес из Google Maps
                             </div>
                         </div>
                     </div>
@@ -1893,10 +1965,10 @@
                                 дизайна, проектирования интерфейсов, создания веб-контента и материалов для
                                 соцсетей.<br/><br/>
                                 <div>
-                                     <a href="https://ru.wikipedia.org/wiki/Adobe_Creative_Cloud"
-                                                 title="Adobe Creative Cloud" target="_blank"
-                                                 data-saferedirecturl="https://ru.wikipedia.org/wiki/Adobe_Creative_Cloud"
-                                                 style="color: #e3bcff">узнать подробнее</a>
+                                    <a href="https://ru.wikipedia.org/wiki/Adobe_Creative_Cloud"
+                                       title="Adobe Creative Cloud" target="_blank"
+                                       data-saferedirecturl="https://ru.wikipedia.org/wiki/Adobe_Creative_Cloud"
+                                       style="color: #e3bcff">узнать подробнее</a>
                                 </div>
                             </div>
                         </div>
