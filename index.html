@@ -208,21 +208,21 @@
         }
 
 
-        .container-fade-out-right {
-            mask: linear-gradient(90deg, black 80%, #ff000000) !important;
-            -webkit-mask: linear-gradient(90deg, black 80%, #ff000000) !important;
+        .modal-body #swiper-content.container-fade-out-right {
+            mask: linear-gradient(90deg, black 80%, #ff000000);
+            -webkit-mask: linear-gradient(90deg, black 80%, #ff000000);
 
         }
 
-        .container-fade-out-left {
-            mask: linear-gradient(270deg, black 80%, #ff000000) !important;
-            -webkit-mask: linear-gradient(270deg, black 80%, #ff000000) !important;
+        .modal-body #swiper-content.container-fade-out-left {
+            mask: linear-gradient(270deg, black 80%, #ff000000);
+            -webkit-mask: linear-gradient(270deg, black 80%, #ff000000);
 
         }
 
-        .container-fade-out-left.container-fade-out-right {
-            mask: linear-gradient(90deg, black 80%, #ff000000) left, linear-gradient(270deg, black 80%, #ff000000) right !important;
-            -webkit-mask: linear-gradient(90deg, black 80%, #ff000000) left, linear-gradient(270deg, black 80%, #ff000000) right !important;
+        .modal-body #swiper-content.container-fade-out-left.container-fade-out-right {
+            mask: linear-gradient(90deg, black 80%, #ff000000) left, linear-gradient(270deg, black 80%, #ff000000) right;
+            -webkit-mask: linear-gradient(90deg, black 80%, #ff000000) left, linear-gradient(270deg, black 80%, #ff000000) right;
             mask-composite: destination-in;
             -webkit-mask-composite: destination-in;
         }
@@ -989,8 +989,8 @@
             }
 
             #servicesTab .nav-link {
-                width: 76px;
-                height: 76px;
+                width: 75px;
+                height: 75px;
                 position: relative;
             }
 
@@ -1202,8 +1202,6 @@
                 </button>
             </div>
         </div>
-
-        <i class="bi bi-chevron-double-down"></i>
     </section>
 
     <section>
@@ -2024,43 +2022,6 @@
     </div>
 </div>
 
-
-<script type="text/javascript">
-    let observer = new MutationObserver(function (mutations) {
-        mutations.forEach(function (mutationRecord) {
-            if (mutationRecord.target.className.includes("swiper-button-disabled")) {
-                if (mutationRecord.target.id === 'left-arrow') {
-                    document.getElementById('swiper-content').classList.remove('container-fade-out-left');
-                } else {
-                    console.log('WHYYY');
-                    document.getElementById('swiper-content').classList.remove('container-fade-out-right');
-                }
-            } else {
-                if (mutationRecord.target.id === 'left-arrow') {
-                    document.getElementById('swiper-content').classList.add('container-fade-out-left');
-                } else {
-                    document.getElementById('swiper-content').classList.add('container-fade-out-right');
-                }
-            }
-        })
-    });
-
-    let left_target = document.getElementById('left-arrow');
-    let right_target = document.getElementById('right-arrow');
-
-    // MDN documentation
-    // https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver/observe#attributefilter
-    observer.observe(left_target, {
-        attributes: true,
-        attributeFilter: ['class']
-    });
-
-    observer.observe(right_target, {
-        attributes: true,
-        attributeFilter: ['class']
-    });
-</script>
-
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
@@ -2117,7 +2078,7 @@
     function renderGiftSelector(item) {
         const handleGiftChange = event => {
             if (event.target.checked) {
-                document.getElementById(`${item.shp_service_name}AsGift`).value = '1';
+                document.getElementById(`${item.shp_service_name}AsGift`).value = item?.AsGift ? '1' : '0';
 
                 document.getElementById(`${item.shp_service_name}Description`).innerHTML = item.AsGift.Description;
                 document.getElementById(`${item.shp_service_name}Offer`).innerHTML = item.AsGift.OfferText;
@@ -2167,32 +2128,6 @@
             document.querySelector('.iphone-x').style.display = 'block';
         } else {
             document.querySelector('.browser-window').style.display = 'block';
-        }
-
-        if (window.location.hash) {
-            document
-                .getElementById("checkout")
-                .addEventListener("shown.bs.modal", function (event) {
-                    const urlParams = new URLSearchParams(window.location.search);
-
-                    const service = urlParams.get("service");
-                    if (service) {
-                        document.getElementById(`${service}Tab`).click();
-                    }
-
-                    if (urlParams.get("as_gift") === "1") {
-                        document.querySelectorAll('[data-check-gift="true"]').forEach(el => el.click());
-                    }
-
-                    if (urlParams.get("email")) {
-                        document.getElementById("ytEmail").value =
-                            urlParams.get("email");
-                    }
-                });
-
-            new bootstrap.Modal(
-                document.querySelector(window.location.hash)
-            ).show();
         }
 
         const onServiceSubmit = item => e => {
@@ -2452,10 +2387,6 @@
 
             // SwiperJS
             const swiper = new Swiper(".swiper", {
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev",
-                },
                 freeMode: true,
                 mousewheel: {
                     releaseOnEdges: true,
@@ -2463,6 +2394,7 @@
                 },
                 slidesPerView: 3.5,
                 spaceBetween: 10,
+                direction: 'horizontal',
                 breakpoints: {
                     400: {
                         slidesPerView: 3.7,
@@ -2475,12 +2407,56 @@
                     640: {
                         slidesPerView: 4.5,
                         spaceBetween: 16,
-                        slidesPerGroup: 2
+                        slidesPerGroup: 2,
+                        navigation: {
+                            nextEl: ".swiper-button-next",
+                            prevEl: ".swiper-button-prev",
+                        },
                     }
                 }
             });
 
+            swiper.on('reachBeginning', () => {
+                document.getElementById('swiper-content').classList.remove('container-fade-out-left');
+                document.getElementById('swiper-content').classList.add('container-fade-out-right');
+            });
+
+            swiper.on('slideChange', (swiper) => {
+                if (swiper.isEnd) {
+                    document.getElementById('swiper-content').classList.remove('container-fade-out-right');
+                    document.getElementById('swiper-content').classList.add('container-fade-out-left');
+                }else if (!swiper.isBeginning && !swiper.isEnd) {
+                    document.getElementById('swiper-content').classList.add('container-fade-out-right', 'container-fade-out-left');
+                }
+            });
+
             window.swiper = swiper;
+
+            if (window.location.hash) {
+                document
+                    .getElementById("checkout")
+                    .addEventListener("shown.bs.modal", function (event) {
+                        const urlParams = new URLSearchParams(window.location.search);
+
+                        const service = urlParams.get("service");
+                        if (service) {
+                            document.getElementById(`${service}Tab`).click();
+                        }
+
+                        if (urlParams.get("as_gift") === "1") {
+                            document.querySelectorAll('[data-check-gift="true"]').forEach(el => el.click());
+                        }
+
+                        if (urlParams.get("email")) {
+                            document.getElementById("ytEmail").value =
+                                urlParams.get("email");
+                        }
+                    });
+
+                new bootstrap.Modal(
+                    document.querySelector(window.location.hash)
+                ).show();
+            }
         });
 
         function handleServiceOpen(event) {
