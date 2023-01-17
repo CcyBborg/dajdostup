@@ -1128,6 +1128,10 @@
             justify-content: center;
             align-items: center;
         }
+
+        .swiper-slide {
+            -webkit-transform: translate3d(0, 0, 0);
+        }
     </style>
 </head>
 
@@ -1202,8 +1206,6 @@
                 </button>
             </div>
         </div>
-
-        <i class="bi bi-chevron-double-down"></i>
     </section>
 
     <section>
@@ -2169,32 +2171,6 @@
             document.querySelector('.browser-window').style.display = 'block';
         }
 
-        if (window.location.hash) {
-            document
-                .getElementById("checkout")
-                .addEventListener("shown.bs.modal", function (event) {
-                    const urlParams = new URLSearchParams(window.location.search);
-
-                    const service = urlParams.get("service");
-                    if (service) {
-                        document.getElementById(`${service}Tab`).click();
-                    }
-
-                    if (urlParams.get("as_gift") === "1") {
-                        document.querySelectorAll('[data-check-gift="true"]').forEach(el => el.click());
-                    }
-
-                    if (urlParams.get("email")) {
-                        document.getElementById("ytEmail").value =
-                            urlParams.get("email");
-                    }
-                });
-
-            new bootstrap.Modal(
-                document.querySelector(window.location.hash)
-            ).show();
-        }
-
         const onServiceSubmit = item => e => {
             e.preventDefault();
             console.log(e);
@@ -2463,6 +2439,7 @@
                 },
                 slidesPerView: 3.5,
                 spaceBetween: 10,
+                direction: 'horizontal',
                 breakpoints: {
                     400: {
                         slidesPerView: 3.7,
@@ -2481,6 +2458,32 @@
             });
 
             window.swiper = swiper;
+
+            if (window.location.hash) {
+                document
+                    .getElementById("checkout")
+                    .addEventListener("shown.bs.modal", function (event) {
+                        const urlParams = new URLSearchParams(window.location.search);
+
+                        const service = urlParams.get("service");
+                        if (service) {
+                            document.getElementById(`${service}Tab`).click();
+                        }
+
+                        if (urlParams.get("as_gift") === "1") {
+                            document.querySelectorAll('[data-check-gift="true"]').forEach(el => el.click());
+                        }
+
+                        if (urlParams.get("email")) {
+                            document.getElementById("ytEmail").value =
+                                urlParams.get("email");
+                        }
+                    });
+
+                new bootstrap.Modal(
+                    document.querySelector(window.location.hash)
+                ).show();
+            }
         });
 
         function handleServiceOpen(event) {
