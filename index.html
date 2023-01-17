@@ -2119,7 +2119,7 @@
     function renderGiftSelector(item) {
         const handleGiftChange = event => {
             if (event.target.checked) {
-                document.getElementById(`${item.shp_service_name}AsGift`).value = '1';
+                document.getElementById(`${item.shp_service_name}AsGift`).value = item?.AsGift ? '1' : '0';
 
                 document.getElementById(`${item.shp_service_name}Description`).innerHTML = item.AsGift.Description;
                 document.getElementById(`${item.shp_service_name}Offer`).innerHTML = item.AsGift.OfferText;
