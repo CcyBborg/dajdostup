@@ -2428,10 +2428,6 @@
 
             // SwiperJS
             const swiper = new Swiper(".swiper", {
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev",
-                },
                 freeMode: true,
                 mousewheel: {
                     releaseOnEdges: true,
@@ -2452,7 +2448,11 @@
                     640: {
                         slidesPerView: 4.5,
                         spaceBetween: 16,
-                        slidesPerGroup: 2
+                        slidesPerGroup: 2,
+                        navigation: {
+                            nextEl: ".swiper-button-next",
+                            prevEl: ".swiper-button-prev",
+                        },
                     }
                 }
             });
