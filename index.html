@@ -1603,10 +1603,21 @@
                         <div id="yt2" class="accordion-collapse collapse" aria-labelledby="yt_heading2"
                              data-bs-parent="#ytQuestions">
                             <div class="accordion-body">
+                                <div style="padding-bottom: 6px">
+                                    <strong>Для семейной подписки:</strong><br/>
+                                </div>
                                 Сразу после оплаты вам придет приглашение в семью Google на
                                 почту. В этой семье оплачена подписка на YouTube Premium.
                                 Просто перейдите по ссылке и начните пользоваться
                                 преимуществами подписки.
+                                <br/>
+                                <br/>
+                                 <div style="padding-bottom: 6px">
+                                    <strong>Для индивидуальной подписки:</strong><br/>
+                                </div>
+                                Сразу после оплаты вы попадете на страницу Активатора.
+                                Войдите в аккаунт и ожидайте завершения активации.
+
                             </div>
                         </div>
                     </div>
@@ -2248,6 +2259,8 @@
                 window[`${item.shp_service_name}HandleSubmit`] = onServiceSubmit(item);
                 window[`${item.shp_service_name}HandleSelect`] = () => {
                     const selected = item.Items[document.getElementById(`${item.shp_service_name}Select`).value];
+                    console.log(selected);
+                    console.log(selected.Recurring);
 
                     if (item.Items.length === 1) {
                         document.getElementById(`${item.shp_service_name}NameView`).innerHTML = selected.Name;
@@ -2272,12 +2285,12 @@
                         document.getElementById(`${item.shp_service_name}PeriodTerm`).style.display = 'none;'
                     }
 
-                    if (selected.Reccuring) {
+                    if (selected.Recurring) {
                         document.getElementById(`${item.shp_service_name}Recurring`).style.display = 'inline-block';
-                        document.getElementById(`${item.shp_service_name}RecurringValue`).style.display = 'inline-block'
+                        document.getElementById(`${item.shp_service_name}RecurringValue`).style.display = 'inline-block';
                     } else {
                         document.getElementById(`${item.shp_service_name}Recurring`).style.display = 'none';
-                        document.getElementById(`${item.shp_service_name}RecurringValue`).style.display = 'none;'
+                        document.getElementById(`${item.shp_service_name}RecurringValue`).style.display = 'none';
                     }
                     if (item.Disabled === true) {
                         document.getElementById(`${item.shp_service_name}Submit`).classList.add("disabled");
