@@ -199,7 +199,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: flex-start;
+            align-items: center;
             margin-left: -9px;
         }
 
@@ -933,6 +933,7 @@
 
         @media (max-width: 600px) {
             #home-services {
+                align-items: flex-start;
                 min-height: 250px;
                 height: calc(85vh - 350px);
                 height: calc(var(--vh, 1vh) * 85 - 350px);
@@ -994,8 +995,9 @@
                 position: relative;
             }
 
-            #servicesTab .nav-link img {
+            #servicesTab .nav-link img  {
                 width: 74%;
+                height: 74%;
             }
         }
 
@@ -1121,12 +1123,19 @@
         }
 
         .goods-logo-container {
-            width: 98px;
-            height: 96px;
+            width: 90px;
+            height: 88px;
             display: flex;
 
             justify-content: center;
             align-items: center;
+        }
+
+        .embedded-faq-image {
+            height: 400px;
+            border-radius: 20px;
+            margin: 11px 0;
+            box-shadow: 0px 0px 7px 0px #e0cfff42;
         }
     </style>
 </head>
@@ -1151,17 +1160,19 @@
                     <div style="display: flex; flex-direction: row">
                         <div class="goods-logo-container">
                             <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/ps.svg"
-                                 width="72" data-service="ps"/>
+                                 width="64" data-service="ps"/>
                         </div>
                         <div class="goods-logo-container">
                             <img class="subscription-img easeload"
                                  onload="this.style.opacity=1" src="./icons/yt.svg"
-                                 width="72" data-service="yt"/>
+                                 width="66" data-service="yt"/>
                         </div>
+
                         <div class="goods-logo-container">
-                            <img class="subscription-img easeload" onload="this.style.opacity=1"
-                                 src="./icons/discord.svg"
-                                 width="70" data-service="discord"/>
+                            <img style="margin-bottom: 8px; margin-right: 5px" class="subscription-img easeload"
+                                 onload="this.style.opacity=1"
+                                 src="./icons/apple.svg"
+                                 width="52" data-service="apple"/>
                         </div>
 
 
@@ -1171,20 +1182,32 @@
                         <div class="goods-logo-container">
                             <img style="margin-top: 1px" class="subscription-img easeload" onload="this.style.opacity=1"
                                  src="./icons/xbox.svg"
-                                 width="67" data-service="xbox"/>
+                                 width="60" data-service="xbox"/>
                         </div>
                         <div class="goods-logo-container">
                             <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/spoty.svg"
-                                 width="70" data-service="spoty"/>
+                                 width="62" data-service="spoty"/>
                         </div>
                         <div class="goods-logo-container">
                             <img class="subscription-img easeload" onload="this.style.opacity=1"
                                  src="./icons/fortnite.svg"
-                                 width="72" data-service="fortnite"/>
+                                 width="64" data-service="fortnite"/>
                         </div>
 
-                        <!--                        <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/adobe.svg"-->
-                        <!--                             width="68" data-service="adobe"/>-->
+
+                    </div>
+                    <div style="display: flex; flex-direction: row; align-items: center">
+
+                        <div class="goods-logo-container">
+                            <img class="subscription-img easeload" onload="this.style.opacity=1" src="./icons/adobe.svg"
+                                 width="64" data-service="adobe"/>
+                        </div>
+                        <div class="goods-logo-container">
+                            <img style="margin-bottom: 4px" class="subscription-img easeload"
+                                 onload="this.style.opacity=1"
+                                 src="./icons/discord.svg"
+                                 width="66" data-service="discord"/>
+                        </div>
 
 
                     </div>
@@ -1612,7 +1635,7 @@
                                 преимуществами подписки.
                                 <br/>
                                 <br/>
-                                 <div style="padding-bottom: 6px">
+                                <div style="padding-bottom: 6px">
                                     <strong>Для индивидуальной подписки:</strong><br/>
                                 </div>
                                 Сразу после оплаты вы попадете на страницу Активатора.
@@ -1658,11 +1681,7 @@
                                     <strong>👇🏼 &nbsp;Проверьте наличие логотипа Premium</strong><br/>
                                 </div>
                                 <div>
-                                    <img src="./static/yt_is_active.jpeg" height="400" style="
-                          border-radius: 20px;
-                          margin: 11px 0;
-                          box-shadow: 0px 0px 7px 0px #e0cfff42;
-                        "/>
+                                    <img src="./static/yt_is_active.jpeg" class="embedded-faq-image"/>
                                 </div>
                                 <div style="padding-top: 4px">
                                     Сделать это можно в браузере или в приложении YouTube.
@@ -1951,6 +1970,7 @@
                     </div>
                 </div>
 
+
                 <div class="faq-item-header">
                     <p class="choose-service-title">Adobe Cloud</p>
                     <img data-service="adobe" class="subscription-img" src="./icons/adobe-without-borders.svg"
@@ -1995,6 +2015,111 @@
                                 <div style="padding-bottom: 6px">
                                     <strong>Дополнительной подготовки не требуется.</strong><br/>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item-header">
+                    <p class="choose-service-title">Apple Gift Cards</p>
+                    <img data-service="apple" style="width: 34px" class="subscription-img"
+                         src="./icons/apple-without-borders.svg"
+                         alt="AppStore Gift Cards">
+                </div>
+                <div class="accordion" id="appleQuestions">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="apple_heading1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#apple1" aria-expanded="true" aria-controls="apple1">
+                                Что такое Apple Gift Cards?
+                            </button>
+                        </h2>
+                        <div id="apple1" class="accordion-collapse collapse" aria-labelledby="apple_heading1"
+                             data-bs-parent="#appleQuestions">
+                            <div class="accordion-body">
+                                <div style="padding-bottom: 6px">
+                                    <strong>Это официальные карты пополнения от Apple.</strong><br/>
+                                </div>
+                                Оплачивайте приложения, фильмы, музыку, книги и другие покупки в App Store, Books Store
+                                или iTunes Store как и прежде.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="apple_heading2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#apple2" aria-expanded="true" aria-controls="apple2">
+                                Как подготовиться к активации?
+                            </button>
+                        </h2>
+                        <div id="apple2" class="accordion-collapse collapse" aria-labelledby="apple_heading2"
+                             data-bs-parent="#appleQuestions">
+                            <div class="accordion-body">
+                                <div style="padding-bottom: 6px">
+                                    <strong>Дополнительной подготовки не требуется.</strong><br/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="apple_heading3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#apple3" aria-expanded="true" aria-controls="apple3">
+                                Что можно приобрести?
+                            </button>
+                        </h2>
+                        <div id="apple3" class="accordion-collapse collapse" aria-labelledby="apple_heading3"
+                             data-bs-parent="#appleQuestions">
+                            <div class="accordion-body">
+                                <div style="padding-bottom: 8px">
+                                    <strong>Карту можно использовать для оплаты:</strong><br/>
+                                </div>
+
+                                • Мобильных приложений и игр<br/>
+                                • Подписки на Apple Music<br/>
+                                • Хранилища iCloud<br/>
+                                • Аксессуаров в Apple Store<br/>
+
+                                <div style="padding-top: 8px">
+                                    ⚠️ <b>Внимание!</b> Внутреигровая валюта иногда не принимает оплату в рублях. В этом случае создайте американский аккаунт и пополните его US картой.<br/>
+                                    <a href="https://support.apple.com/ru-ru/HT211187#:~:text=%D0%A1%20%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D1%8C%D1%8E%20%D0%BA%D0%B0%D1%80%D1%82%D1%8B%20Apple%20Gift,%D0%B8%D0%BB%D0%B8%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20Apple%20Store."
+                                       title="Apple Gift Cards" target="_blank"
+                                       data-saferedirecturl="https://support.apple.com/ru-ru/HT211187#:~:text=%D0%A1%20%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D1%8C%D1%8E%20%D0%BA%D0%B0%D1%80%D1%82%D1%8B%20Apple%20Gift,%D0%B8%D0%BB%D0%B8%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20Apple%20Store."
+                                       style="color: #e3bcff">узнать подробнее на сайте Apple</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="apple_heading4">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#apple4" aria-expanded="true" aria-controls="apple4">
+                                Как активировать?
+                            </button>
+                        </h2>
+                        <div id="apple4" class="accordion-collapse collapse" aria-labelledby="apple_heading4"
+                             data-bs-parent="#appleQuestions">
+                            <div class="accordion-body">
+                                <div style="margin-bottom: 6px">1. На iPhone, iPad или iPod touch откройте приложение AppStore.</div>
+                                2. В верхней части экрана справа нажмите на свое фото.<br/>
+                                <div>
+                                    <img src="./static/faq/apple/2.PNG" class="embedded-faq-image"/>
+                                </div>
+                                3. Нажмите «Погасить подарочную карту или код».<br/>
+                                <div>
+                                    <img src="./static/faq/apple/3.PNG" class="embedded-faq-image"/>
+                                </div>
+                                4. Нажмите «Ввести код вручную».<br/>
+                                <div>
+                                    <img src="./static/faq/apple/4.PNG" class="embedded-faq-image"/>
+                                </div>
+                                5. Нажмите «Готово».<br/>
+                                <div>
+                                    <img src="./static/faq/apple/5.PNG" class="embedded-faq-image"/>
+                                </div>
+
+
                             </div>
                         </div>
                     </div>
@@ -2259,8 +2384,8 @@
                 window[`${item.shp_service_name}HandleSubmit`] = onServiceSubmit(item);
                 window[`${item.shp_service_name}HandleSelect`] = () => {
                     const selected = item.Items[document.getElementById(`${item.shp_service_name}Select`).value];
-                    console.log(selected);
-                    console.log(selected.Recurring);
+                    // console.log(selected);
+                    // console.log(selected.Recurring);
 
                     if (item.Items.length === 1) {
                         document.getElementById(`${item.shp_service_name}NameView`).innerHTML = selected.Name;
@@ -2438,7 +2563,7 @@
                 if (swiper.isEnd) {
                     document.getElementById('swiper-content').classList.remove('container-fade-out-right');
                     document.getElementById('swiper-content').classList.add('container-fade-out-left');
-                }else if (!swiper.isBeginning && !swiper.isEnd) {
+                } else if (!swiper.isBeginning && !swiper.isEnd) {
                     document.getElementById('swiper-content').classList.add('container-fade-out-right', 'container-fade-out-left');
                 }
             });
