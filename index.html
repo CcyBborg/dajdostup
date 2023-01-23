@@ -916,7 +916,7 @@
             width: 100%;
             position: relative;
             padding: 10px 0;
-            z-index: 999;
+            z-index: 99999;
             border-radius: 20px;
 
             -webkit-mask-image: linear-gradient(90deg, black, black);
@@ -985,8 +985,7 @@
             }
 
             #main-button {
-                position: absolute;
-                bottom: 60px;
+                margin-top: 40px;
                 width: calc(100% - 68px);
                 left: 34px;
             }
@@ -2410,8 +2409,6 @@
                 window[`${item.shp_service_name}HandleSubmit`] = onServiceSubmit(item);
                 window[`${item.shp_service_name}HandleSelect`] = () => {
                     const selected = item.Items[document.getElementById(`${item.shp_service_name}Select`).value];
-                    // console.log(selected);
-                    // console.log(selected.Recurring);
 
                     if (item.Items.length === 1) {
                         document.getElementById(`${item.shp_service_name}NameView`).innerHTML = selected.Name;
@@ -2565,16 +2562,10 @@
                     400: {
                         slidesPerView: 3.7,
                         spaceBetween: 10,
-                        // cssMode: true,
-
-
                     },
                     440: {
                         slidesPerView: 4.5,
                         spaceBetween: 10,
-                        // cssMode: true,
-
-
                     },
                     640: {
                         slidesPerView: 4.5,
