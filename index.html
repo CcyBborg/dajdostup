@@ -2632,6 +2632,8 @@
         });
 
         function handleServiceOpen(event) {
+            console.log('handler');
+
             const service = event.target.getAttribute("data-service");
             if (service) {
                 event.preventDefault();
