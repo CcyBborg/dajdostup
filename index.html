@@ -192,7 +192,6 @@
         }
 
         .header {
-            height: calc(var(--vh, 1vh) * 100);
             position: relative;
             overflow: visible;
         }
@@ -219,7 +218,6 @@
         .modal-body #swiper-content.container-fade-out-left {
             mask: linear-gradient(270deg, black 80%, #ff000000);
             -webkit-mask: linear-gradient(270deg, black 80%, #ff000000);
-
         }
 
         .modal-body #swiper-content.container-fade-out-left.container-fade-out-right {
@@ -952,15 +950,20 @@
         @media (max-width: 600px) {
             #home-services {
                 align-items: flex-start;
-                min-height: 250px;
+                min-height: 360px;
                 height: calc(85vh - 350px);
                 height: calc(var(--vh, 1vh) * 85 - 292px);
                 margin-top: -4px;
             }
 
+            #main-button .btn-primary:not(.btn-gift) {
+                flex: 0 0 100%;
+            }
+
             #main-button,
             .cta-block {
                 max-width: none;
+                width: 100%;
             }
 
             p {
@@ -970,10 +973,6 @@
             .browser-window {
                 width: 100%;
                 height: auto;
-            }
-
-            .header .bi-chevron-double-down {
-                font-size: 46px;
             }
 
             .about-p {
@@ -1024,20 +1023,8 @@
                 padding: 0 15px;
             }
 
-            #main-button {
-                bottom: 86px;
-                width: calc(100% - 30px);
-                left: 15px;
-            }
-
             .header-title {
                 margin: 80px 0 0;
-            }
-
-            #home-services {
-                min-height: 250px;
-                height: calc(var(--vh, 1vh) * 100 - 426px);
-                margin-top: -4px;
             }
         }
 
@@ -1251,7 +1238,7 @@
         </div>
     </section>
 
-    <section>
+    <section class="mt-5 pt-5">
         <div class="container">
             <h2 class="about-title text-md-center" style="margin-bottom: 56px">
                 О нас
@@ -2599,6 +2586,7 @@
                             slidesPerView: 4.5,
                             spaceBetween: 16,
                             slidesPerGroup: 2,
+                            freeMode: false,
                             navigation: {
                                 nextEl: ".swiper-button-next",
                                 prevEl: ".swiper-button-prev",
