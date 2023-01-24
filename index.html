@@ -327,6 +327,22 @@
 
         @media (max-width: 600px) {
 
+
+            .swiper-wrapper {
+                overflow: scroll;
+                -ms-overflow-style: none;  /* Internet Explorer 10+ */
+                scrollbar-width: none;  /* Firefox */
+            }
+
+            .swiper-wrapper::-webkit-scrollbar { 
+                display: none;  /* Safari and Chrome */
+            }
+
+            .swiper-slide {
+                width: unset;
+                margin: 0 10px;
+            }
+
             .header::before {
                 top: -240%;
                 right: -450%;
@@ -916,7 +932,7 @@
             width: 100%;
             position: relative;
             padding: 10px 0;
-            z-index: 999;
+            z-index: 99999;
             border-radius: 20px;
 
             -webkit-mask-image: linear-gradient(90deg, black, black);
@@ -985,8 +1001,7 @@
             }
 
             #main-button {
-                position: absolute;
-                bottom: 60px;
+                margin-top: 40px;
                 width: calc(100% - 68px);
                 left: 34px;
             }
@@ -2410,8 +2425,6 @@
                 window[`${item.shp_service_name}HandleSubmit`] = onServiceSubmit(item);
                 window[`${item.shp_service_name}HandleSelect`] = () => {
                     const selected = item.Items[document.getElementById(`${item.shp_service_name}Select`).value];
-                    // console.log(selected);
-                    // console.log(selected.Recurring);
 
                     if (item.Items.length === 1) {
                         document.getElementById(`${item.shp_service_name}NameView`).innerHTML = selected.Name;
@@ -2548,61 +2561,68 @@
                 document.querySelectorAll('[data-check-gift="true"]').forEach(el => el.click());
             }));
 
+            function scrollToForMobile (el) {
+                    const elLeft = el.offsetLeft + el.offsetWidth;
+                    const elParentLeft = el.parentNode.offsetLeft + el.parentNode.offsetWidth;
 
-            // SwiperJS
-            const swiper = new Swiper(".swiper", {
-                freeMode: true,
-                centeredSlides: true,
-                centeredSlidesBounds: true,
-                mousewheel: {
-                    releaseOnEdges: true,
-                    forceToAxis: true
-                },
-                slidesPerView: 3.5,
-                spaceBetween: 10,
-                direction: 'horizontal',
-                breakpoints: {
-                    400: {
-                        slidesPerView: 3.7,
-                        spaceBetween: 10,
-                        // cssMode: true,
-
-
-                    },
-                    440: {
-                        slidesPerView: 4.5,
-                        spaceBetween: 10,
-                        // cssMode: true,
-
-
-                    },
-                    640: {
-                        slidesPerView: 4.5,
-                        spaceBetween: 16,
-                        slidesPerGroup: 2,
-                        navigation: {
-                            nextEl: ".swiper-button-next",
-                            prevEl: ".swiper-button-prev",
-                        }
+                    // check if element not in view
+                    if (elLeft >= elParentLeft + el.parentNode.scrollLeft) {
+                        el.parentNode.scrollLeft = elLeft - elParentLeft;
+                    } else if (elLeft <= el.parentNode.offsetLeft + el.parentNode.scrollLeft) {
+                        el.parentNode.scrollLeft = el.offsetLeft - el.parentNode.offsetLeft;
                     }
                 }
-            });
 
-            swiper.on('reachBeginning', () => {
-                document.getElementById('swiper-content').classList.remove('container-fade-out-left');
-                document.getElementById('swiper-content').classList.add('container-fade-out-right');
-            });
+            if (window.innerWidth > 600) {
+                // SwiperJS
+                const swiper = new Swiper(".swiper", {
+                    freeMode: true,
+                    centeredSlides: true,
+                    centeredSlidesBounds: true,
+                    mousewheel: {
+                        releaseOnEdges: true,
+                        forceToAxis: true
+                    },
+                    slidesPerView: 3.5,
+                    spaceBetween: 10,
+                    direction: 'horizontal',
+                    breakpoints: {
+                        400: {
+                            slidesPerView: 3.7,
+                            spaceBetween: 10,
+                        },
+                        440: {
+                            slidesPerView: 4.5,
+                            spaceBetween: 10,
+                        },
+                        640: {
+                            slidesPerView: 4.5,
+                            spaceBetween: 16,
+                            slidesPerGroup: 2,
+                            navigation: {
+                                nextEl: ".swiper-button-next",
+                                prevEl: ".swiper-button-prev",
+                            }
+                        }
+                    }
+                });
 
-            swiper.on('slideChange', (swiper) => {
-                if (swiper.isEnd) {
-                    document.getElementById('swiper-content').classList.remove('container-fade-out-right');
-                    document.getElementById('swiper-content').classList.add('container-fade-out-left');
-                } else if (!swiper.isBeginning && !swiper.isEnd) {
-                    document.getElementById('swiper-content').classList.add('container-fade-out-right', 'container-fade-out-left');
-                }
-            });
+                swiper.on('reachBeginning', () => {
+                    document.getElementById('swiper-content').classList.remove('container-fade-out-left');
+                    document.getElementById('swiper-content').classList.add('container-fade-out-right');
+                });
 
-            window.swiper = swiper;
+                swiper.on('slideChange', (swiper) => {
+                    if (swiper.isEnd) {
+                        document.getElementById('swiper-content').classList.remove('container-fade-out-right');
+                        document.getElementById('swiper-content').classList.add('container-fade-out-left');
+                    } else if (!swiper.isBeginning && !swiper.isEnd) {
+                        document.getElementById('swiper-content').classList.add('container-fade-out-right', 'container-fade-out-left');
+                    }
+                });
+
+                window.swiper = swiper;
+            }
 
             if (window.location.hash) {
                 document
@@ -2632,8 +2652,6 @@
         });
 
         function handleServiceOpen(event) {
-            console.log('handler');
-
             const service = event.target.getAttribute("data-service");
             if (service) {
                 event.preventDefault();
@@ -2647,7 +2665,12 @@
                 serviceTab.click();
 
                 const activeSlide = Number(serviceTab.getAttribute("data-swiper-idx"));
-                window.swiper.slideTo(activeSlide);
+
+                if (window.swiper) {
+                    window.swiper.slideTo(activeSlide);
+                } else {
+                    scrollToForMobile(serviceTab);
+                }
             }
         };
     })();
