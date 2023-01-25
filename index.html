@@ -192,7 +192,7 @@
         }
 
         .header {
-            height: calc(var(--vh, 1vh) * 100);
+            /*height: calc(var(--vh, 1vh) * 100);*/
             position: relative;
             overflow: visible;
         }
@@ -936,10 +936,12 @@
         @media (max-width: 600px) {
             #home-services {
                 align-items: flex-start;
+                margin: 30px 0 30px -4px;
                 min-height: 250px;
-                height: calc(85vh - 350px);
-                height: calc(var(--vh, 1vh) * 85 - 292px);
-                margin-top: -4px;
+                height: 100%;
+                /*height: calc(85vh - 350px);*/
+                /*height: calc(var(--vh, 1vh) * 60 - 292px);*/
+                /*margin-top: -4px;*/
             }
 
             #main-button,
@@ -985,10 +987,10 @@
             }
 
             #main-button {
-                position: absolute;
-                bottom: 60px;
-                width: calc(100% - 68px);
-                left: 34px;
+                position: relative;
+                /*bottom: 60px;*/
+                /*width: calc(100% - 68px);*/
+                /*left: 34px;*/
             }
 
             #servicesTab .nav-link {
@@ -1010,9 +1012,9 @@
             }
 
             #main-button {
-                bottom: 86px;
-                width: calc(100% - 30px);
-                left: 15px;
+                /*bottom: 86px;*/
+                /*width: calc(100% - 30px);*/
+                /*left: 15px;*/
             }
 
             .header-title {
@@ -1157,8 +1159,8 @@
 
 <body>
 <main>
-    <section class="header">
-        <div class="container">
+    <section class="header flex-centered" style="flex-direction: column; justify-content: space-between">
+        <div class="container" style="margin-bottom: 38px;">
             <div class="header-content">
                 <div class="header-title">
                     <img class="hat-img easeload" onload="this.style.opacity=1" src="./static/hat.svg"/>
@@ -1295,7 +1297,7 @@
                     <p>
                         Ответы на&nbsp;другие популярные вопросы доступны в
                         <strong><a href="#faq" data-bs-toggle="modal" data-target="#faq"
-                                   style="color: white">FAQ</a></strong>
+                                   style="color: #ffb300">FAQ</a></strong>
                     </p>
                 </li>
             </ul>
