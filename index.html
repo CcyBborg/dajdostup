@@ -339,9 +339,38 @@
                 padding: 10px !important;
             }
 
-            .swiper-button-next,
+            .swiper-button-next {
+                background: #25252559;
+                opacity: 1;
+                filter: none;
+                box-shadow: none;
+                border-color: #f6ab19;
+                right: 0;
+                z-index: 1000;
+                border-radius: 10px;
+                width: 33px;
+            }
+
+            .swiper-button-next::after {
+                margin-left: 2px;
+                color: #f6ab19;
+            }
+
+            .swiper-button-prev::after {
+                margin-left: 2px;
+                color: #f6ab19;
+            }
+
             .swiper-button-prev {
-                display: none;
+                left: 0;
+                background: #25252559;
+                opacity: 1;
+                filter: none;
+                box-shadow: none;
+                border-color: #f6ab19;
+                z-index: 1000;
+                border-radius: 10px;
+                width: 33px;
             }
 
             @-webkit-keyframes example {
@@ -2553,21 +2582,31 @@
 
             // SwiperJS
             const swiper = new Swiper(".swiper", {
-                freeMode: true,
+                // freeMode: true,
                 centeredSlides: true,
                 centeredSlidesBounds: true,
-                mousewheel: {
-                    releaseOnEdges: true,
-                    forceToAxis: true
-                },
+                // mousewheel: {
+                //     releaseOnEdges: true,
+                //     forceToAxis: true
+                // },
                 slidesPerView: 3.5,
                 spaceBetween: 10,
                 direction: 'horizontal',
+                slidesPerGroup: 2,
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
                 breakpoints: {
                     400: {
                         slidesPerView: 3.7,
                         spaceBetween: 10,
                         // cssMode: true,
+                        slidesPerGroup: 2,
+                        navigation: {
+                            nextEl: ".swiper-button-next",
+                            prevEl: ".swiper-button-prev",
+                        }
 
 
                     },
@@ -2575,6 +2614,11 @@
                         slidesPerView: 4.5,
                         spaceBetween: 10,
                         // cssMode: true,
+                        slidesPerGroup: 2,
+                        navigation: {
+                            nextEl: ".swiper-button-next",
+                            prevEl: ".swiper-button-prev",
+                        }
 
 
                     },
