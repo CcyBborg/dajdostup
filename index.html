@@ -19,7 +19,7 @@
     <link href="fonts/proxima-nova.css" rel="stylesheet" type="text/css"/>
 
     <!-- SwiperJS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/> -->
 
 
     <!--    <link rel="icon" type="image/x-icon" href="./favicon.ico"/>-->
@@ -227,53 +227,6 @@
             -webkit-mask: linear-gradient(90deg, black 80%, #ff000000) left, linear-gradient(270deg, black 80%, #ff000000) right;
             mask-composite: destination-in;
             -webkit-mask-composite: destination-in;
-        }
-
-        .swiper-button-next,
-        .swiper-button-prev {
-            width: 44px;
-            height: 44px;
-            border-radius: 250%;
-            background-color: rgba(0, 0, 0, 0.3);
-            filter: invert(1) grayscale(100%) brightness(200%);
-            box-shadow: 0px 0px 18px 3px rgb(255 190 130 / 31%);
-            overflow: visible;
-            top: 0;
-            bottom: 0;
-            margin: auto 0;
-            border: 1px solid #96969b;
-            opacity: .5;
-        }
-
-        .swiper-button-next:hover,
-        .swiper-button-prev:hover {
-            cursor: pointer;
-            opacity: .75;
-        }
-
-        .swiper-button-next {
-            position: absolute;
-            right: -90px;
-            overflow: visible;
-        }
-
-        .swiper-button-prev {
-            position: absolute;
-            left: -90px;
-        }
-
-        .swiper-button-next::after,
-        .swiper-button-prev::after {
-            font-size: 24px;
-            color: #96969b;
-        }
-
-        .swiper-button-next::after {
-            margin-left: 2px;
-        }
-
-        .swiper-button-prev::after {
-            margin-right: 2px;
         }
 
         @-webkit-keyframes example {
@@ -956,10 +909,11 @@
         }
 
         #swiper-content {
-            -webkit-transition: all 0.5s ease;
-            -moz-transition: all 0.5s ease;
-            -o-transition: all 0.5s ease;
-            transition: all 0.5s ease;
+            overflow: scroll;
+        }
+
+        .swiper-slide {
+            margin: 0 10px;
         }
 
         #servicesTab {
@@ -2192,8 +2146,6 @@
                             role="tablist">
                         </ul>
                     </div>
-                    <div id="left-arrow" class="swiper-button-prev"></div>
-                    <div id="right-arrow" class="swiper-button-next"></div>
                 </div>
                 <div class="tab-content" id="servicesTabContent">
                     <div class="text-center my-4">
@@ -2583,79 +2535,6 @@
                 document.querySelectorAll('[data-check-gift="true"]').forEach(el => el.click());
             }));
 
-
-            // SwiperJS
-            const swiper = new Swiper(".swiper", {
-                // freeMode: true,
-                centeredSlides: true,
-                centeredSlidesBounds: true,
-                mousewheel: false,
-                allowTouchMove: false,
-                // mousewheel: {
-                //     releaseOnEdges: true,
-                //     forceToAxis: true
-                // },
-                slidesPerView: 3.5,
-                spaceBetween: 10,
-                direction: 'horizontal',
-                slidesPerGroup: 2,
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev",
-                },
-                breakpoints: {
-                    400: {
-                        slidesPerView: 3.7,
-                        spaceBetween: 10,
-                        // cssMode: true,
-                        slidesPerGroup: 2,
-                        navigation: {
-                            nextEl: ".swiper-button-next",
-                            prevEl: ".swiper-button-prev",
-                        }
-
-
-                    },
-                    440: {
-                        slidesPerView: 4.5,
-                        spaceBetween: 10,
-                        // cssMode: true,
-                        slidesPerGroup: 2,
-                        navigation: {
-                            nextEl: ".swiper-button-next",
-                            prevEl: ".swiper-button-prev",
-                        }
-
-
-                    },
-                    640: {
-                        slidesPerView: 4.5,
-                        spaceBetween: 16,
-                        slidesPerGroup: 2,
-                        navigation: {
-                            nextEl: ".swiper-button-next",
-                            prevEl: ".swiper-button-prev",
-                        }
-                    }
-                }
-            });
-
-            swiper.on('reachBeginning', () => {
-                document.getElementById('swiper-content').classList.remove('container-fade-out-left');
-                document.getElementById('swiper-content').classList.add('container-fade-out-right');
-            });
-
-            swiper.on('slideChange', (swiper) => {
-                if (swiper.isEnd) {
-                    document.getElementById('swiper-content').classList.remove('container-fade-out-right');
-                    document.getElementById('swiper-content').classList.add('container-fade-out-left');
-                } else if (!swiper.isBeginning && !swiper.isEnd) {
-                    document.getElementById('swiper-content').classList.add('container-fade-out-right', 'container-fade-out-left');
-                }
-            });
-
-            window.swiper = swiper;
-
             if (window.location.hash) {
                 document
                     .getElementById("checkout")
@@ -2664,7 +2543,10 @@
 
                         const service = urlParams.get("service");
                         if (service) {
-                            document.getElementById(`${service}Tab`).click();
+                            const serviceTab = document.getElementById(`${service}Tab`);
+                            serviceTab.click();
+
+                            serviceTab.scrollIntoView({behavior: "smooth", block: "end", inline: "center"});
                         }
 
                         if (urlParams.get("as_gift") === "1") {
@@ -2684,22 +2566,26 @@
         });
 
         function handleServiceOpen(event) {
-            console.log('handler');
-
             const service = event.target.getAttribute("data-service");
             if (service) {
                 event.preventDefault();
 
+                function clickAndScroll(event) {
+                    const serviceTab = document.getElementById(`${service}Tab`);
+
+                    serviceTab.scrollIntoView({behavior: "smooth", block: "start", inline: "start"});
+                    serviceTab.click();
+
+                    document.getElementById("checkout").removeEventListener("shown.bs.modal", clickAndScroll);
+                }
+
+                document
+                    .getElementById("checkout")
+                    .addEventListener("shown.bs.modal", clickAndScroll);
+
                 new bootstrap.Modal(
                     document.getElementById("checkout")
                 ).show();
-
-                const serviceTab = document.getElementById(`${service}Tab`);
-
-                serviceTab.click();
-
-                const activeSlide = Number(serviceTab.getAttribute("data-swiper-idx"));
-                window.swiper.slideTo(activeSlide);
             }
         };
     })();
