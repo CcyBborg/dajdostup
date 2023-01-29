@@ -909,7 +909,19 @@
         }
 
         #swiper-content {
-            overflow: scroll;
+            overflow-x: scroll;
+            overflow-y: hidden;
+            padding-bottom: 20px;
+        }
+
+        #swiper-content::-webkit-scrollbar {
+            width: 2px;
+            height: 2px;
+        }
+        #swiper-content::-webkit-scrollbar-thumb {
+            background: #e69d0a; 
+            border-radius: 0px;
+            width: 2px;
         }
 
         .swiper-slide {
