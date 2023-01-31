@@ -209,25 +209,12 @@
             display: none;
         }
 
-
-        .modal-body #swiper-content.container-fade-out-right {
-            mask: linear-gradient(90deg, black 80%, #ff000000);
-            -webkit-mask: linear-gradient(90deg, black 80%, #ff000000);
-
-        }
-
-        .modal-body #swiper-content.container-fade-out-left {
-            mask: linear-gradient(270deg, black 80%, #ff000000);
-            -webkit-mask: linear-gradient(270deg, black 80%, #ff000000);
-
-        }
-
-        .modal-body #swiper-content.container-fade-out-left.container-fade-out-right {
+        /* .container-fade-out-left.container-fade-out-right {
             mask: linear-gradient(90deg, black 80%, #ff000000) left, linear-gradient(270deg, black 80%, #ff000000) right;
             -webkit-mask: linear-gradient(90deg, black 80%, #ff000000) left, linear-gradient(270deg, black 80%, #ff000000) right;
             mask-composite: destination-in;
             -webkit-mask-composite: destination-in;
-        }
+        } */
 
         @-webkit-keyframes example {
             0% {
@@ -289,7 +276,6 @@
         }
 
         @media (max-width: 600px) {
-
             .header::before {
                 top: -240%;
                 right: -450%;
@@ -298,17 +284,15 @@
                 height: 1000%;
             }
 
-            .swiper {
-                padding: 10px !important;
-            }
-
-            .swiper-button-next {
+            #right-arrow.swiper-button-next {
                 background: #25252559;
                 opacity: 1;
                 filter: none;
                 box-shadow: none;
                 border: 2px solid #f6ab19;
+                color: #f6ab19;
                 backdrop-filter: blur(10px);
+                position: absolute;
                 right: 0;
                 z-index: 1000;
                 border-radius: 10px;
@@ -316,19 +300,11 @@
                 height: 75px;
             }
 
-            .swiper-button-next::after {
-                margin-left: 2px;
-                color: #f6ab19;
-            }
-
-            .swiper-button-prev::after {
-                margin-left: 2px;
-                color: #f6ab19;
-            }
-
-            .swiper-button-prev {
+            #left-arrow.swiper-button-prev {
+                position: absolute;
                 left: 0;
                 background: #25252559;
+                color: #f6ab19;
                 opacity: 1;
                 filter: none;
                 box-shadow: none;
@@ -921,7 +897,6 @@
         #swiper-content {
             overflow-x: scroll;
             overflow-y: hidden;
-            padding-bottom: 20px;
         }
 
         #swiper-content::-webkit-scrollbar {
@@ -990,11 +965,6 @@
         }
 
         @media (max-width: 600px) {
-            .swiper-button-next,
-            .swiper-button-prev {
-                display: none;
-            }
-
             #home-services {
                 align-items: flex-start;
                 margin: 30px 0 30px -4px;
@@ -1087,6 +1057,10 @@
         }
 
         @media (min-width: 600px) {
+
+            #swiper-content {
+                padding-bottom: 20px;
+            }
             dl {
                 font-size: 24px;
             }
@@ -2642,7 +2616,6 @@
             }
         });
 
-        if (window.innerWidth > 600) {
             const sideScroll = (
                 element,
                 speed,
@@ -2668,9 +2641,6 @@
             buttonLeft.onclick = function () {
                 sideScroll(document.getElementById('swiper-content'), 25, 100, -20);
             };
-        } else {
-            document.getElementById('swiper-content').classList.add('container-fade-out-left', 'container-fade-out-right');
-        }
 
         function handleServiceOpen(event) {
             const service = event.target.getAttribute("data-service");
