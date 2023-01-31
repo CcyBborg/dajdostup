@@ -206,7 +206,9 @@
         }
 
         .swiper-button-disabled {
-            display: none;
+            color: #4b4b4b !important;
+            border-color: #808080 !important;
+            cursor: not-allowed !important;
         }
 
         /* .container-fade-out-left.container-fade-out-right {
@@ -275,39 +277,40 @@
             align-items: center;
         }
 
-        #right-arrow.swiper-button-next {
-                background: #25252559;
-                opacity: 1;
-                filter: none;
-                box-shadow: none;
-                border: 2px solid #f6ab19;
-                color: #f6ab19;
-                backdrop-filter: blur(10px);
-                position: absolute;
-                right: -75px;
-                z-index: 1000;
-                border-radius: 10px;
-                width: 50px;
-                height: 50px;
-            }
 
-            #left-arrow.swiper-button-prev {
-                position: absolute;
-                left: 0;
-                background: #25252559;
-                color: #f6ab19;
-                opacity: 1;
-                filter: none;
-                box-shadow: none;
-                border: 2px solid #f6ab19;
-                backdrop-filter: blur(10px);
-                position: absolute;
-                left: -75px;
-                z-index: 1000;
-                border-radius: 10px;
-                width: 50px;
-                height: 50px;
-            }
+        #right-arrow.swiper-button-next {
+            background: #25252559;
+            opacity: 1;
+            filter: none;
+            box-shadow: none;
+            border: 2px solid #f6ab19;
+            color: #f6ab19;
+            backdrop-filter: blur(10px);
+            position: absolute;
+            right: -75px;
+            z-index: 1000;
+            border-radius: 10px;
+            width: 50px;
+            height: 50px;
+        }
+
+        #left-arrow.swiper-button-prev {
+            position: absolute;
+            left: 0;
+            background: #25252559;
+            color: #f6ab19;
+            opacity: 1;
+            filter: none;
+            box-shadow: none;
+            border: 2px solid #f6ab19;
+            backdrop-filter: blur(10px);
+            position: absolute;
+            left: -75px;
+            z-index: 1000;
+            border-radius: 10px;
+            width: 50px;
+            height: 50px;
+        }
 
         @media (max-width: 600px) {
             .header::before {
@@ -923,7 +926,7 @@
             position: relative;
             padding: 10px 0;
             z-index: 999;
-            border-radius: 20px;
+            /*border-radius: 20px;*/
 
             -webkit-mask-image: linear-gradient(90deg, black, black);
         }
@@ -2228,7 +2231,7 @@
                 <button type="button" style="z-index: 999999" class="btn-close btn-close-white"
                         data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body" style="max-width: 600px; margin: 0 auto">
+            <div class="modal-body" style="max-width: 600px; margin: 0 auto;">
                 <p class="choose-service-title">Выберите сервис</p>
                 <div class="position-relative">
                     <div id="swiper-content" class="swiper">
@@ -2236,7 +2239,7 @@
                             role="tablist">
                         </ul>
                     </div>
-                    <div id="left-arrow" class="swiper-button-prev">
+                    <div id="left-arrow" class="swiper-button-prev swiper-button-disabled">
                         <i class="bi bi-chevron-left"></i>
                     </div>
                     <div id="right-arrow" class="swiper-button-next">
@@ -2672,14 +2675,7 @@
                 top: 0,
                 behavior: 'smooth'
             });
-
-            element = document.getElementById(element.id);
-
-            if ((element.scrollWidth - element.scrollLeft === element.clientWidth) || (element.scrollLeft === 0)) {
-                console.log('scrolled')
-            }
-
-
+            updateScrollArrows(step);
 
 
         };
@@ -2687,12 +2683,44 @@
         const buttonRight = document.getElementById('right-arrow');
         const buttonLeft = document.getElementById('left-arrow');
 
+        const swiperContent = document.getElementById('swiper-content');
         buttonRight.onclick = function () {
-            sideScroll(document.getElementById('swiper-content'), 200);
+            const slidePerItem = swiperContent.clientWidth < 800 ? swiperContent.scrollWidth / 4 : swiperContent.scrollWidth / 5;
+            sideScroll(swiperContent, slidePerItem);
         };
         buttonLeft.onclick = function () {
-            sideScroll(document.getElementById('swiper-content'), -200);
+            const slidePerItem = swiperContent.clientWidth < 800 ? swiperContent.scrollWidth / 4 : swiperContent.scrollWidth / 5;
+            sideScroll(swiperContent, -slidePerItem);
         };
+
+        function updateScrollArrows(step) {
+
+            const element = document.getElementById('swiper-content');
+
+            if (step === undefined) {
+                step = 0
+            }
+
+            // console.log('width', element.scrollWidth);
+            // console.log('left', element.scrollLeft);
+            // console.log('client', element.clientWidth);
+            // console.log('---');
+
+            if (element.scrollWidth - (element.scrollLeft + step + 1) < element.clientWidth) {
+                document.getElementById('right-arrow').classList.add('swiper-button-disabled');
+            } else {
+                document.getElementById('right-arrow').classList.remove('swiper-button-disabled');
+            }
+
+
+            if (element.scrollLeft + step - 1 < 0) {
+                document.getElementById('left-arrow').classList.add('swiper-button-disabled');
+            } else {
+                document.getElementById('left-arrow').classList.remove('swiper-button-disabled');
+            }
+
+        }
+
 
         function handleServiceOpen(event) {
             const service = event.target.getAttribute("data-service");
@@ -2702,8 +2730,19 @@
                 function clickAndScroll(event) {
                     const serviceTab = document.getElementById(`${service}Tab`);
 
-                    serviceTab.scrollIntoView({behavior: "smooth", block: "start", inline: "start"});
+                    setTimeout(function () {
+                        serviceTab.scrollIntoView({
+                            behavior: "smooth",
+                            block: "center",
+                            inline: "center"
+                        });
+                    }, 100);
+
                     serviceTab.click();
+
+                    setTimeout(function () {
+                        updateScrollArrows();
+                    }, 300);
 
                     document.getElementById("checkout").removeEventListener("shown.bs.modal", clickAndScroll);
                 }
