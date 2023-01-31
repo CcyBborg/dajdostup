@@ -278,6 +278,16 @@
             animation-direction: alternate;
         }
 
+
+        .swiper-button-prev,
+        .swiper-button-next {
+            font-size: 20px;
+            line-height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
         @media (max-width: 600px) {
 
             .header::before {
@@ -932,15 +942,64 @@
             flex-wrap: nowrap;
         }
 
+        .swiper-button-next,
+        .swiper-button-prev {
+            width: 44px;
+            height: 44px;
+            border-radius: 250%;
+            background-color: rgba(0, 0, 0, 0.3);
+            filter: invert(1) grayscale(100%) brightness(200%);
+            box-shadow: 0px 0px 18px 3px rgb(255 190 130 / 31%);
+            overflow: visible;
+            top: 0;
+            bottom: 0;
+            margin: auto 0;
+            border: 1px solid #96969b;
+            opacity: .5;
+        }
+
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+            cursor: pointer;
+            opacity: .75;
+        }
+
+        .swiper-button-next {
+            position: absolute;
+            right: -90px;
+            overflow: visible;
+        }
+
+        .swiper-button-prev {
+            position: absolute;
+            left: -90px;
+        }
+
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            font-size: 24px;
+            color: #96969b;
+        }
+
+        .swiper-button-next::after {
+            margin-left: 2px;
+        }
+
+        .swiper-button-prev::after {
+            margin-right: 2px;
+        }
+
         @media (max-width: 600px) {
+            .swiper-button-next,
+            .swiper-button-prev {
+                display: none;
+            }
+
             #home-services {
                 align-items: flex-start;
                 margin: 30px 0 30px -4px;
                 min-height: 250px;
                 height: 100%;
-                /*height: calc(85vh - 350px);*/
-                /*height: calc(var(--vh, 1vh) * 60 - 292px);*/
-                /*margin-top: -4px;*/
             }
 
             #main-button,
@@ -2158,6 +2217,12 @@
                             role="tablist">
                         </ul>
                     </div>
+                    <div id="left-arrow" class="swiper-button-prev">
+                        <i class="bi bi-chevron-left"></i>
+                    </div>
+                    <div id="right-arrow" class="swiper-button-next">
+                        <i class="bi bi-chevron-right"></i>
+                    </div>
                 </div>
                 <div class="tab-content" id="servicesTabContent">
                     <div class="text-center my-4">
@@ -2576,6 +2641,36 @@
                 ).show();
             }
         });
+
+        if (window.innerWidth > 600) {
+            const sideScroll = (
+                element,
+                speed,
+                distance,
+                step
+            ) => {
+                let scrollAmount = 0;
+                const slideTimer = setInterval(() => {
+                    element.scrollLeft += step;
+                    scrollAmount += Math.abs(step);
+                    if (scrollAmount >= distance) {
+                    clearInterval(slideTimer);
+                    }
+                }, speed);
+            };
+
+            const buttonRight = document.getElementById('right-arrow');
+            const buttonLeft = document.getElementById('left-arrow');
+            
+            buttonRight.onclick = function () {
+                sideScroll(document.getElementById('swiper-content'), 25, 100, 20);
+            };
+            buttonLeft.onclick = function () {
+                sideScroll(document.getElementById('swiper-content'), 25, 100, -20);
+            };
+        } else {
+            document.getElementById('swiper-content').classList.add('container-fade-out-left', 'container-fade-out-right');
+        }
 
         function handleServiceOpen(event) {
             const service = event.target.getAttribute("data-service");
