@@ -2239,8 +2239,8 @@
                         data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="max-width: 600px; margin: 0 auto;">
-                <p class="choose-service-title">Выберите сервис</p>
-                <div class="position-relative">
+                <p id="choose-service-title" class="choose-service-title">Выберите сервис</p>
+                <div id="choose-service-swiper-container" class="position-relative">
                     <div id="swiper-content" class="swiper">
                         <ul class="nav nav-tabs swiper-wrapper" id="servicesTab"
                             role="tablist">
@@ -2671,6 +2671,15 @@
                     document.querySelector(window.location.hash)
                 ).show();
             }
+        }).catch(function (error) {
+            console.log('errr', error)
+            const tabContent = document.getElementById('servicesTabContent');
+            document.getElementById('choose-service-title').innerHTML = "Магазин временно недоступен";
+            document.getElementById('choose-service-title').style = "margin-bottom: 10px; ";
+            document.getElementById('choose-service-swiper-container').style = "display: none";
+
+            tabContent.innerHTML = '<p style="text-align: center">Даже нашему магазину иногда нужен небольшой отдых. Не переживайте, в течение 24-х часов мы откроемся вновь. Приносим извинения за доставленные неудобства. <br/><a href="https://t.me/kingOfSubs" target="_blank">Написать в поддержку.</a></p>' +
+                '<div style="display: flex; align-items: center; justify-content: center"><img style="width: 30%" src="https://img.icons8.com/color/500/null/closed-sign.png"/></div>'
         });
 
         const sideScroll = (
